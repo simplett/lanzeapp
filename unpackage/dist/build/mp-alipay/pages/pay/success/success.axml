@@ -1,0 +1,2 @@
+<template name="c1bdafe8"><view class="_view {{ h[ 0 ].rcl }}"><view class="_view icon"><image class="_image" src="/static/img/success.png"></image></view><view class="_view tis">订单支付成功</view><view class="_view pay-amount">{{ h[ 6 ].t }}</view><view class="_view back"><view class="_view btn" data-cid="{{ _c || c }}" data-hid="{{ 8 }}" onTap="_pe">个人中心</view></view></view></template>
+<template is="c1bdafe8" data="{{ ...$root['0'], $root }}"/>
