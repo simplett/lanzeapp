@@ -8,7 +8,7 @@
 		<!-- 账号密码输入框 -->
 		<view class="form">
 			<view class="username">
-				<input placeholder="请输入手机号" v-model="phoneNumber" placeholder-style="color: rgba(255,255,255,0.8);"/>
+				<input placeholder="请输入邮箱" v-model="email" placeholder-style="color: rgba(255,255,255,0.8);"/>
 			</view>
 			<view class="password">
 				<input placeholder="请输入密码" v-model="passwd" password=true placeholder-style="color: rgba(255,255,255,0.8);"/>
@@ -37,14 +37,14 @@
 	export default {
 		data() {
 			return {
-				phoneNumber: '',
+				email: '',
 				passwd:'',
-				isShowOauth:false,
+				isShowOauth:true,
 				showProvider:{
-					weixin:false,
-					qq:false,
-					sinaweibo:false,
-					xiaomi:false
+					weixin:true,
+					qq:true,
+					sinaweibo:true,
+					xiaomi:true
 				}
 			}
 		},
@@ -109,7 +109,7 @@
 							this.showProvider[res.provider[i]] = true;
 						}
 						if(res.provider.length==0){
-							this.isShowOauth=false;
+							this.isShowOauth=true;
 						}
 					}
 				});
@@ -122,10 +122,15 @@
 			},
 			doLogin(){
 				uni.hideKeyboard();
-				//验证手机号码
-				if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phoneNumber))){ 
-					uni.showToast({title: '请填写正确手机号码',icon:"none"});
+				//验证邮箱
+				if(!(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email))){ 
+					uni.showToast({title: '请填写正确邮箱',icon:"none"});
 					return false; 
+				}
+				// 验证密码
+				if(!(/^(\w){6,10}$/.test(this.passwd))){
+					uni.showToast({title:'密码错误',icon:"none"});
+					return false;
 				}
 				uni.showLoading({
 					title: '提交中...'
@@ -138,20 +143,20 @@
 						success: (res)=>{
 							for(let i in res.data){
 								let row = res.data[i];
-								if(row.username==this.phoneNumber){
+								if(row.username==this.email){
 									uni.hideLoading()
 									//比对密码
 									if(md5PW == res.data[i].passwd){
 										uni.showToast({title: '登录成功',icon:"success"});
 									}else{
-										uni.showToast({title: '账号或密码不正确',icon:"none"});
+										uni.showToast({title: '邮箱或密码不正确',icon:"none"});
 									}
 								}
 							}
 						},
 						fail:function(e){
 							uni.hideLoading()
-							uni.showToast({title: '手机号码未注册',icon:"none"});
+							uni.showToast({title: '邮箱未注册',icon:"none"});
 						}
 					});
 				},1000)

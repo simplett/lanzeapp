@@ -20,7 +20,7 @@
 			</view>
 			<!-- 右侧图标按钮 -->
 			<view class="icon-btn">
-				<view class="icon yuyin-home"></view>
+				<!-- 消息列表 -->
 				<view class="icon tongzhi" @tap="toMsg"></view>
 			</view>
 		</view>
@@ -136,14 +136,16 @@ export default {
 			],
 			// 分类菜单
 			categoryList: [
-				{ id: 1, name: '办公', img: '/static/img/category/1.png' },
+				{ id: 1, name: '数码', img: '/static/img/category/1.png' },
 				{ id: 2, name: '家电', img: '/static/img/category/2.png' },
-				{ id: 3, name: '服饰', img: '/static/img/category/3.png' },
+				{ id: 3, name: '饰品', img: '/static/img/category/3.png' },
 				{ id: 4, name: '日用', img: '/static/img/category/4.png' },
-				{ id: 5, name: '蔬果', img: '/static/img/category/5.png' },
+				{ id: 5, name: '健康', img: '/static/img/category/5.png' },
 				{ id: 6, name: '运动', img: '/static/img/category/6.png' },
 				{ id: 7, name: '书籍', img: '/static/img/category/7.png' },
-				{ id: 8, name: '文具', img: '/static/img/category/8.png' }
+				{ id: 8, name: '服装', img: '/static/img/category/8.png' },
+				{ id: 9, name: '书籍', img: '/static/img/category/7.png' },
+				{ id: 10, name: '服装', img: '/static/img/category/8.png' }
 			],
 			Promotion: [],
 			//猜你喜欢列表
@@ -587,7 +589,7 @@ page{position: relative;background-color: #fff;}
 	justify-content: space-between;
 	flex-wrap: wrap;
 	.category {
-		width: 25%;
+		width: 20%;
 		margin-top: 50upx;
 		display: flex;
 		flex-wrap: wrap;
@@ -745,6 +747,7 @@ page{position: relative;background-color: #fff;}
 			}
 			.name {
 				width: 92%;
+				height:39px;
 				padding: 10upx 4%;
 				display: -webkit-box;
 				-webkit-box-orient: vertical;

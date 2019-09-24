@@ -8,7 +8,7 @@
 		<view class="form re">
 			<view class="username">
 				<view class="get-code" :style="{'color':getCodeBtnColor}" @click.stop="getCode()">{{getCodeText}}</view>
-				<input placeholder="请输入手机号" v-model="phoneNumber" placeholder-style="color: rgba(255,255,255,0.8);"/>
+				<input placeholder="请输入邮箱" v-model="email" placeholder-style="color: rgba(255,255,255,0.8);"/>
 			</view>
 			<view class="code">
 				<input placeholder="请输入验证码" v-model="code" placeholder-style="color: rgba(255,255,255,0.8);"/>
@@ -30,7 +30,7 @@
 	export default {
 		data() {
 			return {
-				phoneNumber:"",
+				email:"",
 				code:'',
 				passwd:"",
 				getCodeText:'获取验证码',
@@ -43,18 +43,34 @@
 		},
 		methods: {
 			Timer(){},
+			//这是请求验证码的方法
 			getCode(){
 				uni.hideKeyboard()
 				if(this.getCodeisWaiting){
 					return ;
 				}
-				if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phoneNumber))){ 
-					uni.showToast({title: '请填写正确手机号码',icon:"none"});
+				if(!(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email))){ 
+					uni.showToast({title: '请填写正确邮箱',icon:"none"});
 					return false; 
-				} 
-				this.getCodeText = "发送中..."
-				this.getCodeisWaiting = true;
-				this.getCodeBtnColor = "rgba(255,255,255,0.5)"
+				}else{
+					uni.request({
+					    url: 'http://120.79.19.253:10087/M', 
+					    data: {
+					        email: this.email
+					    },
+					    success: (res) => {
+					        console.log(res.data);
+					        this.text = 'request success';
+							if(res.data.status==1)
+							{
+								this.getCodeText = "发送中..."
+								this.getCodeisWaiting = true;
+								this.getCodeBtnColor = "rgba(255,255,255,0.5)"
+							}
+					    }
+					})
+					
+				};
 				//示例用定时器模拟请求效果
 				setTimeout(()=>{
 					uni.showToast({title: '验证码已发送',icon:"none"});
@@ -82,14 +98,18 @@
 			doReg(){
 				uni.hideKeyboard()
 				//模板示例部分验证规则
-				if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phoneNumber))){ 
-					uni.showToast({title: '请填写正确手机号码',icon:"none"});
+				if(!(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email))){ 
+					uni.showToast({title: '请填写正确邮箱',icon:"none"});
 					return false; 
-				} 
+				}
 				//示例验证码，实际使用中应为请求服务器比对验证码是否正确。
-				if(this.code!=1234){ 
+				if(!(/^\w{6}$/.test(this.code))){ 
 					uni.showToast({title: '验证码不正确',icon:"none"});
 					return false; 
+				}
+				if(!(/^(\w){6,10}$/.test(this.passwd))){
+					uni.showToast({title:'密码不正确',icon:"none"});
+					return false;
 				}
 				uni.showLoading({
 					title: '提交中...'
@@ -100,7 +120,7 @@
 						key: 'UserList', 
 						success:(res)=>{
 							//增加记录，密码md5
-							res.data.push({username:this.phoneNumber,passwd:md5(this.passwd)})
+							res.data.push({username:this.email,passwd:md5(this.passwd)})
 							uni.setStorage({
 								key: 'UserList',
 								data: res.data,
@@ -119,12 +139,14 @@
 							//新建UserList
 							uni.setStorage({
 								key: 'UserList',
-								data: [{username:this.phoneNumber,passwd:md5(this.passwd)}],
+								data: [{username:this.email,passwd:md5(this.passwd)}],
 								success: function () {
 									uni.hideLoading()
 									uni.showToast({title: '注册成功',icon:"success"});
+									
 									setTimeout(function(){
-										uni.navigateBack();
+										uni.navigateTo({url: '/login'});
+										// uni.navigateBack();
 									},1000)
 								},
 								fail:function(e){
@@ -135,6 +157,7 @@
 					});
 				},1000)
 			},
+			
 			toLogin(){ 
 				uni.hideKeyboard()
 				uni.redirectTo({url: 'login'});

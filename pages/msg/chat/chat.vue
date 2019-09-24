@@ -5,18 +5,23 @@
 				<view class="row" v-for="(row,index) in msgList" :key="index" :id="'msg'+row.id">
 					<!-- 自己发出的消息 -->
 					<view class="my" v-if="row.uid==myuid">
+						<!-- 自己发的消息框 -->
 						<view class="left">
+							<!-- 当发送消息类型为文本时 -->
 							<view v-if="row.type=='text'" class="bubble">
 								<rich-text :nodes="row.msg.content"></rich-text>
 							</view>
+							<!-- 当发送消息类型为语音时 -->
 							<view v-if="row.type=='voice'" class="bubble voice" @tap="playVoice(row)" :class="playMsgid == row.id?'play':''">
 								<view class="length">{{row.msg.length}}</view>
 								<view class="icon my-voice"></view>
 							</view>
+							<!-- 当发送消息类型为图片时 -->
 							<view v-if="row.type=='img'" class="bubble img" @tap="showPic(row)">
 								<image :src="row.msg.url" :style="{'width': row.msg.w+'px','height': row.msg.h+'px'}"></image>
 							</view>
 						</view>
+						<!-- 自己的头像 -->
 						<view class="right">
 							<image :src="row.face"></image>
 						</view>
@@ -106,7 +111,6 @@
 		data() {
 			return {
 				//文字消息
-				
 				textMsg:'',
 				//消息列表
 				scrollAnimation:false,
@@ -211,6 +215,7 @@
 			screenMsg(msg){
 				//从长连接处转发给这个方法，进行筛选处理
 				if(msg.uid!=this.myuid){
+					// 筛选出当前的信息如果是对方发送的那就手机振动提示
 					uni.vibrateLong();
 				}
 				switch (msg.type){
@@ -300,12 +305,12 @@
 				let msg = {id:lastid,uid:0,username:"大黑哥",face:"/static/img/face.jpg",time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,msg:content};
 				this.screenMsg(msg);
 				// 定时器模拟对方回复,三秒
-				setTimeout(()=>{
-					lastid = this.msgList[this.msgList.length-1].id;
-					lastid++;
-					msg = {id:lastid,uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg",time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,msg:content};
-					this.screenMsg(msg);
-				},3000)
+				// setTimeout(()=>{
+				// 	lastid = this.msgList[this.msgList.length-1].id;
+				// 	lastid++;
+				// 	msg = {id:lastid,uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg",time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,msg:content};
+				// 	this.screenMsg(msg);
+				// },3000)
 			},
 			
 			// 处理文字消息
