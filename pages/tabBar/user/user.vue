@@ -39,6 +39,7 @@
 		</view>
 		<!-- 订单-余额 -->
 		<view class="order">
+			<view class="title">我的订单</view>
 			<!-- 订单类型 -->
 			<view class="list">
 				<view class="box" v-for="(row,index) in orderList" :key="index" @tap="toOrderList(index)">
@@ -49,7 +50,7 @@
 				</view>
 			</view>
 			<!-- 余额 -->
-			<view class="balance-info">
+			<!-- <view class="balance-info">
 				<view class="left">
 					<view class="box">
 						<view class="num">{{user.integral}}</view>
@@ -72,7 +73,11 @@
 						<view class="text">充值</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
+		</view>
+		<!-- 图片广告 -->
+		<view class="ad_img">
+			<image src="../../../static/img/banner.jpg" mode=""></image>
 		</view>
 		<!-- 工具栏 -->
 		<view class="toolbar">
@@ -104,24 +109,24 @@
 				user:{
 					username:'游客1002',
 					face:'/static/img/face.jpg',
-					signature:'点击昵称跳转登录/注册页',
+					// signature:'点击昵称跳转登录/注册页',
 					integral:0,
 					balance:0,
 					envelope:0
 				},
 				// 订单类型
 				orderList:[
-					{text:'待付款',icon:"fukuan"},
+					// {text:'待付款',icon:"fukuan"},
 					{text:'待发货',icon:"fahuo"},
 					{text:'待收货',icon:"shouhuo"},
 					{text:'待评价',icon:"pingjia"},
-					{text:'退换货',icon:"tuihuo"}
+					{text:'退货',icon:"tuihuo"}
 				],
 				// 工具栏列表
 				mytoolbarList:[
 					{url:'../../user/keep/keep',text:'我的收藏',img:'/static/img/user/point.png'},
-					{url:'../../user/coupon/coupon',text:'优惠券',img:'/static/img/user/quan.png'}, 
-					{url:'',text:'新客豪礼',img:'/static/img/user/renw.png'},
+					{url:'../../user/coupon/coupon',text:'我的关注',img:'/static/img/user/quan.png'}, 
+					{url:'',text:'评论',img:'/static/img/user/renw.png'},
 					{url:'',text:'领红包',img:'/static/img/user/momey.png'},
 					
 					{url:'../../user/address/address',text:'收货地址',img:'/static/img/user/addr.png'},
@@ -341,10 +346,18 @@
 	.order{
 		width: 84%;
 		margin: 30upx 4% 30upx 4%;
-		padding: 30upx 4% 20upx 4%;
+		padding: 0upx 4% 20upx 4%;
 		background-color: #fff;
 		box-shadow: 0upx 0upx 25upx rgba(0,0,0,0.1);
 		border-radius: 15upx;
+		.title{
+			padding-top: 10upx;
+			margin: 0 0 10upx 3%;
+			font-size: 30upx;
+			height: 80upx;
+			display: flex;
+			align-items: center;
+		}
 		.list{
 			display: flex;
 			border-bottom: solid 1upx #17e6a1;
@@ -495,5 +508,16 @@
 				}
 			}
 		}
+	}
+	.ad_img{
+		width:90%;
+		height:200upx;
+		margin: 30upx 4% 30upx 4%;
+		border-radius: 15px;
+		background-color: #fff;
+	}
+	.ad_img image{
+		width:100%;
+		height:100%;
 	}
 </style>
