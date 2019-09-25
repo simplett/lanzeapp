@@ -196,6 +196,7 @@
 				</view>
 			</view>
 		</view>
+
 		<!-- 详情 -->
 		<view class="description">
 			<view class="title">———— 商品详情 ————</view>
@@ -360,16 +361,17 @@
 							}
 							this.swiperList = swiperList;
 							if (this.swiperList.length === 1) {
-								this.descriptionStr = '<div style="text-align:center;"><img width="100%" src=' + this.swiperList[0].img +
-									'/></div>'
+								this.descriptionStr = '<div style="text-align:center; margin-bottom: 50px;"><img width="100%" src="' + this.swiperList[
+										0].img +
+									'"/></div>'
 							} else {
-								this.descriptionStr = '<div style="text-align:center;">';
+								this.descriptionStr = '<div style="text-align:center; margin-bottom: 50px;">';
 								for (var item of this.swiperList) {
-									this.descriptionStr += '<img width="100%" src=' + item.img + '/>';
+									this.descriptionStr += '<img width="100%" src='+item.img+'/>';
 								}
 								this.descriptionStr += '</div>';
 							}
-							console.log(this.descriptionStr,"dfgfdsfghjhgfdsfghjkhjgfdsghjkhgfdfghjkjgfd");
+							// console.log(this.descriptionStr, "dfgfdsfghjhgfdsfghjkhjgfdsghjkhgfdfghjkjgfd");
 						} else {
 							uni.showToast({
 								title: "商品不存在",
@@ -406,18 +408,26 @@
 						pid: this.pid
 					},
 					success: (res) => {
-						console.log(res.data.status,"fghjklkhgfhjhgfhjkhgfjkhgggggggggggggggggggggg");
-						if(!res.data.status==0)
-						{
+						console.log(res.data.status, "fghjklkhgfhjhgfhjkhgfjkhgggggggggggggggggggggg");
+						if (res.data.status == 0) {
+							this.goodsData.comment = {
+								number: 0,
+								userface: "https://simplett-img.oss-cn-beijing.aliyuncs.com/user_image/userimage.jpg",
+								username: "系统提示",
+								content: "此商品的人气还不够哦"
+							}
+						} else {
 							var mydata = res.data.data;
-						this.goodsData.comment = {
-							number: mydata.length,
-							userface: mydata[0].image,
-							username: mydata[0].nickname,
-							content: mydata[0].message
+							if (mydata) {
+								this.goodsData.comment = {
+									number: mydata.length,
+									userface: mydata[0].image,
+									username: mydata[0].nickname,
+									content: mydata[0].message
+								}
+							}
+
 						}
-						}
-						
 					}
 				})
 			},
@@ -468,7 +478,7 @@
 				let tmpList = [];
 				let goods = {
 					id: this.goodsData.id,
-					img: '../../static/img/goods/p1.jpg',
+					img: this.swiperList[0].img,
 					name: this.goodsData.name,
 					spec: '规格:' + this.goodsData.spec[this.selectSpec],
 					price: this.goodsData.price,
