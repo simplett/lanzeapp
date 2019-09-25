@@ -273,6 +273,7 @@
 
 				image {
 					width: 100%;
+					height: 60upx;
 					border-radius: 20upx 20upx 0 0;
 				}
 
@@ -284,7 +285,7 @@
 					-webkit-line-clamp: 2;
 					text-align: justify;
 					overflow: hidden;
-					height: 39px;
+					height: 35px;
 					font-size: 30upx;
 				}
 
