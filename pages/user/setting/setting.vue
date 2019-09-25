@@ -2,7 +2,7 @@
 	<view>
 		<view class="content">
 			<view class="list">
-				<view class="row">
+				<view class="row" @tap="Hphoto">
 					<view class="title">头像</view>
 					<view class="right"><view class="tis">
 					<image src="/static/img/face.jpg" mode="widthFix"></image>
@@ -56,6 +56,9 @@
 					<view class="title">关于商城</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
 				</view>
+				<view class="sign">
+					<view class="title">退出登录</view>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -72,6 +75,11 @@
 			showType(tbIndex){
 				this.tabbarIndex = tbIndex;
 				this.list = this.orderList[tbIndex];
+			},
+			Hphoto(){
+				uni.navigateTo({
+					url:'/pages/user/setting/Hphoto/Hphoto'
+				})
 			}
 		}
 	}
@@ -81,7 +89,6 @@
 page{
 	background-color: #f3f3f3;	
 }
-
 .icon {
 	font-size: 30upx;
 
@@ -94,7 +101,7 @@ page{
 		background-color: #fff;
 		margin-bottom: 20upx;
 		.row{
-			widows: 100%;
+			width: 100%;
 			min-height: 90upx;
 			display: flex;
 			align-items: center;
@@ -128,6 +135,17 @@ page{
 				}
 			}
 			
+		}
+		.sign{
+			width: 100%;
+			min-height: 90upx;
+			// display: flex;
+			// align-items: center;
+			// justify-content: space-between;
+			border-bottom: solid 1upx #eee;
+			text-align: center;
+			color:#FF0000;
+			paadding-top:30upx;
 		}
 	}
 }
