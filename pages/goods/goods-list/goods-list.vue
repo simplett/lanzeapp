@@ -12,7 +12,7 @@
 		<view class="goods-list">
 			<view class="product-list">
 				<view class="product" v-for="(goods) in goodsList" :key="goods.goods_id" @tap="toGoods(goods)">
-					<image mode="widthFix" :src="goods.img"></image>
+					<image  :src="goods.img"></image>
 					<view class="name">{{goods.name}}</view>
 					<view class="info">
 						<view class="price">{{goods.price}}</view>
