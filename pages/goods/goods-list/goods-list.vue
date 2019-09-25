@@ -16,7 +16,7 @@
 					<view class="name">{{goods.name}}</view>
 					<view class="info">
 						<view class="price">{{goods.price}}</view>
-						<view class="slogan">{{goods.slogan}}</view>
+						<view class="slogan">浏览量:{{goods.slogan}}</view>
 					</view>
 				</view>
 			</view>
@@ -31,21 +31,8 @@
 			return {
 				codelist: "",
 				codename: "",
-				goodsList: [{
-						goods_id: 0,
-						img: '/static/img/goods/p1.jpg',
-						name: '商品名称商品名称商品名称商品名称商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 1,
-						img: '/static/img/goods/p2.jpg',
-						name: '商品名称商品名称商品名称商品名称商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					}
-				],
+				goodsList: [],
+				mychange: true,
 				loadingText: "正在加载...",
 				headerTop: "0px",
 				headerPosition: "fixed",
@@ -73,10 +60,23 @@
 		},
 		onLoad: function(options) { //option为object类型，会序列化上个页面传递的参数
 			console.log(options.codelist, options.listname) //打印出上个页面传递的参数。
-			this.codelist = options.codelist;
-			this.codename = options.listname;
+			if (options.codelist) {
+				this.codelist = options.codelist;
+				this.codename = options.listname;
+				this.mychange = 1;
+				console.log("列表跳转", this.codelist, this.codename);
+			} else if (options.codeid) {
+				this.codelist = options.codeid;
+				this.codename = options.name;
+				this.mychange = 2;
+				console.log("主页跳转", this.codelist, this.codename);
+			} else if (options.kword) {
+				this.kword = options.kword;
+				this.codename=this.kword;
+				this.mychange = 3;
+			}
 			uni.setNavigationBarTitle({
-				title: options.listname
+				title: this.codename
 			});
 			this.reload()
 
@@ -113,52 +113,127 @@
 				title: '触发上拉加载'
 			});
 			let len = this.goodsList.length;
-			if (len >= 40) {
+			if (len >= 1000) {
 				this.loadingText = "到底了";
 				return false;
 			} else {
 				this.loadingText = "正在加载...";
 			}
 			let end_goods_id = this.goodsList[len - 1].goods_id;
-		this.reload();
+			this.reload();
 		},
 		methods: {
 			reload() {
-				uni.request({
-					url: 'http://120.79.19.253:10086/Search', //仅为示例，并非真实接口地址。
-					data: {
-						type: "categories",
-						codelist: this.codelist
-					},
-					success: (res) => {
-						console.log("$$$$$$$$$$$$$$$$$$$$$$$$", res.data.data);
-						this.text = 'request success';
-						var data = res.data.data;
-						var datalist = [{}];
-						var imagelistsplit = [];
-						for (var item of data) {
-							var imagereg = /;/;
-							if (imagereg.test(item.pimages)) {
-								var j = item.pimages.split(";");
-								imagelistsplit.push(j[0]);
-							} else {
-								imagelistsplit.push(item.pimages)
+				if (this.mychange == 1) {
+					uni.request({
+						url: 'http://120.79.19.253:10086/Search', //仅为示例，并非真实接口地址。
+						data: {
+							type: "categories",
+							codelist: this.codelist
+						},
+						success: (res) => {
+							console.log("$$$$$$$$$$$$$$$$$$$$$$$$", res.data.data);
+							this.text = 'request success';
+							var data = res.data.data;
+							var datalist = [{}];
+							var imagelistsplit = [];
+							for (var item of data) {
+								var imagereg = /;/;
+								if (imagereg.test(item.pimages)) {
+									var j = item.pimages.split(";");
+									imagelistsplit.push(j[0]);
+								} else {
+									imagelistsplit.push(item.pimages)
+								}
 							}
-						}
-						for (var item in data) {
-							datalist[item] = {
-								"goods_id": data[item].pid,
-								"img": imagelistsplit[item],
-								"name": data[item].pname,
-								"price": data[item].price,
-								"slogan": data[item].watched
-							};
+							for (var item in data) {
+								datalist[item] = {
+									"goods_id": data[item].pid,
+									"img": imagelistsplit[item],
+									"name": data[item].pname,
+									"price": data[item].price,
+									"slogan": data[item].watched
+								};
 
+							}
+							console.log(datalist, "%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+							this.goodsList = [...this.goodsList, ...datalist]
 						}
-						console.log(datalist, "%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-						this.goodsList = [...this.goodsList, ...datalist]
-					}
-				});
+					});
+				} else if (this.mychange == 2) {
+					uni.request({
+						url: 'http://10.1.180.146:8080/Search', //仅为示例，并非真实接口地址。
+						data: {
+							type: "code",
+							code: this.codelist
+						},
+						success: (res) => {
+							console.log("$$$$$$$$$$$$$$$$$$$$$$$$", res.data.data);
+							this.text = 'request success';
+							var data = res.data.data;
+							var datalist = [{}];
+							var imagelistsplit = [];
+							for (var item of data) {
+								var imagereg = /;/;
+								if (imagereg.test(item.pimages)) {
+									var j = item.pimages.split(";");
+									imagelistsplit.push(j[0]);
+								} else {
+									imagelistsplit.push(item.pimages)
+								}
+							}
+							for (var item in data) {
+								datalist[item] = {
+									"goods_id": data[item].pid,
+									"img": imagelistsplit[item],
+									"name": data[item].pname,
+									"price": data[item].price,
+									"slogan": data[item].watched
+								};
+
+							}
+							console.log(datalist, "%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+							this.goodsList = [...this.goodsList, ...datalist]
+						}
+					});
+				} else if (this.mychange == 3) {
+					uni.request({
+						url: 'http://120.79.19.253:10086/Search', //仅为示例，并非真实接口地址。
+						data: {
+							type: "category",
+							kw: this.kword
+						},
+						success: (res) => {
+							console.log("$$$$$$$$$$$$$$$$$$$$$$$$", res.data.data);
+							this.text = 'request success';
+							var data = res.data.data;
+							var datalist = [{}];
+							var imagelistsplit = [];
+							for (var item of data) {
+								var imagereg = /;/;
+								if (imagereg.test(item.pimages)) {
+									var j = item.pimages.split(";");
+									imagelistsplit.push(j[0]);
+								} else {
+									imagelistsplit.push(item.pimages)
+								}
+							}
+							for (var item in data) {
+								datalist[item] = {
+									"goods_id": data[item].pid,
+									"img": imagelistsplit[item],
+									"name": data[item].pname,
+									"price": data[item].price,
+									"slogan": data[item].watched
+								};
+
+							}
+							console.log(datalist, "%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+							this.goodsList = [...this.goodsList, ...datalist]
+						}
+					});
+				}
+
 				console.log("reload");
 
 			},
@@ -169,7 +244,7 @@
 					icon: "none"
 				});
 				uni.navigateTo({
-					url: '../goods?pid='+e.goods_id
+					url: '../goods?pid=' + e.goods_id
 				});
 			},
 			//排序类型
