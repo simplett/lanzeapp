@@ -375,7 +375,7 @@
 								title: "商品不存在",
 								// icon:"loading",
 								position: "center",
-								image: "../../static/img/失败.png"
+								image: "../../static/img/myfail.png"
 
 							});
 							this.swiperList = [{
