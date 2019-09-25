@@ -162,7 +162,7 @@
 			<view class="row" @tap="showSpec(false)">
 				<view class="text">选择</view>
 				<view class="content">
-					<view>选择规格：</view>
+					<view>交易方式</view>
 					<view class="sp">
 						<view v-for="(item,index) in goodsData.spec" :key="index" :class="[index==selectSpec?'on':'']">{{item}}</view>
 					</view>
@@ -210,6 +210,8 @@
 	export default {
 		data() {
 			return {
+				details: {},
+				pid: "",
 				//控制渐变标题栏的参数
 				beforeHeaderzIndex: 11, //层级
 				afterHeaderzIndex: 10, //层级
@@ -220,23 +222,7 @@
 				showBack: true,
 				// #endif
 				//轮播主图数据
-				swiperList: [{
-						id: 1,
-						img: 'https://ae01.alicdn.com/kf/HTB1Mj7iTmzqK1RjSZFjq6zlCFXaP.jpg'
-					},
-					{
-						id: 2,
-						img: 'https://ae01.alicdn.com/kf/HTB1fbseTmzqK1RjSZFLq6An2XXaL.jpg'
-					},
-					{
-						id: 3,
-						img: 'https://ae01.alicdn.com/kf/HTB1dPUMThnaK1RjSZFtq6zC2VXa0.jpg'
-					},
-					{
-						id: 4,
-						img: 'https://ae01.alicdn.com/kf/HTB1OHZrTXzqK1RjSZFvq6AB7VXaw.jpg'
-					}
-				],
+				swiperList: [],
 				//轮播图下标
 				currentSwiper: 0,
 				anchorlist: [], //导航条锚点
@@ -250,43 +236,30 @@
 					name: "商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题",
 					price: "127.00",
 					number: 1,
-					service: [{
-							name: "正品保证",
-							description: "此商品官方保证为正品"
-						},
-						{
-							name: "极速退款",
-							description: "此商品享受退货极速退款服务"
-						},
-						{
-							name: "7天退换",
-							description: "此商品享受7天无理由退换服务"
-						}
-					],
-					spec: ["XS", "S", "M", "L", "XL", "XXL"],
-					comment: {
-						number: 102,
-						userface: '../../static/img/face.jpg',
-						username: '大黑哥',
-						content: '很不错，之前买了很多次了，很好看，能放很久，和图片色差不大，值得购买！'
-					}
+					service: [],
+					spec: ["当面交易", "蓝沢担保", "线上发货"],
+					comment: {}
 				},
 				selectSpec: null, //选中规格
 				isKeep: false, //收藏
 				//商品描述html
-				descriptionStr: '<div style="text-align:center;"><img width="100%" src="https://ae01.alicdn.com/kf/HTB1t0fUl_Zmx1VjSZFGq6yx2XXa5.jpg"/><img width="100%" src="https://ae01.alicdn.com/kf/HTB1LzkjThTpK1RjSZFKq6y2wXXaT.jpg"/><img width="100%" src="https://ae01.alicdn.com/kf/HTB18dkiTbvpK1RjSZPiq6zmwXXa8.jpg"/></div>'
+				descriptionStr: ""
 			};
 		},
-		onLoad(option) {
+		onLoad(options) {
+			this.pid = options.pid;
+			console.log(this.pid, "(((((((((((((((((((())))))))))))))))))))")
 			// #ifdef MP
+
 			//小程序隐藏返回按钮
 			this.showBack = false;
 			// #endif
 			//option为object类型，会序列化上个页面传递的参数
-			console.log(option.cid); //打印出上个页面传递的参数。
+			console.log(options.pid); //打印出上个页面传递的参数。
 		},
 		onReady() {
 			this.calcAnchor(); //计算锚点高度，页面数据是ajax加载时，请把此行放在数据渲染完成事件中执行以保证高度计算正确
+			this.todetails() //请求商品的详细信息；
 		},
 		onPageScroll(e) {
 			//锚点切换
@@ -324,6 +297,128 @@
 			toChat() {
 				uni.navigateTo({
 					url: "../msg/chat/chat?name=客服008"
+				})
+			},
+			todetails() {
+				console.log("请求商品的详细数据");
+				uni.request({
+					//仅为示例，并非真实接口地址。
+					url: "http://120.79.19.253:10086/Search",
+					data: {
+						type: "goods",
+						pid: this.pid
+					},
+					success: (res) => {
+						console.log(res.data);
+						if (res.data.status == 1) {
+							var data = res.data;
+							this.text = 'request success';
+							var {
+								p_description,
+								pid,
+								pimages,
+								pname,
+								status,
+								uid,
+								price,
+								wcount
+							} = data;
+							this.goodsData.name = pname;
+							this.goodsData.pid = pid;
+							this.goodsData.price = price;
+							if (status == 1) {
+								this.goodsData.service = [{
+										name: "蓝沢担保",
+										description: "此商品官方保证为正品"
+									},
+									{
+										name: "极速退款",
+										description: "此商品享受退货极速退款服务"
+									},
+									{
+										name: "7天退换",
+										description: "此商品享受7天无理由退换服务"
+									}
+								]
+							}
+							this.todetails = data;
+							var swiperList = [];
+							var reg = /;/;
+							if (reg.test(pimages)) {
+								pimages = pimages.split(";");
+								for (var item in pimages) {
+									swiperList.push({
+										id: item + 1,
+										img: pimages[item]
+									})
+								}
+							} else {
+								swiperList.push({
+									id: 1,
+									img: pimages
+								})
+							}
+							this.swiperList = swiperList;
+							if (this.swiperList.length === 1) {
+								this.descriptionStr = '<div style="text-align:center;"><img width="100%" src=' + this.swiperList[0].img +
+									'/></div>'
+							} else {
+								this.descriptionStr = '<div style="text-align:center;">';
+								for (var item of this.swiperList) {
+									this.descriptionStr += '<img width="100%" src=' + item.img + '/>';
+								}
+								this.descriptionStr += '</div>';
+							}
+							console.log(this.descriptionStr,"dfgfdsfghjhgfdsfghjkhjgfdsghjkhgfdfghjkjgfd");
+						} else {
+							uni.showToast({
+								title: "商品不存在",
+								// icon:"loading",
+								position: "center",
+								image: "../../static/img/失败.png"
+
+							});
+							this.swiperList = [{
+									id: 1,
+									img: 'https://ae01.alicdn.com/kf/HTB1Mj7iTmzqK1RjSZFjq6zlCFXaP.jpg'
+								},
+								{
+									id: 2,
+									img: 'https://ae01.alicdn.com/kf/HTB1fbseTmzqK1RjSZFLq6An2XXaL.jpg'
+								},
+								{
+									id: 3,
+									img: 'https://ae01.alicdn.com/kf/HTB1dPUMThnaK1RjSZFtq6zC2VXa0.jpg'
+								},
+								{
+									id: 4,
+									img: 'https://ae01.alicdn.com/kf/HTB1OHZrTXzqK1RjSZFvq6AB7VXaw.jpg'
+								}
+							]
+						}
+					}
+				});
+				uni.request({
+					//仅为示例，并非真实接口地址。
+					url: "http://120.79.19.253:10086/Leftmessage",
+					data: {
+						type: "get",
+						pid: this.pid
+					},
+					success: (res) => {
+						console.log(res.data.status,"fghjklkhgfhjhgfhjkhgfjkhgggggggggggggggggggggg");
+						if(!res.data.status==0)
+						{
+							var mydata = res.data.data;
+						this.goodsData.comment = {
+							number: mydata.length,
+							userface: mydata[0].image,
+							username: mydata[0].nickname,
+							content: mydata[0].message
+						}
+						}
+						
+					}
 				})
 			},
 			// 分享
@@ -403,11 +498,13 @@
 				if (this.goodsData.number <= 1) {
 					return;
 				}
-				this.goodsData.number--;
+				// this.goodsData.number--;
+				this.goodsData.number = 1;
 			},
 			//增加数量
 			add() {
-				this.goodsData.number++;
+				// this.goodsData.number++;
+				this.goodsData.number = 1;
 			},
 			//跳转锚点
 			toAnchor(index) {
