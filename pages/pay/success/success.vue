@@ -10,7 +10,7 @@
 			支付金额:{{amount}}元
 		</view>
 		<view class="back">
-			<view class="btn" @tap="toUser">个人中心</view>
+			<view class="btn" @tap="toUser">退出</view>
 		</view>
 	</view>
 </template>
@@ -28,7 +28,7 @@
 		methods: {
 			toUser() {
 				uni.switchTab({
-					url: '/pages/tabBar/user'
+					url: '/pages/tabBar/user/user'
 				});
 			}
 		},

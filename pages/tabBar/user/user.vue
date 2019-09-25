@@ -120,19 +120,19 @@
 					{text:'待发货',icon:"fahuo"},
 					{text:'待收货',icon:"shouhuo"},
 					{text:'待评价',icon:"pingjia"},
-					{text:'退货',icon:"tuihuo"}
+					// {text:'退货',icon:"tuihuo"}
 				],
 				// 工具栏列表
 				mytoolbarList:[
 					{url:'../../user/keep/keep',text:'我的收藏',img:'/static/img/user/point.png'},
 					{url:'../../user/coupon/coupon',text:'我的关注',img:'/static/img/user/quan.png'}, 
 					{url:'',text:'评论',img:'/static/img/user/renw.png'},
-					{url:'',text:'领红包',img:'/static/img/user/momey.png'},
+					// {url:'',text:'领红包',img:'/static/img/user/momey.png'},
 					
 					{url:'../../user/address/address',text:'收货地址',img:'/static/img/user/addr.png'},
-					{url:'',text:'账户安全',img:'/static/img/user/security.png'},
-					{url:'',text:'银行卡',img:'/static/img/user/bank.png'},
-					{url:'',text:'抽奖',img:'/static/img/user/choujiang.png'},
+					// {url:'',text:'账户安全',img:'/static/img/user/security.png'},
+					// {url:'',text:'银行卡',img:'/static/img/user/bank.png'},
+					// {url:'',text:'抽奖',img:'/static/img/user/choujiang.png'},
 					// {text:'客服',img:'/static/img/user/kefu.png'},
 					// {text:'签到',img:'/static/img/user/mingxi.png'}
 					
