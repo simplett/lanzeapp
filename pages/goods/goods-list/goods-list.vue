@@ -12,7 +12,7 @@
 		<view class="goods-list">
 			<view class="product-list">
 				<view class="product" v-for="(goods) in goodsList" :key="goods.goods_id" @tap="toGoods(goods)">
-					<image  :src="goods.img"></image>
+					<image mode="aspectFill"  :src="goods.img"></image>
 					<view class="name">{{goods.name}}</view>
 					<view class="info">
 						<view class="price">{{goods.price}}</view>
@@ -162,7 +162,7 @@
 					});
 				} else if (this.mychange == 2) {
 					uni.request({
-						url: 'http://10.1.180.146:8080/Search', //仅为示例，并非真实接口地址。
+						url: 'http://120.79.19.253:10086/Search', //仅为示例，并非真实接口地址。
 						data: {
 							type: "code",
 							code: this.codelist
@@ -239,10 +239,10 @@
 			},
 			//商品跳转
 			toGoods(e) {
-				uni.showToast({
-					title: '商品' + e.goods_id,
-					icon: "none"
-				});
+				// uni.showToast({
+				// 	title: '商品' + e.goods_id,
+				// 	icon: "none"
+				// });
 				uni.navigateTo({
 					url: '../goods?pid=' + e.goods_id
 				});
@@ -275,7 +275,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.icon {
 		font-size: 26upx;
 	}
@@ -348,7 +348,7 @@
 
 				image {
 					width: 100%;
-					height: 60upx;
+					height: 332upx;
 					border-radius: 20upx 20upx 0 0;
 				}
 

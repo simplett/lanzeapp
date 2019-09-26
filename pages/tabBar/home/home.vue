@@ -11,8 +11,8 @@
 			</view>
 			<!-- 搜索框 -->
 			<view class="input-box">
-				<input placeholder="默认关键字" v-model="kword" placeholder-style="color:#c0c0c0;"   />
-				<view @tap="toSearch()" class="icon search"></view>
+				<input placeholder="默认关键字" @keydown.enter="toSearch()" v-model="kword" placeholder-style="color:#c0c0c0;"   />
+				<view  @tap="toSearch()" style="border: #007AFF 4upx solid;" class="icon search"></view>
 			</view>
 			<!-- 右侧图标按钮 -->
 			<view class="icon-btn">
@@ -218,7 +218,7 @@
 			this.nVueTitle.onMessage(res => {
 				let type = res.data.type;
 				if (type == 'focus') {
-					this.toSearch();
+					// this.toSearch();
 				}
 			});
 			this.showHeader = false;
@@ -395,7 +395,7 @@
 					url: '../../goods/goods-list/goods-list?kword=' + this.kword
 				});
 				uni.showToast({
-					title: '建议跳转到新页面做搜索功能'
+					title: '搜索 '+this.kword+" 中"
 				});
 			},
 			//轮播图跳转

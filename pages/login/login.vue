@@ -166,6 +166,9 @@
 											position: "center",
 											image: "../../static/img/mysuccess.png"
 										});
+										uni.navigateTo({
+											url:'../tabBar/user/user'
+										});
 									},
 									fail: function() {
 										uni.showToast({
