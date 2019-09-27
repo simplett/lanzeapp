@@ -401,7 +401,6 @@
 					}
 				});
 				uni.request({
-					//仅为示例，并非真实接口地址。
 					url: "http://120.79.19.253:10086/Leftmessage",
 					data: {
 						type: "get",
@@ -470,7 +469,7 @@
 			//商品评论
 			toRatings() {
 				uni.navigateTo({
-					url: 'ratings/ratings'
+					url: 'ratings/ratings?pid='+this.pid
 				})
 			},
 			//跳转确认订单页面

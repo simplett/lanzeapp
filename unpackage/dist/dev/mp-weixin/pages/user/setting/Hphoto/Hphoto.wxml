@@ -1,0 +1,1 @@
+<view class="content"><view data-event-opts="{{[['tap',[['chooseImgFromAlbums',['$event']]]]]}}" class="c-img" bindtap="__e"></view></view>

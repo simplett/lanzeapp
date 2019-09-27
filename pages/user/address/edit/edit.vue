@@ -146,7 +146,7 @@
 					})
 				},300)
 				
-				
+				console.log()
 			}
 		},
 		onLoad(e) {

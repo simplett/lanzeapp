@@ -12,6 +12,7 @@
     "pages/order/confirmation",
     "pages/user/order_list/order_list",
     "pages/user/setting/setting",
+    "pages/user/setting/Hphoto/Hphoto",
     "pages/user/myQR/myQR",
     "pages/msg/msg",
     "pages/msg/chat/chat",

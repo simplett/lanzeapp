@@ -76,6 +76,7 @@
 	export default {
 		data() {
 			return {
+				pid: "",
 				labelList: [{
 						name: '全部',
 						number: 25,
@@ -113,52 +114,7 @@
 					}
 				],
 				labelIndex: 0,
-				ratingsList: [{
-						id: 1,
-						username: "大黑哥",
-						face: "/static/img/face.jpg",
-						date: '2019-04-21',
-						spec: "规格: XL",
-						grade: "good",
-						first: {
-							content: "好看，可以，不愧是专业的，才拿到手上就研究了半天才装上",
-							img: ["https://ae01.alicdn.com/kf/HTB1wREwTXzqK1RjSZFvq6AB7VXaT.jpg",
-								"https://ae01.alicdn.com/kf/HTB1sL7hTjDpK1RjSZFrq6y78VXaw.jpg",
-								"https://ae01.alicdn.com/kf/HTB111soTbvpK1RjSZPiq6zmwXXaB.jpg",
-								"https://ae01.alicdn.com/kf/HTB1O2TRTmzqK1RjSZPcq6zTepXa4.jpg"
-							],
-							video: [{
-								img: "https://ae01.alicdn.com/kf/HTB1AMEBTcfpK1RjSZFOq6y6nFXaK.jpg",
-								path: "https://mp4.vjshi.com/2018-12-28/1083f3db90334f86e3fc3586b4472914.mp4"
-							}]
-						},
-						append: {
-							date: 65,
-							content: "用了一段时间，质量很好，体验很流畅，推荐购买",
-							img: ["https://ae01.alicdn.com/kf/HTB1dKZtTgHqK1RjSZFEq6AGMXXaS.jpg",
-								"https://ae01.alicdn.com/kf/HTB18h3oTmzqK1RjSZFjq6zlCFXap.jpg"
-							],
-							video: [{
-								img: "https://ae01.alicdn.com/kf/HTB1AMEBTcfpK1RjSZFOq6y6nFXaK.jpg",
-								path: "https://mp4.vjshi.com/2017-06-17/ed1d63669bea39f5ef078c4e194291d6.mp4"
-							}]
-						}
-					},
-					{
-						id: 2,
-						username: "小黑狗",
-						face: "/static/img/face.jpg",
-						date: '2019-04-21',
-						spec: "规格: XL",
-						grade: "secondary",
-						first: {
-							content: "好评，看图",
-							img: ["https://ae01.alicdn.com/kf/HTB111soTbvpK1RjSZPiq6zmwXXaB.jpg",
-								"https://ae01.alicdn.com/kf/HTB1O2TRTmzqK1RjSZPcq6zTepXa4.jpg"
-							],
-							video: []
-						}
-					},
+				ratingsList: [
 					{
 						id: 3,
 						username: "小黑狗",
@@ -196,6 +152,10 @@
 
 			};
 		},
+		onLoad(options) {
+			this.pid = options.pid;
+			this.getmsg();
+		},
 		onReady: function(res) {
 			this.videoContext = uni.createVideoContext('myVideo')
 		},
@@ -212,6 +172,53 @@
 			});
 		},
 		methods: {
+			getmsg() {
+				uni.request({
+					//仅为示例，并非真实接口地址。
+					url: "http://120.79.19.253:10086/Leftmessage",
+					data: {
+						type: "get",
+						pid: this.pid
+					},
+					success: (res) => {
+						console.log(res.data.status, "fghjklkhgfhjhgfhjkhgfjkhgggggggggggggggggggggg");
+						if (res.data.status == 0) {
+							this.ratingsList.push({
+								id: 0,
+								username: "系统",
+								face: "/static/img/face.jpg",
+								date: '00-00-00',
+								spec: "规格: 常规",
+								grade: "secondary",
+								first: {
+									content: "系统默认好评",
+									img: ["https://ae01.alicdn.com/kf/HTB111soTbvpK1RjSZPiq6zmwXXaB.jpg",
+										"https://ae01.alicdn.com/kf/HTB1O2TRTmzqK1RjSZPcq6zTepXa4.jpg"
+									],
+									video: []
+								}
+							})
+						} else {
+							var mydatamag = res.data.data;
+							for (var item of mydatamag) {
+								this.ratingsList.push({
+									id: item.uid,
+									username: item.nickname,
+									face: item.image,
+									date: item.time,
+									spec: "规格: 常规",
+									grade: "secondary",
+									first: {
+										content: item.message,
+										img: [],
+										video: []
+									}
+								})
+							}
+						}
+					}
+				})
+			},
 			loadRatings(index) {
 				this.labelIndex = index;
 				uni.showToast({
