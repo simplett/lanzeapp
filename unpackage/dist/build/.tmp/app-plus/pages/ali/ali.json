@@ -1,0 +1,12 @@
+{
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "navigationBarTitleText": "发布我的商品",
+  "navigationBarBackgroundColor": "#f06c7a",
+  "navigationBarTextStyle": "white",
+  "bounce": "none",
+  "softinputNavBar": "none",
+  "usingComponents": {
+    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
+  }
+}

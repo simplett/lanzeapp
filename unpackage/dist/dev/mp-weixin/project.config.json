@@ -9,7 +9,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
 	"appid": "touristappid",
-	"projectname": "%E8%93%9D%E6%B2%A2",
+	"projectname": "蓝沢",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

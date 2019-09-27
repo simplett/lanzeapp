@@ -261,10 +261,41 @@
 				"backgroundColorTop": "#ffffff",
 				"backgroundColorBottom": "#ffffff"
 			}
+		},
+		{
+			"path": "pages/ali/select/select",
+			"style": {
+				"navigationBarTitleText": "发布商品",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
 		}
 	    ,{
-            "path" : "pages/ali/select/select",
-            "style" : {}
+            "path" : "pages/tabBar/ali/ali",
+				"style": {
+					"enablePullDownRefresh": true,
+					"navigationBarTextStyle": "black",
+					"app-plus": {
+						"titleNView": false, //禁用原生导航栏
+						"softinputNavBar": "none"
+					}
+				
+			}
+        }
+        ,{
+            "path" : "pages/ali/codelist/codelist",
+            "style": {
+            	"enablePullDownRefresh": true,
+            	"backgroundTextStyle": "light",
+            	"navigationBarBackgroundColor": "#f06c7a",
+            	"backgroundColorTop": "#f06c7a",
+            	"navigationBarTextStyle": "white",
+            	"app-plus": {
+            		"titleNView": true //禁用原生导航栏
+            	}
+            }
         }
     ],
 	"globalStyle": {
@@ -293,7 +324,7 @@
 				"text": "分类"
 			},
 			{
-				"pagePath": "pages/tabBar/publish/publish",
+				"pagePath": "pages/tabBar/ali/ali",
 				"iconPath": "static/img/tabBar/category.png",
 				"selectedIconPath": "static/img/tabBar/category-on.png",
 				"text": "发布"

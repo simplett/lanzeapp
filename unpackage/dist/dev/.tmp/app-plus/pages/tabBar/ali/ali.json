@@ -1,0 +1,9 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTextStyle": "black",
+  "titleNView": false,
+  "softinputNavBar": "none",
+  "usingComponents": {
+    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
+  }
+}

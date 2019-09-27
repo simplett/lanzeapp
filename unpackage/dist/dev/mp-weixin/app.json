@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/ali/ali",
     "pages/tabBar/home/home",
+    "pages/ali/ali",
     "pages/tabBar/category/category",
     "pages/tabBar/cart/cart",
     "pages/tabBar/user/user",
@@ -25,7 +24,10 @@
     "pages/user/deposit/deposit",
     "pages/pay/payment/payment",
     "pages/pay/success/success",
-    "pages/goods/ratings/ratings"
+    "pages/goods/ratings/ratings",
+    "pages/ali/select/select",
+    "pages/tabBar/ali/ali",
+    "pages/ali/codelist/codelist"
   ],
   "subPackages": [],
   "window": {
@@ -55,7 +57,7 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/tabBar/publish/publish",
+        "pagePath": "pages/tabBar/ali/ali",
         "iconPath": "static/img/tabBar/category.png",
         "selectedIconPath": "static/img/tabBar/category-on.png",
         "text": "发布"
@@ -76,8 +78,6 @@
   },
   "permission": {},
   "usingComponents": {
-    "sunui-upbasic": "/components/sunui-upimg/sunui-upimg-basic",
-    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos",
-    "sunui-upcos": "/components/sunui-upimg/sunui-upimg-tencent"
+    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
   }
 }
