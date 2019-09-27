@@ -528,7 +528,7 @@ var _default = { data: function data() {return { kword: "", showHeader: true, af
         url: '../../goods/goods-list/goods-list?kword=' + this.kword });
 
       uni.showToast({
-        title: '搜索 ' + this.kword + " 中" });
+        title: '建议跳转到新页面做搜索功能' });
 
     },
     //轮播图跳转

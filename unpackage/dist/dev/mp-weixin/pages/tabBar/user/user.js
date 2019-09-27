@@ -224,6 +224,7 @@ var _default =
 {
   data: function data() {
     return {
+      face: "",
       isfirst: true,
       headerPosition: "fixed",
       headerTop: null,
@@ -232,7 +233,7 @@ var _default =
       //个人信息,
       user: {
         username: '游客1002',
-        face: '/static/img/face.jpg',
+        face: '',
         // signature:'点击昵称跳转登录/注册页',
         integral: 0,
         balance: 0,
@@ -281,6 +282,7 @@ var _default =
 
 
 
+
   },
   onReady: function onReady() {
     //此处，演示,每次页面初次渲染都把登录状态重置
@@ -309,6 +311,19 @@ var _default =
         //this.toLogin(); 
       } });
 
+
+    this.face = uni.getStorage({
+      key: "faces",
+      success: function success(res) {
+        console.log(res.data[0]);
+        // this.face=res.data[0];
+        return res.data[0];
+        // console.log(this.face.substring(2))
+      } });
+
+    console.log('gggggggggggggggggs', this.user.face, "hhhhhhhhhhhhhhhhhhhhhhhh");
+    this.user.face = this.face.substring(2);
+    console.log(this.face.substring(2) + "3wwwwwwwwwwwwwwwwwwwwwwwww");
   },
   methods: {
     //消息列表

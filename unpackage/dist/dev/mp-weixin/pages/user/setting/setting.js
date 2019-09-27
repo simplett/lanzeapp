@@ -202,7 +202,12 @@ var _default =
     },
     Hphoto: function Hphoto() {
       uni.navigateTo({
-        url: '/pages/user/setting/Hphoto/Hphoto' });
+        url: '/pages/user/setting/revise/Hphoto' });
+
+    },
+    rename: function rename() {
+      uni.navigateTo({
+        url: '/pages/user/setting/revise/rename' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
