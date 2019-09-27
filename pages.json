@@ -149,10 +149,19 @@
 			}
         }
 		,{
-			"path": "pages/user/setting/Hphoto/Hphoto",
+			"path": "pages/user/setting/revise/Hphoto",
 			"style" : {
 				"navigationBarBackgroundColor":"#f8f8f8",
 				"navigationBarTitleText":"我的头像",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#f3f3f3"
+			}
+		}
+		,{
+			"path": "pages/user/setting/revise/rename",
+			"style" : {
+				"navigationBarBackgroundColor":"#f8f8f8",
+				"navigationBarTitleText":"我的昵称",
 				"backgroundColorTop":"#ffffff",
 				"backgroundColorBottom":"#f3f3f3"
 			}

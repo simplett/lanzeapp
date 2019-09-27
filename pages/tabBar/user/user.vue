@@ -100,6 +100,7 @@
 	export default {
 		data() {
 			return {
+				face:"",
 				isfirst:true,
 				headerPosition:"fixed",
 				headerTop:null,
@@ -108,7 +109,7 @@
 				//个人信息,
 				user:{
 					username:'游客1002',
-					face:'/static/img/face.jpg',
+					face:'',
 					// signature:'点击昵称跳转登录/注册页',
 					integral:0,
 					balance:0,
@@ -157,6 +158,7 @@
 			this.showHeader = false;
 			this.statusHeight = plus.navigator.getStatusbarHeight();
 			// #endif
+			
 		},
 		onReady(){
 			//此处，演示,每次页面初次渲染都把登录状态重置
@@ -185,6 +187,19 @@
 					//this.toLogin(); 
 				}
 			});
+			
+			this.face=uni.getStorage({
+				key:"faces",
+				success(res){
+					console.log(res.data[0]);
+					// this.face=res.data[0];
+					return res.data[0];
+					// console.log(this.face.substring(2))
+				}
+			})
+			console.log('gggggggggggggggggs',this.user.face,"hhhhhhhhhhhhhhhhhhhhhhhh")
+			this.user.face=(this.face).substring(2);
+			console.log(this.face.substring(2)+"3wwwwwwwwwwwwwwwwwwwwwwwww")
 		},
 		methods: {
 			//消息列表

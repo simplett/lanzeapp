@@ -8,7 +8,7 @@
 					<image src="/static/img/face.jpg" mode="widthFix"></image>
 					</view><view class="icon xiangyou"></view></view>
 				</view>
-				<view class="row">
+				<view class="row" @tap="rename">
 					<view class="title">昵称</view>
 					<view class="right"><view class="tis">大黑哥</view><view class="icon xiangyou"></view></view>
 				</view>
@@ -78,7 +78,12 @@
 			},
 			Hphoto(){
 				uni.navigateTo({
-					url:'/pages/user/setting/Hphoto/Hphoto'
+					url:'/pages/user/setting/revise/Hphoto'
+				})
+			},
+			rename(){
+				uni.navigateTo({
+					url:'/pages/user/setting/revise/rename'
 				})
 			}
 		}
