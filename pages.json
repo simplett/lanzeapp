@@ -149,6 +149,33 @@
 				"backgroundColorTop": "#f3f3f3",
 				"backgroundColorBottom": "#ffffff"
 			}
+<<<<<<< HEAD
+        }
+		,{
+			"path": "pages/user/setting/revise/Hphoto",
+			"style" : {
+				"navigationBarBackgroundColor":"#f8f8f8",
+				"navigationBarTitleText":"我的头像",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#f3f3f3"
+			}
+		}
+		,{
+			"path": "pages/user/setting/revise/rename",
+			"style" : {
+				"navigationBarBackgroundColor":"#f8f8f8",
+				"navigationBarTitleText":"我的昵称",
+				"backgroundColorTop":"#ffffff",
+				"backgroundColorBottom":"#f3f3f3"
+			}
+		}
+        ,{
+            "path" : "pages/user/myQR/myQR",
+            "style" : {
+				"navigationBarTitleText":"我的二维码",
+				"app-plus":{
+					"bounce":"none"
+=======
 		}, {
 			"path": "pages/user/setting/setting",
 			"style": {
@@ -171,6 +198,7 @@
 				"navigationBarTitleText": "我的二维码",
 				"app-plus": {
 					"bounce": "none"
+>>>>>>> d4c3b92a46e4b109a1352891e28a9782e33fbc45
 				}
 			}
 		}, {
