@@ -26,9 +26,10 @@
 			<view class="lanzeimage"><image style="height: 100%;width: 100%;" src="../../../static/img/setting.png" mode=""></image></view>
 			<text class="morethan">补充信息获取更多的曝光<text>&gt;</text></text>
 		</view>
-		<view class="">
-			<button type="primary" @tap="getUpImgInfoOos">获取上传Oos图片信息</button>
-		<button type="primary" @tap="uImageTap">手动上传图片</button>
+		<view class="warn-btn">
+			<button type="warn" size="mini" @tap="getUpImgInfoOos">获取上传Oos图片信息</button>
+			<br>
+		<button type="warn" size="mini" @tap="uImageTap">手动上传图片</button>
 		</view>
 		
 	</view>
@@ -453,5 +454,13 @@
 	.lanzeimage{
 		height: 100%;
 		width: 60upx;
+	}
+	.warn-btn{
+		width:100%;
+		button{
+			display: table;
+			margin: auto auto;
+			width:360upx;
+		}
 	}
 </style>

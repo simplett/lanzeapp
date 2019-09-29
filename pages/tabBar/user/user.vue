@@ -17,7 +17,7 @@
 		<view class="user">
 			<!-- 头像 -->
 			<view class="left">
-				<image :src="user.face" @tap="toSetting"></image>
+				<image :src="face" @tap="toSetting"></image>
 			</view>
 			<!-- 昵称,个性签名 -->
 			<view class="right">
@@ -100,7 +100,7 @@
 	export default {
 		data() {
 			return {
-				face:"",
+				face:"../../../static/img/face.jpg",
 				isfirst:true,
 				headerPosition:"fixed",
 				headerTop:null,
@@ -185,6 +185,15 @@
 				},
 				fail:(e)=>{
 					//this.toLogin(); 
+				}
+			}),
+			uni.getStorage({
+				key:"face",
+				success:res=>{
+					// console.log(res.data[0]);
+					this.face=res.data[0];
+					// return res.data[0];
+					console.log(this.face.substring(2))
 				}
 			})
 		},

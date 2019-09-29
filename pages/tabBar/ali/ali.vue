@@ -246,8 +246,9 @@
 	}
 
 	.row-item {
-		border: 1px solid red;
+		// border: 1px solid red;
 		width: 100%;
+		background:#e2e3e5;
 	}
 
 	.myimage {
