@@ -134,7 +134,6 @@ export default {
 	height: 60px;
 	font-size: 28px;
 	margin-left: 30px;
-	placeholder-color: #c0c0c0;
 }
 .search {
 	width: 60px;

@@ -1,9 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/ali/ali",
     "pages/tabBar/home/home",
     "pages/tabBar/category/category",
+    "pages/ali/ali",
     "pages/tabBar/cart/cart",
     "pages/tabBar/user/user",
     "pages/goods/goods-list/goods-list",
@@ -13,9 +12,10 @@
     "pages/login/resetpasswd",
     "pages/order/confirmation",
     "pages/user/order_list/order_list",
-    "pages/user/setting/setting",
-    "pages/user/setting/Hphoto/Hphoto",
+    "pages/user/setting/revise/Hphoto",
+    "pages/user/setting/revise/rename",
     "pages/user/myQR/myQR",
+    "pages/user/setting/setting",
     "pages/msg/msg",
     "pages/msg/chat/chat",
     "pages/user/coupon/coupon",
@@ -25,7 +25,10 @@
     "pages/user/deposit/deposit",
     "pages/pay/payment/payment",
     "pages/pay/success/success",
-    "pages/goods/ratings/ratings"
+    "pages/goods/ratings/ratings",
+    "pages/ali/select/select",
+    "pages/tabBar/ali/ali",
+    "pages/ali/codelist/codelist"
   ],
   "subPackages": [],
   "window": {
@@ -55,7 +58,7 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/tabBar/publish/publish",
+        "pagePath": "pages/tabBar/ali/ali",
         "iconPath": "static/img/tabBar/category.png",
         "selectedIconPath": "static/img/tabBar/category-on.png",
         "text": "发布"
@@ -76,8 +79,6 @@
   },
   "permission": {},
   "usingComponents": {
-    "sunui-upbasic": "/components/sunui-upimg/sunui-upimg-basic",
-    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos",
-    "sunui-upcos": "/components/sunui-upimg/sunui-upimg-tencent"
+    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
   }
 }

@@ -1,3 +1,5 @@
 {
+  "enablePullDownRefresh": true,
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }

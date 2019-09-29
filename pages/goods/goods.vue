@@ -9,7 +9,7 @@
 				</view>
 				<view class="middle"></view>
 				<view class="icon-btn">
-					<view class="icon tongzhi" @tap="toMsg"></view>
+					<view class="icon tongzhi" @tap="toMsg()"></view>
 					<view class="icon cart" @tap="joinCart"></view>
 				</view>
 			</view>
@@ -36,7 +36,7 @@
 				</view>
 				<view class="box" @tap="toChat">
 					<view class="icon kefu"></view>
-					<view class="text">客服</view>
+					<view class="text">聊聊看</view>
 				</view>
 				<view class="box" @tap="keep">
 					<view class="icon" :class="[isKeep?'shoucangsel':'shoucang']"></view>
@@ -251,7 +251,6 @@
 			this.pid = options.pid;
 			console.log(this.pid, "(((((((((((((((((((())))))))))))))))))))")
 			// #ifdef MP
-
 			//小程序隐藏返回按钮
 			this.showBack = false;
 			// #endif
@@ -367,7 +366,7 @@
 							} else {
 								this.descriptionStr = '<div style="text-align:center; margin-bottom: 50px;">';
 								for (var item of this.swiperList) {
-									this.descriptionStr += '<img width="100%" src='+item.img+'/>';
+									this.descriptionStr += '<img width="100%" src=' + item.img + '/>';
 								}
 								this.descriptionStr += '</div>';
 							}
@@ -446,16 +445,97 @@
 			},
 			// 加入购物车
 			joinCart() {
-				if (this.selectSpec == null) {
-					return this.showSpec(() => {
-						uni.showToast({
-							title: "已加入购物车"
-						});
+				var id = this.pid;
+				var img=this.swiperList[0].img;
+				var price=this.goodsData.price;
+				var name=this.goodsData.name;
+				var number=1;
+				
+				var sclist={
+					id,
+					img,
+					price,
+					name,
+					number,
+					spec:"",
+					selected:false
+				}
+				var shoucanlists = [];
+				var status ="";
+				 uni.getStorage({
+					key: "shoucanlist",
+					success: res => {
+						console.log(res.data);
+						status=res.data;
+					},
+					fail: res => {
+						status=false;
+					}
+				});
+				console.log(status, "tttttttttttttttttttttttttttttttttt");
+				if (this.selectSpec !== null) {//判断商品是否选择规格
+					if (status == false) {//商品列表里面没有数据
+						sclist.spec=this.selectSpec;
+						shoucanlists.push(sclist);
+						console.log("ppppppppppppppppppp", shoucanlists)
+						uni.setStorage({
+							key: "shoucanlist",
+							data: shoucanlists,
+							success: (res) => {
+								uni.showToast({
+									title: "已加入购物车"
+								});
+							},
+							fail() {
+								uni.showToast({
+									title: "储存异常，加入购物车失败"
+								});
+							}
+						})
+					} else {//商品列表里面有数据
+						shoucanlists = status;
+						var iSshoucan=false;
+						for(var item of shoucanlists)
+						{
+							if(item.id==id)
+							{
+								iSshoucan=true;
+							}
+						}
+						console.log(iSshoucan,"ASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",id);
+						if(!iSshoucan)//判断收藏列表里面是否有该商品
+						{
+							sclist.spec=this.selectSpec;
+							shoucanlists.push(sclist);
+							uni.setStorage({
+							key: "shoucanlist",
+							data: shoucanlists,
+							success: res => {
+								uni.showToast({
+									title: "已加入购物车"
+								});
+							},
+							fail: res => {
+								uni.showToast({
+									title: "储存异常，加入购物车失败"
+								});
+							}
+						})
+						}else{
+							uni.showToast({
+								title: "已存在购物车"
+							});
+						}
+						
+					}
+
+				} else {
+					uni.showToast({
+						title: "请选择规格之后再加入购物车",
+						icon:"none"
 					});
 				}
-				uni.showToast({
-					title: "已加入购物车"
-				});
+
 			},
 			//立即购买
 			buy() {
@@ -469,7 +549,7 @@
 			//商品评论
 			toRatings() {
 				uni.navigateTo({
-					url: 'ratings/ratings?pid='+this.pid
+					url: 'ratings/ratings?pid=' + this.pid
 				})
 			},
 			//跳转确认订单页面

@@ -1,0 +1,17 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTextStyle": "white",
+  "titleNView": false,
+  "bounce": "none",
+  "softinputNavBar": "none",
+  "subNVues": [
+    {
+      "id": "aliTitleNvue",
+      "path": "pages/tabBar/ali/alisubNvue/aliTitleNvue",
+      "type": "navigationBar"
+    }
+  ],
+  "usingComponents": {
+    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
+  }
+}

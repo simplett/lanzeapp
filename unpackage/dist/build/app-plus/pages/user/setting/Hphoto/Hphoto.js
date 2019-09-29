@@ -1,2 +1,0 @@
-setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"content { width: 100%; }\n.",[1],"content .",[1],"c-img { width: ",[0,100],"; height: ",[0,100],"; background: #000000; }\n",],undefined,{path:"./pages/user/setting/Hphoto/Hphoto.wxss"})();
-document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/user/setting/Hphoto/Hphoto.wxml') } }));

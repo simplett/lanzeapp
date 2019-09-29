@@ -78,13 +78,7 @@
 				showHeader:true,
 				selectedList:[],
 				isAllselected:false,
-				goodsList:[
-					{id:1,img:'/static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:2,img:'/static/img/goods/p2.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:3,img:'/static/img/goods/p3.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:4,img:'/static/img/goods/p4.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:5,img:'/static/img/goods/p5.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false}
-				],
+				goodsList:[],
 				//控制滑动效果
 				theIndex:null,
 				oldIndex:null,
@@ -113,7 +107,23 @@
 			this.statusHeight = plus.navigator.getStatusbarHeight();
 			// #endif
 		},
+		onShow(){
+			this.getcartdata()
+		},
 		methods: {
+			getcartdata(){
+				uni.getStorage({
+					key:"shoucanlist",
+					success:res=>{
+						this.goodsList=res.data;
+						},
+						fail:res=>{
+							this.goodsList=[
+					{id:1,img:'/static/img/goods/p1.jpg',name:'蓝沢官方的模板数据',spec:'规格:S码',price:127.5,number:1,selected:false}
+				]
+						}
+				})
+			},
 			//加入商品 参数 goods:商品数据
 			joinGoods(goods){
 				/*
@@ -193,7 +203,7 @@
 			toGoods(e){
 				uni.showToast({title: '商品'+e.id,icon:"none"});
 				uni.navigateTo({
-					url: '../../goods/goods' 
+					url: '../../goods/goods?pid='+e.id 
 				});
 			},
 			//跳转确认订单页面
@@ -224,13 +234,30 @@
 			},
 			//删除商品
 			deleteGoods(id){
-				let len = this.goodsList.length;
-				for(let i=0;i<len;i++){
-					if(id==this.goodsList[i].id){
-						this.goodsList.splice(i, 1);
-						break;
+				var newgoodslist=[];
+				for(var item of this.goodsList)
+				{
+					if(item.id==id)
+					{
+						console.log("删除了id为："+id+"号的商品");
+					}else{
+						newgoodslist.push(item);
 					}
 				}
+				uni.setStorage({
+					key:"shoucanlist",
+					data:newgoodslist,
+					success:res=>{
+						console.log("缓存中删除成功");
+					},
+					fail:res=>{
+						uni.showToast({
+							title:"删除失败",
+							icon:"none"
+						})
+					}
+				});
+				this.getcartdata();
 				this.selectedList.splice(this.selectedList.indexOf(id), 1);
 				this.sum();
 				this.oldIndex = null;

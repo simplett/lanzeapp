@@ -1,0 +1,15 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTextStyle": "black",
+  "titleNView": false,
+  "bounce": "none",
+  "softinputNavBar": "none",
+  "subNVues": [
+    {
+      "id": "aliTitleNvue",
+      "path": "pages/tabBar/ali/subNvue/aliTitleNvue",
+      "type": "navigationBar"
+    }
+  ],
+  "usingComponents": {}
+}
