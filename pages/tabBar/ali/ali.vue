@@ -1,6 +1,5 @@
 <template>
-
-	<view>
+	<view class="lanzepadding">
 		<view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title">发布我的商品</view>
@@ -8,16 +7,13 @@
 		<view v-if="showHeader" class="place"></view>
 		<view class="row">
 			<view class="row-itemlist" v-for="(item,i) of codedata" :key="i">
-				<view :style="myheightSvg" class="row-item">
-					<image @tap="tocodelist(item.code)" class="myimage" :src="item.image_url" mode=""></image>
+				<view @tap="tocodelist(item.code)" :style="myheightSvg" class="row-item">
+					<image @tap="tocodelist(item.code)" class="myimage" :src="item.image_url"></image>
 				</view>
 				<text>{{item.name}}</text>
 			</view>
 
 		</view>
-		<sunui-upoos :upImgConfig="upImgOos" @onUpImg="upOosData" @onImgDel="delImgInfo" ref="uImage"></sunui-upoos>
-		<button type="primary" @tap="getUpImgInfoOos">获取上传Oos图片信息</button>
-		<button type="primary" @tap="uImageTap">手动上传图片</button>
 	</view>
 </template>
 
@@ -36,7 +32,8 @@
 						name: "运动体育",
 						englishname: "MOTION SPORTS",
 						image_url: "http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_0.png"
-					}, {
+					},
+					{
 						code: 3,
 						name: "服装服饰",
 						englishname: "CLOTHING AND APPAREL",
@@ -59,7 +56,8 @@
 						name: "宠物用品",
 						englishname: "PET SUPPLIES",
 						image_url: "http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5.png"
-					}, {
+					},
+					{
 						code: 7,
 						name: "日用百货",
 						englishname: "ARTICLES OF DAILY USE",
@@ -93,50 +91,53 @@
 				showHeader: true,
 				oosArr: [],
 				// 阿里云oos相关配置
-				upImgOos: {
-					aliConfig: {
-						// 阿里云oos上传key_secret(后端传)
-						AccessKeySecret: 'CbVR0tmpKXqAIEXxavJDqad3lcIIez',
-						// 阿里云oos上传key_id(后端传)
-						OSSAccessKeyId: 'LTAIlbkoZl60gNWT',
-						// 阿里云oos上传目录(必须存在)
-						oosDirectory: 'userimage',
-						// 阿里云上传url
-						url: 'https://simplett-img.oss-cn-beijing.aliyuncs.com/'
-					},
-					// 是否开启notli(开启的话就是选择完直接上传，关闭的话当count满足数量时才上传)
-					notli: false,
-					// 图片数量
-					count: 4,
-					// 上传图片背景修改 
-					upBgColor: '#E8A400',
-					// 上传icon图标颜色修改(仅限于iconfont)
-					upIconColor: '#eee',
-					// 上传svg图标名称
-					upSvgIconName: 'icon-certificate',
-				}
 			}
+		},
+		onLaunch(){
+			this.getWidth();
+			console.log("初始化的生命周期");
+		},
+		onLoad() {
+			//兼容H5下结算条位置
+			// #ifdef H5
+			// #endif
+			// #ifdef APP-PLUS
+			this.showHeader = false;
+			this.statusHeight = plus.navigator.getStatusbarHeight();
+			// #endif
+			this.getWidth()
+			console.log("onload");
 		},
 		onShow() {
 			this.getWidth();
 			console.log("Onshow");
 		},
+		computed:{
+			getmyheight(){
+				var mywidth = uni.getSystemInfoSync().windowWidth;
+				var height = mywidth * 0.22 + "px";
+				return {height:height}
+			}
+			},
 		methods: {
-			tocodelist(pid){
+
+			tocodelist(pid) {
+				console.log("点击");
 				uni.navigateTo({
-				    url: '/pages/ali/codelist/codelist?codeid='+pid
+					url: '/pages/ali/codelist/codelist?codeid=' + pid
 				});
 				uni.setStorage({
-					key:"codeid",data:pid,
-					success(){
+					key: "codeid",
+					data: pid,
+					success() {
 						console.log("成功选择")
 					}
 				})
 			},
 			getWidth() {
 				var mywidth = uni.getSystemInfoSync().windowWidth;
-				console.log(mywidth);
-				this.myheightSvg.height = mywidth * 0.22  + "px";
+				console.log(mywidth, "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+				this.myheightSvg.height = mywidth * 0.22 + "px";
 				console.log(this.myheightSvg);
 			},
 			onPageScroll(e) {
@@ -184,7 +185,10 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss">
+	.lanzepadding{
+		padding: 10upx 30upx;
+	}
 	.status {
 		width: 100%;
 		height: 0;

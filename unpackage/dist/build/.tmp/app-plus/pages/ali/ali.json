@@ -1,11 +1,16 @@
 {
   "enablePullDownRefresh": true,
-  "onReachBottomDistance": 50,
-  "navigationBarTitleText": "发布我的商品",
-  "navigationBarBackgroundColor": "#f06c7a",
   "navigationBarTextStyle": "white",
+  "titleNView": false,
   "bounce": "none",
   "softinputNavBar": "none",
+  "subNVues": [
+    {
+      "id": "aliTitleNvue",
+      "path": "pages/tabBar/ali/alisubNvue/aliTitleNvue",
+      "type": "navigationBar"
+    }
+  ],
   "usingComponents": {
     "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
   }

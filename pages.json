@@ -16,19 +16,6 @@
 					}]
 				}
 			}
-		}, {
-			"path": "pages/ali/ali",
-			"style": {
-				"enablePullDownRefresh": true,
-				"onReachBottomDistance": 50,
-				"navigationBarTitleText": "发布我的商品",
-				"navigationBarBackgroundColor": "#f06c7a",
-				"navigationBarTextStyle": "white",
-				"app-plus": {
-					"bounce": "none", //关闭窗口回弹效果
-					"softinputNavBar": "none"
-				}
-			}
 		}, 
 		{
 			"path": "pages/tabBar/category/category",
@@ -41,6 +28,18 @@
 				}
 			}
 		},
+		{
+			"path": "pages/ali/ali",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none", //关闭窗口回弹效果
+					"softinputNavBar": "none"
+				}
+			}
+		}, 
 		{
 			"path": "pages/tabBar/cart/cart",
 			"style": {
@@ -149,7 +148,6 @@
 				"backgroundColorTop": "#f3f3f3",
 				"backgroundColorBottom": "#ffffff"
 			}
-<<<<<<< HEAD
         }
 		,{
 			"path": "pages/user/setting/revise/Hphoto",
@@ -175,7 +173,8 @@
 				"navigationBarTitleText":"我的二维码",
 				"app-plus":{
 					"bounce":"none"
-=======
+				}
+			}
 		}, {
 			"path": "pages/user/setting/setting",
 			"style": {
@@ -185,7 +184,7 @@
 				"backgroundColorBottom": "#f3f3f3"
 			}
 		}, {
-			"path": "pages/user/setting/Hphoto/Hphoto",
+			"path": "pages/user/setting/revise/Hphoto",
 			"style": {
 				"navigationBarBackgroundColor": "#f8f8f8",
 				"navigationBarTitleText": "我的头像",
@@ -198,7 +197,6 @@
 				"navigationBarTitleText": "我的二维码",
 				"app-plus": {
 					"bounce": "none"
->>>>>>> d4c3b92a46e4b109a1352891e28a9782e33fbc45
 				}
 			}
 		}, {
@@ -307,7 +305,13 @@
 					"navigationBarTextStyle": "black",
 					"app-plus": {
 						"titleNView": false, //禁用原生导航栏
-						"softinputNavBar": "none"
+						"bounce": "none", //关闭窗口回弹效果
+						"softinputNavBar": "none",
+						"subNVues": [{
+							"id": "aliTitleNvue", // 唯一标识  
+							"path": "pages/tabBar/ali/subNvue/aliTitleNvue", // 页面路径  
+							"type": "navigationBar"
+						}]
 					}
 				
 			}

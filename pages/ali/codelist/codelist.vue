@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="lanzepadding">
 		<!-- <view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title">发布我的商品</view>
@@ -384,7 +384,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.status {
 		width: 100%;
 		height: 0;
@@ -396,16 +396,18 @@
 		height: var(--status-bar-height); //覆盖样式
 		/*  #endif  */
 	}
-
+.lanzepadding{
+	padding: 10upx 30upx;
+}
 	.header{
-		width: 100%;
+		width: 50%;
 		padding: 0 4upx;
 		height: 80upx;
 		/* display: flex; */
 		/* justify-content:space-between; */
 		/* align-items: center; */
 		position: fixed;
-		left: 0upx;
+		right: 0upx;
 		/* float:right; */
 		top: 0upx;
 		z-index: 1000;
@@ -413,6 +415,7 @@
 		/* background-color: #f06c7a; */
 		/*  #ifdef  APP-PLUS  */
 		top: var(--status-bar-height);
+		/*  #endif  */
 	}
 .mybuttom{
 			position: absolute;

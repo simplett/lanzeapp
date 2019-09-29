@@ -353,10 +353,6 @@ var _default = { data: function data() {return { kword: "", showHeader: true, af
 
 
 
-
-
-
-
     this.amapPlugin = new _amapWx.default.AMapWX({
       //高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
       key: '7c235a9ac4e25e482614c6b8eac6fd8e' });

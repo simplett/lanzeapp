@@ -202,13 +202,7 @@ var _default =
       showHeader: true,
       selectedList: [],
       isAllselected: false,
-      goodsList: [
-      { id: 1, img: '/static/img/goods/p1.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 2, img: '/static/img/goods/p2.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 3, img: '/static/img/goods/p3.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 4, img: '/static/img/goods/p4.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false },
-      { id: 5, img: '/static/img/goods/p5.jpg', name: '商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题', spec: '规格:S码', price: 127.5, number: 1, selected: false }],
-
+      goodsList: [],
       //控制滑动效果
       theIndex: null,
       oldIndex: null,
@@ -237,7 +231,23 @@ var _default =
 
 
   },
+  onShow: function onShow() {
+    this.getcartdata();
+  },
   methods: {
+    getcartdata: function getcartdata() {var _this = this;
+      uni.getStorage({
+        key: "shoucanlist",
+        success: function success(res) {
+          _this.goodsList = res.data;
+        },
+        fail: function fail(res) {
+          _this.goodsList = [
+          { id: 1, img: '/static/img/goods/p1.jpg', name: '蓝沢官方的模板数据', spec: '规格:S码', price: 127.5, number: 1, selected: false }];
+
+        } });
+
+    },
     //加入商品 参数 goods:商品数据
     joinGoods: function joinGoods(goods) {
       /*
@@ -274,7 +284,7 @@ var _default =
       //初始坐标
       this.initXY = [event.touches[0].pageX, event.touches[0].pageY];
     },
-    touchMove: function touchMove(index, event) {var _this = this;
+    touchMove: function touchMove(index, event) {var _this2 = this;
       //多点触控不触发
       if (event.touches.length > 1) {
         this.isStop = true;
@@ -301,7 +311,7 @@ var _default =
           this.theIndex = null;
           this.isStop = true;
           setTimeout(function () {
-            _this.oldIndex = null;
+            _this2.oldIndex = null;
           }, 150);
         }
       }
@@ -317,7 +327,7 @@ var _default =
     toGoods: function toGoods(e) {
       uni.showToast({ title: '商品' + e.id, icon: "none" });
       uni.navigateTo({
-        url: '../../goods/goods' });
+        url: '../../goods/goods?pid=' + e.id });
 
     },
     //跳转确认订单页面
@@ -348,13 +358,30 @@ var _default =
     },
     //删除商品
     deleteGoods: function deleteGoods(id) {
-      var len = this.goodsList.length;
-      for (var _i3 = 0; _i3 < len; _i3++) {
-        if (id == this.goodsList[_i3].id) {
-          this.goodsList.splice(_i3, 1);
-          break;
-        }
-      }
+      var newgoodslist = [];var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+        for (var _iterator = this.goodsList[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true)
+        {var item = _step.value;
+          if (item.id == id)
+          {
+            console.log("删除了id为：" + id + "号的商品");
+          } else {
+            newgoodslist.push(item);
+          }
+        }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return != null) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+      uni.setStorage({
+        key: "shoucanlist",
+        data: newgoodslist,
+        success: function success(res) {
+          console.log("缓存中删除成功");
+        },
+        fail: function fail(res) {
+          uni.showToast({
+            title: "删除失败",
+            icon: "none" });
+
+        } });
+
+      this.getcartdata();
       this.selectedList.splice(this.selectedList.indexOf(id), 1);
       this.sum();
       this.oldIndex = null;
@@ -383,9 +410,9 @@ var _default =
     allSelect: function allSelect() {
       var len = this.goodsList.length;
       var arr = [];
-      for (var _i4 = 0; _i4 < len; _i4++) {
-        this.goodsList[_i4].selected = this.isAllselected ? false : true;
-        arr.push(this.goodsList[_i4].id);
+      for (var _i3 = 0; _i3 < len; _i3++) {
+        this.goodsList[_i3].selected = this.isAllselected ? false : true;
+        arr.push(this.goodsList[_i3].id);
       }
       this.selectedList = this.isAllselected ? [] : arr;
       this.isAllselected = this.isAllselected || this.goodsList.length == 0 ? false : true;
@@ -408,12 +435,12 @@ var _default =
     sum: function sum(e, index) {
       this.sumPrice = 0;
       var len = this.goodsList.length;
-      for (var _i5 = 0; _i5 < len; _i5++) {
-        if (this.goodsList[_i5].selected) {
-          if (e && _i5 == index) {
-            this.sumPrice = this.sumPrice + e.detail.value * this.goodsList[_i5].price;
+      for (var _i4 = 0; _i4 < len; _i4++) {
+        if (this.goodsList[_i4].selected) {
+          if (e && _i4 == index) {
+            this.sumPrice = this.sumPrice + e.detail.value * this.goodsList[_i4].price;
           } else {
-            this.sumPrice = this.sumPrice + this.goodsList[_i5].number * this.goodsList[_i5].price;
+            this.sumPrice = this.sumPrice + this.goodsList[_i4].number * this.goodsList[_i4].price;
           }
         }
       }

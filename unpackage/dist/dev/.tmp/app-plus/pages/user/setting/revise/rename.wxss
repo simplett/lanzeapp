@@ -1,0 +1,12 @@
+
+.uni-input.data-v-56b6ecf4{
+	width:100%;
+	height:100rpx;
+	background: #e2e3e5;
+	margin-top: 40rpx;
+}
+uni-button[type=warn].data-v-56b6ecf4 {
+    color: #fff;
+    background-color: #15941d;
+}
+

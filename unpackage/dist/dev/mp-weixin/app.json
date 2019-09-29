@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/tabBar/home/home",
-    "pages/ali/ali",
     "pages/tabBar/category/category",
+    "pages/ali/ali",
     "pages/tabBar/cart/cart",
     "pages/tabBar/user/user",
     "pages/goods/goods-list/goods-list",
@@ -12,9 +12,10 @@
     "pages/login/resetpasswd",
     "pages/order/confirmation",
     "pages/user/order_list/order_list",
-    "pages/user/setting/setting",
-    "pages/user/setting/Hphoto/Hphoto",
+    "pages/user/setting/revise/Hphoto",
+    "pages/user/setting/revise/rename",
     "pages/user/myQR/myQR",
+    "pages/user/setting/setting",
     "pages/msg/msg",
     "pages/msg/chat/chat",
     "pages/user/coupon/coupon",

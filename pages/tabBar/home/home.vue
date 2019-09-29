@@ -128,6 +128,24 @@
 						img: '/static/img/3.jpg'
 					}
 				],
+				summsg: {
+		"00": [
+			["2019-05-45", "2019-05-45"],
+			[{
+					"user": "you",
+					"msg": "616516311111111111111111111111111111111111111111111111111111111"
+				},
+				{
+					"user": "you",
+					"msg": "616516311111111111111111111111111111111111111111111111111111111"
+				}
+			], "00" ["2019-05-45"],
+			[{
+				"user": "me",
+				"msg": "616516"
+			}], "00"
+		]
+	},
 				// 分类菜单
 				categoryList: [{
 						id: 1,
@@ -186,6 +204,15 @@
 				loadingText: '正在加载...'
 			};
 		},
+		onLaunch(){
+			uni.setStorage({
+				key:"summsg",
+				data:thid.summsg,
+				success:res=>{
+					console.log("页面初始化完成，聊天数据加载");
+				}
+			})
+		},
 		onPageScroll(e) {
 			//兼容iOS端下拉时顶部漂移
 			this.headerPosition = e.scrollTop >= 0 ? "fixed" : "absolute";
@@ -216,10 +243,6 @@
 			// #ifdef APP-PLUS
 			this.nVueTitle = uni.getSubNVueById('homeTitleNvue');
 			this.nVueTitle.onMessage(res => {
-				let type = res.data.type;
-				if (type == 'focus') {
-					this.toSearch();
-				}
 			});
 			this.showHeader = false;
 			this.statusHeight = plus.navigator.getStatusbarHeight();

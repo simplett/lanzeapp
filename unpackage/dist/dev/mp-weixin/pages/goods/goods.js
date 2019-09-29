@@ -375,7 +375,6 @@ var _default =
     this.pid = options.pid;
     console.log(this.pid, "(((((((((((((((((((())))))))))))))))))))");
 
-
     //小程序隐藏返回按钮
     this.showBack = false;
 
@@ -570,15 +569,96 @@ var _default =
     },
     // 加入购物车
     joinCart: function joinCart() {
-      if (this.selectSpec == null) {
-        return this.showSpec(function () {
-          uni.showToast({
-            title: "已加入购物车" });
+      var id = this.pid;
+      var img = this.swiperList[0].img;
+      var price = this.goodsData.price;
+      var name = this.goodsData.name;
+      var number = 1;
 
-        });
+      var sclist = {
+        id: id,
+        img: img,
+        price: price,
+        name: name,
+        number: number,
+        spec: "",
+        selected: false };
+
+      var shoucanlists = [];
+      var status = "";
+      uni.getStorage({
+        key: "shoucanlist",
+        success: function success(res) {
+          console.log(res.data);
+          status = res.data;
+        },
+        fail: function fail(res) {
+          status = false;
+        } });
+
+      console.log(status, "tttttttttttttttttttttttttttttttttt");
+      if (this.selectSpec !== null) {//判断商品是否选择规格
+        if (status == false) {//商品列表里面没有数据
+          sclist.spec = this.selectSpec;
+          shoucanlists.push(sclist);
+          console.log("ppppppppppppppppppp", shoucanlists);
+          uni.setStorage({
+            key: "shoucanlist",
+            data: shoucanlists,
+            success: function success(res) {
+              uni.showToast({
+                title: "已加入购物车" });
+
+            },
+            fail: function fail() {
+              uni.showToast({
+                title: "储存异常，加入购物车失败" });
+
+            } });
+
+        } else {//商品列表里面有数据
+          shoucanlists = status;
+          var iSshoucan = false;var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+            for (var _iterator2 = shoucanlists[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true)
+            {var item = _step2.value;
+              if (item.id == id)
+              {
+                iSshoucan = true;
+              }
+            }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return != null) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
+          console.log(iSshoucan, "ASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", id);
+          if (!iSshoucan) //判断收藏列表里面是否有该商品
+            {
+              sclist.spec = this.selectSpec;
+              shoucanlists.push(sclist);
+              uni.setStorage({
+                key: "shoucanlist",
+                data: shoucanlists,
+                success: function success(res) {
+                  uni.showToast({
+                    title: "已加入购物车" });
+
+                },
+                fail: function fail(res) {
+                  uni.showToast({
+                    title: "储存异常，加入购物车失败" });
+
+                } });
+
+            } else {
+            uni.showToast({
+              title: "已存在购物车" });
+
+          }
+
+        }
+
+      } else {
+        uni.showToast({
+          title: "请选择规格之后再加入购物车",
+          icon: "none" });
+
       }
-      uni.showToast({
-        title: "已加入购物车" });
 
     },
     //立即购买

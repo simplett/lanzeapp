@@ -106,8 +106,41 @@
 					}
 				},1);
 			// #endif
+			this.getlike();
+		},
+		onShow(){
+			this.getlike();
 		},
 		methods: {
+			getlike(){
+				var token="";
+				uni.getStorage({
+					key:"token",
+					success:res=>{
+						token=res.data;
+					}
+				})
+				if(token)
+				{
+					var data={
+						token,
+						type: "production",
+						action: "get"
+					}
+					uni.request({
+					    url: 'http://120.79.19.253:10086/Subscribe', //仅为示例，并非真实接口地址。
+					    data,
+					    success: (res) => {
+					        console.log(res.data,"hhhhhhhhhh");
+					        // this.text = 'request success';
+					    }
+					});
+				}else{
+					uni.showToast({
+						title:"请登陆之后再使用此功能"
+					})
+				}
+			},
 			switchType(type){
 				if(this.typeClass==type){
 					return ;
