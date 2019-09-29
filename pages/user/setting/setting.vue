@@ -5,12 +5,12 @@
 				<view class="row" @tap="Hphoto">
 					<view class="title">头像</view>
 					<view class="right"><view class="tis">
-					<image src="/static/img/face.jpg" mode="widthFix"></image>
+					<image :src="face" mode="widthFix"></image>
 					</view><view class="icon xiangyou"></view></view>
 				</view>
 				<view class="row" @tap="rename">
 					<view class="title">昵称</view>
-					<view class="right"><view class="tis">大黑哥</view><view class="icon xiangyou"></view></view>
+					<view class="right"><view class="tis">{{nickname}}</view><view class="icon xiangyou"></view></view>
 				</view>
 				<view class="row">
 					<view class="title">个性签名</view>
@@ -68,7 +68,8 @@
 	export default {
 		data() {
 			return {
-				
+				face:"../../../static/img/face.jpg",
+				nickname:"大黑哥"
 			};
 		},
 		methods: {
@@ -85,6 +86,27 @@
 				uni.navigateTo({
 					url:'/pages/user/setting/revise/rename'
 				})
+			},
+			onShow(){
+				uni.getStorage({
+					key:"face",
+					success:res=>{
+						// console.log(res.data[0]);
+						this.face=res.data[0];
+						// return res.data[0];
+						console.log(this.face.substring(2))
+					}
+				})
+				// console.log('gggggggggggggggggs',this.user.face,"hhhhhhhhhhhhhhhhhhhhhhhh")
+				// this.user.face=(this.face).substring(2);
+				// console.log(this.face.substring(2)+"3wwwwwwwwwwwwwwwwwwwwwwwww");
+				uni.getStorage({
+					key:'rename',
+					success: res => {
+						this.nickname=res.data;		
+						console.log("成功获取rename"+this.nickname);
+					}
+				});
 			}
 		}
 	}

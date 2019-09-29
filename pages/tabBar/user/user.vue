@@ -186,20 +186,7 @@
 				fail:(e)=>{
 					//this.toLogin(); 
 				}
-			});
-			
-			this.face=uni.getStorage({
-				key:"faces",
-				success(res){
-					console.log(res.data[0]);
-					// this.face=res.data[0];
-					return res.data[0];
-					// console.log(this.face.substring(2))
-				}
 			})
-			console.log('gggggggggggggggggs',this.user.face,"hhhhhhhhhhhhhhhhhhhhhhhh")
-			this.user.face=(this.face).substring(2);
-			console.log(this.face.substring(2)+"3wwwwwwwwwwwwwwwwwwwwwwwww")
 		},
 		methods: {
 			//消息列表
