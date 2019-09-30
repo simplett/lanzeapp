@@ -1,19 +1,40 @@
 <template>
-	<view class="lanzepadding">
-		<!-- <view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
+	<view>
+
+		<view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title">发布我的商品</view>
 		</view>
-		<view v-if="showHeader" class="place"></view> -->
+		<view v-if="showHeader" class="place"></view>
 		<view class="header">
 			<button class="mybuttom" type="warn" size="mini">发布</button>
 		</view>
 		<!-- 占位 -->
 		<view v-if="showHeader" class="place"></view>
-		<w-picker v-if="selectList.length!=0" mode="selector" :defaultVal="[1]" @confirm="onConfirm" ref="selector"
-		 themeColor="#f00" :selectList="selectList">
-		</w-picker>
-
+		<view class="lanzepadding">
+			<w-picker v-if="selectList.length!=0" mode="selector" :defaultVal="[1]" @confirm="onConfirm" ref="selector"
+			 themeColor="#f00" :selectList="selectList">
+			</w-picker>
+			<hr>
+			<view class="">
+				<view class="uni-title uni-common-mt uni-common-pl">推荐展示样式</view>
+				<view class="uni-list">
+					<radio-group @change="radioChange">
+						<label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.value">
+							<view>
+								<radio :value="item.value" :checked="index === current" />
+							</view>
+							<view>{{item.name}}</view>
+						</label>
+					</radio-group>
+				</view>
+			</view>
+			<hr>
+			<view class="">
+				<text>添加标题</text>
+				<textarea class="mypname" v-model="mypname" maxlength="20" placeholder="输入宝贝的标题" />
+				</view>
+		</view>
 	</view>
 </template>
 
@@ -22,25 +43,49 @@
 	export default {
 		data() {
 			return {
+				items: [{
+				                 value: '0',
+				                    name: '全新 '
+				                },
+				                {
+				                    value: '1',
+				                    name: '99新',
+				                    checked: 'true'
+				                },
+								{
+								    value: '2',
+								    name: '9成新'
+							
+								},
+								{
+								    value: '3',
+								    name: '8成新'
+								},
+								{
+								    value: '4',
+								    name: '7成新'
+								}],
+								current: 0,
+								mypname:"",
 				selectList: [{
-						label: "101",
-						value: "炫酷电脑"
-					}, {
-						label: "102",
-						value: "手机一族"
-					}, {
-						label: "103",
-						value: "相机拍摄"
-					}, {
-						label: "104",
-						value: "智能穿戴"
-					}, {
-						label: "105",
-						value: "电脑周边"
-					}, {
-						label: "106",
-						value: "网络设备"
-					}],
+					label: "101",
+					value: "炫酷电脑"
+				}, {
+					label: "102",
+					value: "手机一族"
+				}, {
+					label: "103",
+					value: "相机拍摄"
+				}, {
+					label: "104",
+					value: "智能穿戴"
+				}, {
+					label: "105",
+					value: "电脑周边"
+				}, {
+					label: "106",
+					value: "网络设备"
+				}],
 				price: "",
 				p_description: "",
 				fontcount: "0",
@@ -249,8 +294,10 @@
 			wPicker
 		},
 		onLoad(options) { //option为object类型，会序列化上个页面传递的参数
-			console.log(options.selectid, "55555555555555"),
-			this.getselect(options.selectid);
+			console.log(options.selectid, "55555555555555");
+			var id=options.selectid;
+			console.log(id,"ididididididididididididdi");;
+				this.getselect(id);
 		},
 		onShow() {
 			// this.getWidth();
@@ -263,61 +310,39 @@
 			}
 		},
 		methods: {
-			selector(){
+			radioChange: function(evt) {
+			            for (let i = 0; i < this.items.length; i++) {
+			                if (this.items[i].value === evt.target.value) {
+			                    this.current = i;
+			                    break;
+			                }
+			            }
+			    },
+			selector() {
 				this.$refs.picker.show();
 			},
 			getselect(id) {
+				console.log(id,"111111111111111111111111111111111");
 				var c = this.productlist[id];
 				this.selectList = c;
-				console.log(this.selectList,"999999999999999999999999999999");
-				
+				console.log(this.selectList,c, "999999999999999999999999999999");
+
 			},
 			onPageScroll(e) {
 				//兼容iOS端下拉时顶部漂移
 				this.headerPosition = e.scrollTop >= 0 ? "fixed" : "absolute";
 				this.headerTop = e.scrollTop >= 0 ? null : 0;
 				this.statusTop = e.scrollTop >= 0 ? null : -this.statusHeight + 'px';
-			},
-			uImageTap() {
-				this.$refs.uImage.uploadimage(this.upImgOos);
-			},
-			// 删除图片 -2019/05/12(本地图片进行删除)
-			async delImgInfo(e) {
-				console.log('你删除的图片地址为:', e, this.oosArr.splice(e.index, 1));
-			},
-			// 阿里云
-			async upOosData(e) {
-				// 上传图片数组
-				let arrImg = [];
-				for (let i = 0, len = e.length; i < len; i++) {
-					try {
-						if (e[i].path_server != "") {
-							await arrImg.push(e[i].path_server.split(','));
-						}
-					} catch (err) {
-						console.log('上传失败...');
-					}
-				}
-				// 图片信息保存到data数组
-				this.oosArr = arrImg;
-
-				// 可以根据长度来判断图片是否上传成功. 2019/4/11新增
-				if (arrImg.length == this.upImgOos.count) {
-					uni.showToast({
-						title: `上传成功`,
-						icon: 'none'
-					});
-				}
-			},
-			// 获取上传图片阿里云
-			getUpImgInfoOos() {
-				console.log('阿里云转成一维数组:', this.oosArr.join().split(','));
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.mypname{
+		height: 60px;
+		box-shadow: 0upx 0upx 0upx 0upx gray inset;
+	}
 	.status {
 		width: 100%;
 		height: 0;

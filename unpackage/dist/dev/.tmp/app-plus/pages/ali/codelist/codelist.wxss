@@ -65,7 +65,7 @@
   height: 100rpx;
   margin-top: var(--status-bar-height);
 }
-textarea.data-v-f2d22e68 {
+.textarea.data-v-f2d22e68 {
   width: 100%;
   padding: 10rpx 20rpx;
   border: 2rpx solid gray;
@@ -94,5 +94,13 @@ textarea.data-v-f2d22e68 {
 .lanzeimage.data-v-f2d22e68 {
   height: 100%;
   width: 60rpx;
+}
+.warn-btn.data-v-f2d22e68 {
+  width: 100%;
+}
+.warn-btn button.data-v-f2d22e68 {
+    display: table;
+    margin: auto auto;
+    width: 360rpx;
 }
 

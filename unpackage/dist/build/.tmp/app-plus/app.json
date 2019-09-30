@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/index/guide",
     "pages/tabBar/home/home",
     "pages/tabBar/category/category",
     "pages/ali/ali",
@@ -17,6 +19,7 @@
     "pages/user/myQR/myQR",
     "pages/user/setting/setting",
     "pages/user/setting/revise/Hphoto",
+    "pages/user/setting/revise/rename",
     "pages/user/myQR/myQR",
     "pages/msg/msg",
     "pages/msg/chat/chat",

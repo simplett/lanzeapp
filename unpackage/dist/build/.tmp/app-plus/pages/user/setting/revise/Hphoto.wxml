@@ -1,1 +1,1 @@
-<view class="content"><view class="w-img"><image src="/static/img/face.jpg" mode></image></view><view data-event-opts="{{[['tap',[['chooseImgFromAlbums',['$event']]]]]}}" class="choose-img" bindtap="__e">修改头像</view></view>
+<view class="content"><view class="w-img"><image src="{{showface}}" mode></image></view><view data-event-opts="{{[['tap',[['chooseImgFromAlbums',['$event']]]]]}}" class="choose-img" bindtap="__e">修改头像</view></view>

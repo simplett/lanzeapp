@@ -1,1 +1,1 @@
-<view></view>
+<view class="lanzepadding data-v-2f5574f1"><view class="header data-v-2f5574f1"><button class="mybuttom data-v-2f5574f1" type="warn" size="mini">发布</button></view><block wx:if="{{showHeader}}"><view class="place data-v-2f5574f1"></view></block><block wx:if="{{selectList.length!=0}}"><w-picker vue-id="1" mode="selector" defaultVal="{{[1]}}" themeColor="#f00" selectList="{{selectList}}" data-ref="selector" data-event-opts="{{[['^confirm',[['onConfirm']]]]}}" bind:confirm="__e" class="data-v-2f5574f1 vue-ref" bind:__l="__l"></w-picker></block></view>

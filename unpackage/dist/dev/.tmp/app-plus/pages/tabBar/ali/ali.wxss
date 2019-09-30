@@ -78,13 +78,14 @@
 }
 .row-itemlist {
   text-align: center;
-  width: 22%;
+  width: 79.2px;
   margin: 10rpx 0rpx;
   font-size: 29.5rpx;
 }
 .row-item {
-  border: 1px solid red;
   width: 100%;
+  background: #e2e3e5;
+  height: 79.2px;
 }
 .myimage {
   width: 100%;

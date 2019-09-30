@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.status {
+.status.data-v-4bf28c32 {
   width: 100%;
   height: 0;
   position: fixed;
@@ -33,7 +33,10 @@
   top: 0;
   height: var(--status-bar-height);
 }
-.header {
+.lanzepadding.data-v-4bf28c32 {
+  padding: 10rpx 30rpx;
+}
+.header.data-v-4bf28c32 {
   width: 50%;
   padding: 0 4rpx;
   height: 80rpx;
@@ -50,19 +53,19 @@
   /* background-color: #f06c7a; */
   top: var(--status-bar-height);
 }
-.mybuttom {
+.mybuttom.data-v-4bf28c32 {
   position: absolute;
   right: 4%;
   margin: auto 0uox;
   top: 50%;
   margin-top: -30rpx;
 }
-.place {
+.place.data-v-4bf28c32 {
   background-color: #ffffff;
   height: 100rpx;
   margin-top: var(--status-bar-height);
 }
-textarea {
+textarea.data-v-4bf28c32 {
   width: 100%;
   padding: 10rpx 20rpx;
   border: 2rpx solid gray;
@@ -72,11 +75,11 @@ textarea {
   -webkit-box-shadow: -6rpx -6rpx 10rpx 2rpx gray inset;
           box-shadow: -6rpx -6rpx 10rpx 2rpx gray inset;
 }
-.mytext {
+.mytext.data-v-4bf28c32 {
   float: right;
   padding: 2rpx 10rpx;
 }
-.price {
+.price.data-v-4bf28c32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -88,8 +91,16 @@ textarea {
   height: 60rpx;
   width: 100%;
 }
-.lanzeimage {
+.lanzeimage.data-v-4bf28c32 {
   height: 100%;
   width: 60rpx;
+}
+.warn-btn.data-v-4bf28c32 {
+  width: 100%;
+}
+.warn-btn button.data-v-4bf28c32 {
+    display: table;
+    margin: auto auto;
+    width: 360rpx;
 }
 
