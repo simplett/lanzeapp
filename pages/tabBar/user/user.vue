@@ -21,8 +21,8 @@
 			</view>
 			<!-- 昵称,个性签名 -->
 			<view class="right">
-				<view class="username" @tap="toLogin">{{user.username}}</view>
-				<view class="signature" @tap="toSetting">{{user.signature}}</view>
+				<view class="username" @tap="toLogin">{{nickname}}</view>
+				<view class="signature" @tap="toSetting">{{signature}}</view>
 			</view>
 			<!-- 二维码按钮 -->
 			<view class="erweima" @tap="toMyQR">
@@ -101,6 +101,8 @@
 		data() {
 			return {
 				face:"../../../static/img/face.jpg",
+				nickname:'游客1002',
+				signature:'',
 				isfirst:true,
 				headerPosition:"fixed",
 				headerTop:null,
@@ -108,7 +110,6 @@
 				showHeader:true,
 				//个人信息,
 				user:{
-					username:'游客1002',
 					face:'',
 					// signature:'点击昵称跳转登录/注册页',
 					integral:0,
@@ -195,7 +196,23 @@
 					// return res.data[0];
 					console.log(this.face.substring(2))
 				}
-			})
+			}),
+			// 获取昵称
+			uni.getStorage({
+				key:'rename',
+				success:res=>{
+					this.nickname=res.data;		
+					console.log("成功获取rename"+this.nickname);
+				}
+			});
+			// 获取个性签名
+			uni.getStorage({
+				key:'signature',
+				success:res=>{
+					this.signature=res.data;		
+					console.log("成功获取signature"+this.signature);
+				}
+			});
 		},
 		methods: {
 			//消息列表

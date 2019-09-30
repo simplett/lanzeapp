@@ -12,39 +12,39 @@
 					<view class="title">昵称</view>
 					<view class="right"><view class="tis">{{nickname}}</view><view class="icon xiangyou"></view></view>
 				</view>
-				<view class="row">
+				<view class="row" @tap="sign">
 					<view class="title">个性签名</view>
-					<view class="right"><view class="tis">这人太懒了，什么都不写</view><view class="icon xiangyou"></view></view>
+					<view class="right"><view class="tis">{{signature}}</view><view class="icon xiangyou"></view></view>
 				</view>
-				<view class="row">
+				<view class="row" @tap="address">
 					<view class="title">收货地址</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
 				</view>
 				<view class="row">
-					<view class="title">账户安全</view>
+					<view class="title" @tap="repasswd">账户安全</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
 				</view>
 			</view>
 			<view class="list">
-				<view class="row">
+				<!-- <view class="row">
 					<view class="title">通知提醒</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
-				</view>
-				<view class="row">
+				</view> -->
+				<view class="row" @tap="pay">
 					<view class="title">支付设置</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
 				</view>
-				<view class="row">
+				<!-- <view class="row">
 					<view class="title">通用</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
-				</view>
+				</view> -->
 			</view>
 			<view class="list">
 				<view class="row">
-					<view class="title">版本升级</view>
+					<view class="title">当前版本</view>
 					<view class="right"><view class="tis">v1.0.0</view><view class="icon xiangyou"></view></view>
 				</view>
-				<view class="row">
+				<view class="row" @tap="clearstorage">
 					<view class="title">清除缓存</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
 				</view>
@@ -56,7 +56,7 @@
 					<view class="title">关于商城</view>
 					<view class="right"><view class="tis"></view><view class="icon xiangyou"></view></view>
 				</view>
-				<view class="sign">
+				<view class="sign" @tap="removetoken">
 					<view class="title">退出登录</view>
 				</view>
 			</view>
@@ -69,7 +69,8 @@
 		data() {
 			return {
 				face:"../../../static/img/face.jpg",
-				nickname:"大黑哥"
+				nickname:"大黑哥",
+				signature:''
 			};
 		},
 		methods: {
@@ -87,6 +88,62 @@
 					url:'/pages/user/setting/revise/rename'
 				})
 			},
+			sign(){
+				uni.navigateTo({
+					url:'/pages/user/setting/revise/signature/signature'
+				})
+			},
+			address(){
+				uni.navigateTo({
+					url:'/pages/user/address/address'
+				})
+			},
+			repasswd(){
+				uni.navigateTo({
+					url:'/pages/login/resetpasswd'
+				})
+			},
+			pay(){
+				uni.navigateTo({
+					url:'/pages/user/setting/revise/pay/pay'
+				})
+			},
+			clearstorage(){
+				uni.getSavedFileInfo({
+				  filePath: 'unifile://somefile', //仅做示例用，非真正的文件路径
+				  success: function (res) {
+				    console.log(res.size);
+				    console.log(res.createTime);
+				  }
+				});
+			},
+			removetoken(){
+				uni.getStorage({
+					key:'token',
+					success:res=>{
+						var token = res.data;
+						// return res.data;
+						console.log(token,"aaaaaaaaaaaaaaaaaaaaaaaaa");
+						uni.request({
+						    url: 'http://120.79.19.253:10086/Loginout', //仅为示例，并非真实接口地址。
+						    data: {
+						        token
+						    },
+						    success: function(res) {
+						        console.log(res.data,"ppppppppppppppp");
+						    }
+						});
+						// 中断请求任务
+						// requestTask.abort();
+					},
+					fail:res=> {
+						uni.showToast({
+							title:"退出登录失败",
+							icon:"none"
+						})
+					}
+				})
+			},
 			onShow(){
 				uni.getStorage({
 					key:"face",
@@ -96,7 +153,7 @@
 						// return res.data[0];
 						console.log(this.face.substring(2))
 					}
-				})
+				}),
 				// console.log('gggggggggggggggggs',this.user.face,"hhhhhhhhhhhhhhhhhhhhhhhh")
 				// this.user.face=(this.face).substring(2);
 				// console.log(this.face.substring(2)+"3wwwwwwwwwwwwwwwwwwwwwwwww");
@@ -105,6 +162,13 @@
 					success: res => {
 						this.nickname=res.data;		
 						console.log("成功获取rename"+this.nickname);
+					}
+				}),
+				uni.getStorage({
+					key:'signature',
+					success: res => {
+						this.signature=res.data;		
+						console.log("成功获取rename"+this.signature);
 					}
 				});
 			}
@@ -154,6 +218,7 @@ page{
 						height: 100upx;
 						border-radius: 100%;
 						margin: 10upx 0;
+						// border: 1px solid red;
 					}
 				}
 				.icon{
