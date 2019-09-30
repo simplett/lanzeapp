@@ -8,7 +8,6 @@
 				<input class="input-box-input" placeholder="默认关键字" @focus="inputfocus" />
 				<text class="icon search">{{ iconSearch }}</text>
 			</div>
-			<text class="icon yuyin">{{ iconYuyin }}</text>
 			<text @click="toMsg" class="icon tongzhi">{{ iconTongzhi }}</text>
 		</div>
 	</div>

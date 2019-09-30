@@ -11,7 +11,7 @@
 		<!-- 占位 -->
 		<view v-if="showHeader" class="place"></view>
 		<view class="">
-			<textarea maxlength="300" v-model="p_description" placeholder="添加一些宝贝的描述吧,300个字符之间" />
+			<textarea class="textarea" maxlength="300" v-model="p_description" placeholder="添加一些宝贝的描述吧,300个字符之间" />
 			<text class="mytext">{{fontcount}}/300</text>
 		</view>
 		
@@ -342,6 +342,19 @@
 			}
 		},
 		methods: {
+			getlocaldata(){
+				var name;
+				var token;
+				var price;
+				var images;
+				var description;
+				var address;
+				var cid;
+				var type;
+				
+				
+				
+			},
 			toselect(){
 				uni.navigateTo({
 					url: '/pages/ali/select/select?selectid=' + this.selectid
@@ -440,7 +453,7 @@
 		margin-top: var(--status-bar-height);
 		/*  #endif  */
 	}
-	textarea{
+	.textarea{
 		width: 100%;
 		padding: 10upx 20upx;
 		border: 2upx solid gray;

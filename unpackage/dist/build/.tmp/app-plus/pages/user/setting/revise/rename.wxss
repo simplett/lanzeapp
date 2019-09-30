@@ -1,12 +1,19 @@
 
-.uni-input.data-v-7183c86a{
+.uni-input.data-v-bf2a8738{
 	width:100%;
 	height:100rpx;
 	background: #e2e3e5;
 	margin-top: 40rpx;
 }
-uni-button[type=warn].data-v-7183c86a {
+.button.data-v-bf2a8738 {
     color: #fff;
     background-color: #15941d;
+	width:100%;
+	height: 100rpx;
+	padding:0;
+	line-height: 100rpx;
+	text-align: center;
+	border-radius: 15rpx;
+	font-size: 40rpx;
 }
 

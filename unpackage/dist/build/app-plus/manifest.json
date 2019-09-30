@@ -60,7 +60,10 @@
       },
       "icons": {
         "android": {
-          "hdpi": "common/logo.png"
+          "hdpi": "static/image/ic_launcher72.png",
+          "xhdpi": "static/image/ic_launcher96.png",
+          "xxhdpi": "static/image/ic_launcher144.png",
+          "xxxhdpi": "static/image/ic_launcher192.png"
         }
       },
       "google": {
@@ -119,10 +122,7 @@
     "secondwebview": {
       "id": "1",
       "launch_path": "__uniappview.html",
-      "kernel": "WKWebview",
-      "mode": "child",
-      "top": 0,
-      "bottom": 56
+      "kernel": "WKWebview"
     }
   }
 }

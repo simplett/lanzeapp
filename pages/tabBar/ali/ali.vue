@@ -7,7 +7,7 @@
 		<view v-if="showHeader" class="place"></view>
 		<view class="row">
 			<view class="row-itemlist" v-for="(item,i) of codedata" :key="i">
-				<view @tap="tocodelist(item.code)" :style="myheightSvg" class="row-item">
+				<view @tap="tocodelist(item.code)" class="row-item">
 					<image @tap="tocodelist(item.code)" class="myimage" :src="item.image_url"></image>
 				</view>
 				<text>{{item.name}}</text>
@@ -240,7 +240,7 @@
 
 	.row-itemlist {
 		text-align: center;
-		width: 22%;
+		width: 79.2px;
 		margin: 10upx 0upx;
 		font-size: 29.5upx;
 	}
@@ -249,6 +249,7 @@
 		// border: 1px solid red;
 		width: 100%;
 		background:#e2e3e5;
+		height: 79.2px;
 	}
 
 	.myimage {

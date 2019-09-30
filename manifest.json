@@ -71,7 +71,10 @@
             },
             "icons" : {
                 "android" : {
-                    "hdpi" : "common/logo.png"
+                    "hdpi" : "static/image/ic_launcher72.png",
+                    "xhdpi" : "static/image/ic_launcher96.png",
+                    "xxhdpi" : "static/image/ic_launcher144.png",
+                    "xxxhdpi" : "static/image/ic_launcher192.png"
                 }
             }
         }

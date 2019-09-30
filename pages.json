@@ -1,6 +1,24 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "启动页",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/index/guide",
+			"style": {
+				"navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		{
 			"path": "pages/tabBar/home/home",
 			"style": {
 				"navigationBarTextStyle": "black",
@@ -16,7 +34,7 @@
 					}]
 				}
 			}
-		}, 
+		},
 		{
 			"path": "pages/tabBar/category/category",
 			"style": {
@@ -39,7 +57,7 @@
 					"softinputNavBar": "none"
 				}
 			}
-		}, 
+		},
 		{
 			"path": "pages/tabBar/cart/cart",
 			"style": {
@@ -148,31 +166,28 @@
 				"backgroundColorTop": "#f3f3f3",
 				"backgroundColorBottom": "#ffffff"
 			}
-        }
-		,{
+		}, {
 			"path": "pages/user/setting/revise/Hphoto",
-			"style" : {
-				"navigationBarBackgroundColor":"#f8f8f8",
-				"navigationBarTitleText":"我的头像",
-				"backgroundColorTop":"#ffffff",
-				"backgroundColorBottom":"#f3f3f3"
+			"style": {
+				"navigationBarBackgroundColor": "#f8f8f8",
+				"navigationBarTitleText": "我的头像",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#f3f3f3"
 			}
-		}
-		,{
+		}, {
 			"path": "pages/user/setting/revise/rename",
-			"style" : {
-				"navigationBarBackgroundColor":"#f8f8f8",
-				"navigationBarTitleText":"我的昵称",
-				"backgroundColorTop":"#ffffff",
-				"backgroundColorBottom":"#f3f3f3"
+			"style": {
+				"navigationBarBackgroundColor": "#f8f8f8",
+				"navigationBarTitleText": "我的昵称",
+				"backgroundColorTop": "#ffffff",
+				"backgroundColorBottom": "#f3f3f3"
 			}
-		}
-        ,{
-            "path" : "pages/user/myQR/myQR",
-            "style" : {
-				"navigationBarTitleText":"我的二维码",
-				"app-plus":{
-					"bounce":"none"
+		}, {
+			"path": "pages/user/myQR/myQR",
+			"style": {
+				"navigationBarTitleText": "我的二维码",
+				"app-plus": {
+					"bounce": "none"
 				}
 			}
 		}, {
@@ -305,7 +320,37 @@
 					"bounce": "none"
 				}
 			}
+		}, {
+			"path": "pages/tabBar/ali/ali",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTextStyle": "black",
+				"app-plus": {
+					"titleNView": false, //禁用原生导航栏
+					"bounce": "none", //关闭窗口回弹效果
+					"softinputNavBar": "none",
+					"subNVues": [{
+						"id": "aliTitleNvue", // 唯一标识  
+						"path": "pages/tabBar/ali/subNvue/aliTitleNvue", // 页面路径  
+						"type": "navigationBar"
+					}]
+				}
+
+			}
+		}, {
+			"path": "pages/ali/codelist/codelist",
+			"style": {
+				"enablePullDownRefresh": true,
+				"backgroundTextStyle": "light",
+				"navigationBarBackgroundColor": "#f06c7a",
+				"backgroundColorTop": "#f06c7a",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": true //禁用原生导航栏
+				}
+			}
 		}
+<<<<<<< HEAD
 	    ,{
             "path" : "pages/tabBar/ali/ali",
 				"style": {
@@ -346,6 +391,9 @@
             "style" : {}
         }
     ],
+=======
+	],
+>>>>>>> 30e982304a37b5abafed67727d4cfd09d815f16e
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
