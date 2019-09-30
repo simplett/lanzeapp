@@ -22,7 +22,7 @@
 			<input maxlength="5" type="number" v-model="price" placeholder="我的宝贝值这么多的钱" />
 			<text>￥{{price}}<text>&gt;</text></text>
 		</view>
-		<view class="price">
+		<view @click="toselect()" class="price">
 			<view class="lanzeimage"><image style="height: 100%;width: 100%;" src="../../../static/img/setting.png" mode=""></image></view>
 			<text class="morethan">补充信息获取更多的曝光<text>&gt;</text></text>
 		</view>
@@ -39,6 +39,7 @@
 	export default {
 		data() {
 			return {
+				selectid:"",
 				price:"",
 				p_description:"",
 				fontcount:"0",
@@ -328,6 +329,7 @@
 		},
 		 onLoad(options) { //option为object类型，会序列化上个页面传递的参数
 		      console.log(options.codeid);
+			  this.selectid=options.codeid;
 		    },
 		onShow() {
 			// this.getWidth();
@@ -340,6 +342,11 @@
 			}
 		},
 		methods: {
+			toselect(){
+				uni.navigateTo({
+					url: '/pages/ali/select/select?selectid=' + this.selectid
+				});
+			},
 			onPageScroll(e) {
 				//兼容iOS端下拉时顶部漂移
 				this.headerPosition = e.scrollTop >= 0 ? "fixed" : "absolute";
