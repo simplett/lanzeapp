@@ -4,7 +4,5 @@
   "titleNView": false,
   "bounce": "none",
   "softinputNavBar": "none",
-  "usingComponents": {
-    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
-  }
+  "usingComponents": {}
 }

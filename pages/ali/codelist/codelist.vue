@@ -1,37 +1,41 @@
 <template>
+	<view>
 	<view class="lanzepadding">
 		<!-- <view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title">发布我的商品</view>
 		</view>
 		<view v-if="showHeader" class="place"></view> -->
-		<view class="header">
+		<!-- <view class="header">
 			<button class="mybuttom" type="warn" size="mini">发布</button>
-		</view>
+		</view> -->
 		<!-- 占位 -->
-		<view v-if="showHeader" class="place"></view>
+		<!-- <view v-if="showHeader" class="place"></view> -->
 		<view class="">
 			<textarea class="textarea" maxlength="300" v-model="p_description" placeholder="添加一些宝贝的描述吧,300个字符之间" />
 			<text class="mytext">{{fontcount}}/300</text>
 		</view>
-		
+		</view>
 		<sunui-upoos :upImgConfig="upImgOos" @onUpImg="upOosData" @onImgDel="delImgInfo" ref="uImage"></sunui-upoos>
 		<hr style="height: 100%;">
+		<view class="lanzepadding">
 		<view class="price">
 			<view class="lanzeimage"><image style="height: 100%;width: 100%;" src="../../../static/img/qian.png" mode=""></image></view>
 			<input maxlength="5" type="number" v-model="price" placeholder="我的宝贝值这么多的钱" />
-			<text>￥{{price}}<text>&gt;</text></text>
+			<text>￥{{price}}&gt;</text>
 		</view>
 		<view @click="toselect()" class="price">
 			<view class="lanzeimage"><image style="height: 100%;width: 100%;" src="../../../static/img/setting.png" mode=""></image></view>
-			<text class="morethan">补充信息获取更多的曝光<text>&gt;</text></text>
+			<view class="morethan">补充信息获取曝光&gt;</view>
 		</view>
-		<view class="warn-btn">
+		<!-- <view class="warn-btn">
 			<button type="warn" size="mini" @tap="getUpImgInfoOos">获取上传Oos图片信息</button>
 			<br>
 		<button type="warn" size="mini" @tap="uImageTap">手动上传图片</button>
-		</view>
+		</view> -->
+		<button type="primary" @tap="getlocaldata()">发布</button>
 		
+	</view>
 	</view>
 </template>
 
@@ -39,6 +43,7 @@
 	export default {
 		data() {
 			return {
+				images:'',
 				selectid:"",
 				price:"",
 				p_description:"",
@@ -317,7 +322,7 @@
 					// 是否开启notli(开启的话就是选择完直接上传，关闭的话当count满足数量时才上传)
 					notli: false,
 					// 图片数量
-					count: 8,
+					count: 20,
 					// 上传图片背景修改 
 					upBgColor: '#E8A400',
 					// 上传icon图标颜色修改(仅限于iconfont)
@@ -341,19 +346,109 @@
 				this.fontcount=len;
 			}
 		},
-		methods: {
+		methods: {		
+			//商品发布页
 			getlocaldata(){
+				uni.showLoading({
+				    title: '加载中',
+					icon:"loa",
+					mask:true
+				});
+				this.uImageTap()
 				var name;
+				uni.getStorage({
+					key:"pname",
+					success:res=>{
+						name=res.data
+					},
+					fail: () => {
+						uni.navigateTo({
+							url:"../../select/select"
+						})
+					}
+				})
 				var token;
-				var price;
-				var images;
-				var description;
-				var address;
+				uni.getStorage({
+					key:"token",
+					success:res=>{
+						token=res.data;
+					},
+					fail:res=>{
+						uni.showToast({
+							title:"请您先登陆"
+						})
+					}
+				})
+				var price=this.price;
+				this.getUpImgInfoOos();
+				var images=this.images;
+				var description=this.p_description;
+				var address="云南昆明";
 				var cid;
-				var type;
+				uni.getStorage({
+					key:"codelist",
+					success:res=>{
+						cid=res.data;
+					},
+					fail: (res) => {
+						uni.navigateTo({
+							url:"../../select/select"						,
+							});
+					}
+				})
+				var type=1;	
 				
-				
-				
+				if(name&&price&&cid&&address&&images&&description&&type&&token)
+				{
+					var data={
+						name,price,cid,address,images,description,type,token
+					};
+					uni.request({
+					    url: 'http://120.79.19.253:10086/Publish', //仅为示例，并非真实接口地址。
+					    data,
+					    success: (res) => {
+					        console.log(res.data);
+							if(res.data.status==1)
+							{
+								  uni.hideLoading();
+								  uni.removeStorage({
+								      key: 'pname',
+								      success: function (res) {
+								          console.log('success');
+								      }
+								  });
+								  uni.removeStorage({
+								      key: 'codelist',
+								      success: function (res) {
+								          console.log('success');
+								      }
+								  });
+								  uni.showToast({
+								  	title:"发布成功.2秒之后发生跳转",
+									icon:"none"
+								  })
+								  setTimeout(()=>{
+									  uni.navigateTo({
+									  	url:"../../../App"
+									  })
+								  },2000);
+							}else{
+								uni.vibrate({
+								    success: function () {
+								        console.log('success');
+								    }
+								});
+								uni.hideLoading();
+								uni.showToast({
+									title:"发布异常",
+									icon:"none"
+								})
+							}
+					    }
+					});
+				}else{
+					  uni.hideLoading();
+				}
 			},
 			toselect(){
 				uni.navigateTo({
@@ -399,7 +494,10 @@
 			},
 			// 获取上传图片阿里云
 			getUpImgInfoOos() {
-				console.log('阿里云转成一维数组:', this.oosArr.join().split(','));
+				console.log(this.oosArr);
+				console.log('阿里云转成一维数组:', (this.oosArr.join().split(',')));
+				this.images=(this.oosArr.join().split(',')).join(";");
+				console.log(this.images);
 			}
 		}
 	}
@@ -466,14 +564,21 @@
 		padding: 2upx 10upx;
 	}
 	.price{
+		font-family: KAITI;
 		display: flex;
 		justify-content: space-between;
-		height: 60upx;
+		// height: 60upx;
 		width: 100%;
+		margin: 10upx 2upx;
 	}
 	.lanzeimage{
-		height: 100%;
+		height: 50upx;
 		width: 60upx;
+	}
+	.morethan{
+		height: 50upx;
+		// width: 60upx;
+		margin: 0upx 20upx;
 	}
 	.warn-btn{
 		width:100%;

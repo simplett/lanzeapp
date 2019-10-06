@@ -1,53 +1,59 @@
 <template>
 	<view>
 		<view class="content" @touchstart="hideEmoji">
-			<scroll-view class="msg-list" scroll-y="true" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop" :scroll-into-view="scrollToView">
-				<view class="row" v-for="(row,index) in msgList" :key="index" :id="'msg'+row.id">
+			<scroll-view  class="msg-list" scroll-y="true" @scrolltolower="init()" :lower-threshold="50" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop"
+			 >
+				<view class="row" v-for="(row,index) of messgedata[1]" :key="index">
+					<!-- :id="'msg'+row.id" -->
 					<!-- 自己发出的消息 -->
-					<view class="my" v-if="row.uid==myuid">
+					<view class="my" v-if="row['user']=='me'">
 						<!-- 自己发的消息框 -->
 						<view class="left">
 							<!-- 当发送消息类型为文本时 -->
-							<view v-if="row.type=='text'" class="bubble">
-								<rich-text :nodes="row.msg.content"></rich-text>
+							<view class="bubble">
+								<rich-text :nodes="row['msg']"></rich-text>
 							</view>
 							<!-- 当发送消息类型为语音时 -->
-							<view v-if="row.type=='voice'" class="bubble voice" @tap="playVoice(row)" :class="playMsgid == row.id?'play':''">
+							<!-- <view v-if="row.type=='voice'" class="bubble voice" @tap="playVoice(row)" :class="playMsgid == row.id?'play':''">
 								<view class="length">{{row.msg.length}}</view>
 								<view class="icon my-voice"></view>
-							</view>
+							</view> -->
 							<!-- 当发送消息类型为图片时 -->
-							<view v-if="row.type=='img'" class="bubble img" @tap="showPic(row)">
+							<!-- <view v-if="row.type=='img'" class="bubble img" @tap="showPic(row)">
 								<image :src="row.msg.url" :style="{'width': row.msg.w+'px','height': row.msg.h+'px'}"></image>
-							</view>
+							</view> -->
 						</view>
 						<!-- 自己的头像 -->
 						<view class="right">
-							<image :src="row.face"></image>
+							<image :src="myface"></image>
 						</view>
 					</view>
 					<!-- 别人发出的消息 -->
-					<view class="other" v-if="row.uid!=myuid">
+					<view class="other" v-if="row.user=='you'">
 						<view class="left">
-							<image :src="row.face"></image>
+							<image :src="youface"></image>
 						</view>
 						<view class="right">
 							<view class="username">
-								<view class="name">{{row.username}}</view> <view class="time">{{row.time}}</view>
+								<view class="name">{{row.username}}</view>
+								<view class="time">{{messgedata[0][index]}}</view>
 							</view>
-							<view v-if="row.type=='text'" class="bubble">
-								<rich-text :nodes="row.msg.content"></rich-text>
+							<view class="bubble">
+								<rich-text :nodes="row['msg']"></rich-text>
 							</view>
-							<view v-if="row.type=='voice'" class="bubble voice" @tap="playVoice(row)" :class="playMsgid == row.id?'play':''">
+							<!-- <view v-if="row.type=='voice'" class="bubble voice" @tap="playVoice(row)" :class="playMsgid == row.id?'play':''">
 								<view class="icon other-voice"></view>
 								<view class="length">{{row.msg.length}}</view>
 							</view>
 							<view v-if="row.type=='img'" class="bubble img" @tap="showPic(row)">
 								<image :src="row.msg.url" :style="{'width': row.msg.w+'px','height': row.msg.h+'px'}"></image>
-							</view>
+							</view> -->
 						</view>
 					</view>
 				</view>
+				<!-- <view id="iambuttom" class="iabuttom">
+					
+				</view> -->
 			</scroll-view>
 		</view>
 		<!-- 表情栏 -->
@@ -74,11 +80,12 @@
 			</view>
 			<!-- #endif -->
 			<view class="textbox">
-				<view class="voice-mode" :class="[isVoice?'':'hidden',recording?'recording':'']" @touchstart="voiceBegin" @touchmove.stop.prevent="voiceIng" @touchend="voiceEnd" @touchcancel="voiceCancel">{{voiceTis}}</view>
-				<view class="text-mode"  :class="isVoice?'hidden':''">
+				<view class="voice-mode" :class="[isVoice?'':'hidden',recording?'recording':'']" @touchstart="voiceBegin"
+				 @touchmove.stop.prevent="voiceIng" @touchend="voiceEnd" @touchcancel="voiceCancel">{{voiceTis}}</view>
+				<view class="text-mode" :class="isVoice?'hidden':''">
 					<view class="box">
 						<textarea auto-height="true" v-model="textMsg" id="textMsg" />
-					</view>
+						</view>
 					<view class="em" @tap="chooseEmoji">
 						<view class="icon biaoqing"></view>
 					</view>
@@ -110,6 +117,10 @@
 	export default {
 		data() {
 			return {
+				youface:'',
+				myface:"",
+				messgedata:[],
+				uid:"",
 				//文字消息
 				textMsg:'',
 				//消息列表
@@ -149,9 +160,14 @@
 				onlineEmoji:{"100.gif":"AbNQgA.gif","101.gif":"AbN3ut.gif","102.gif":"AbNM3d.gif","103.gif":"AbN8DP.gif","104.gif":"AbNljI.gif","105.gif":"AbNtUS.gif","106.gif":"AbNGHf.gif","107.gif":"AbNYE8.gif","108.gif":"AbNaCQ.gif","109.gif":"AbNN4g.gif","110.gif":"AbN0vn.gif","111.gif":"AbNd3j.gif","112.gif":"AbNsbV.gif","113.gif":"AbNwgs.gif","114.gif":"AbNrD0.gif","115.gif":"AbNDuq.gif","116.gif":"AbNg5F.gif","117.gif":"AbN6ET.gif","118.gif":"AbNcUU.gif","119.gif":"AbNRC4.gif","120.gif":"AbNhvR.gif","121.gif":"AbNf29.gif","122.gif":"AbNW8J.gif","123.gif":"AbNob6.gif","124.gif":"AbN5K1.gif","125.gif":"AbNHUO.gif","126.gif":"AbNIDx.gif","127.gif":"AbN7VK.gif","128.gif":"AbNb5D.gif","129.gif":"AbNX2d.gif","130.gif":"AbNLPe.gif","131.gif":"AbNjxA.gif","132.gif":"AbNO8H.gif","133.gif":"AbNxKI.gif","134.gif":"AbNzrt.gif","135.gif":"AbU9Vf.gif","136.gif":"AbUSqP.gif","137.gif":"AbUCa8.gif","138.gif":"AbUkGQ.gif","139.gif":"AbUFPg.gif","140.gif":"AbUPIS.gif","141.gif":"AbUZMn.gif","142.gif":"AbUExs.gif","143.gif":"AbUA2j.gif","144.gif":"AbUMIU.gif","145.gif":"AbUerq.gif","146.gif":"AbUKaT.gif","147.gif":"AbUmq0.gif","148.gif":"AbUuZV.gif","149.gif":"AbUliF.gif","150.gif":"AbU1G4.gif","151.gif":"AbU8z9.gif","152.gif":"AbU3RJ.gif","153.gif":"AbUYs1.gif","154.gif":"AbUJMR.gif","155.gif":"AbUadK.gif","156.gif":"AbUtqx.gif","157.gif":"AbUUZ6.gif","158.gif":"AbUBJe.gif","159.gif":"AbUdIO.gif","160.gif":"AbU0iD.gif","161.gif":"AbUrzd.gif","162.gif":"AbUDRH.gif","163.gif":"AbUyQA.gif","164.gif":"AbUWo8.gif","165.gif":"AbU6sI.gif","166.gif":"AbU2eP.gif","167.gif":"AbUcLt.gif","168.gif":"AbU4Jg.gif","169.gif":"AbURdf.gif","170.gif":"AbUhFS.gif","171.gif":"AbU5WQ.gif","172.gif":"AbULwV.gif","173.gif":"AbUIzj.gif","174.gif":"AbUTQs.gif","175.gif":"AbU7yn.gif","176.gif":"AbUqe0.gif","177.gif":"AbUHLq.gif","178.gif":"AbUOoT.gif","179.gif":"AbUvYF.gif","180.gif":"AbUjFU.gif","181.gif":"AbaSSJ.gif","182.gif":"AbUxW4.gif","183.gif":"AbaCO1.gif","184.gif":"Abapl9.gif","185.gif":"Aba9yR.gif","186.gif":"AbaFw6.gif","187.gif":"Abaiex.gif","188.gif":"AbakTK.gif","189.gif":"AbaZfe.png","190.gif":"AbaEFO.gif","191.gif":"AbaVYD.gif","192.gif":"AbamSH.gif","193.gif":"AbaKOI.gif","194.gif":"Abanld.gif","195.gif":"Abau6A.gif","196.gif":"AbaQmt.gif","197.gif":"Abal0P.gif","198.gif":"AbatpQ.gif","199.gif":"Aba1Tf.gif","200.png":"Aba8k8.png","201.png":"AbaGtS.png","202.png":"AbaJfg.png","203.png":"AbaNlj.png","204.png":"Abawmq.png","205.png":"AbaU6s.png","206.png":"AbaaXn.png","207.png":"Aba000.png","208.png":"AbarkT.png","209.png":"AbastU.png","210.png":"AbaB7V.png","211.png":"Abafn1.png","212.png":"Abacp4.png","213.png":"AbayhF.png","214.png":"Abag1J.png","215.png":"Aba2c9.png","216.png":"AbaRXR.png","217.png":"Aba476.png","218.png":"Abah0x.png","219.png":"Abdg58.png"}
 			};
 		},
-		onLoad(option) {
+		onLoad(options) {
+			var name=options.name;
+			this.uid=options.uid;
+			this.youface=options.youface;
+			this.init();
+			console.log(this.uid,name)
 			uni.setNavigationBarTitle({
-				title: option.name
+				title: name
 			});
 			this.getMsgList();
 			//语音自然播放结束
@@ -169,26 +185,45 @@
 			})
 			// #endif
 		},
+		onShow(){
+			setInterval(()=>{
+				this.init()
+			},1000)
+		},
 		methods:{
-			getMsgList(){
-				// 消息列表
-				let list = [
-					{id:0,uid:0,username:"大黑哥",face:"/static/img/face.jpg",time:"12:56",type:"text",msg:{content:"为什么温度会相差那么大？"}},
-					{id:1,uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg",time:"12:57",type:"text",msg:{content:"这个是有偏差的，两个温度相差十几二十度是很正常的，如果相差五十度，那即是质量问题了。"}},
-					{id:2,uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg",time:"12:59",type:"voice",msg:{url:"/static/voice/3.aac",length:"00:06"}},
-					{id:3,uid:0,username:"大黑哥",face:"/static/img/face.jpg",time:"13:05",type:"voice",msg:{url:"/static/voice/2.mp3",length:"00:06"}},
-					{id:4,uid:0,username:"大黑哥",face:"/static/img/face.jpg",time:"13:05",type:"img",msg:{url:"/static/img/goods/p10.jpg",w:200,h:200}},
-					{id:5,uid:1,username:"售后客服008",face:"/static/img/im/face/face_2.jpg",time:"12:59",type:"img",msg:{url:"/static/img/q.jpg",w:1920,h:1080}}
-				]
-				// 获取消息中的图片,并处理显示尺寸
-				for(let i=0;i<list.length;i++){
-					if(list[i].type=='img'){
-						list[i] = this.setPicSize(list[i]);
-						console.log("list[i]: " + JSON.stringify(list[i]));
-						this.msgImgList.push(list[i].msg.url);
+			init(){
+				uni.getStorage({
+					key:"summsg",
+					success:res=>{
+						console.log(res.data,"这是聊天列表的消息");
+						this.messgedata=res.data[this.uid];
+						console.log(this.messgedata,"000000000000000000");
 					}
-				}
-				this.msgList = list;
+				});
+				//获取用户的的头像
+				uni.getStorage({
+					key:"face",
+					success:res=>{
+						// console.log(res.data[0]);
+						this.myface=res.data[0].substring(4);
+						// return res.data[0];
+						// console.log(this.face.substring(2),"头像")
+					},
+					fail:res=>{
+						this.myface="https://simplett-img.oss-cn-beijing.aliyuncs.com/user_image/userimage.jpg";
+						console.log("采用了默认的头像")
+					}
+				})
+			},
+			//scr-view是区域滚动，不是页面滚动，不能使用
+			
+			getbuttom(){
+				uni.pageScrollTo({
+				    scrollTop: 9999,
+				    duration: 300
+				});
+			},
+			getMsgList(){
 				// 滚动到底部
 				this.$nextTick(function() {
 					this.scrollTop = 9999;
@@ -245,16 +280,80 @@
 			addEmoji(em){
 				this.textMsg+=em.alt;
 			},
+			
 			// 发送文字消息
 			sendText(){
+				
 				this.hideEmoji();
-				if(!this.textMsg){
-					return;
+				if(this.textMsg){
+					var token="";
+					uni.getStorage({
+						key:"token",
+						success:res=>{
+							token=res.data;
+							uni.request({
+							    url: 'http://120.79.19.253:10086/Chat', //仅为示例，并非真实接口地址。
+							    data: {
+							        ruid: this.uid,
+									token,
+									type: "add",
+									message: this.textMsg
+							    },
+							    success: (res) => {
+							        console.log(res.data);
+									if(res.data.status==1)
+									{
+										var mysummsg = {};
+										uni.getStorage({
+											key: "summsg",
+											success: res => {
+												mysummsg = res.data;
+											}
+										});
+										mysummsg[this.uid][0].push("2019-01-01");
+										mysummsg[this.uid][1].push({user:"me",msg:this.textMsg});
+										console.log(mysummsg,"发送后的消息");
+										uni.setStorage({
+											key:"summsg",
+											data:mysummsg,
+											success:res=>{
+												this.textMsg="";
+												this.init();
+												this.getbuttom()
+											},
+											fail:res=>{
+												uni.showToast({
+													title:"数据保存失败",
+													icon:"none"
+												})
+											}
+										})
+										
+									}else
+									{
+										uni.showToast({
+											title:"消息发送失败",
+											icon:"none"
+										})
+									}
+							    }
+							});
+						},
+						fail:res=>{
+							uni.showToast({
+								title:"请登录之后在发送消息吧",
+								icon:"none"
+							})
+						}
+						
+					})
+				}else{
+					uni.showToast({
+						title:"不能发送空的内容",
+						icon:"none"
+					})
 				}
-				let content = this.replaceEmoji(this.textMsg);
-				let msg = {content:content}
-				this.sendMsg(msg,'text');
-				this.textMsg = '';
+				
 			},
 			//替换表情符号为图片
 			replaceEmoji(str){
@@ -625,6 +724,12 @@ page{
 			color: #f09b37;
 		}
 	}
+}
+.iabuttom{
+	height: 10upx;
+	width: 100%;
+	border: 2px solid red;
+	box-sizing: border-box;
 }
 .content{
 	width: 100%;

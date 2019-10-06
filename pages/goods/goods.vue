@@ -34,7 +34,7 @@
 					<view class="icon fenxiang"></view>
 					<view class="text">分享</view>
 				</view>
-				<view class="box" @tap="toChat">
+				<view class="box" @tap="toChat()">
 					<view class="icon kefu"></view>
 					<view class="text">聊聊看</view>
 				</view>
@@ -212,6 +212,7 @@
 		data() {
 			return {
 				details: {},
+				uid: "",
 				pid: "",
 				//控制渐变标题栏的参数
 				beforeHeaderzIndex: 11, //层级
@@ -295,9 +296,117 @@
 			},
 			// 客服
 			toChat() {
-				uni.navigateTo({
-					url: "../msg/chat/chat?name=客服008"
+				var status=true;
+				var uid = this.uid;
+				var summsg = {};
+				uni.getStorage({
+					key: "summsg",
+					success: res => {
+						summsg = res.data;
+						console.log(res.data, "聊天的数据")
+					},
+					fail: res => {
+						console.log("失败");
+						summsg[uid] = [
+							[]
+						];
+						// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@", item[0], item[1], item[2], item);
+						summsg[uid][0] = [];
+						// console.log("&&&&&&&&&&&&&&&&&&&&&", summessage[this.uid][0]);
+						summsg[uid][1] = [];
+						summsg[uid][2] = '';
+						summsg[uid][0].push("2018-01-01");
+						summsg[uid][1].push({
+							"user": "me",
+							"msg": "hello"
+						});
+						summsg[uid][2] = uid;
+						uni.setStorage({
+							key: "summsg",
+							data: summsg,
+							success: res => {
+								console.log("成功")
+								status=false;
+							}
+						})
+					}
 				})
+				
+				if (status) {
+					if (summsg[uid] == undefined) {
+						summsg[uid] = [
+							[]
+						];
+						// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@", item[0], item[1], item[2], item);
+						summsg[uid][0] = [];
+						// console.log("&&&&&&&&&&&&&&&&&&&&&", summessage[this.uid][0]);
+						summsg[uid][1] = [];
+						summsg[uid][2] = '';
+						summsg[uid][0].push("2019-01-01");
+						summsg[uid][1].push({
+							"user": "me",
+							"msg": "hello"
+						});
+						summsg[uid][2] = uid;
+					} else {
+						summsg[uid][0].push("2019-01-01");
+						summsg[uid][1].push({
+							"user": "me",
+							"msg": "hello"
+						});
+						summsg[uid][2] = uid;
+						console.log("发送一次")
+					}
+					uni.setStorage({
+						key: "summsg",
+						data: summsg,
+						success: res => {
+							var data = {};
+							uni.getStorage({
+								key: "token",
+								success: res => {
+									data.token = res.data;
+								},
+								fail: res => {
+									uni.showToast({
+										title: "请您登陆之后在进行此操作",
+										icon: "none"
+									})
+								}
+							});
+							data.ruid = uid;
+							data.type = "add";
+							data.message = "hello!";
+							if (data.ruid && data.token) {
+								uni.request({
+									url: 'http://120.79.19.253:10086/Chat', //仅为示例，并非真实接口地址。
+									data,
+									success: (res) => {
+										console.log(res, "商品详情发起对话");
+										uni.navigateTo({
+											url:'../msg/msg'
+										})
+									}
+									
+								});
+								console.log("消息发送成功过");
+								console.log("发消息函数被触发")
+							}
+					
+					
+							// uni.navigateTo({
+							// 	url: "../msg/chat/chat?name=客服008"
+							// })
+						},
+						fail: res => {
+							uni.showToast({
+								title: "联系客服失败，稍后再试",
+								icon: "none"
+							})
+						}
+					})
+				}
+
 			},
 			todetails() {
 				console.log("请求商品的详细数据");
@@ -323,6 +432,7 @@
 								price,
 								wcount
 							} = data;
+							this.uid = uid;
 							this.goodsData.name = pname;
 							this.goodsData.pid = pid;
 							this.goodsData.price = price;
@@ -446,36 +556,36 @@
 			// 加入购物车
 			joinCart() {
 				var id = this.pid;
-				var img=this.swiperList[0].img;
-				var price=this.goodsData.price;
-				var name=this.goodsData.name;
-				var number=1;
-				
-				var sclist={
+				var img = this.swiperList[0].img;
+				var price = this.goodsData.price;
+				var name = this.goodsData.name;
+				var number = 1;
+
+				var sclist = {
 					id,
 					img,
 					price,
 					name,
 					number,
-					spec:"",
-					selected:false
+					spec: "",
+					selected: false
 				}
 				var shoucanlists = [];
-				var status ="";
-				 uni.getStorage({
+				var status = "";
+				uni.getStorage({
 					key: "shoucanlist",
 					success: res => {
 						console.log(res.data);
-						status=res.data;
+						status = res.data;
 					},
 					fail: res => {
-						status=false;
+						status = false;
 					}
 				});
 				console.log(status, "tttttttttttttttttttttttttttttttttt");
-				if (this.selectSpec !== null) {//判断商品是否选择规格
-					if (status == false) {//商品列表里面没有数据
-						sclist.spec=this.selectSpec;
+				if (this.selectSpec !== null) { //判断商品是否选择规格
+					if (status == false) { //商品列表里面没有数据
+						sclist.spec = this.selectSpec;
 						shoucanlists.push(sclist);
 						console.log("ppppppppppppppppppp", shoucanlists)
 						uni.setStorage({
@@ -492,47 +602,45 @@
 								});
 							}
 						})
-					} else {//商品列表里面有数据
+					} else { //商品列表里面有数据
 						shoucanlists = status;
-						var iSshoucan=false;
-						for(var item of shoucanlists)
-						{
-							if(item.id==id)
-							{
-								iSshoucan=true;
+						var iSshoucan = false;
+						for (var item of shoucanlists) {
+							if (item.id == id) {
+								iSshoucan = true;
 							}
 						}
-						console.log(iSshoucan,"ASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",id);
-						if(!iSshoucan)//判断收藏列表里面是否有该商品
+						console.log(iSshoucan, "ASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", id);
+						if (!iSshoucan) //判断收藏列表里面是否有该商品
 						{
-							sclist.spec=this.selectSpec;
+							sclist.spec = this.selectSpec;
 							shoucanlists.push(sclist);
 							uni.setStorage({
-							key: "shoucanlist",
-							data: shoucanlists,
-							success: res => {
-								uni.showToast({
-									title: "已加入购物车"
-								});
-							},
-							fail: res => {
-								uni.showToast({
-									title: "储存异常，加入购物车失败"
-								});
-							}
-						})
-						}else{
+								key: "shoucanlist",
+								data: shoucanlists,
+								success: res => {
+									uni.showToast({
+										title: "已加入购物车"
+									});
+								},
+								fail: res => {
+									uni.showToast({
+										title: "储存异常，加入购物车失败"
+									});
+								}
+							})
+						} else {
 							uni.showToast({
 								title: "已存在购物车"
 							});
 						}
-						
+
 					}
 
 				} else {
 					uni.showToast({
 						title: "请选择规格之后再加入购物车",
-						icon:"none"
+						icon: "none"
 					});
 				}
 

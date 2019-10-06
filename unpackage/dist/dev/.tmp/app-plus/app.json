@@ -33,7 +33,11 @@
     "pages/goods/ratings/ratings",
     "pages/ali/select/select",
     "pages/tabBar/ali/ali",
-    "pages/ali/codelist/codelist"
+    "pages/ali/codelist/codelist",
+    "pages/tabBar/ali/ali",
+    "pages/ali/codelist/codelist",
+    "pages/user/setting/revise/signature/signature",
+    "pages/user/setting/revise/pay/pay"
   ],
   "window": {
     "navigationBarTextStyle": "black",

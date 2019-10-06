@@ -5,7 +5,5 @@
   "backgroundColorTop": "#f06c7a",
   "navigationBarTextStyle": "white",
   "titleNView": true,
-  "usingComponents": {
-    "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"
-  }
+  "usingComponents": {}
 }

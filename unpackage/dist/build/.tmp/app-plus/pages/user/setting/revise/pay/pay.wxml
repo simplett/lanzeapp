@@ -1,0 +1,1 @@
+<view class="row"><view class="title">是否使用指纹支付</view><view><switch name="switch"></switch></view></view>

@@ -162,11 +162,57 @@
 			this.getmymsg();
 		},
 		methods: {
+			endgetlist(data){
+				var c=[];
+				console.log(data);
+				var i=0;
+				for(var item in data)
+				{
+						c[i]={};
+						c[i]["uid"]=data[item][2];
+						c[i]["time"]=data[item][0][data[item][0].length-1];
+						c[i]["msg"]=data[item][1][data[item][0].length-1]["msg"];
+						c[i]["tisNum"]=1;
+						c[i]["pace"]="https://simplett-img.oss-cn-beijing.aliyuncs.com/user_image/userimage.jpg";
+						c[i]["username"]="simplett";
+						i++;
+				};
+				this.chatList=c;
+				console.log(c,"提取出聊天的列表")
+				for(let item in c)
+				{
+					var uid=c[item].uid;
+					uni.request({
+					    url: 'http://120.79.19.253:10086/Search', //仅为示例，并非真实接口地址。
+					    data: {
+					        uid,
+							type:"user"
+					    },
+					    success: (res) => {
+					        console.log(res.data);
+							c[item]["username"]=res.data.nickname;
+							c[item]["face"]=res.data.image;
+					    }
+					});
+				};
+				this.chatList={};
+				this.chatList=c;
+				console.log(this.chatList,"??????");
+			},
 			changedata() {
 				uni.getStorage({
 					key: "summsg",
 					success: res => {
 						this.SUMMSG = res.data;
+						console.log(res.data);
+						if(res.data)
+						{
+							this.endgetlist(res.data);
+						}
+						
+					},
+					fail:res=>{
+						console.log("失败")
 					}
 				})
 			},
@@ -220,7 +266,7 @@
 												})
 												// this.totime = prev[mymsg.suid][0][(prev[mymsg.suid][0]).length - 1].substr(11, 8);
 												// this.tomsg = prev[mymsg.suid][1][(prev[mymsg.suid][1]).length - 1].msg;
-												console.log(this.tomsg);
+												// console.log(this.tomsg);
 											}
 											return prev;
 										}, {}
@@ -237,7 +283,7 @@
 											summsg[item] = [
 												[]
 											];
-											console.log("@@@@@@@@@@@@@@@@@@@@@@@@@", item[0], item[1], item[2], item);
+											console.log("@@@@@@@@@@@@@@@@@@@@@@@@@", summessage[item][0], summessage[item][1], summessage[item][2], item);
 											summsg[item][0] = [];
 											console.log("&&&&&&&&&&&&&&&&&&&&&", summessage[item][0]);
 											summsg[item][1] = [];
@@ -251,16 +297,19 @@
 											summsg[item][2] = summessage[item][2];
 										}
 									};
+									console.log(summsg,"111111111111111111111111111111111111111111111111111111111111111111")
 									var endmsg=[];
-									for(var item of summsg)
+									for(var i in summsg)
 									{
-										endmsg.push({uid:item[2],time:item[0],msg:item[1]})
+										endmsg.push({uid:summsg[i][2],time:summsg[i][0],msg:summsg[i][1]});
+										console.log(i);
 									}
+									console.log(endmsg,"显示在聊天列表里面的数据")
 									uni.setStorage({
 										key: "summsg",
 										data: summsg,
 										success: res => {
-											console.log(数据插入成功)
+											console.log("数据插入成功")
 										}
 									})
 									console.log(summsg, "###################这是state.summsg############################");
@@ -270,12 +319,12 @@
 							}
 						})
 					}
-				},500)
+				},1000)
 
 			},
 			toChat(chat) {
 				uni.navigateTo({
-					url: "chat/chat?name=" + chat.username
+					url: "chat/chat?uid=" + chat.uid+"&name="+chat.username+"&youface="+chat.face
 				})
 			}
 		}

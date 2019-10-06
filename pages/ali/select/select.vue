@@ -3,21 +3,36 @@
 
 		<view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
-			<view class="title">发布我的商品</view>
+			<view class="title"></view>
 		</view>
 		<view v-if="showHeader" class="place"></view>
-		<view class="header">
+		<!-- <view class="header">
 			<button class="mybuttom" type="warn" size="mini">发布</button>
-		</view>
+		</view> -->
 		<!-- 占位 -->
-		<view v-if="showHeader" class="place"></view>
+		<!-- <view v-if="showHeader" class="place"></view> -->
 		<view class="lanzepadding">
-			<w-picker v-if="selectList.length!=0" mode="selector" :defaultVal="[1]" @confirm="onConfirm" ref="selector"
-			 themeColor="#f00" :selectList="selectList">
-			</w-picker>
+			<view class="">
+				<text>添加标题</text>
+				<textarea class="mypname" v-model="mypname" maxlength="20" placeholder="输入宝贝的标题" />
+				</view>
+				<hr>
+			<view class="uni-title uni-common-pl">选择你的商品分类</view>
+			<view class="uni-list myheight">
+				<view class="uni-list-cell">
+					<view class="uni-list-cell-left">
+						当前选择:
+					</view>
+					<view class="uni-list-cell-db">
+						<picker mode="selector" @change="bindPickerChange" :value="index" :range="selectList" range-key="value">
+							<view class="uni-input">{{selectList[index].value}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
 			<hr>
 			<view class="">
-				<view class="uni-title uni-common-mt uni-common-pl">推荐展示样式</view>
+				<view class="uni-title uni-common-mt uni-common-pl">选择商品的新旧程度</view>
 				<view class="uni-list">
 					<radio-group @change="radioChange">
 						<label class="uni-list-cell uni-list-cell-pd" v-for="(item, index) in items" :key="item.value">
@@ -30,10 +45,8 @@
 				</view>
 			</view>
 			<hr>
-			<view class="">
-				<text>添加标题</text>
-				<textarea class="mypname" v-model="mypname" maxlength="20" placeholder="输入宝贝的标题" />
-				</view>
+			
+				<button @tap="savemydata()" type="primary">确认</button>
 		</view>
 	</view>
 </template>
@@ -43,8 +56,11 @@
 	export default {
 		data() {
 			return {
-				items: [{
-				                 value: '0',
+				codelistid:0,
+				index:0,
+				array:[],
+				items: [
+					{           value: '0',
 				                    name: '全新 '
 				                },
 				                {
@@ -295,7 +311,8 @@
 		},
 		onLoad(options) { //option为object类型，会序列化上个页面传递的参数
 			console.log(options.selectid, "55555555555555");
-			var id=options.selectid;
+			var id=options.selectid-1;
+			this.codelistid=options.selectid;
 			console.log(id,"ididididididididididididdi");;
 				this.getselect(id);
 		},
@@ -303,13 +320,42 @@
 			// this.getWidth();
 			console.log("Onshow");
 		},
-		watch: {
-			p_description() {
-				var len = this.p_description.length;
-				this.fontcount = len;
-			}
-		},
+		// watch: {
+		// 	p_description() {
+		// 		var len = this.p_description.length;
+		// 		this.fontcount = len;
+		// 	}
+		// },
 		methods: {
+			savemydata(){
+				var codelist=this.codelistid*100+this.index;
+				var pname=this.mypname;
+				console.log(pname,codelist);
+				if(codelist)
+				{
+					uni.setStorage({
+						key:"codelist",
+						data:codelist,
+						success:res=>{
+							console.log("存入数据codelist",codelist);
+							if(pname)
+							{
+								uni.setStorage({
+									key:"pname",
+									data:pname,
+									success:res=>{
+										console.log("存入数据pname",pname);
+										uni.navigateBack({
+										    delta: 1
+										});
+										}
+								})
+							}
+						}
+					})
+				}
+			},
+			
 			radioChange: function(evt) {
 			            for (let i = 0; i < this.items.length; i++) {
 			                if (this.items[i].value === evt.target.value) {
@@ -318,15 +364,20 @@
 			                }
 			            }
 			    },
-			selector() {
-				this.$refs.picker.show();
-			},
+			  bindPickerChange: function(e) {
+			            console.log('picker发送选择改变，携带值为', e.target.value)
+			            this.index = e.target.value
+			        },
 			getselect(id) {
 				console.log(id,"111111111111111111111111111111111");
 				var c = this.productlist[id];
-				this.selectList = c;
-				console.log(this.selectList,c, "999999999999999999999999999999");
-
+				console.log(c,"22222222222222222222222222222222222222");
+				this.selectList=c;
+				// for(var item of c)
+				// {
+				// 	this.array.push(item.value);
+				// }
+				// console.log(this.array);
 			},
 			onPageScroll(e) {
 				//兼容iOS端下拉时顶部漂移
@@ -339,6 +390,9 @@
 </script>
 
 <style lang="scss" scoped>
+	.myheight{
+		height: 60px;
+	}
 	.mypname{
 		height: 60px;
 		box-shadow: 0upx 0upx 0upx 0upx gray inset;
@@ -430,4 +484,172 @@
 			width: 360upx;
 		}
 	}
+/* 列表 */
+.uni-list {
+	background-color: #FFFFFF;
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.uni-list:after {
+	position: absolute;
+	z-index: 10;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+}
+.uni-list::before {
+	position: absolute;
+	z-index: 10;
+	right: 0;
+	top: 0;
+	left: 0;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+}
+.uni-list-cell {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.uni-list-cell-hover {
+	background-color: #eee;
+}
+.uni-list-cell-pd {
+	padding: 22upx 30upx;
+}
+.uni-list-cell-left {
+	font-size:28upx;
+	padding: 0 30upx;
+}
+.uni-list-cell-db,
+.uni-list-cell-right {
+	flex: 1;
+}
+.uni-list-cell::after {
+	position: absolute;
+  z-index: 3;
+	right: 0;
+	bottom: 0;
+	left: 30upx;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+}
+.uni-list .uni-list-cell:last-child::after {
+	height: 0upx;
+}
+.uni-list-cell-last.uni-list-cell::after {
+	height: 0upx;
+}
+.uni-list-cell-divider {
+	position: relative;
+	display: flex;
+	color: #999;
+	background-color: #f7f7f7;
+	padding:15upx 20upx;
+}
+.uni-list-cell-divider::before {
+	position: absolute;
+	right: 0;
+	top: 0;
+	left: 0;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+}
+.uni-list-cell-divider::after {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0upx;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc;
+}
+.uni-list-cell-navigate {
+	font-size:30upx;
+	padding: 22upx 30upx;
+	line-height: 48upx;
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	flex: 1;
+	justify-content: space-between;
+	align-items: center;
+}
+.uni-list-cell-navigate {
+	padding-right: 36upx;
+}
+.uni-navigate-badge {
+	padding-right: 50upx;
+}
+.uni-list-cell-navigate.uni-navigate-right:after {
+	font-family: uniicons;
+	content: '\e583';
+	position: absolute;
+	right: 24upx;
+	top: 50%;
+	color: #bbb;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.uni-list-cell-navigate.uni-navigate-bottom:after {
+	font-family: uniicons;
+	content: '\e581';
+	position: absolute;
+	right: 24upx;
+	top: 50%;
+	color: #bbb;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.uni-list-cell-navigate.uni-navigate-bottom.uni-active::after {
+	font-family: uniicons;
+	content: '\e580';
+	position: absolute;
+	right: 24upx;
+	top: 50%;
+	color: #bbb;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.uni-collapse.uni-list-cell {
+	flex-direction: column;
+}
+.uni-list-cell-navigate.uni-active {
+	background: #eee;
+}
+.uni-list.uni-collapse {
+	box-sizing: border-box;
+	height: 0;
+	overflow: hidden;
+}
+.uni-collapse .uni-list-cell {
+	padding-left: 20upx;
+}
+.uni-collapse .uni-list-cell::after {
+	left: 52upx;
+}
+.uni-list.uni-active {
+	height: auto;
+}
 </style>

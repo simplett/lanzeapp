@@ -4,11 +4,12 @@
 		<div class="nav">
 			<text class="icon location">{{ iconLocation }}</text>
 			<text class="location-city-text">{{ city }}</text>
-			<div class="input-box">
-				<input class="input-box-input" placeholder="默认关键字" @focus="inputfocus" />
-				<text class="icon search">{{ iconSearch }}</text>
+			<div class="input-box row">
+				<input style="placeholder-color: #c0c0c0;" class="input-box-input" v-model="kword" placeholder="默认关键字" @focus="inputfocus" />
+				<text @click="toSearch()" class="icon search">{{ iconSearch }}</text>
 			</div>
 			<text @click="toMsg" class="icon tongzhi">{{ iconTongzhi }}</text>
+			<text @click="saoma()" class="icon tongzhi">{{ iconTongzhi }}</text>
 		</div>
 	</div>
 </template>
@@ -16,6 +17,7 @@
 export default {
 	data() {
 		return {
+			kword:"",
 			city: '北京',
 			subNVue: uni.getCurrentSubNVue(),
 			iconSearch: '\ue628',
@@ -36,6 +38,25 @@ export default {
 		this.init();
 	},
 	methods: {
+		saoma(){
+			uni.scanCode({
+			    success: function (res) {
+			        console.log('条码类型：' + res.scanType);
+			        console.log('条码内容：' + res.result);
+					uni.showToast({
+						title:res.scanType,
+						icon:"none"
+					})
+			    }
+			});
+		},
+		toSearch() {
+			//uni.showToast({title: e.name,icon:"none"});
+			// uni.setStorageSync('catName', e.name);
+			uni.navigateTo({
+				url: '../../goods/goods-list/goods-list?kword=' + this.kword
+			});
+		},
 		toMsg() {
 			uni.navigateTo({
 				url: '../../msg/msg'

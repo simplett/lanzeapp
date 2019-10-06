@@ -417,9 +417,6 @@
 				uni.navigateTo({
 					url: '../../goods/goods-list/goods-list?kword=' + this.kword
 				});
-				uni.showToast({
-					title: '建议跳转到新页面做搜索功能'
-				});
 			},
 			//轮播图跳转
 			toSwiper(e) {
