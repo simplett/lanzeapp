@@ -14,151 +14,291 @@
 	</div>
 </template>
 <script>
-export default {
-	data() {
-		return {
-			kword:"",
-			city: '北京',
-			subNVue: uni.getCurrentSubNVue(),
-			iconSearch: '\ue628',
-			iconLocation: '\ue611',
-			iconYuyin: '\ue64e',
-			iconTongzhi: '\ue729',
-			statusBarHeight:20
-		};
-	},
-	beforeCreate() {
-		const domModule = weex.requireModule('dom');
-		domModule.addRule('fontFace', {
-			fontFamily: 'iconfont',
-			src: "url('https://at.alicdn.com/t/font_1087442_fe5vigfwr5m.ttf')"
-		});
-	},
-	mounted() {
-		this.init();
-	},
-	methods: {
-		saoma(){
-			uni.scanCode({
-			    success: function (res) {
-			        console.log('条码类型：' + res.scanType);
-			        console.log('条码内容：' + res.result);
-					uni.showToast({
-						title:res.scanType,
-						icon:"none"
+	export default {
+		data() {
+			return {
+				kword: "",
+				city: '北京',
+				subNVue: uni.getCurrentSubNVue(),
+				iconSearch: '\ue628',
+				iconLocation: '\ue611',
+				iconYuyin: '\ue64e',
+				iconTongzhi: '\ue729',
+				statusBarHeight: 20
+			};
+		},
+		beforeCreate() {
+			const domModule = weex.requireModule('dom');
+			domModule.addRule('fontFace', {
+				fontFamily: 'iconfont',
+				src: "url('https://at.alicdn.com/t/font_1087442_fe5vigfwr5m.ttf')"
+			});
+		},
+		mounted() {
+			this.init();
+		},
+		methods: {
+			toChat(myuid) {
+				var status = true;
+				var uid = myuid;
+				var summsg = {};
+				uni.getStorage({
+					key: "summsg",
+					success: res => {
+						summsg = res.data;
+						console.log(res.data, "聊天的数据")
+					},
+					fail: res => {
+						console.log("失败");
+						summsg[uid] = [
+							[]
+						];
+						// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@", item[0], item[1], item[2], item);
+						summsg[uid][0] = [];
+						// console.log("&&&&&&&&&&&&&&&&&&&&&", summessage[this.uid][0]);
+						summsg[uid][1] = [];
+						summsg[uid][2] = '';
+						summsg[uid][0].push("2018-01-01");
+						summsg[uid][1].push({
+							"user": "me",
+							"msg": "hello"
+						});
+						summsg[uid][2] = uid;
+						uni.setStorage({
+							key: "summsg",
+							data: summsg,
+							success: res => {
+								console.log("成功")
+								status = false;
+							}
+						})
+					}
+				})
+
+				if (status) {
+					if (summsg[uid] == undefined) {
+						summsg[uid] = [
+							[]
+						];
+						// console.log("@@@@@@@@@@@@@@@@@@@@@@@@@", item[0], item[1], item[2], item);
+						summsg[uid][0] = [];
+						// console.log("&&&&&&&&&&&&&&&&&&&&&", summessage[this.uid][0]);
+						summsg[uid][1] = [];
+						summsg[uid][2] = '';
+						summsg[uid][0].push("2019-01-01");
+						summsg[uid][1].push({
+							"user": "me",
+							"msg": "hello"
+						});
+						summsg[uid][2] = uid;
+					} else {
+						summsg[uid][0].push("2019-01-01");
+						summsg[uid][1].push({
+							"user": "me",
+							"msg": "hello"
+						});
+						summsg[uid][2] = uid;
+						console.log("发送一次")
+					}
+					uni.setStorage({
+						key: "summsg",
+						data: summsg,
+						success: res => {
+							var data = {};
+							uni.getStorage({
+								key: "token",
+								success: res => {
+									data.token = res.data;
+								},
+								fail: res => {
+									uni.showToast({
+										title: "请您登陆之后在进行此操作",
+										icon: "none"
+									})
+								}
+							});
+							data.ruid = uid;
+							data.type = "add";
+							data.message = "hello!";
+							if (data.ruid && data.token) {
+								uni.request({
+									url: 'http://120.79.19.253:10086/Chat', //仅为示例，并非真实接口地址。
+									data,
+									success: (res) => {
+										console.log(res, "商品详情发起对话");
+										uni.navigateTo({
+											url: '../msg/msg'
+										})
+									}
+
+								});
+								console.log("消息发送成功过");
+								console.log("发消息函数被触发")
+							}
+
+
+							// uni.navigateTo({
+							// 	url: "../msg/chat/chat?name=客服008"
+							// })
+						},
+						fail: res => {
+							uni.showToast({
+								title: "联系商家失败，稍后再试",
+								icon: "none"
+							})
+						}
 					})
-			    }
-			});
-		},
-		toSearch() {
-			//uni.showToast({title: e.name,icon:"none"});
-			// uni.setStorageSync('catName', e.name);
-			uni.navigateTo({
-				url: '../../goods/goods-list/goods-list?kword=' + this.kword
-			});
-		},
-		toMsg() {
-			uni.navigateTo({
-				url: '../../msg/msg'
-			});
-		},
-		init() {
-			uni.getSystemInfo({
-				success: (res)=>{
-					this.statusBarHeight = res.statusBarHeight;
 				}
-			});
-			this.nVueTitle = uni.getCurrentSubNVue();
-			this.nVueTitle.onMessage(res => {
-				let type = res.data.type;
-				switch (type) {
-					case 'location':
-						this.setCity(res.data.city);
-						break;
-					default:
-						break;
-				}
-			});
-		},
-		setCity(city) {
-			this.city = city;
-		},
-		inputfocus() {
-			this.subNVue.postMessage({
-				type: 'focus'
-			});
+
+			},
+			saoma() {
+				uni.scanCode({
+					success: function(res) {
+						console.log('条码类型：' + res.scanType);
+						console.log('条码内容：' + res.result);
+						var saomadata = JSON.parse(res.result);
+						if (saomadata.type == "user") {
+							this.toChat(saomadata.uid);
+						}else if(saomadata.type=="product")
+						{
+							this.toGoods(saomadata.pid);
+						}else{
+							uni.showToast({
+								title:"很抱歉，只能扫描蓝沢官方的二维码",
+								icon:"none"
+							})
+						}
+					}
+				});
+			},
+			//商品跳转
+			toGoods(pid) {
+				// uni.showToast({
+				// 	title: '商品' + e.goods_id,
+				// 	icon: "none"
+				// });
+				uni.navigateTo({
+					url: '../goods?pid=' + pid
+				});
+			},
+			toSearch() {
+				//uni.showToast({title: e.name,icon:"none"});
+				// uni.setStorageSync('catName', e.name);
+				uni.navigateTo({
+					url: '../../goods/goods-list/goods-list?kword=' + this.kword
+				});
+			},
+			toMsg() {
+				uni.navigateTo({
+					url: '../../msg/msg'
+				});
+			},
+			init() {
+				uni.getSystemInfo({
+					success: (res) => {
+						this.statusBarHeight = res.statusBarHeight;
+					}
+				});
+				this.nVueTitle = uni.getCurrentSubNVue();
+				this.nVueTitle.onMessage(res => {
+					let type = res.data.type;
+					switch (type) {
+						case 'location':
+							this.setCity(res.data.city);
+							break;
+						default:
+							break;
+					}
+				});
+			},
+			setCity(city) {
+				this.city = city;
+			},
+			inputfocus() {
+				this.subNVue.postMessage({
+					type: 'focus'
+				});
+			}
 		}
-	}
-};
+	};
 </script>
 <style>
-.icon {
-	font-family: iconfont;
-	font-size: 42px;
-}
-.content {
-	background-color: #ffffff;
-	flex-direction: column;
-}
-.status-bar {
-	flex: 1;
-}
+	.icon {
+		font-family: iconfont;
+		font-size: 42px;
+	}
 
-.nav {
-	width: 750px;
-	padding: 0 20px;
-	position: relative;
-	height: 88px;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-}
-.location,
-.yuyin,
-.tongzhi {
-	width: 60px;
-	height: 88px;
-	text-align: center;
-	line-height: 88px;
-}
-.location {
-	color: #ffc50a;
-}
-.location-city-text {
-	width: 60px;
-	height: 88px;
-	line-height: 88px;
-	font-size: 26px;
-	color: #000;
-}
+	.content {
+		background-color: #ffffff;
+		flex-direction: column;
+	}
 
-.yuyin {
-	color: #000;
-}
-.tongzhi {
-	color: #000;
-}
-.input-box {
-	width: 465px;
-	margin-left: 5px;
-	height: 60upx;
-	border-radius: 60px;
-	background-color: #f5f5f5;
-	position: relative;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-}
-.input-box-input {
-	width: 330px;
-	height: 60px;
-	font-size: 28px;
-	margin-left: 30px;
-}
-.search {
-	width: 60px;
-	font-size: 34px;
-	padding-right: 30px;
-	color: #c0c0c0;
-}
+	.status-bar {
+		flex: 1;
+	}
+
+	.nav {
+		width: 750px;
+		padding: 0 20px;
+		position: relative;
+		height: 88px;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.location,
+	.yuyin,
+	.tongzhi {
+		width: 60px;
+		height: 88px;
+		text-align: center;
+		line-height: 88px;
+	}
+
+	.location {
+		color: #ffc50a;
+	}
+
+	.location-city-text {
+		width: 60px;
+		height: 88px;
+		line-height: 88px;
+		font-size: 26px;
+		color: #000;
+	}
+
+	.yuyin {
+		color: #000;
+	}
+
+	.tongzhi {
+		color: #000;
+	}
+
+	.input-box {
+		width: 465px;
+		margin-left: 5px;
+		height: 60upx;
+		border-radius: 60px;
+		background-color: #f5f5f5;
+		position: relative;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.input-box-input {
+		width: 330px;
+		height: 60px;
+		font-size: 28px;
+		margin-left: 30px;
+	}
+
+	.search {
+		width: 60px;
+		font-size: 34px;
+		padding-right: 30px;
+		color: #c0c0c0;
+	}
 </style>

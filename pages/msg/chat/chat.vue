@@ -117,6 +117,7 @@
 	export default {
 		data() {
 			return {
+				jli:500,
 				youface:'',
 				myface:"",
 				messgedata:[],
@@ -219,7 +220,7 @@
 			
 			getbuttom(){
 				uni.pageScrollTo({
-				    scrollTop: 9999,
+				    scrollTop: this.jli,
 				    duration: 300
 				});
 			},
@@ -319,6 +320,7 @@
 											success:res=>{
 												this.textMsg="";
 												this.init();
+												this.jli=this.jli+50;	
 												this.getbuttom()
 											},
 											fail:res=>{

@@ -1108,12 +1108,10 @@ function gz$gwx_5(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_5)return __WXML_GLOBAL__.ops_cached.$gwx_5
 __WXML_GLOBAL__.ops_cached.$gwx_5=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'lanzepadding data-v-707c8e21'])
-Z([[7],[3,'showHeader']])
 Z([3,'__l'])
 Z([3,'__e'])
-Z(z[3])
-Z([3,'data-v-707c8e21 vue-ref'])
+Z(z[1])
+Z([3,'data-v-f3289834 vue-ref'])
 Z([[4],[[5],[[5],[[4],[[5],[[5],[1,'^onUpImg']],[[4],[[5],[[4],[[5],[1,'upOosData']]]]]]]],[[4],[[5],[[5],[1,'^onImgDel']],[[4],[[5],[[4],[[5],[1,'delImgInfo']]]]]]]]])
 Z([3,'uImage'])
 Z([[7],[3,'upImgOos']])
@@ -1124,22 +1122,10 @@ function gz$gwx_6(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_6)return __WXML_GLOBAL__.ops_cached.$gwx_6
 __WXML_GLOBAL__.ops_cached.$gwx_6=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'data-v-a5ce39ec'])
+Z([3,'data-v-45acd5ff'])
 Z([[7],[3,'showHeader']])
 Z(z[1])
 Z(z[1])
-Z(z[1])
-Z([[2,'!='],[[6],[[7],[3,'selectList']],[3,'length']],[1,0]])
-Z([3,'__l'])
-Z([3,'__e'])
-Z([3,'data-v-a5ce39ec vue-ref'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'^confirm']],[[4],[[5],[[4],[[5],[1,'onConfirm']]]]]]]]])
-Z([3,'selector'])
-Z([[4],[[5],[1,1]]])
-Z(z[10])
-Z([[7],[3,'selectList']])
-Z([3,'#f00'])
-Z([3,'1'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_6);return __WXML_GLOBAL__.ops_cached.$gwx_6
 }
 function gz$gwx_7(){
@@ -1530,15 +1516,7 @@ e_[x[3]]={f:m3,j:[],i:[],ti:[],ic:[]}
 d_[x[4]]={}
 var m4=function(e,s,r,gg){
 var z=gz$gwx_5()
-var cT=_n('view')
-_rz(z,cT,'class',0,e,s,gg)
-var hU=_v()
-_(cT,hU)
-if(_oz(z,1,e,s,gg)){hU.wxVkey=1
-}
-var oV=_mz(z,'sunui-upoos',['bind:__l',2,'bind:onImgDel',1,'bind:onUpImg',2,'class',3,'data-event-opts',4,'data-ref',5,'upImgConfig',6,'vueId',7],[],e,s,gg)
-_(cT,oV)
-hU.wxXCkey=1
+var cT=_mz(z,'sunui-upoos',['bind:__l',0,'bind:onImgDel',1,'bind:onUpImg',1,'class',2,'data-event-opts',3,'data-ref',4,'upImgConfig',5,'vueId',6],[],e,s,gg)
 _(r,cT)
 return r
 }
@@ -1546,105 +1524,92 @@ e_[x[4]]={f:m4,j:[],i:[],ti:[],ic:[]}
 d_[x[5]]={}
 var m5=function(e,s,r,gg){
 var z=gz$gwx_6()
-var oX=_n('view')
-_rz(z,oX,'class',0,e,s,gg)
+var oV=_n('view')
+_rz(z,oV,'class',0,e,s,gg)
+var cW=_v()
+_(oV,cW)
+if(_oz(z,1,e,s,gg)){cW.wxVkey=1
+}
+var oX=_v()
+_(oV,oX)
+if(_oz(z,2,e,s,gg)){oX.wxVkey=1
+}
 var lY=_v()
-_(oX,lY)
-if(_oz(z,1,e,s,gg)){lY.wxVkey=1
+_(oV,lY)
+if(_oz(z,3,e,s,gg)){lY.wxVkey=1
 }
-var aZ=_v()
-_(oX,aZ)
-if(_oz(z,2,e,s,gg)){aZ.wxVkey=1
-}
-var t1=_v()
-_(oX,t1)
-if(_oz(z,3,e,s,gg)){t1.wxVkey=1
-}
-var e2=_v()
-_(oX,e2)
-if(_oz(z,4,e,s,gg)){e2.wxVkey=1
-}
-var b3=_v()
-_(oX,b3)
-if(_oz(z,5,e,s,gg)){b3.wxVkey=1
-var o4=_mz(z,'w-picker',['bind:__l',6,'bind:confirm',1,'class',2,'data-event-opts',3,'data-ref',4,'defaultVal',5,'mode',6,'selectList',7,'themeColor',8,'vueId',9],[],e,s,gg)
-_(b3,o4)
-}
+cW.wxXCkey=1
+oX.wxXCkey=1
 lY.wxXCkey=1
-aZ.wxXCkey=1
-t1.wxXCkey=1
-e2.wxXCkey=1
-b3.wxXCkey=1
-b3.wxXCkey=3
-_(r,oX)
+_(r,oV)
 return r
 }
 e_[x[5]]={f:m5,j:[],i:[],ti:[],ic:[]}
 d_[x[6]]={}
 var m6=function(e,s,r,gg){
 var z=gz$gwx_7()
-var o6=_v()
-_(r,o6)
-var f7=function(h9,c8,o0,gg){
-var oBB=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],h9,c8,gg)
-var lCB=_v()
-_(oBB,lCB)
-if(_oz(z,7,h9,c8,gg)){lCB.wxVkey=1
+var t1=_v()
+_(r,t1)
+var e2=function(o4,b3,x5,gg){
+var f7=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],o4,b3,gg)
+var c8=_v()
+_(f7,c8)
+if(_oz(z,7,o4,b3,gg)){c8.wxVkey=1
 }
-lCB.wxXCkey=1
-_(o0,oBB)
-return o0
+c8.wxXCkey=1
+_(x5,f7)
+return x5
 }
-o6.wxXCkey=2
-_2z(z,2,f7,e,s,gg,o6,'target','index','index')
+t1.wxXCkey=2
+_2z(z,2,e2,e,s,gg,t1,'target','index','index')
 return r
 }
 e_[x[6]]={f:m6,j:[],i:[],ti:[],ic:[]}
 d_[x[7]]={}
 var m7=function(e,s,r,gg){
 var z=gz$gwx_8()
-var tEB=_n('view')
-var eFB=_n('view')
-_rz(z,eFB,'class',0,e,s,gg)
-var bGB=_v()
-_(eFB,bGB)
-if(_oz(z,1,e,s,gg)){bGB.wxVkey=1
+var o0=_n('view')
+var cAB=_n('view')
+_rz(z,cAB,'class',0,e,s,gg)
+var oBB=_v()
+_(cAB,oBB)
+if(_oz(z,1,e,s,gg)){oBB.wxVkey=1
 }
-var oHB=_v()
-_(eFB,oHB)
-if(_oz(z,2,e,s,gg)){oHB.wxVkey=1
+var lCB=_v()
+_(cAB,lCB)
+if(_oz(z,2,e,s,gg)){lCB.wxVkey=1
 }
-bGB.wxXCkey=1
-oHB.wxXCkey=1
+oBB.wxXCkey=1
+lCB.wxXCkey=1
+_(o0,cAB)
+var aDB=_mz(z,'view',['bindtap',3,'catchtouchmove',1,'class',2,'data-event-opts',3],[],e,s,gg)
+var tEB=_mz(z,'view',['catchtap',7,'class',1,'data-event-opts',2],[],e,s,gg)
+var eFB=_v()
 _(tEB,eFB)
-var xIB=_mz(z,'view',['bindtap',3,'catchtouchmove',1,'class',2,'data-event-opts',3],[],e,s,gg)
-var oJB=_mz(z,'view',['catchtap',7,'class',1,'data-event-opts',2],[],e,s,gg)
-var fKB=_v()
-_(oJB,fKB)
-if(_oz(z,10,e,s,gg)){fKB.wxVkey=1
+if(_oz(z,10,e,s,gg)){eFB.wxVkey=1
 }
-fKB.wxXCkey=1
-_(xIB,oJB)
-_(tEB,xIB)
-_(r,tEB)
+eFB.wxXCkey=1
+_(aDB,tEB)
+_(o0,aDB)
+_(r,o0)
 return r
 }
 e_[x[7]]={f:m7,j:[],i:[],ti:[],ic:[]}
 d_[x[8]]={}
 var m8=function(e,s,r,gg){
 var z=gz$gwx_9()
-var hMB=_v()
-_(r,hMB)
-var oNB=function(oPB,cOB,lQB,gg){
-var tSB=_v()
-_(lQB,tSB)
-if(_oz(z,4,oPB,cOB,gg)){tSB.wxVkey=1
+var oHB=_v()
+_(r,oHB)
+var xIB=function(fKB,oJB,cLB,gg){
+var oNB=_v()
+_(cLB,oNB)
+if(_oz(z,4,fKB,oJB,gg)){oNB.wxVkey=1
 }
-tSB.wxXCkey=1
-return lQB
+oNB.wxXCkey=1
+return cLB
 }
-hMB.wxXCkey=2
-_2z(z,2,oNB,e,s,gg,hMB,'row','Rindex','Rindex')
+oHB.wxXCkey=2
+_2z(z,2,xIB,e,s,gg,oHB,'row','Rindex','Rindex')
 return r
 }
 e_[x[8]]={f:m8,j:[],i:[],ti:[],ic:[]}
@@ -1663,29 +1628,29 @@ e_[x[10]]={f:m10,j:[],i:[],ti:[],ic:[]}
 d_[x[11]]={}
 var m11=function(e,s,r,gg){
 var z=gz$gwx_12()
-var xWB=_v()
-_(r,xWB)
-if(_oz(z,0,e,s,gg)){xWB.wxVkey=1
-var oXB=_n('view')
-_rz(z,oXB,'class',1,e,s,gg)
-var fYB=_v()
-_(oXB,fYB)
-if(_oz(z,2,e,s,gg)){fYB.wxVkey=1
+var aRB=_v()
+_(r,aRB)
+if(_oz(z,0,e,s,gg)){aRB.wxVkey=1
+var tSB=_n('view')
+_rz(z,tSB,'class',1,e,s,gg)
+var eTB=_v()
+_(tSB,eTB)
+if(_oz(z,2,e,s,gg)){eTB.wxVkey=1
 }
-var cZB=_v()
-_(oXB,cZB)
-if(_oz(z,3,e,s,gg)){cZB.wxVkey=1
+var bUB=_v()
+_(tSB,bUB)
+if(_oz(z,3,e,s,gg)){bUB.wxVkey=1
 }
-var h1B=_v()
-_(oXB,h1B)
-if(_oz(z,4,e,s,gg)){h1B.wxVkey=1
+var oVB=_v()
+_(tSB,oVB)
+if(_oz(z,4,e,s,gg)){oVB.wxVkey=1
 }
-fYB.wxXCkey=1
-cZB.wxXCkey=1
-h1B.wxXCkey=1
-_(xWB,oXB)
+eTB.wxXCkey=1
+bUB.wxXCkey=1
+oVB.wxXCkey=1
+_(aRB,tSB)
 }
-xWB.wxXCkey=1
+aRB.wxXCkey=1
 return r
 }
 e_[x[11]]={f:m11,j:[],i:[],ti:[],ic:[]}
@@ -1704,50 +1669,50 @@ e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
 d_[x[14]]={}
 var m14=function(e,s,r,gg){
 var z=gz$gwx_15()
-var l5B=_mz(z,'view',['bindtouchstart',0,'class',1,'data-event-opts',1],[],e,s,gg)
-var a6B=_mz(z,'scroll-view',['bindscrolltolower',3,'class',1,'data-event-opts',2,'lowerThreshold',3,'scrollTop',4,'scrollWithAnimation',5,'scrollY',6],[],e,s,gg)
-var t7B=_v()
-_(a6B,t7B)
-var e8B=function(o0B,b9B,xAC,gg){
-var fCC=_n('view')
-_rz(z,fCC,'class',14,o0B,b9B,gg)
-var cDC=_v()
-_(fCC,cDC)
-if(_oz(z,15,o0B,b9B,gg)){cDC.wxVkey=1
+var cZB=_mz(z,'view',['bindtouchstart',0,'class',1,'data-event-opts',1],[],e,s,gg)
+var h1B=_mz(z,'scroll-view',['bindscrolltolower',3,'class',1,'data-event-opts',2,'lowerThreshold',3,'scrollTop',4,'scrollWithAnimation',5,'scrollY',6],[],e,s,gg)
+var o2B=_v()
+_(h1B,o2B)
+var c3B=function(l5B,o4B,a6B,gg){
+var e8B=_n('view')
+_rz(z,e8B,'class',14,l5B,o4B,gg)
+var b9B=_v()
+_(e8B,b9B)
+if(_oz(z,15,l5B,o4B,gg)){b9B.wxVkey=1
 }
-var hEC=_v()
-_(fCC,hEC)
-if(_oz(z,16,o0B,b9B,gg)){hEC.wxVkey=1
+var o0B=_v()
+_(e8B,o0B)
+if(_oz(z,16,l5B,o4B,gg)){o0B.wxVkey=1
 }
-cDC.wxXCkey=1
-hEC.wxXCkey=1
-_(xAC,fCC)
-return xAC
+b9B.wxXCkey=1
+o0B.wxXCkey=1
+_(a6B,e8B)
+return a6B
 }
-t7B.wxXCkey=2
-_2z(z,12,e8B,e,s,gg,t7B,'row','index','index')
-_(l5B,a6B)
-_(r,l5B)
+o2B.wxXCkey=2
+_2z(z,12,c3B,e,s,gg,o2B,'row','index','index')
+_(cZB,h1B)
+_(r,cZB)
 return r
 }
 e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
-var cGC=_v()
-_(r,cGC)
-var oHC=function(aJC,lIC,tKC,gg){
-var bMC=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],aJC,lIC,gg)
-var oNC=_v()
-_(bMC,oNC)
-if(_oz(z,7,aJC,lIC,gg)){oNC.wxVkey=1
+var oBC=_v()
+_(r,oBC)
+var fCC=function(hEC,cDC,oFC,gg){
+var oHC=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],hEC,cDC,gg)
+var lIC=_v()
+_(oHC,lIC)
+if(_oz(z,7,hEC,cDC,gg)){lIC.wxVkey=1
 }
-oNC.wxXCkey=1
-_(tKC,bMC)
-return tKC
+lIC.wxXCkey=1
+_(oFC,oHC)
+return oFC
 }
-cGC.wxXCkey=2
-_2z(z,2,oHC,e,s,gg,cGC,'chat','index','index')
+oBC.wxXCkey=2
+_2z(z,2,fCC,e,s,gg,oBC,'chat','index','index')
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
@@ -1772,57 +1737,57 @@ e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
-var hSC=_n('view')
-_rz(z,hSC,'class',0,e,s,gg)
-var oTC=_v()
-_(hSC,oTC)
-if(_oz(z,1,e,s,gg)){oTC.wxVkey=1
+var oNC=_n('view')
+_rz(z,oNC,'class',0,e,s,gg)
+var xOC=_v()
+_(oNC,xOC)
+if(_oz(z,1,e,s,gg)){xOC.wxVkey=1
 }
-var cUC=_v()
-_(hSC,cUC)
-if(_oz(z,2,e,s,gg)){cUC.wxVkey=1
+var oPC=_v()
+_(oNC,oPC)
+if(_oz(z,2,e,s,gg)){oPC.wxVkey=1
 }
-var oVC=_v()
-_(hSC,oVC)
-if(_oz(z,3,e,s,gg)){oVC.wxVkey=1
+var fQC=_v()
+_(oNC,fQC)
+if(_oz(z,3,e,s,gg)){fQC.wxVkey=1
 }
-oTC.wxXCkey=1
-cUC.wxXCkey=1
-oVC.wxXCkey=1
-_(r,hSC)
+xOC.wxXCkey=1
+oPC.wxXCkey=1
+fQC.wxXCkey=1
+_(r,oNC)
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
 d_[x[20]]={}
 var m20=function(e,s,r,gg){
 var z=gz$gwx_21()
-var aXC=_n('view')
-var tYC=_v()
-_(aXC,tYC)
-if(_oz(z,0,e,s,gg)){tYC.wxVkey=1
+var hSC=_n('view')
+var oTC=_v()
+_(hSC,oTC)
+if(_oz(z,0,e,s,gg)){oTC.wxVkey=1
 }
-var eZC=_v()
-_(aXC,eZC)
-if(_oz(z,1,e,s,gg)){eZC.wxVkey=1
+var cUC=_v()
+_(hSC,cUC)
+if(_oz(z,1,e,s,gg)){cUC.wxVkey=1
 }
-var b1C=_v()
-_(aXC,b1C)
-if(_oz(z,2,e,s,gg)){b1C.wxVkey=1
+var oVC=_v()
+_(hSC,oVC)
+if(_oz(z,2,e,s,gg)){oVC.wxVkey=1
 }
-var o2C=_v()
-_(aXC,o2C)
-if(_oz(z,3,e,s,gg)){o2C.wxVkey=1
+var lWC=_v()
+_(hSC,lWC)
+if(_oz(z,3,e,s,gg)){lWC.wxVkey=1
 }
-var x3C=_v()
-_(aXC,x3C)
-if(_oz(z,4,e,s,gg)){x3C.wxVkey=1
+var aXC=_v()
+_(hSC,aXC)
+if(_oz(z,4,e,s,gg)){aXC.wxVkey=1
 }
-tYC.wxXCkey=1
-eZC.wxXCkey=1
-b1C.wxXCkey=1
-o2C.wxXCkey=1
-x3C.wxXCkey=1
-_(r,aXC)
+oTC.wxXCkey=1
+cUC.wxXCkey=1
+oVC.wxXCkey=1
+lWC.wxXCkey=1
+aXC.wxXCkey=1
+_(r,hSC)
 return r
 }
 e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
@@ -1835,101 +1800,126 @@ e_[x[21]]={f:m21,j:[],i:[],ti:[],ic:[]}
 d_[x[22]]={}
 var m22=function(e,s,r,gg){
 var z=gz$gwx_23()
-var c6C=_n('view')
-var h7C=_v()
-_(c6C,h7C)
-if(_oz(z,0,e,s,gg)){h7C.wxVkey=1
+var b1C=_n('view')
+var o2C=_v()
+_(b1C,o2C)
+if(_oz(z,0,e,s,gg)){o2C.wxVkey=1
 }
-var o8C=_v()
-_(c6C,o8C)
-if(_oz(z,1,e,s,gg)){o8C.wxVkey=1
+var x3C=_v()
+_(b1C,x3C)
+if(_oz(z,1,e,s,gg)){x3C.wxVkey=1
 }
-var c9C=_v()
-_(c6C,c9C)
-if(_oz(z,2,e,s,gg)){c9C.wxVkey=1
+var o4C=_v()
+_(b1C,o4C)
+if(_oz(z,2,e,s,gg)){o4C.wxVkey=1
 }
-var o0C=_v()
-_(c6C,o0C)
-var lAD=function(tCD,aBD,eDD,gg){
-var oFD=_mz(z,'view',['bindtap',7,'class',1,'data-event-opts',2],[],tCD,aBD,gg)
-var xGD=_v()
-_(oFD,xGD)
-if(_oz(z,10,tCD,aBD,gg)){xGD.wxVkey=1
+var f5C=_v()
+_(b1C,f5C)
+var c6C=function(o8C,h7C,c9C,gg){
+var lAD=_mz(z,'view',['bindtap',7,'class',1,'data-event-opts',2],[],o8C,h7C,gg)
+var aBD=_v()
+_(lAD,aBD)
+if(_oz(z,10,o8C,h7C,gg)){aBD.wxVkey=1
 }
-xGD.wxXCkey=1
-_(eDD,oFD)
-return eDD
+aBD.wxXCkey=1
+_(c9C,lAD)
+return c9C
 }
-o0C.wxXCkey=2
-_2z(z,5,lAD,e,s,gg,o0C,'row','index','index')
-h7C.wxXCkey=1
-o8C.wxXCkey=1
-c9C.wxXCkey=1
-_(r,c6C)
+f5C.wxXCkey=2
+_2z(z,5,c6C,e,s,gg,f5C,'row','index','index')
+o2C.wxXCkey=1
+x3C.wxXCkey=1
+o4C.wxXCkey=1
+_(r,b1C)
 return r
 }
 e_[x[22]]={f:m22,j:[],i:[],ti:[],ic:[]}
 d_[x[23]]={}
 var m23=function(e,s,r,gg){
 var z=gz$gwx_24()
-var fID=_n('view')
-var cJD=_v()
-_(fID,cJD)
-if(_oz(z,0,e,s,gg)){cJD.wxVkey=1
+var eDD=_n('view')
+var bED=_v()
+_(eDD,bED)
+if(_oz(z,0,e,s,gg)){bED.wxVkey=1
 }
-var hKD=_v()
-_(fID,hKD)
-if(_oz(z,1,e,s,gg)){hKD.wxVkey=1
+var oFD=_v()
+_(eDD,oFD)
+if(_oz(z,1,e,s,gg)){oFD.wxVkey=1
 }
-var oLD=_v()
-_(fID,oLD)
-if(_oz(z,2,e,s,gg)){oLD.wxVkey=1
+var xGD=_v()
+_(eDD,xGD)
+if(_oz(z,2,e,s,gg)){xGD.wxVkey=1
 }
-cJD.wxXCkey=1
-hKD.wxXCkey=1
-oLD.wxXCkey=1
-_(r,fID)
+bED.wxXCkey=1
+oFD.wxXCkey=1
+xGD.wxXCkey=1
+_(r,eDD)
 return r
 }
 e_[x[23]]={f:m23,j:[],i:[],ti:[],ic:[]}
 d_[x[24]]={}
 var m24=function(e,s,r,gg){
 var z=gz$gwx_25()
-var oND=_v()
-_(r,oND)
-var lOD=function(tQD,aPD,eRD,gg){
-var oTD=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],tQD,aPD,gg)
-var xUD=_v()
-_(oTD,xUD)
-if(_oz(z,7,tQD,aPD,gg)){xUD.wxVkey=1
+var fID=_v()
+_(r,fID)
+var cJD=function(oLD,hKD,cMD,gg){
+var lOD=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],oLD,hKD,gg)
+var aPD=_v()
+_(lOD,aPD)
+if(_oz(z,7,oLD,hKD,gg)){aPD.wxVkey=1
 }
-xUD.wxXCkey=1
-_(eRD,oTD)
-return eRD
+aPD.wxXCkey=1
+_(cMD,lOD)
+return cMD
 }
-oND.wxXCkey=2
-_2z(z,2,lOD,e,s,gg,oND,'row','index','index')
+fID.wxXCkey=2
+_2z(z,2,cJD,e,s,gg,fID,'row','index','index')
 return r
 }
 e_[x[24]]={f:m24,j:[],i:[],ti:[],ic:[]}
 d_[x[25]]={}
 var m25=function(e,s,r,gg){
 var z=gz$gwx_26()
-var fWD=_n('view')
-var cXD=_v()
-_(fWD,cXD)
-if(_oz(z,0,e,s,gg)){cXD.wxVkey=1
+var eRD=_n('view')
+var bSD=_v()
+_(eRD,bSD)
+if(_oz(z,0,e,s,gg)){bSD.wxVkey=1
 }
-var hYD=_mz(z,'mpvue-city-picker',['bind:__l',1,'bind:onCancel',1,'bind:onConfirm',2,'class',3,'data-event-opts',4,'data-ref',5,'pickerValueDefault',6,'themeColor',7,'vueId',8],[],e,s,gg)
-_(fWD,hYD)
-cXD.wxXCkey=1
-_(r,fWD)
+var oTD=_mz(z,'mpvue-city-picker',['bind:__l',1,'bind:onCancel',1,'bind:onConfirm',2,'class',3,'data-event-opts',4,'data-ref',5,'pickerValueDefault',6,'themeColor',7,'vueId',8],[],e,s,gg)
+_(eRD,oTD)
+bSD.wxXCkey=1
+_(r,eRD)
 return r
 }
 e_[x[25]]={f:m25,j:[],i:[],ti:[],ic:[]}
 d_[x[26]]={}
 var m26=function(e,s,r,gg){
 var z=gz$gwx_27()
+var oVD=_n('view')
+_rz(z,oVD,'class',0,e,s,gg)
+var fWD=_v()
+_(oVD,fWD)
+if(_oz(z,1,e,s,gg)){fWD.wxVkey=1
+}
+var cXD=_v()
+_(oVD,cXD)
+if(_oz(z,2,e,s,gg)){cXD.wxVkey=1
+}
+fWD.wxXCkey=1
+cXD.wxXCkey=1
+_(r,oVD)
+return r
+}
+e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
+d_[x[27]]={}
+var m27=function(e,s,r,gg){
+var z=gz$gwx_28()
+return r
+}
+e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
+d_[x[28]]={}
+var m28=function(e,s,r,gg){
+var z=gz$gwx_29()
 var c1D=_n('view')
 _rz(z,c1D,'class',0,e,s,gg)
 var o2D=_v()
@@ -1945,31 +1935,6 @@ l3D.wxXCkey=1
 _(r,c1D)
 return r
 }
-e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
-d_[x[27]]={}
-var m27=function(e,s,r,gg){
-var z=gz$gwx_28()
-return r
-}
-e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
-d_[x[28]]={}
-var m28=function(e,s,r,gg){
-var z=gz$gwx_29()
-var e6D=_n('view')
-_rz(z,e6D,'class',0,e,s,gg)
-var b7D=_v()
-_(e6D,b7D)
-if(_oz(z,1,e,s,gg)){b7D.wxVkey=1
-}
-var o8D=_v()
-_(e6D,o8D)
-if(_oz(z,2,e,s,gg)){o8D.wxVkey=1
-}
-b7D.wxXCkey=1
-o8D.wxXCkey=1
-_(r,e6D)
-return r
-}
 e_[x[28]]={f:m28,j:[],i:[],ti:[],ic:[]}
 d_[x[29]]={}
 var m29=function(e,s,r,gg){
@@ -1980,59 +1945,59 @@ e_[x[29]]={f:m29,j:[],i:[],ti:[],ic:[]}
 d_[x[30]]={}
 var m30=function(e,s,r,gg){
 var z=gz$gwx_31()
-var fAE=_n('view')
-_rz(z,fAE,'class',0,e,s,gg)
-var cBE=_v()
-_(fAE,cBE)
-if(_oz(z,1,e,s,gg)){cBE.wxVkey=1
+var e6D=_n('view')
+_rz(z,e6D,'class',0,e,s,gg)
+var b7D=_v()
+_(e6D,b7D)
+if(_oz(z,1,e,s,gg)){b7D.wxVkey=1
 }
-var hCE=_v()
-_(fAE,hCE)
-var oDE=function(oFE,cEE,lGE,gg){
-var tIE=_n('view')
-_rz(z,tIE,'class',6,oFE,cEE,gg)
+var o8D=_v()
+_(e6D,o8D)
+var x9D=function(fAE,o0D,cBE,gg){
+var oDE=_n('view')
+_rz(z,oDE,'class',6,fAE,o0D,gg)
+var cEE=_v()
+_(oDE,cEE)
+if(_oz(z,7,fAE,o0D,gg)){cEE.wxVkey=1
+}
+var oFE=_v()
+_(oDE,oFE)
+if(_oz(z,8,fAE,o0D,gg)){oFE.wxVkey=1
+}
+var lGE=_v()
+_(oDE,lGE)
+if(_oz(z,9,fAE,o0D,gg)){lGE.wxVkey=1
+}
+var aHE=_v()
+_(oDE,aHE)
+if(_oz(z,10,fAE,o0D,gg)){aHE.wxVkey=1
+}
+var tIE=_v()
+_(oDE,tIE)
+if(_oz(z,11,fAE,o0D,gg)){tIE.wxVkey=1
+}
 var eJE=_v()
-_(tIE,eJE)
-if(_oz(z,7,oFE,cEE,gg)){eJE.wxVkey=1
+_(oDE,eJE)
+if(_oz(z,12,fAE,o0D,gg)){eJE.wxVkey=1
 }
 var bKE=_v()
-_(tIE,bKE)
-if(_oz(z,8,oFE,cEE,gg)){bKE.wxVkey=1
+_(oDE,bKE)
+if(_oz(z,13,fAE,o0D,gg)){bKE.wxVkey=1
 }
-var oLE=_v()
-_(tIE,oLE)
-if(_oz(z,9,oFE,cEE,gg)){oLE.wxVkey=1
-}
-var xME=_v()
-_(tIE,xME)
-if(_oz(z,10,oFE,cEE,gg)){xME.wxVkey=1
-}
-var oNE=_v()
-_(tIE,oNE)
-if(_oz(z,11,oFE,cEE,gg)){oNE.wxVkey=1
-}
-var fOE=_v()
-_(tIE,fOE)
-if(_oz(z,12,oFE,cEE,gg)){fOE.wxVkey=1
-}
-var cPE=_v()
-_(tIE,cPE)
-if(_oz(z,13,oFE,cEE,gg)){cPE.wxVkey=1
-}
+cEE.wxXCkey=1
+oFE.wxXCkey=1
+lGE.wxXCkey=1
+aHE.wxXCkey=1
+tIE.wxXCkey=1
 eJE.wxXCkey=1
 bKE.wxXCkey=1
-oLE.wxXCkey=1
-xME.wxXCkey=1
-oNE.wxXCkey=1
-fOE.wxXCkey=1
-cPE.wxXCkey=1
-_(lGE,tIE)
-return lGE
+_(cBE,oDE)
+return cBE
 }
-hCE.wxXCkey=2
-_2z(z,4,oDE,e,s,gg,hCE,'row','index','index')
-cBE.wxXCkey=1
-_(r,fAE)
+o8D.wxXCkey=2
+_2z(z,4,x9D,e,s,gg,o8D,'row','index','index')
+b7D.wxXCkey=1
+_(r,e6D)
 return r
 }
 e_[x[30]]={f:m30,j:[],i:[],ti:[],ic:[]}
@@ -3755,7 +3720,7 @@ require('pages/goods/ratings/ratings.js');
 __wxRoute = 'pages/ali/select/select';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/ali/select/select.js';
 
 define('pages/ali/select/select.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/ali/select/select"],{"0a5a":function(e,l,a){"use strict";a.r(l);var u=a("abba"),t=a.n(u);for(var n in u)"default"!==n&&function(e){a.d(l,e,function(){return u[e]})}(n);l["default"]=t.a},2252:function(e,l,a){"use strict";(function(e){a("590e"),a("921b");u(a("66fd"));var l=u(a("9258"));function u(e){return e&&e.__esModule?e:{default:e}}e(l.default)}).call(this,a("6e42")["createPage"])},"4e67":function(e,l,a){"use strict";var u=function(){var e=this,l=e.$createElement;e._self._c},t=[];a.d(l,"a",function(){return u}),a.d(l,"b",function(){return t})},9258:function(e,l,a){"use strict";a.r(l);var u=a("4e67"),t=a("0a5a");for(var n in t)"default"!==n&&function(e){a.d(l,e,function(){return t[e]})}(n);a("93f3");var i=a("2877"),o=Object(i["a"])(t["default"],u["a"],u["b"],!1,null,"a5ce39ec",null);l["default"]=o.exports},"93f3":function(e,l,a){"use strict";var u=a("fbfe"),t=a.n(u);t.a},abba:function(e,l,a){"use strict";(function(e){Object.defineProperty(l,"__esModule",{value:!0}),l.default=void 0;var u=function(){return Promise.all([a.e("common/vendor"),a.e("components/w-picker/w-picker")]).then(a.bind(null,"d1c2"))},t={data:function(){return{items:[{value:"0",name:"全新 "},{value:"1",name:"99新",checked:"true"},{value:"2",name:"9成新"},{value:"3",name:"8成新"},{value:"4",name:"7成新"}],current:0,mypname:"",selectList:[{label:"101",value:"炫酷电脑"},{label:"102",value:"手机一族"},{label:"103",value:"相机拍摄"},{label:"104",value:"智能穿戴"},{label:"105",value:"电脑周边"},{label:"106",value:"网络设备"}],price:"",p_description:"",fontcount:"0",productlist:[[{label:"101",value:"炫酷电脑"},{label:"102",value:"手机一族"},{label:"103",value:"相机拍摄"},{label:"104",value:"智能穿戴"},{label:"105",value:"电脑周边"},{label:"106",value:"网络设备"}],[{label:"201",value:"运动器材"},{label:"202",value:"户外运动"},{label:"203",value:"健身塑形"},{label:"204",value:"球类包陪"},{label:"205",value:"小众运动"},{label:"206",value:"运动鞋"}],[{label:"301",value:"运动风格"},{label:"302",value:"休闲风格"},{label:"303",value:"商务风格"},{label:"304",value:"百搭风格"},{label:"305",value:"街头风格"},{label:"306",value:"简约风格"}],[{label:"401",value:"新潮搭配"},{label:"402",value:"服饰配饰"},{label:"403",value:"首饰手表"},{label:"404",value:"珠宝一类"},{label:"405",value:"眼睛一族"},{label:"406",value:"各种包包"}],[{label:"501",value:"厨卫电器"},{label:"502",value:"小家电"},{label:"503",value:"环境电器"},{label:"504",value:"大家电"},{label:"505",value:"温控电气"},{label:"506",value:"其他电器"}],[{label:"601",value:"宠物玩具"},{label:"602",value:"宠物零食"},{label:"603",value:"喂食器"},{label:"604",value:"宠物"},{label:"605",value:"宠物药品"},{label:"606",value:"宠物之家"}],[{label:"701",value:"文具教具"},{label:"702",value:"餐饮用具"},{label:"703",value:"厨房用品"},{label:"704",value:"床上用品"},{label:"705",value:"家居日用"},{label:"706",value:"其他日用"}],[{label:"801",value:"国际名著"},{label:"802",value:"工具用书"},{label:"803",value:"课本教材"},{label:"804",value:"科普类书"},{label:"805",value:"小说大全"},{label:"806",value:"本必读"}],[{label:"901",value:"化妆彩妆"},{label:"902",value:"护理护肤"},{label:"903",value:"口红卖场"},{label:"904",value:"美容美颜"},{label:"905",value:"香水一类"},{label:"906",value:"滋生面膜"}],[{label:"1001",value:"计生用品"},{label:"1002",value:"外用理疗"},{label:"1003",value:"传统滋补"},{label:"1004",value:"保健品"},{label:"1005",value:"养生药品"},{label:"1006",value:"养生食物"}]],myheightSvg:{height:""},headerTop:null,statusTop:null,headerPosition:"fixed",showHeader:!0}},components:{wPicker:u},onLoad:function(l){console.log(e(l.selectid,"55555555555555"," at pages\\ali\\select\\select.vue:297"));var a=l.selectid;console.log(e(a,"ididididididididididididdi"," at pages\\ali\\select\\select.vue:299")),this.getselect(a)},onShow:function(){console.log(e("Onshow"," at pages\\ali\\select\\select.vue:304"))},watch:{p_description:function(){var e=this.p_description.length;this.fontcount=e}},methods:{radioChange:function(e){for(var l=0;l<this.items.length;l++)if(this.items[l].value===e.target.value){this.current=l;break}},selector:function(){this.$refs.picker.show()},getselect:function(l){console.log(e(l,"111111111111111111111111111111111"," at pages\\ali\\select\\select.vue:325"));var a=this.productlist[l];this.selectList=a,console.log(e(this.selectList,a,"999999999999999999999999999999"," at pages\\ali\\select\\select.vue:328"))},onPageScroll:function(e){this.headerPosition=e.scrollTop>=0?"fixed":"absolute",this.headerTop=e.scrollTop>=0?null:0,this.statusTop=e.scrollTop>=0?null:-this.statusHeight+"px"}}};l.default=t}).call(this,a("0de9")["default"])},fbfe:function(e,l,a){}},[["2252","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/ali/select/select"],{"0a5a":function(e,l,a){"use strict";a.r(l);var t=a("abba"),u=a.n(t);for(var n in t)"default"!==n&&function(e){a.d(l,e,function(){return t[e]})}(n);l["default"]=u.a},2252:function(e,l,a){"use strict";(function(e){a("590e"),a("921b");t(a("66fd"));var l=t(a("9258"));function t(e){return e&&e.__esModule?e:{default:e}}e(l.default)}).call(this,a("6e42")["createPage"])},4557:function(e,l,a){"use strict";var t=a("45ec"),u=a.n(t);u.a},"45ec":function(e,l,a){},"7a90":function(e,l,a){"use strict";var t=function(){var e=this,l=e.$createElement;e._self._c},u=[];a.d(l,"a",function(){return t}),a.d(l,"b",function(){return u})},9258:function(e,l,a){"use strict";a.r(l);var t=a("7a90"),u=a("0a5a");for(var n in u)"default"!==n&&function(e){a.d(l,e,function(){return u[e]})}(n);a("4557");var i=a("2877"),s=Object(i["a"])(u["default"],t["a"],t["b"],!1,null,"45acd5ff",null);l["default"]=s.exports},abba:function(e,l,a){"use strict";(function(e,t){Object.defineProperty(l,"__esModule",{value:!0}),l.default=void 0;var u=function(){return Promise.all([a.e("common/vendor"),a.e("components/w-picker/w-picker")]).then(a.bind(null,"d1c2"))},n={data:function(){return{codelistid:0,index:0,array:[],items:[{value:"0",name:"全新 "},{value:"1",name:"99新",checked:"true"},{value:"2",name:"9成新"},{value:"3",name:"8成新"},{value:"4",name:"7成新"}],current:0,mypname:"",selectList:[{label:"101",value:"炫酷电脑"},{label:"102",value:"手机一族"},{label:"103",value:"相机拍摄"},{label:"104",value:"智能穿戴"},{label:"105",value:"电脑周边"},{label:"106",value:"网络设备"}],price:"",p_description:"",fontcount:"0",productlist:[[{label:"101",value:"炫酷电脑"},{label:"102",value:"手机一族"},{label:"103",value:"相机拍摄"},{label:"104",value:"智能穿戴"},{label:"105",value:"电脑周边"},{label:"106",value:"网络设备"}],[{label:"201",value:"运动器材"},{label:"202",value:"户外运动"},{label:"203",value:"健身塑形"},{label:"204",value:"球类包陪"},{label:"205",value:"小众运动"},{label:"206",value:"运动鞋"}],[{label:"301",value:"运动风格"},{label:"302",value:"休闲风格"},{label:"303",value:"商务风格"},{label:"304",value:"百搭风格"},{label:"305",value:"街头风格"},{label:"306",value:"简约风格"}],[{label:"401",value:"新潮搭配"},{label:"402",value:"服饰配饰"},{label:"403",value:"首饰手表"},{label:"404",value:"珠宝一类"},{label:"405",value:"眼睛一族"},{label:"406",value:"各种包包"}],[{label:"501",value:"厨卫电器"},{label:"502",value:"小家电"},{label:"503",value:"环境电器"},{label:"504",value:"大家电"},{label:"505",value:"温控电气"},{label:"506",value:"其他电器"}],[{label:"601",value:"宠物玩具"},{label:"602",value:"宠物零食"},{label:"603",value:"喂食器"},{label:"604",value:"宠物"},{label:"605",value:"宠物药品"},{label:"606",value:"宠物之家"}],[{label:"701",value:"文具教具"},{label:"702",value:"餐饮用具"},{label:"703",value:"厨房用品"},{label:"704",value:"床上用品"},{label:"705",value:"家居日用"},{label:"706",value:"其他日用"}],[{label:"801",value:"国际名著"},{label:"802",value:"工具用书"},{label:"803",value:"课本教材"},{label:"804",value:"科普类书"},{label:"805",value:"小说大全"},{label:"806",value:"本必读"}],[{label:"901",value:"化妆彩妆"},{label:"902",value:"护理护肤"},{label:"903",value:"口红卖场"},{label:"904",value:"美容美颜"},{label:"905",value:"香水一类"},{label:"906",value:"滋生面膜"}],[{label:"1001",value:"计生用品"},{label:"1002",value:"外用理疗"},{label:"1003",value:"传统滋补"},{label:"1004",value:"保健品"},{label:"1005",value:"养生药品"},{label:"1006",value:"养生食物"}]],myheightSvg:{height:""},headerTop:null,statusTop:null,headerPosition:"fixed",showHeader:!0}},components:{wPicker:u},onLoad:function(l){console.log(e(l.selectid,"55555555555555"," at pages\\ali\\select\\select.vue:313"));var a=l.selectid-1;this.codelistid=l.selectid,console.log(e(a,"ididididididididididididdi"," at pages\\ali\\select\\select.vue:316")),this.getselect(a)},onShow:function(){console.log(e("Onshow"," at pages\\ali\\select\\select.vue:321"))},methods:{savemydata:function(){var l=100*this.codelistid+this.index,a=this.mypname;console.log(e(a,l," at pages\\ali\\select\\select.vue:333")),l&&t.setStorage({key:"codelist",data:l,success:function(u){console.log(e("存入数据codelist",l," at pages\\ali\\select\\select.vue:340")),a&&t.setStorage({key:"pname",data:a,success:function(l){console.log(e("存入数据pname",a," at pages\\ali\\select\\select.vue:347")),t.navigateBack({delta:1})}})}})},radioChange:function(e){for(var l=0;l<this.items.length;l++)if(this.items[l].value===e.target.value){this.current=l;break}},bindPickerChange:function(l){console.log(e("picker发送选择改变，携带值为",l.target.value," at pages\\ali\\select\\select.vue:368")),this.index=l.target.value},getselect:function(l){console.log(e(l,"111111111111111111111111111111111"," at pages\\ali\\select\\select.vue:372"));var a=this.productlist[l];console.log(e(a,"22222222222222222222222222222222222222"," at pages\\ali\\select\\select.vue:374")),this.selectList=a},onPageScroll:function(e){this.headerPosition=e.scrollTop>=0?"fixed":"absolute",this.headerTop=e.scrollTop>=0?null:0,this.statusTop=e.scrollTop>=0?null:-this.statusHeight+"px"}}};l.default=n}).call(this,a("0de9")["default"],a("6e42")["default"])}},[["2252","common/runtime","common/vendor"]]]);
 });
 require('pages/ali/select/select.js');
 __wxRoute = 'pages/tabBar/ali/ali';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/tabBar/ali/ali.js';
@@ -3767,7 +3732,7 @@ require('pages/tabBar/ali/ali.js');
 __wxRoute = 'pages/ali/codelist/codelist';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/ali/codelist/codelist.js';
 
 define('pages/ali/codelist/codelist.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/ali/codelist/codelist"],{"05e7":function(n,i,s){"use strict";s.r(i);var c=s("fa36"),a=s.n(c);for(var e in c)"default"!==e&&function(n){s.d(i,n,function(){return c[n]})}(e);i["default"]=a.a},"0bb1":function(n,i,s){"use strict";var c=function(){var n=this,i=n.$createElement;n._self._c},a=[];s.d(i,"a",function(){return c}),s.d(i,"b",function(){return a})},"32f0":function(n,i,s){"use strict";(function(n){s("590e"),s("921b");c(s("66fd"));var i=c(s("9388"));function c(n){return n&&n.__esModule?n:{default:n}}n(i.default)}).call(this,s("6e42")["createPage"])},"3f90":function(n,i,s){},9388:function(n,i,s){"use strict";s.r(i);var c=s("0bb1"),a=s("05e7");for(var e in a)"default"!==e&&function(n){s.d(i,n,function(){return a[n]})}(e);s("f39d");var o=s("2877"),t=Object(o["a"])(a["default"],c["a"],c["b"],!1,null,"707c8e21",null);i["default"]=t.exports},f39d:function(n,i,s){"use strict";var c=s("3f90"),a=s.n(c);a.a},fa36:function(n,i,s){"use strict";(function(n,c){Object.defineProperty(i,"__esModule",{value:!0}),i.default=void 0;var a=e(s("a34a"));function e(n){return n&&n.__esModule?n:{default:n}}function o(n,i,s,c,a,e,o){try{var t=n[e](o),u=t.value}catch(l){return void s(l)}t.done?i(u):Promise.resolve(u).then(c,a)}function t(n){return function(){var i=this,s=arguments;return new Promise(function(c,a){var e=n.apply(i,s);function t(n){o(e,c,a,t,u,"next",n)}function u(n){o(e,c,a,t,u,"throw",n)}t(void 0)})}}var u={data:function(){return{selectid:"",price:"",p_description:"",fontcount:"0",productlist:[{codelist:[101,102,103,104,105,106],name:["炫酷电脑","手机一族","相机拍摄","智能穿戴","电脑周边","网络设备"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/0_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/0_8.png"],divstyle:"linear-gradient(45deg, #c4e4ff, #91ccff)"},{codelist:[201,202,203,204,205,206],name:["运动器材","户外运动","健身塑形","球类包陪","小众运动","运动鞋"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/1_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/1_8.png"],divstyle:"linear-gradient(45deg, #f4c9ff, #ff9eee)"},{codelist:[301,302,303,304,305,306],name:["运动风格","休闲风格","商务风格","百搭风格","街头风格","简约风格"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/2_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/2_8.png"],divstyle:"#ffd0dc"},{codelist:[401,402,403,404,405,406],name:["新潮搭配","服饰配饰","首饰手表","珠宝一类","眼睛一族","各种包包"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/3_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/3_8.png"],divstyle:"#ffd0dc"},{codelist:[501,502,503,504,505,506],name:["厨卫电器","小家电","环境电器","大家电","温控电气","其他电器"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/4_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/4_8.png"],divstyle:"#ffd0dc"},{codelist:[601,602,603,604,605,606],name:["宠物玩具","宠物零食","喂食器","宠物","宠物药品","宠物之家"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/5_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/5_8.png"],divstyle:"#ffd0dc"},{codelist:[701,702,703,704,705,706],name:["文具教具","餐饮用具","厨房用品","床上用品","家居日用","其他日用"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/6_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/6_8.png"],divstyle:"#ffe0cd"},{codelist:[801,802,803,804,805,806],name:["国际名著","工具用书","课本教材","科普类书","小说大全","100本必读"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/7_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/7_8.png"],divstyle:"#ffe0cd"},{codelist:[901,902,903,904,905,906],name:["化妆彩妆","护理护肤","口红卖场","美容美颜","香水一类","滋生面膜"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/8_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/8_8.png"],divstyle:"#ffe0cd"},{codelist:[1001,1002,1003,1004,1005,1006],name:["计生用品","外用理疗","传统滋补","保健品","养生药品","养生食物"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/9_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/9_8.png"],divstyle:"#ffe0cd"}],myheightSvg:{height:""},headerTop:null,statusTop:null,headerPosition:"fixed",showHeader:!0,oosArr:[],upImgOos:{aliConfig:{AccessKeySecret:"CbVR0tmpKXqAIEXxavJDqad3lcIIez",OSSAccessKeyId:"LTAIlbkoZl60gNWT",oosDirectory:"userimage",url:"https://simplett-img.oss-cn-beijing.aliyuncs.com/"},notli:!1,count:8,upBgColor:"#E8A400",upIconColor:"#eee",upSvgIconName:"icon-certificate"}}},onLoad:function(i){console.log(n(i.codeid," at pages\\ali\\codelist\\codelist.vue:332")),this.selectid=i.codeid},onShow:function(){console.log(n("Onshow"," at pages\\ali\\codelist\\codelist.vue:337"))},watch:{p_description:function(){var n=this.p_description.length;this.fontcount=n}},methods:{saoma:function(){c.scanCode({onlyFromCamera:!0,success:function(i){console.log(n("条码类型："+i.scanType," at pages\\ali\\codelist\\codelist.vue:351")),console.log(n("条码内容："+i.result," at pages\\ali\\codelist\\codelist.vue:352"))}})},getlocaldata:function(){},toselect:function(){c.navigateTo({url:"/pages/ali/select/select?selectid="+this.selectid})},onPageScroll:function(n){this.headerPosition=n.scrollTop>=0?"fixed":"absolute",this.headerTop=n.scrollTop>=0?null:0,this.statusTop=n.scrollTop>=0?null:-this.statusHeight+"px"},uImageTap:function(){this.$refs.uImage.uploadimage(this.upImgOos)},delImgInfo:function(){var i=t(a.default.mark(function i(s){return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:console.log(n("你删除的图片地址为:",s,this.oosArr.splice(s.index,1)," at pages\\ali\\codelist\\codelist.vue:387"));case 1:case"end":return i.stop()}},i,this)}));function s(n){return i.apply(this,arguments)}return s}(),upOosData:function(){var i=t(a.default.mark(function i(s){var e,o,t;return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:e=[],o=0,t=s.length;case 2:if(!(o<t)){i.next=15;break}if(i.prev=3,""==s[o].path_server){i.next=7;break}return i.next=7,e.push(s[o].path_server.split(","));case 7:i.next=12;break;case 9:i.prev=9,i.t0=i["catch"](3),console.log(n("上传失败..."," at pages\\ali\\codelist\\codelist.vue:399"));case 12:o++,i.next=2;break;case 15:this.oosArr=e,e.length==this.upImgOos.count&&c.showToast({title:"上传成功",icon:"none"});case 17:case"end":return i.stop()}},i,this,[[3,9]])}));function s(n){return i.apply(this,arguments)}return s}(),getUpImgInfoOos:function(){console.log(n("阿里云转成一维数组:",this.oosArr.join().split(",")," at pages\\ali\\codelist\\codelist.vue:415"))}}};i.default=u}).call(this,s("0de9")["default"],s("6e42")["default"])}},[["32f0","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/ali/codelist/codelist"],{"05e7":function(n,i,s){"use strict";s.r(i);var c=s("fa36"),a=s.n(c);for(var e in c)"default"!==e&&function(n){s.d(i,n,function(){return c[n]})}(e);i["default"]=a.a},"218a":function(n,i,s){"use strict";var c=function(){var n=this,i=n.$createElement;n._self._c},a=[];s.d(i,"a",function(){return c}),s.d(i,"b",function(){return a})},"32f0":function(n,i,s){"use strict";(function(n){s("590e"),s("921b");c(s("66fd"));var i=c(s("9388"));function c(n){return n&&n.__esModule?n:{default:n}}n(i.default)}).call(this,s("6e42")["createPage"])},"7fa2":function(n,i,s){"use strict";var c=s("a03d"),a=s.n(c);a.a},9388:function(n,i,s){"use strict";s.r(i);var c=s("218a"),a=s("05e7");for(var e in a)"default"!==e&&function(n){s.d(i,n,function(){return a[n]})}(e);s("7fa2");var o=s("2877"),t=Object(o["a"])(a["default"],c["a"],c["b"],!1,null,"f3289834",null);i["default"]=t.exports},a03d:function(n,i,s){},fa36:function(n,i,s){"use strict";(function(n,c){Object.defineProperty(i,"__esModule",{value:!0}),i.default=void 0;var a=e(s("a34a"));function e(n){return n&&n.__esModule?n:{default:n}}function o(n,i,s,c,a,e,o){try{var t=n[e](o),u=t.value}catch(l){return void s(l)}t.done?i(u):Promise.resolve(u).then(c,a)}function t(n){return function(){var i=this,s=arguments;return new Promise(function(c,a){var e=n.apply(i,s);function t(n){o(e,c,a,t,u,"next",n)}function u(n){o(e,c,a,t,u,"throw",n)}t(void 0)})}}var u={data:function(){return{images:"",selectid:"",price:"",p_description:"",fontcount:"0",productlist:[{codelist:[101,102,103,104,105,106],name:["炫酷电脑","手机一族","相机拍摄","智能穿戴","电脑周边","网络设备"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/0_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/0_8.png"],divstyle:"linear-gradient(45deg, #c4e4ff, #91ccff)"},{codelist:[201,202,203,204,205,206],name:["运动器材","户外运动","健身塑形","球类包陪","小众运动","运动鞋"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/1_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/1_8.png"],divstyle:"linear-gradient(45deg, #f4c9ff, #ff9eee)"},{codelist:[301,302,303,304,305,306],name:["运动风格","休闲风格","商务风格","百搭风格","街头风格","简约风格"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/2_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/2_8.png"],divstyle:"#ffd0dc"},{codelist:[401,402,403,404,405,406],name:["新潮搭配","服饰配饰","首饰手表","珠宝一类","眼睛一族","各种包包"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/3_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/3_8.png"],divstyle:"#ffd0dc"},{codelist:[501,502,503,504,505,506],name:["厨卫电器","小家电","环境电器","大家电","温控电气","其他电器"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/4_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/4_8.png"],divstyle:"#ffd0dc"},{codelist:[601,602,603,604,605,606],name:["宠物玩具","宠物零食","喂食器","宠物","宠物药品","宠物之家"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/5_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/5_8.png"],divstyle:"#ffd0dc"},{codelist:[701,702,703,704,705,706],name:["文具教具","餐饮用具","厨房用品","床上用品","家居日用","其他日用"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/6_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/6_8.png"],divstyle:"#ffe0cd"},{codelist:[801,802,803,804,805,806],name:["国际名著","工具用书","课本教材","科普类书","小说大全","100本必读"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/7_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/7_8.png"],divstyle:"#ffe0cd"},{codelist:[901,902,903,904,905,906],name:["化妆彩妆","护理护肤","口红卖场","美容美颜","香水一类","滋生面膜"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/8_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/8_8.png"],divstyle:"#ffe0cd"},{codelist:[1001,1002,1003,1004,1005,1006],name:["计生用品","外用理疗","传统滋补","保健品","养生药品","养生食物"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/9_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/9_8.png"],divstyle:"#ffe0cd"}],myheightSvg:{height:""},headerTop:null,statusTop:null,headerPosition:"fixed",showHeader:!0,oosArr:[],upImgOos:{aliConfig:{AccessKeySecret:"CbVR0tmpKXqAIEXxavJDqad3lcIIez",OSSAccessKeyId:"LTAIlbkoZl60gNWT",oosDirectory:"userimage",url:"https://simplett-img.oss-cn-beijing.aliyuncs.com/"},notli:!1,count:20,upBgColor:"#E8A400",upIconColor:"#eee",upSvgIconName:"icon-certificate"}}},onLoad:function(i){console.log(n(i.codeid," at pages\\ali\\codelist\\codelist.vue:336")),this.selectid=i.codeid},onShow:function(){console.log(n("Onshow"," at pages\\ali\\codelist\\codelist.vue:341"))},watch:{p_description:function(){var n=this.p_description.length;this.fontcount=n}},methods:{getlocaldata:function(){var i,s;c.showLoading({title:"加载中",icon:"loa",mask:!0}),this.uImageTap(),c.getStorage({key:"pname",success:function(n){i=n.data},fail:function(){c.navigateTo({url:"../../select/select"})}}),c.getStorage({key:"token",success:function(n){s=n.data},fail:function(n){c.showToast({title:"请您先登陆"})}});var a=this.price;this.getUpImgInfoOos();var e,o=this.images,t=this.p_description,u="云南昆明";c.getStorage({key:"codelist",success:function(n){e=n.data},fail:function(n){c.navigateTo({url:"../../select/select"})}});var l=1;if(i&&a&&e&&u&&o&&t&&l&&s){var g={name:i,price:a,cid:e,address:u,images:o,description:t,type:l,token:s};c.request({url:"http://120.79.19.253:10086/Publish",data:g,success:function(i){console.log(n(i.data," at pages\\ali\\codelist\\codelist.vue:410")),1==i.data.status?(c.hideLoading(),c.removeStorage({key:"pname",success:function(i){console.log(n("success"," at pages\\ali\\codelist\\codelist.vue:417"))}}),c.removeStorage({key:"codelist",success:function(i){console.log(n("success"," at pages\\ali\\codelist\\codelist.vue:423"))}}),c.showToast({title:"发布成功.2秒之后发生跳转",icon:"none"}),setTimeout(function(){c.navigateTo({url:"../../../App"})},2e3)):(c.vibrate({success:function(){console.log(n("success"," at pages\\ali\\codelist\\codelist.vue:438"))}}),c.hideLoading(),c.showToast({title:"发布异常",icon:"none"}))}})}else c.hideLoading()},toselect:function(){c.navigateTo({url:"/pages/ali/select/select?selectid="+this.selectid})},onPageScroll:function(n){this.headerPosition=n.scrollTop>=0?"fixed":"absolute",this.headerTop=n.scrollTop>=0?null:0,this.statusTop=n.scrollTop>=0?null:-this.statusHeight+"px"},uImageTap:function(){this.$refs.uImage.uploadimage(this.upImgOos)},delImgInfo:function(){var i=t(a.default.mark(function i(s){return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:console.log(n("你删除的图片地址为:",s,this.oosArr.splice(s.index,1)," at pages\\ali\\codelist\\codelist.vue:469"));case 1:case"end":return i.stop()}},i,this)}));function s(n){return i.apply(this,arguments)}return s}(),upOosData:function(){var i=t(a.default.mark(function i(s){var e,o,t;return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:e=[],o=0,t=s.length;case 2:if(!(o<t)){i.next=15;break}if(i.prev=3,""==s[o].path_server){i.next=7;break}return i.next=7,e.push(s[o].path_server.split(","));case 7:i.next=12;break;case 9:i.prev=9,i.t0=i["catch"](3),console.log(n("上传失败..."," at pages\\ali\\codelist\\codelist.vue:481"));case 12:o++,i.next=2;break;case 15:this.oosArr=e,e.length==this.upImgOos.count&&c.showToast({title:"上传成功",icon:"none"});case 17:case"end":return i.stop()}},i,this,[[3,9]])}));function s(n){return i.apply(this,arguments)}return s}(),getUpImgInfoOos:function(){console.log(n(this.oosArr," at pages\\ali\\codelist\\codelist.vue:497")),console.log(n("阿里云转成一维数组:",this.oosArr.join().split(",")," at pages\\ali\\codelist\\codelist.vue:498")),this.images=this.oosArr.join().split(",").join(";"),console.log(n(this.images," at pages\\ali\\codelist\\codelist.vue:500"))}}};i.default=u}).call(this,s("0de9")["default"],s("6e42")["default"])}},[["32f0","common/runtime","common/vendor"]]]);
 });
 require('pages/ali/codelist/codelist.js');
 __wxRoute = 'pages/tabBar/ali/ali';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/tabBar/ali/ali.js';
@@ -3779,7 +3744,7 @@ require('pages/tabBar/ali/ali.js');
 __wxRoute = 'pages/ali/codelist/codelist';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/ali/codelist/codelist.js';
 
 define('pages/ali/codelist/codelist.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
-(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/ali/codelist/codelist"],{"05e7":function(n,i,s){"use strict";s.r(i);var c=s("fa36"),a=s.n(c);for(var e in c)"default"!==e&&function(n){s.d(i,n,function(){return c[n]})}(e);i["default"]=a.a},"0bb1":function(n,i,s){"use strict";var c=function(){var n=this,i=n.$createElement;n._self._c},a=[];s.d(i,"a",function(){return c}),s.d(i,"b",function(){return a})},"32f0":function(n,i,s){"use strict";(function(n){s("590e"),s("921b");c(s("66fd"));var i=c(s("9388"));function c(n){return n&&n.__esModule?n:{default:n}}n(i.default)}).call(this,s("6e42")["createPage"])},"3f90":function(n,i,s){},9388:function(n,i,s){"use strict";s.r(i);var c=s("0bb1"),a=s("05e7");for(var e in a)"default"!==e&&function(n){s.d(i,n,function(){return a[n]})}(e);s("f39d");var o=s("2877"),t=Object(o["a"])(a["default"],c["a"],c["b"],!1,null,"707c8e21",null);i["default"]=t.exports},f39d:function(n,i,s){"use strict";var c=s("3f90"),a=s.n(c);a.a},fa36:function(n,i,s){"use strict";(function(n,c){Object.defineProperty(i,"__esModule",{value:!0}),i.default=void 0;var a=e(s("a34a"));function e(n){return n&&n.__esModule?n:{default:n}}function o(n,i,s,c,a,e,o){try{var t=n[e](o),u=t.value}catch(l){return void s(l)}t.done?i(u):Promise.resolve(u).then(c,a)}function t(n){return function(){var i=this,s=arguments;return new Promise(function(c,a){var e=n.apply(i,s);function t(n){o(e,c,a,t,u,"next",n)}function u(n){o(e,c,a,t,u,"throw",n)}t(void 0)})}}var u={data:function(){return{selectid:"",price:"",p_description:"",fontcount:"0",productlist:[{codelist:[101,102,103,104,105,106],name:["炫酷电脑","手机一族","相机拍摄","智能穿戴","电脑周边","网络设备"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/0_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/0_8.png"],divstyle:"linear-gradient(45deg, #c4e4ff, #91ccff)"},{codelist:[201,202,203,204,205,206],name:["运动器材","户外运动","健身塑形","球类包陪","小众运动","运动鞋"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/1_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/1_8.png"],divstyle:"linear-gradient(45deg, #f4c9ff, #ff9eee)"},{codelist:[301,302,303,304,305,306],name:["运动风格","休闲风格","商务风格","百搭风格","街头风格","简约风格"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/2_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/2_8.png"],divstyle:"#ffd0dc"},{codelist:[401,402,403,404,405,406],name:["新潮搭配","服饰配饰","首饰手表","珠宝一类","眼睛一族","各种包包"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/3_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/3_8.png"],divstyle:"#ffd0dc"},{codelist:[501,502,503,504,505,506],name:["厨卫电器","小家电","环境电器","大家电","温控电气","其他电器"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/4_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/4_8.png"],divstyle:"#ffd0dc"},{codelist:[601,602,603,604,605,606],name:["宠物玩具","宠物零食","喂食器","宠物","宠物药品","宠物之家"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/5_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/5_8.png"],divstyle:"#ffd0dc"},{codelist:[701,702,703,704,705,706],name:["文具教具","餐饮用具","厨房用品","床上用品","家居日用","其他日用"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/6_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/6_8.png"],divstyle:"#ffe0cd"},{codelist:[801,802,803,804,805,806],name:["国际名著","工具用书","课本教材","科普类书","小说大全","100本必读"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/7_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/7_8.png"],divstyle:"#ffe0cd"},{codelist:[901,902,903,904,905,906],name:["化妆彩妆","护理护肤","口红卖场","美容美颜","香水一类","滋生面膜"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/8_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/8_8.png"],divstyle:"#ffe0cd"},{codelist:[1001,1002,1003,1004,1005,1006],name:["计生用品","外用理疗","传统滋补","保健品","养生药品","养生食物"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/9_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/9_8.png"],divstyle:"#ffe0cd"}],myheightSvg:{height:""},headerTop:null,statusTop:null,headerPosition:"fixed",showHeader:!0,oosArr:[],upImgOos:{aliConfig:{AccessKeySecret:"CbVR0tmpKXqAIEXxavJDqad3lcIIez",OSSAccessKeyId:"LTAIlbkoZl60gNWT",oosDirectory:"userimage",url:"https://simplett-img.oss-cn-beijing.aliyuncs.com/"},notli:!1,count:8,upBgColor:"#E8A400",upIconColor:"#eee",upSvgIconName:"icon-certificate"}}},onLoad:function(i){console.log(n(i.codeid," at pages\\ali\\codelist\\codelist.vue:332")),this.selectid=i.codeid},onShow:function(){console.log(n("Onshow"," at pages\\ali\\codelist\\codelist.vue:337"))},watch:{p_description:function(){var n=this.p_description.length;this.fontcount=n}},methods:{saoma:function(){c.scanCode({onlyFromCamera:!0,success:function(i){console.log(n("条码类型："+i.scanType," at pages\\ali\\codelist\\codelist.vue:351")),console.log(n("条码内容："+i.result," at pages\\ali\\codelist\\codelist.vue:352"))}})},getlocaldata:function(){},toselect:function(){c.navigateTo({url:"/pages/ali/select/select?selectid="+this.selectid})},onPageScroll:function(n){this.headerPosition=n.scrollTop>=0?"fixed":"absolute",this.headerTop=n.scrollTop>=0?null:0,this.statusTop=n.scrollTop>=0?null:-this.statusHeight+"px"},uImageTap:function(){this.$refs.uImage.uploadimage(this.upImgOos)},delImgInfo:function(){var i=t(a.default.mark(function i(s){return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:console.log(n("你删除的图片地址为:",s,this.oosArr.splice(s.index,1)," at pages\\ali\\codelist\\codelist.vue:387"));case 1:case"end":return i.stop()}},i,this)}));function s(n){return i.apply(this,arguments)}return s}(),upOosData:function(){var i=t(a.default.mark(function i(s){var e,o,t;return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:e=[],o=0,t=s.length;case 2:if(!(o<t)){i.next=15;break}if(i.prev=3,""==s[o].path_server){i.next=7;break}return i.next=7,e.push(s[o].path_server.split(","));case 7:i.next=12;break;case 9:i.prev=9,i.t0=i["catch"](3),console.log(n("上传失败..."," at pages\\ali\\codelist\\codelist.vue:399"));case 12:o++,i.next=2;break;case 15:this.oosArr=e,e.length==this.upImgOos.count&&c.showToast({title:"上传成功",icon:"none"});case 17:case"end":return i.stop()}},i,this,[[3,9]])}));function s(n){return i.apply(this,arguments)}return s}(),getUpImgInfoOos:function(){console.log(n("阿里云转成一维数组:",this.oosArr.join().split(",")," at pages\\ali\\codelist\\codelist.vue:415"))}}};i.default=u}).call(this,s("0de9")["default"],s("6e42")["default"])}},[["32f0","common/runtime","common/vendor"]]]);
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/ali/codelist/codelist"],{"05e7":function(n,i,s){"use strict";s.r(i);var c=s("fa36"),a=s.n(c);for(var e in c)"default"!==e&&function(n){s.d(i,n,function(){return c[n]})}(e);i["default"]=a.a},"218a":function(n,i,s){"use strict";var c=function(){var n=this,i=n.$createElement;n._self._c},a=[];s.d(i,"a",function(){return c}),s.d(i,"b",function(){return a})},"32f0":function(n,i,s){"use strict";(function(n){s("590e"),s("921b");c(s("66fd"));var i=c(s("9388"));function c(n){return n&&n.__esModule?n:{default:n}}n(i.default)}).call(this,s("6e42")["createPage"])},"7fa2":function(n,i,s){"use strict";var c=s("a03d"),a=s.n(c);a.a},9388:function(n,i,s){"use strict";s.r(i);var c=s("218a"),a=s("05e7");for(var e in a)"default"!==e&&function(n){s.d(i,n,function(){return a[n]})}(e);s("7fa2");var o=s("2877"),t=Object(o["a"])(a["default"],c["a"],c["b"],!1,null,"f3289834",null);i["default"]=t.exports},a03d:function(n,i,s){},fa36:function(n,i,s){"use strict";(function(n,c){Object.defineProperty(i,"__esModule",{value:!0}),i.default=void 0;var a=e(s("a34a"));function e(n){return n&&n.__esModule?n:{default:n}}function o(n,i,s,c,a,e,o){try{var t=n[e](o),u=t.value}catch(l){return void s(l)}t.done?i(u):Promise.resolve(u).then(c,a)}function t(n){return function(){var i=this,s=arguments;return new Promise(function(c,a){var e=n.apply(i,s);function t(n){o(e,c,a,t,u,"next",n)}function u(n){o(e,c,a,t,u,"throw",n)}t(void 0)})}}var u={data:function(){return{images:"",selectid:"",price:"",p_description:"",fontcount:"0",productlist:[{codelist:[101,102,103,104,105,106],name:["炫酷电脑","手机一族","相机拍摄","智能穿戴","电脑周边","网络设备"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/0_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/0_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/0_8.png"],divstyle:"linear-gradient(45deg, #c4e4ff, #91ccff)"},{codelist:[201,202,203,204,205,206],name:["运动器材","户外运动","健身塑形","球类包陪","小众运动","运动鞋"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/1_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/1_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/1_8.png"],divstyle:"linear-gradient(45deg, #f4c9ff, #ff9eee)"},{codelist:[301,302,303,304,305,306],name:["运动风格","休闲风格","商务风格","百搭风格","街头风格","简约风格"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/2_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/2_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/2_8.png"],divstyle:"#ffd0dc"},{codelist:[401,402,403,404,405,406],name:["新潮搭配","服饰配饰","首饰手表","珠宝一类","眼睛一族","各种包包"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/3_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/3_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/3_8.png"],divstyle:"#ffd0dc"},{codelist:[501,502,503,504,505,506],name:["厨卫电器","小家电","环境电器","大家电","温控电气","其他电器"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/4_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/4_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/4_8.png"],divstyle:"#ffd0dc"},{codelist:[601,602,603,604,605,606],name:["宠物玩具","宠物零食","喂食器","宠物","宠物药品","宠物之家"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/5_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/5_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/5_8.png"],divstyle:"#ffd0dc"},{codelist:[701,702,703,704,705,706],name:["文具教具","餐饮用具","厨房用品","床上用品","家居日用","其他日用"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/6_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/6_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/6_8.png"],divstyle:"#ffe0cd"},{codelist:[801,802,803,804,805,806],name:["国际名著","工具用书","课本教材","科普类书","小说大全","100本必读"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/7_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/7_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/7_8.png"],divstyle:"#ffe0cd"},{codelist:[901,902,903,904,905,906],name:["化妆彩妆","护理护肤","口红卖场","美容美颜","香水一类","滋生面膜"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/8_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/8_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/8_8.png"],divstyle:"#ffe0cd"},{codelist:[1001,1002,1003,1004,1005,1006],name:["计生用品","外用理疗","传统滋补","保健品","养生药品","养生食物"],imgurl:["http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_0.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_1.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_2.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_3.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_4.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_5.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/sucaizong/9_6.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/fenleiye/9_7.png","http://lanzesucai.oss-cn-beijing.aliyuncs.com/xiaoguanggao/9_8.png"],divstyle:"#ffe0cd"}],myheightSvg:{height:""},headerTop:null,statusTop:null,headerPosition:"fixed",showHeader:!0,oosArr:[],upImgOos:{aliConfig:{AccessKeySecret:"CbVR0tmpKXqAIEXxavJDqad3lcIIez",OSSAccessKeyId:"LTAIlbkoZl60gNWT",oosDirectory:"userimage",url:"https://simplett-img.oss-cn-beijing.aliyuncs.com/"},notli:!1,count:20,upBgColor:"#E8A400",upIconColor:"#eee",upSvgIconName:"icon-certificate"}}},onLoad:function(i){console.log(n(i.codeid," at pages\\ali\\codelist\\codelist.vue:336")),this.selectid=i.codeid},onShow:function(){console.log(n("Onshow"," at pages\\ali\\codelist\\codelist.vue:341"))},watch:{p_description:function(){var n=this.p_description.length;this.fontcount=n}},methods:{getlocaldata:function(){var i,s;c.showLoading({title:"加载中",icon:"loa",mask:!0}),this.uImageTap(),c.getStorage({key:"pname",success:function(n){i=n.data},fail:function(){c.navigateTo({url:"../../select/select"})}}),c.getStorage({key:"token",success:function(n){s=n.data},fail:function(n){c.showToast({title:"请您先登陆"})}});var a=this.price;this.getUpImgInfoOos();var e,o=this.images,t=this.p_description,u="云南昆明";c.getStorage({key:"codelist",success:function(n){e=n.data},fail:function(n){c.navigateTo({url:"../../select/select"})}});var l=1;if(i&&a&&e&&u&&o&&t&&l&&s){var g={name:i,price:a,cid:e,address:u,images:o,description:t,type:l,token:s};c.request({url:"http://120.79.19.253:10086/Publish",data:g,success:function(i){console.log(n(i.data," at pages\\ali\\codelist\\codelist.vue:410")),1==i.data.status?(c.hideLoading(),c.removeStorage({key:"pname",success:function(i){console.log(n("success"," at pages\\ali\\codelist\\codelist.vue:417"))}}),c.removeStorage({key:"codelist",success:function(i){console.log(n("success"," at pages\\ali\\codelist\\codelist.vue:423"))}}),c.showToast({title:"发布成功.2秒之后发生跳转",icon:"none"}),setTimeout(function(){c.navigateTo({url:"../../../App"})},2e3)):(c.vibrate({success:function(){console.log(n("success"," at pages\\ali\\codelist\\codelist.vue:438"))}}),c.hideLoading(),c.showToast({title:"发布异常",icon:"none"}))}})}else c.hideLoading()},toselect:function(){c.navigateTo({url:"/pages/ali/select/select?selectid="+this.selectid})},onPageScroll:function(n){this.headerPosition=n.scrollTop>=0?"fixed":"absolute",this.headerTop=n.scrollTop>=0?null:0,this.statusTop=n.scrollTop>=0?null:-this.statusHeight+"px"},uImageTap:function(){this.$refs.uImage.uploadimage(this.upImgOos)},delImgInfo:function(){var i=t(a.default.mark(function i(s){return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:console.log(n("你删除的图片地址为:",s,this.oosArr.splice(s.index,1)," at pages\\ali\\codelist\\codelist.vue:469"));case 1:case"end":return i.stop()}},i,this)}));function s(n){return i.apply(this,arguments)}return s}(),upOosData:function(){var i=t(a.default.mark(function i(s){var e,o,t;return a.default.wrap(function(i){while(1)switch(i.prev=i.next){case 0:e=[],o=0,t=s.length;case 2:if(!(o<t)){i.next=15;break}if(i.prev=3,""==s[o].path_server){i.next=7;break}return i.next=7,e.push(s[o].path_server.split(","));case 7:i.next=12;break;case 9:i.prev=9,i.t0=i["catch"](3),console.log(n("上传失败..."," at pages\\ali\\codelist\\codelist.vue:481"));case 12:o++,i.next=2;break;case 15:this.oosArr=e,e.length==this.upImgOos.count&&c.showToast({title:"上传成功",icon:"none"});case 17:case"end":return i.stop()}},i,this,[[3,9]])}));function s(n){return i.apply(this,arguments)}return s}(),getUpImgInfoOos:function(){console.log(n(this.oosArr," at pages\\ali\\codelist\\codelist.vue:497")),console.log(n("阿里云转成一维数组:",this.oosArr.join().split(",")," at pages\\ali\\codelist\\codelist.vue:498")),this.images=this.oosArr.join().split(",").join(";"),console.log(n(this.images," at pages\\ali\\codelist\\codelist.vue:500"))}}};i.default=u}).call(this,s("0de9")["default"],s("6e42")["default"])}},[["32f0","common/runtime","common/vendor"]]]);
 });
 require('pages/ali/codelist/codelist.js');
 __wxRoute = 'pages/user/setting/revise/signature/signature';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/user/setting/revise/signature/signature.js';
