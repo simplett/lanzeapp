@@ -6,6 +6,9 @@
 		</view>
 		<view v-if="showHeader" class="place"></view>
 		<view class="row">
+			<view class="title">
+				请选择适合您宝贝的标签(仅可选择一个标签)
+			</view>
 			<view class="row-itemlist" v-for="(item,i) of codedata" :key="i">
 				<view @tap="tocodelist(item.code)" class="row-item">
 					<image @tap="tocodelist(item.code)" class="myimage" :src="item.image_url"></image>
@@ -238,6 +241,11 @@
 		justify-content: space-around;
 		/* align-items: flex-start; */
 		flex-wrap: wrap;
+		.title{
+			font-size: 24upx;
+			width: 100%;
+			margin-bottom: 20upx;
+		}
 	}
 
 	.row-itemlist {

@@ -455,6 +455,15 @@
 							var swiperList = [];
 							var reg = /;/;
 							if (reg.test(pimages)) {
+								pimages = pimages.split(" ;");
+								for (var item in pimages) {
+									swiperList.push({
+										id: item + 1,
+										img: pimages[item]
+									})
+								}
+							}
+							else if (reg.test(pimages)) {
 								pimages = pimages.split(";");
 								for (var item in pimages) {
 									swiperList.push({
@@ -462,7 +471,7 @@
 										img: pimages[item]
 									})
 								}
-							} else {
+							}else {
 								swiperList.push({
 									id: 1,
 									img: pimages
@@ -470,15 +479,13 @@
 							}
 							this.swiperList = swiperList;
 							if (this.swiperList.length === 1) {
-								this.descriptionStr = '<div style="text-align:center; margin-bottom: 50px;"><img width="100%" src="' + this.swiperList[
-										0].img +
-									'"/></div>'
+								this.descriptionStr = `<div style="text-align:center; margin-bottom: 50px;"><img width="100%" src="${this.swiperList[0].img}"/></div>`
 							} else {
-								this.descriptionStr = '<div style="text-align:center; margin-bottom: 50px;">';
+								this.descriptionStr = `<div style="text-align:center; margin-bottom: 50px;">`;
 								for (var item of this.swiperList) {
-									this.descriptionStr += '<img width="100%" src=' + item.img + '/>';
+									this.descriptionStr += `<img width="100%" src="${item.img}"/>`;
 								}
-								this.descriptionStr += '</div>';
+								this.descriptionStr += `</div>`;
 							}
 							// console.log(this.descriptionStr, "dfgfdsfghjhgfdsfghjkhjgfdsghjkhgfdfghjkjgfd");
 						} else {

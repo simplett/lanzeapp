@@ -458,7 +458,7 @@
 									},
 									fail: (res) => {
 										uni.navigateTo({
-											url:"../select/select"						,
+											url:"../select/select?selectid="+this.selectid
 											});
 									}
 								})
@@ -472,7 +472,7 @@
 					},
 					fail: () => {
 						uni.navigateTo({
-							url:"../select/select"
+						url:"../select/select?selectid="+this.selectid
 						})
 					}
 				})
@@ -599,6 +599,7 @@
 	.mytext{
 		float: right;
 		padding: 2upx 10upx;
+		font-size: 24upx;
 	}
 	.price{
 		font-family: KAITI;
