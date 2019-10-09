@@ -199,7 +199,7 @@
 			
 			//商品跳转
 			toGoods(e){
-				uni.showToast({title: '商品'+e.id,icon:"none"});
+				// uni.showToast({title: '商品'+e.id,icon:"none"});
 				uni.navigateTo({
 					url: '../../goods/goods?pid='+e.id 
 				});

@@ -96,54 +96,10 @@
 						name: '差评',
 						number: 1,
 						type: 'poor'
-					},
-					{
-						name: '有图',
-						number: 12,
-						type: 'img'
-					},
-					{
-						name: '视频',
-						number: 2,
-						type: 'video'
-					},
-					{
-						name: '追加',
-						number: 2,
-						type: 'append'
 					}
 				],
 				labelIndex: 0,
-				ratingsList: [
-					{
-						id: 3,
-						username: "小黑狗",
-						face: "/static/img/face.jpg",
-						date: '2019-04-21',
-						spec: "规格: XL",
-						grade: "poor",
-						first: {
-							content: "好评，看图",
-							img: ["https://ae01.alicdn.com/kf/HTB111soTbvpK1RjSZPiq6zmwXXaB.jpg",
-								"https://ae01.alicdn.com/kf/HTB1O2TRTmzqK1RjSZPcq6zTepXa4.jpg"
-							],
-							video: []
-						}
-					},
-					{
-						id: 3,
-						username: "小黑狗",
-						face: "/static/img/face.jpg",
-						date: '2019-04-21',
-						spec: "规格: XL",
-						grade: "secondary",
-						first: {
-							content: "系统默认好评",
-							img: [],
-							video: []
-						}
-					}
-				],
+				ratingsList: [],
 				videoDirection: 0,
 				showFullscreenBtn: true,
 				showPlayBtn: true,

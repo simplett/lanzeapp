@@ -39,8 +39,8 @@
 					<view class="btns">
 						<block v-if="row.type=='unpaid'"><view class="default" @tap="cancelOrder(row)">取消订单</view><view class="pay" @tap="toPayment(row)">付款</view></block>
 						<block v-if="row.type=='back'"><view class="default" @tap="remindDeliver(row)">提醒发货</view></block>
-						<block v-if="row.type=='unreceived'"><view class="default" @tap="showLogistics(row)">查看物流</view><view class="pay">确认收货</view><view class="pay">我要退货</view></block>
-						<block v-if="row.type=='received'"><view class="default">评价</view><view class="default">再次购买</view></block>
+						<!-- <block v-if="row.type=='unreceived'"><view class="default" @tap="showLogistics(row)">查看物流</view><view class="pay">确认收货</view><view class="pay">我要退货</view></block> -->
+						<!-- <block v-if="row.type=='received'"><view class="default">评价</view><view class="default">再次购买</view></block> -->
 						<block v-if="row.type=='completed'"><view class="default">再次购买</view></block>
 						<block v-if="row.type=='refunds'"><view class="default">查看进度</view></block>
 						<block v-if="row.type=='cancelled'"><view class="default">已取消</view></block>
@@ -54,6 +54,7 @@
 	export default {
 		data() {
 			return {
+				cartlistdata:[],
 				headerPosition:"fixed",
 				headerTop:"0px",
 				typeText:{
@@ -69,31 +70,20 @@
 				//订单列表 演示数据
 				orderList:[
 					[
-						{ type:"unpaid",ordersn:0,goods_id: 0, img: '/static/img/goods/p1.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"unpaid",ordersn:1,goods_id: 1, img: '/static/img/goods/p2.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"back",ordersn:2,goods_id: 1, img: '/static/img/goods/p3.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"unreceived",ordersn:3,goods_id: 1, img: '/static/img/goods/p4.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"received",ordersn:4,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"completed",ordersn:5,goods_id: 1, img: '/static/img/goods/p6.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"refunds",ordersn:6,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"cancelled",ordersn:7,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 }
+					// 	{ type:"unpaid",ordersn:0,goods_id: 1, img: '/static/img/goods/p2.jpg', name: '1', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
+					// 	{ type:"unpaid",ordersn:1,goods_id: 0, img: '/static/img/goods/p1.jpg', name: '0', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
+					// 	{ type:"back",ordersn:2,goods_id: 1, img: '/static/img/goods/p3.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
+					// 	{ type:"unreceived",ordersn:3,goods_id: 1, img: '/static/img/goods/p4.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
+					// 	{ type:"received",ordersn:4,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
+					// 	{ type:"completed",ordersn:5,goods_id: 1, img: '/static/img/goods/p6.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '168.00',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
+					// 	{ type:"refunds",ordersn:6,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
+					// 	{ type:"cancelled",ordersn:7,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 }
 					],
-					[
-						{ type:"unpaid",ordersn:0,goods_id: 0, img: '/static/img/goods/p1.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 },
-						{ type:"unpaid",ordersn:1,goods_id: 1, img: '/static/img/goods/p2.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 }
-					],
-					[
-						//无
-					],
-					[
-						{ type:"unreceived",ordersn:3,goods_id: 1, img: '/static/img/goods/p4.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 }
-					],
-					[
-						{ type:"received",ordersn:4,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 }
-					],
-					[
-						{ type:"refunds",ordersn:6,goods_id: 1, img: '/static/img/goods/p5.jpg', name: '商品名称商品名称商品名称商品名称商品名称', price: '￥168',payment:168.00,freight:12.00,spec:'规格:S码',numner:1 }
-					]
+					[],
+					[],
+					[],
+					[],
+					[]
 					
 				],
 				list:[],
@@ -106,6 +96,7 @@
 			let tbIndex = parseInt(option.tbIndex)+1;
 			this.list = this.orderList[tbIndex];
 			this.tabbarIndex = tbIndex;
+			this.getcartdata();
 			//兼容H5下排序栏位置
 			// #ifdef H5
 				let Timer = setInterval(()=>{
@@ -117,12 +108,55 @@
 				},1);
 			// #endif
 		},
+		// onShow() {
+		// 	this.getcartdata();
+		// },
 		onPageScroll(e){
 			return;
 			//兼容iOS端下拉时顶部漂移
 			this.headerPosition = e.scrollTop>=0?"fixed":"absolute";
 		},
 		methods: {
+			getcartdata(){
+				uni.getStorage({
+					key:"shoucanlist",
+					success:res=>{
+						this.orderList[1]=res.data;
+						for(var item in this.orderList[1])
+						{
+							this.orderList[1][item]["type"]="unpaid";
+							this.orderList[1][item]["goods_id"]=this.orderList[1][item].id;
+							this.orderList[1][item]["payment"]=this.orderList[1][item].price;
+							this.orderList[1][item]["ordersn"]=item;
+						}
+						if(this.orderList[0].length==0)
+						{
+							this.orderList[0]=[...this.orderList[1]]
+						}else{
+							this.orderList[0]=[...this.orderList[0],...this.orderList[1]]
+						}
+						},
+						fail:res=>{
+							this.goodsList=[]
+						}
+				});
+				uni.getStorage({
+					key:"lanzelist",
+					success: res => {
+						this.orderList[2]=[...res.data];
+						if(this.orderList[0].length==0)
+						{
+							this.orderList[0]=[...this.orderList[2]]
+						}else{
+							this.orderList[0]=[...this.orderList[0],...this.orderList[2]]
+						};
+						for(var item in this.orderList[0] )
+						{
+							this.orderList[0][item].ordersn=item;
+						}
+					}
+				})
+			},
 			showType(tbIndex){
 				this.tabbarIndex = tbIndex;
 				this.list = this.orderList[tbIndex];
