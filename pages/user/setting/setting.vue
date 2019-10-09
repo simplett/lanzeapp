@@ -125,7 +125,7 @@
 						// return res.data;
 						console.log(token,"aaaaaaaaaaaaaaaaaaaaaaaaa");
 						uni.request({
-						    url: 'http://120.79.19.253:10086/Loginout', //仅为示例，并非真实接口地址。
+						    url: 'http://120.79.19.253:10086/Loginout', //接口地址。
 						    data: {
 						        token
 						    },
@@ -168,7 +168,7 @@
 					key:'signature',
 					success: res => {
 						this.signature=res.data;		
-						console.log("成功获取rename"+this.signature);
+						console.log("成功获取signature"+this.signature);
 					}
 				});
 			}

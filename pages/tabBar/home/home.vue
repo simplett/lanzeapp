@@ -839,7 +839,7 @@
 
 				.name {
 					width: 92%;
-					height: 39px;
+					height: 35px;
 					padding: 10upx 4%;
 					display: -webkit-box;
 					-webkit-box-orient: vertical;

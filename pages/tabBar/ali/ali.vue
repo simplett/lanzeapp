@@ -258,12 +258,13 @@
 	.row-item {
 		// border: 1px solid red;
 		width: 100%;
-		background:#e2e3e5;
+		background:#f2f2f2;
 		height: 79.2px;
 	}
 
 	.myimage {
-		width: 100%;
-		height: 100%;
+		width: 90%;
+		height: 90%;
+		margin:auto auto;
 	}
 </style>
