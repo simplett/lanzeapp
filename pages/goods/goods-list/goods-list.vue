@@ -109,9 +109,6 @@
 		},
 		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 		onReachBottom() {
-			uni.showToast({
-				title: '触发上拉加载'
-			});
 			let len = this.goodsList.length;
 			if (len >= 1000) {
 				this.loadingText = "到底了";
@@ -354,13 +351,14 @@
 
 				.name {
 					width: 92%;
-					padding: 10upx 4%;
+					padding: 0upx 4%;
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					-webkit-line-clamp: 2;
 					text-align: justify;
 					overflow: hidden;
-					height: 35px;
+					height: 60upx;
+					line-height: 30upx;
 					font-size: 30upx;
 				}
 

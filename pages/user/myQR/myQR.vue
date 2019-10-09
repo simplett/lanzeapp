@@ -11,9 +11,9 @@
 		<view class="title">
 			扫描二维码，加我好友
 		</view>
-		<view class="btn" v-show="showBtn" @tap="printscreen">
+		<!-- <view class="btn" v-show="showBtn" @tap="printscreen">
 			{{tis}}
-		</view>
+		</view> -->
 		<view class="logo">
 			<!-- <image mode="widthFix" src="../../../static/img/qrlogo.png"></image> -->
 			<div class="qrcode" id="qrCode" ref="qrCodeDiv"></div>

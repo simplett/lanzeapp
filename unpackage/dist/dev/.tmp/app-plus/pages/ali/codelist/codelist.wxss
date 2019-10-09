@@ -79,6 +79,7 @@
 .mytext.data-v-f2d22e68 {
   float: right;
   padding: 2rpx 10rpx;
+  font-size: 24rpx;
 }
 .price.data-v-f2d22e68 {
   font-family: KAITI;

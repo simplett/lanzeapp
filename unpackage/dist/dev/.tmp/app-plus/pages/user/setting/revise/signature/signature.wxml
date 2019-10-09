@@ -1,1 +1,1 @@
-<view><input type="text" value="{{signature}}" placeholder="请输入你的昵称" data-event-opts="{{[['input',[['__set_model',['','signature','$event',[]]]]]]}}" bindinput="__e"/><button type="primary" data-event-opts="{{[['tap',[['submit',['$event']]]]]}}" bindtap="__e">确认</button></view>
+<view class="lanzepadding"><input type="text" value="{{signature}}" placeholder="请输入你的个性签名" data-event-opts="{{[['input',[['__set_model',['','signature','$event',[]]]]]]}}" bindinput="__e"/><button type="primary" data-event-opts="{{[['tap',[['submit',['$event']]]]]}}" bindtap="__e">确认</button></view>

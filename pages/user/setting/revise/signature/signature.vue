@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="lanzepadding">
 		<input type="text" value="" placeholder="请输入你的个性签名" v-model="signature"/>
 		<button type="primary" @tap="submit">确认</button>
 	</view>
@@ -20,7 +20,7 @@
 						content:"是否确认修改?",
 						// mask:true,
 						showCancel:true,
-						success: function (res) {
+						success:res=>{
 							console.log(res);
 							if (res.confirm) {
 								console.log(this.signature,"ggggggggggggggggggggggg"),

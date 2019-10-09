@@ -1,5 +1,5 @@
 <template>
-	<view class="uni-form-item uni-column">
+	<view class="uni-form-item uni-column lanzepadding">
 		<!-- <view class="title">键盘右下角按钮显示为搜索</view> -->
 		<input class="uni-input" confirm-type="search" v-model="nickname" placeholder="请输入你的昵称" />
 		<view class="button" @tap="submit">
@@ -12,7 +12,7 @@
 	export default {
 	    data() {
 	        return {
-				nickname:"111"
+				nickname:""
 	            // title: 'input',
 	            // focus: false,
 	            // inputValue: '',
@@ -25,12 +25,12 @@
 	        // },
 			submit(){
 				var data=this.nickname;
-				console.log(data,"6666666s")
+				// console.log(data,"6666666s")
 				uni.showModal({
 					content:"是否确认修改?",
 					// mask:true,
 					showCancel:true,
-					success: function (res) {
+					success:res=>{
 						console.log(res);
 						if (res.confirm) {
 							console.log(this.nickname,"ggggggggggggggggggggggg"),

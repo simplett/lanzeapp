@@ -451,10 +451,6 @@
 			},
 			//商品跳转
 			toGoods(e) {
-				uni.showToast({
-					title: '商品' + e.goods_id,
-					icon: 'none'
-				});
 				uni.navigateTo({
 					url: '../../goods/goods?pid='+e.goods_id
 				});
@@ -839,13 +835,14 @@
 
 				.name {
 					width: 92%;
-					height: 39px;
-					padding: 10upx 4%;
+					height: 60upx;
+					padding: 0upx 4%;
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					-webkit-line-clamp: 2;
 					text-align: justify;
 					overflow: hidden;
+					line-height: 30upx;
 					font-size: 30upx;
 				}
 

@@ -126,11 +126,13 @@
 						console.log(token,"aaaaaaaaaaaaaaaaaaaaaaaaa");
 						uni.request({
 						    url: 'http://120.79.19.253:10086/Loginout', //仅为示例，并非真实接口地址。
-						    data: {
-						        token
-						    },
+						    data:token,
 						    success: function(res) {
 						        console.log(res.data,"ppppppppppppppp");
+								uni.clearStorage();
+								uni.navigateTo({
+									url:"../../login/login"
+								})
 						    }
 						});
 						// 中断请求任务

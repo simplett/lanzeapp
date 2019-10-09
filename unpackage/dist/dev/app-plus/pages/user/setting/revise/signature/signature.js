@@ -1,1 +1,2 @@
+setCssToHead(["@charset \x22UTF-8\x22;\nwx-input { height: 50px; background: #e2e3e5; }\n",],undefined,{path:"./pages/user/setting/revise/signature/signature.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/user/setting/revise/signature/signature.wxml') } }));

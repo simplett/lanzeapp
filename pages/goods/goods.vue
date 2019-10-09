@@ -162,7 +162,7 @@
 			<view class="row" @tap="showSpec(false)">
 				<view class="text">选择</view>
 				<view class="content">
-					<view>交易方式</view>
+					<view>规格参数</view>
 					<view class="sp">
 						<view v-for="(item,index) in goodsData.spec" :key="index" :class="[index==selectSpec?'on':'']">{{item}}</view>
 					</view>
@@ -276,9 +276,9 @@
 		},
 		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 		onReachBottom() {
-			uni.showToast({
-				title: '触发上拉加载'
-			});
+			// uni.showToast({
+			// 	title: '触发上拉加载'
+			// });
 		},
 		mounted() {
 
@@ -453,8 +453,9 @@
 							}
 							this.todetails = data;
 							var swiperList = [];
-							var reg = /;/;
-							if (reg.test(pimages)) {
+							var reg1 = / ;/;
+							var reg2 = /;/;
+							if (reg1.test(pimages)) {
 								pimages = pimages.split(" ;");
 								for (var item in pimages) {
 									swiperList.push({
@@ -463,7 +464,7 @@
 									})
 								}
 							}
-							else if (reg.test(pimages)) {
+							else if (reg2.test(pimages)) {
 								pimages = pimages.split(";");
 								for (var item in pimages) {
 									swiperList.push({
@@ -675,38 +676,39 @@
 					key: "token",
 					success: res => {
 						token = res.data;
-					}
-				})
-				if (token) {
-					var data = {
-						token,
-						type: "production",
-						action: "add"
-					}
-					uni.request({
-						url: 'http://120.79.19.253:10086/Subscribe',
-						data,
-						success: (res) => {
-							console.log(res.data, "hhhhhhhhhh");
-							if (res.data.status == 1) {
-								uni.showToast({
-									title:"收藏成功"
-								});
-								this.keep()
-							} else {
-								uni.showToast({
-									title:"失败",
-									icon:"none"
-								})
-							}
-							// this.text = 'request success';
+						var data = {
+							token,
+							pid:this.pid,
+							type: "production",
+							action: "add"
 						}
-					});
-				} else {
-					uni.showToast({
-						title: "请登陆之后再使用此功能"
+						uni.request({
+							url: 'http://120.79.19.253:10086/Subscribe',
+							data,
+							success: res => {
+								console.log(res.data, "hhhhhhhhhh");
+								if (res.data.status == 1) {
+									uni.showToast({
+										title:"收藏成功"
+									});
+									this.keep()
+								} else {
+									uni.showToast({
+										title:"失败",
+										icon:"none"
+									})
+								}
+								// this.text = 'request success';
+							}
+						});
+					},
+					fail: () => {
+						uni.showToast({
+						title: "请登陆之后再使用此功能",
+						icon:"none"
 					})
-				}
+					}
+				})	
 			},
 			//立即购买
 			buy() {

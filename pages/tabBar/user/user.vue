@@ -21,8 +21,9 @@
 			</view>
 			<!-- 昵称,个性签名 -->
 			<view class="right">
-				<view class="username" @tap="toLogin">{{nickname}}</view>
+				<view class="username" @tap="toSetting">{{nickname}}</view>
 				<view class="signature" @tap="toSetting">{{signature}}</view>
+				<view class="signature" @tap="toLogin">前往登陆</view>
 			</view>
 			<!-- 二维码按钮 -->
 			<view class="erweima" @tap="toMyQR">
@@ -162,6 +163,7 @@
 			
 		},
 		onReady(){
+			this.myseleif();
 			//此处，演示,每次页面初次渲染都把登录状态重置
 			uni.setStorage({
 				key: 'UserInfo',
@@ -173,6 +175,7 @@
 			});
 		},
 		onShow(){
+			this.myseleif();
 			uni.getStorage({
 				key: 'UserInfo',
 				success: (res)=>{
@@ -215,6 +218,27 @@
 			});
 		},
 		methods: {
+			myseleif(){
+				
+				uni.getStorage({
+					key:"signature",
+					success:res=>{
+						this.signature=res.data;
+					},
+					fail: res => {
+						this.signature="这个用户很懒，什么都没有留下"
+					}
+				});
+				uni.getStorage({
+					key:"rename",
+					success:res=>{
+						this.nickname=res.data;
+					},
+					fail: () => {
+						this.nickname="请输入你的昵称..."
+					}
+				})
+			},
 			//消息列表
 			toMsg(){
 				uni.navigateTo({
@@ -348,10 +372,27 @@
 			.username{
 				font-size: 36upx;
 				color: #fff;
+				line-height:36upx;
+				font-size: 36upx;
+				padding: 0upx 4%;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+				text-align: justify;
+				overflow: hidden;
 			}
 			.signature{
+				margin-top: 5px;
+				height: 14px;
 				color: #eee;
+				line-height:28upx;
 				font-size: 28upx;
+				padding: 0upx 4%;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+				text-align: justify;
+				overflow: hidden;
 			}
 		}
 		.erweima{

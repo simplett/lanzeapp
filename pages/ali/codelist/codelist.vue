@@ -19,7 +19,7 @@
 		<sunui-upoos :upImgConfig="upImgOos" @onUpImg="upOosData" @onImgDel="delImgInfo" ref="uImage"></sunui-upoos>
 		<hr style="height: 100%;">
 		<view class="lanzepadding">
-			<button @tap="uploadimg()" type="primary">上传图片或视频</button>
+			<button @tap="uploadimg()" type="primary">上传图片</button>
 		</view>
 		<view class="lanzepadding">
 		<view class="price">
@@ -46,6 +46,7 @@
 	export default {
 		data() {
 			return {
+				mystatus:false,
 				upload:false,
 				images:'',
 				selectid:"",
@@ -357,7 +358,7 @@
 			},
 			//商品发布页
 			getlocaldata(){
-				if(this.upload){
+				if(this.upload&&this.mystatus){
 				uni.showLoading({
 				    title: '加载中',
 					icon:"loa",
@@ -412,7 +413,7 @@
 																      }
 																  });
 																  uni.showToast({
-																  	title:"发布成功,2秒之后发生跳转",
+																  	title:"发布成功,已进入审核队列",
 																	icon:"none"
 																  })
 																  setTimeout(()=>{
@@ -457,6 +458,7 @@
 										}
 									},
 									fail: (res) => {
+										uni.hideLoading();
 										uni.navigateTo({
 											url:"../select/select?selectid="+this.selectid
 											});
@@ -464,6 +466,7 @@
 								})
 							},
 							fail:res=>{
+								uni.hideLoading();
 								uni.showToast({
 									title:"请您先登陆"
 								})
@@ -478,7 +481,8 @@
 				})
 				}else{
 					uni.showToast({
-						title:"请您先上传图片再进行发布"
+						title:"请您先上传图片再进行发布",
+						icon:"none"
 					})
 				}
 			},
@@ -523,6 +527,10 @@
 						icon: 'none'
 					});
 					this.upload=true;
+				}
+				if(e.length==0)
+				{
+					this.mystatus=true;
 				}
 			},
 			// 获取上传图片阿里云

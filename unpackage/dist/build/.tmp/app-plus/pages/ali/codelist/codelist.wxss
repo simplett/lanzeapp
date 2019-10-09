@@ -24,10 +24,10 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.description.data-v-26507adf {
+.description.data-v-e94c1e3a {
   margin-top: 30rpx;
 }
-.status.data-v-26507adf {
+.status.data-v-e94c1e3a {
   width: 100%;
   height: 0;
   position: fixed;
@@ -36,10 +36,10 @@
   top: 0;
   height: var(--status-bar-height);
 }
-.lanzepadding.data-v-26507adf {
+.lanzepadding.data-v-e94c1e3a {
   padding: 10rpx 30rpx;
 }
-.header.data-v-26507adf {
+.header.data-v-e94c1e3a {
   width: 50%;
   padding: 0 4rpx;
   height: 80rpx;
@@ -56,19 +56,19 @@
   /* background-color: #f06c7a; */
   top: var(--status-bar-height);
 }
-.mybuttom.data-v-26507adf {
+.mybuttom.data-v-e94c1e3a {
   position: absolute;
   right: 4%;
   margin: auto 0uox;
   top: 50%;
   margin-top: -30rpx;
 }
-.place.data-v-26507adf {
+.place.data-v-e94c1e3a {
   background-color: #ffffff;
   height: 100rpx;
   margin-top: var(--status-bar-height);
 }
-.textarea.data-v-26507adf {
+.textarea.data-v-e94c1e3a {
   width: 100%;
   padding: 10rpx 20rpx;
   border: 2rpx solid gray;
@@ -76,11 +76,12 @@
           box-sizing: border-box;
   height: 300rpx;
 }
-.mytext.data-v-26507adf {
+.mytext.data-v-e94c1e3a {
   float: right;
   padding: 2rpx 10rpx;
+  font-size: 24rpx;
 }
-.price.data-v-26507adf {
+.price.data-v-e94c1e3a {
   font-family: KAITI;
   display: -webkit-box;
   display: -webkit-flex;
@@ -93,18 +94,18 @@
   width: 100%;
   margin: 10rpx 2rpx;
 }
-.lanzeimage.data-v-26507adf {
+.lanzeimage.data-v-e94c1e3a {
   height: 50rpx;
   width: 60rpx;
 }
-.morethan.data-v-26507adf {
+.morethan.data-v-e94c1e3a {
   height: 50rpx;
   margin: 0rpx 20rpx;
 }
-.warn-btn.data-v-26507adf {
+.warn-btn.data-v-e94c1e3a {
   width: 100%;
 }
-.warn-btn button.data-v-26507adf {
+.warn-btn button.data-v-e94c1e3a {
     display: table;
     margin: auto auto;
     width: 360rpx;

@@ -128,8 +128,8 @@
 				console.log("点击");
 				uni.navigateTo({
 					url: '/pages/ali/codelist/codelist?codeid=' + pid,
-					animationType: 'zoom-fade-out',
-					    animationDuration: 5000
+					animationType: 'slide-in-bottom',
+					    animationDuration: 300
 				});
 				uni.setStorage({
 					key: "codeid",

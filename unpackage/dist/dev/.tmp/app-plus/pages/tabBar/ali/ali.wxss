@@ -76,6 +76,11 @@
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
 }
+.row .title {
+    font-size: 24rpx;
+    width: 100%;
+    margin-bottom: 20rpx;
+}
 .row-itemlist {
   text-align: center;
   width: 79.2px;

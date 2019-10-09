@@ -112,9 +112,9 @@
 			this.pid = options.pid;
 			this.getmsg();
 		},
-		onReady: function(res) {
-			this.videoContext = uni.createVideoContext('myVideo')
-		},
+		// onReady: function(res) {
+		// 	this.videoContext = uni.createVideoContext('myVideo')
+		// },
 		//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
 		onPullDownRefresh() {
 			setTimeout(function() {
@@ -123,9 +123,9 @@
 		},
 		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 		onReachBottom() {
-			uni.showToast({
-				title: '触发上拉加载'
-			});
+			// uni.showToast({
+			// 	title: '触发上拉加载'
+			// });
 		},
 		methods: {
 			getmsg() {
@@ -148,9 +148,7 @@
 								grade: "secondary",
 								first: {
 									content: "系统默认好评",
-									img: ["https://ae01.alicdn.com/kf/HTB111soTbvpK1RjSZPiq6zmwXXaB.jpg",
-										"https://ae01.alicdn.com/kf/HTB1O2TRTmzqK1RjSZPcq6zTepXa4.jpg"
-									],
+									img: [],
 									video: []
 								}
 							})
