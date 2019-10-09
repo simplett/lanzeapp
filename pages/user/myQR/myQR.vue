@@ -4,7 +4,9 @@
 			
 		</view>
 		<view class="QR">
-			<image src="../../../static/img/qr.png"></image>
+			<view class="qrimg-i">
+				<tki-qrcode v-if="ifShow" cid="qrcode1" ref="qrcode" :val="val" :size="size" :unit="unit" :background="background" :foreground="foreground" :pdground="pdground" :icon="icon" :iconSize="iconsize" :lv="lv" :onval="onval" :loadMake="loadMake" :usingComponents="true" @result="qrR" />
+			</view>
 		</view>
 		<view class="title">
 			扫描二维码，加我好友
@@ -20,77 +22,98 @@
 </template>
 
 <script>
-	// import QRCode from 'qrcodejs2'
+	import tkiQrcode from '@/components/tki-qrcode/tki-qrcode.vue'
 	export default {
-			// components:{QRCode},
 		data() {
 			return {
-				tis:"保存到相册",
-				showBtn:false
-			};
-		},
-		onLoad() {
-			// #ifdef APP-PLUS
-			this.showBtn = true;
-			// #endif
-		},
-		methods:{
-			//生成二维码
-			// qrcode() {
-			// 	var data = this.uid;
-			// 	var c = {
-			// 		"type":"user",
-			// 		"uid": "55"
-			// 	};
-			// 	c = JSON.stringify(c);
-			// 	console.log(c)
-			// 	document.getElementById("qrCode").innerHTML = "";
-			// 	setTimeout(() => {
-			// 	new QRCode(this.$refs.qrCodeDiv, {
-			// 	text: c,
-			// 	width: 150,
-			// 	height: 150,
-			// 	colorDark: "#ff0000", //二维码颜色
-			// 	colorLight: "#ffffff", //二维码背景色
-			// 	correctLevel: QRCode.CorrectLevel.H//容错率，L/M/H
-			// 	})
-			// 	}, 100)
-			// },
-			// 截图，调用webview、Bitmap方法
-			printscreen(){
-				this.tis = "正在保存"
-				let ws=this.$mp.page.$getAppWebview();
-				let bitmap = new plus.nativeObj.Bitmap();
-				this.showBtn = false;
-				this.$nextTick(function(){
-					setTimeout(()=>{
-						ws.draw(bitmap,(e)=>{
-							this.showBtn = true;
-							console.log('bitmap绘制图片成功');
-							console.log("e: " + JSON.stringify(e));
-							bitmap.save("_doc/Qr.jpg", {
-								overwrite: true,
-								quality: 100
-							}, (i)=>{
-								plus.gallery.save(i.target,(e)=>{
-									uni.showToast({
-										title:'保存成功'
-									})
-									this.tis = "保存到相册"
-									bitmap.clear(); //销毁
-								},(e)=>{
-									bitmap.clear(); //销毁
-								});
-							},(e)=>{
-								console.log('保存图片失败：' + JSON.stringify(e));
-							});
-						},(e)=>{
-							console.log('bitmap绘制图片失败：'+JSON.stringify(e));
-						});
-					},200)
-				})
+				ifShow: true,
+				val: "", // 要生成的二维码值
+				size: 200, // 二维码大小
+				unit: 'px', // 单位
+				background: '#ffffff', // 背景色
+				foreground: '#000000', // 前景色
+				pdground: '#ff0000', // 角标色
+				icon: '', // 二维码图标
+				iconsize: 40, // 二维码图标大小
+				lv: 3, // 二维码容错级别 ， 一般不用设置，默认就行
+				onval: true, // val值变化时自动重新生成二维码
+				loadMake: true, // 组件加载完成后自动生成二维码
+				src: '' // 二维码生成后的图片地址或base64
 			}
-		}
+		},
+		methods: {
+			sliderchange(e) {
+				
+				this.size = e.detail.value
+			},
+			creatQrcode() {
+				var token;
+				uni.getStorage({
+					key:"token",
+					success: res => {
+						token=res.data;
+						uni.request({
+						    url: 'http://120.79.19.253:10086/Search', //仅为示例，并非真实接口地址。
+						    data: {
+						        token,
+						        type: "user"
+						    },
+						    success: (res) => {
+						        console.log(res.data);
+						        if(res.data.status==1)
+								{
+									var uid=res.data.uid;
+									
+									var data={"type":"user","uid":uid};
+									this.val=JSON.stringify(data);
+									this.$refs.qrcode._makeCode()
+								}
+						    }
+						});
+					},
+					fail: (res) => {
+						uni.showToast({
+							title:"请您先登陆",icon:"none"
+						})
+					}
+				})
+				
+			},
+			saveQrcode() {
+				this.$refs.qrcode._saveCode()
+			},
+			qrR(res) {
+				this.src = res
+			},
+			clearQrcode() {
+				this.$refs.qrcode._clearCode()
+				this.val = ''
+			},
+			ifQrcode() {
+				this.ifShow = !this.ifShow
+			},
+			selectIcon() {
+				let that = this
+				uni.chooseImage({
+					count: 1, //默认9
+					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album'], //从相册选择
+					success: function (res) {
+						that.icon = res.tempFilePaths[0]
+						setTimeout(() => {
+							that.creatQrcode()
+						}, 100);
+						// console.log(res.tempFilePaths);
+					}
+				});
+			}
+		},
+		components: {
+			tkiQrcode
+		},
+		onLoad: function () {
+			this.creatQrcode();
+		},
 	}
 </script>
 

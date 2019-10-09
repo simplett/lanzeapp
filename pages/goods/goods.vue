@@ -38,7 +38,7 @@
 					<view class="icon kefu"></view>
 					<view class="text">聊聊看</view>
 				</view>
-				<view class="box" @tap="keep">
+				<view class="box" @tap="addlike()">
 					<view class="icon" :class="[isKeep?'shoucangsel':'shoucang']"></view>
 					<view class="text">{{isKeep?'已':''}}收藏</view>
 				</view>
@@ -555,6 +555,15 @@
 			},
 			// 加入购物车
 			joinCart() {
+				var token;
+				uni.getStorage({
+					key:"token",
+					success: res => {
+						token=res.data;
+					}
+				});
+				if(token)
+				{
 				var id = this.pid;
 				var img = this.swiperList[0].img;
 				var price = this.goodsData.price;
@@ -643,16 +652,78 @@
 						icon: "none"
 					});
 				}
+				}else
+				{
+					uni.showToast({
+						title:"您未登陆或着登陆状态异常",
+						icon:"none"
+					})
+				}
 
+			},
+			//收藏
+			addlike() {
+				var token = "";
+				uni.getStorage({
+					key: "token",
+					success: res => {
+						token = res.data;
+					}
+				})
+				if (token) {
+					var data = {
+						token,
+						type: "production",
+						action: "add"
+					}
+					uni.request({
+						url: 'http://120.79.19.253:10086/Subscribe',
+						data,
+						success: (res) => {
+							console.log(res.data, "hhhhhhhhhh");
+							if (res.data.status == 1) {
+								uni.showToast({
+									title:"收藏成功"
+								});
+								this.keep()
+							} else {
+								uni.showToast({
+									title:"失败",
+									icon:"none"
+								})
+							}
+							// this.text = 'request success';
+						}
+					});
+				} else {
+					uni.showToast({
+						title: "请登陆之后再使用此功能"
+					})
+				}
 			},
 			//立即购买
 			buy() {
+				var token;
+				uni.getStorage({
+					key:"token",
+					success: res => {
+						token=res.data;
+					}
+				});
+				if(token)
+				{
 				if (this.selectSpec == null) {
 					return this.showSpec(() => {
 						this.toConfirmation();
 					});
 				}
 				this.toConfirmation();
+				}else{
+					uni.showToast({
+						title:"您未登陆或着登陆状态异常",
+						icon:"none"
+					})
+				}
 			},
 			//商品评论
 			toRatings() {
