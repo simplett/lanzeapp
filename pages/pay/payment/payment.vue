@@ -7,9 +7,9 @@
 						<view class="nominal">订单名称:</view><view class="text">{{orderName}}</view>
 					</view>
 					<view class="row">
-						<view class="nominal">订单金额:</view><view class="text">{{amount}}元</view>
+				</view>						<view class="nominal">订单金额:</view><view class="text">{{amount}}元</view>
 					</view>
-				</view>
+
 			</view>
 		</view>
 		<view class="block">
@@ -85,6 +85,32 @@
 				uni.showLoading({
 					title:'支付中...'
 				});
+				var buylist;
+				uni.getStorage({
+					key:"buydata",
+					success: res => {
+						buylist=res.data;
+						var buylists=[];
+						for(var item in buylist)
+						{
+								buylist[item]["type"]="back";
+								buylist[item]["goods_id"]=buylist[item].id;
+								buylist[item]["payment"]=buylist[item].price;
+								buylist[item]["ordersn"]=item;
+						};
+						console.log(buylist,"8888888888888888888888888888")
+						uni.setStorage({
+							key:"lanzelist",
+							data:buylist,
+							success: res => {
+								console.log("成功");
+							},
+							fail: res => {
+								console.log("失败")
+							}
+						})
+					}
+				})
 				setTimeout(()=>{
 					uni.hideLoading();
 					uni.showToast({

@@ -118,7 +118,7 @@
 				},
 				// 订单类型
 				orderList:[
-					// {text:'待付款',icon:"fukuan"},
+					{text:'待付款',icon:"fukuan"},
 					{text:'待发货',icon:"fahuo"},
 					{text:'待收货',icon:"shouhuo"},
 					{text:'待评价',icon:"pingjia"},
