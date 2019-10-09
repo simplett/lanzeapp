@@ -381,7 +381,9 @@
 			}
 		}, {
 			"path": "pages/user/setting/revise/signature/signature",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "个性签名"
+			}
 		}, {
 			"path": "pages/user/setting/revise/pay/pay",
 			"style": {}

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<input type="text" value="" placeholder="请输入你的昵称" v-model="signature"/>
+		<input type="text" value="" placeholder="请输入你的个性签名" v-model="signature"/>
 		<button type="primary" @tap="submit">确认</button>
 	</view>
 </template>
@@ -55,5 +55,8 @@
 </script>
 
 <style lang="scss">
-
+input{
+	height:50px;
+	background: #e2e3e5;
+}
 </style>
