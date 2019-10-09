@@ -28,7 +28,7 @@
 							<view class="spec">{{row.spec}}</view>
 							<view class="price-number">
 								￥<view class="price">{{row.price}}</view>
-								x<view class="number">{{row.numner}}</view>
+								x<view class="number">{{row.number}}</view>
 							</view>
 						</view>
 						
