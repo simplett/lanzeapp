@@ -102,7 +102,7 @@
 		data() {
 			return {
 				face:"../../../static/img/face.jpg",
-				nickname:'请输入昵称...',
+				nickname:'游客1001',
 				signature:'',
 				isfirst:true,
 				headerPosition:"fixed",

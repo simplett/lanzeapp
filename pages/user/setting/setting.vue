@@ -170,7 +170,7 @@
 					key:'signature',
 					success: res => {
 						this.signature=res.data;		
-						console.log("成功获取rename"+this.signature);
+						console.log("成功获取signature"+this.signature);
 					}
 				});
 			}
