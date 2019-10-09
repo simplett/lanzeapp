@@ -49,7 +49,7 @@
 			<image src="/static/img/banner.jpg"></image>
 		</view>
 		<!-- 活动区 -->
-		<view class="promotion">
+		<!-- <view class="promotion">
 			<view class="text">优惠专区</view>
 			<view class="list">
 				<view class="column" v-for="(row, index) in Promotion" @tap="toPromotion(row)" :key="index">
@@ -72,7 +72,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<!-- 商品列表 -->
 		<view class="goods-list">
 			<view class="title">
@@ -189,13 +189,13 @@
 					},
 					{
 						id: 9,
-						name: '书籍',
-						img: '/static/img/category/7.png'
+						name: '美容',
+						img: '/static/img/category/9.png'
 					},
 					{
 						id: 10,
-						name: '服装',
-						img: '/static/img/category/8.png'
+						name: '宠物',
+						img: '/static/img/category/11.png'
 					}
 				],
 				Promotion: [],
@@ -228,9 +228,6 @@
 		},
 		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 		onReachBottom() {
-			uni.showToast({
-				title: '触发上拉加载'
-			});
 			let len = this.productList.length;
 			if (len >= 1000) {
 				this.loadingText = '到底了';
@@ -238,7 +235,14 @@
 			}
 			this.load();
 		},
-		onLoad() {
+		onLoad(options) {
+			console.log(options)
+			if(options.type=="mylike")
+			{
+				uni.navigateTo({
+					url:"../../../goods/goods?pid="+options.pid
+				})
+			}
 
 			// #ifdef APP-PLUS
 			this.nVueTitle = uni.getSubNVueById('homeTitleNvue');

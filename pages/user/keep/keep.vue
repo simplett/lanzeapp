@@ -2,248 +2,343 @@
 	<view>
 		<view class="tabr" :style="{top:headerTop}">
 			<view :class="{on:typeClass=='goods'}" @tap="switchType('goods')">商品({{goodsList.length}})</view>
-			<view :class="{on:typeClass=='shop'}"  @tap="switchType('shop')">店铺({{shopList.length}})</view>
+			<!-- <view :class="{on:typeClass=='shop'}" @tap="switchType('shop')">店铺({{shopList.length}})</view> -->
 			<view class="border" :class="typeClass"></view>
 		</view>
-		<view class="place" ></view>
+		<view class="place"></view>
 		<view class="list">
 			<!-- 优惠券列表 -->
 			<view class="sub-list goods" :class="subState">
 				<view class="tis" v-if="goodsList.length==0">没有数据~</view>
-				<view class="row" v-for="(row,index) in goodsList" :key="index" >
+				<view class="row" v-for="(row,index) in goodsList" :key="index">
 					<!-- 删除按钮 -->
-					<view class="menu" @tap.stop="deleteCoupon(row.id,goodsList)">
+					<view class="menu" @tap.stop="deleteCoupon(row.sp_pid,goodsList)">
 						<view class="icon shanchu"></view>
 					</view>
 					<!-- content -->
-					<view class="carrier" :class="[typeClass=='goods'?theIndex==index?'open':oldIndex==index?'close':'':'']" @touchstart="touchStart(index,$event)" @touchmove="touchMove(index,$event)" @touchend="touchEnd(index,$event)">
-						<view class="goods-info" @tap="toGoods(row)">
+					<view class="carrier" :class="[typeClass=='goods'?theIndex==index?'open':oldIndex==index?'close':'':'']"
+					 @touchstart="touchStart(index,$event)" @touchmove="touchMove(index,$event)" @touchend="touchEnd(index,$event)">
+						<view class="goods-info" @tap="toGoods(row.sp_pid)">
 							<view class="img">
-								<image :src="row.img"></image>
+								<image :src="row.sp_images"></image>
 							</view>
 							<view class="info">
-								<view class="title">{{row.name}}</view>
+								<view class="title">{{row.sp_name}}</view>
 								<view class="price-number">
 									<view class="keep-num">
-										905人收藏
+										
 									</view>
-									<view class="price">￥{{row.price}}</view>
-									
+									<view class="price"></view>
+									<!-- ￥{{row.price}} -->
+
 								</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-			<view class="sub-list shop" :class="subState">
+			<!-- <view class="sub-list shop" :class="subState">
 				<view class="tis" v-if="shopList.length==0">没有数据~</view>
-				<view class="row" v-for="(row,index) in shopList" :key="index" >
+				<view class="row" v-for="(row,index) in shopList" :key="index"> -->
 					<!-- 删除按钮 -->
-					<view class="menu" @tap.stop="deleteCoupon(row.id,shopList)">
+					<!-- <view class="menu" @tap.stop="deleteCoupon(row.sp_pid,shopList)">
 						<view class="icon shanchu"></view>
-					</view>
+					</view> -->
 					<!-- content -->
-					<view class="carrier" :class="[typeClass=='shop'?theIndex==index?'open':oldIndex==index?'close':'':'']" @touchstart="touchStart(index,$event)" @touchmove="touchMove(index,$event)" @touchend="touchEnd(index,$event)">
+				<!-- 	<view class="carrier" :class="[typeClass=='shop'?theIndex==index?'open':oldIndex==index?'close':'':'']"
+					 @touchstart="touchStart(index,$event)" @touchmove="touchMove(index,$event)" @touchend="touchEnd(index,$event)">
 						<view class="left">
-							<image :src="row.img"></image>
+							<image :src="row.sp_images"></image>
 						</view>
 						<view class="right">
 							<view class="name">
-								{{row.name}}
+								{{row.sp_name}}
 							</view>
 						</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
-		
+
 	</view>
 </template>
 
 <script>
-
 	export default {
 		data() {
 			return {
-				goodsList:[
-					{id:1,img:'/static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:2,img:'/static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
-					{id:3,img:'/static/img/goods/p1.jpg',name:'商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题商品标题',spec:'规格:S码',price:127.5,number:1,selected:false},
+				goodsList: [
+					{
+						sp_images: "https://img14.360buyimg.com/n7/s600x600_jfs/t1/59141/5/9072/153303/5d6690d9Ea8a24391/b2d424722149a8ff.jpg!cc_230x230.jpg",
+						sp_name: "HUAWEI WATCH GT运动版 黑色 华为手表 (两周续航+户外运动手表+实时心率+高清彩屏+",
+						sp_pid: 2828,
+						number: 1,
+						selected: false
+					}
 				],
-				shopList:[
-					{id:1,name:"冰鲜专卖店",img:"/static/img/shop/1.jpg"},
-					{id:2,name:"果蔬天下",img:"/static/img/shop/2.jpg"},
-					{id:3,name:"办公耗材用品店",img:"/static/img/shop/3.jpg"},
-					{id:4,name:"天天看好书",img:"/static/img/shop/4.jpg"}
+				shopList: [{
+						id: 1,
+						name: "冰鲜专卖店",
+						img: "/static/img/shop/1.jpg"
+					},
+					{
+						id: 2,
+						name: "果蔬天下",
+						img: "/static/img/shop/2.jpg"
+					},
+					{
+						id: 3,
+						name: "办公耗材用品店",
+						img: "/static/img/shop/3.jpg"
+					},
+					{
+						id: 4,
+						name: "天天看好书",
+						img: "/static/img/shop/4.jpg"
+					}
 				],
-				headerTop:0,
+				headerTop: 0,
 				//控制滑动效果
-				typeClass:'goods',
-				subState:'',
-				theIndex:null,
-				oldIndex:null,
-				isStop:false
+				typeClass: 'goods',
+				subState: '',
+				theIndex: null,
+				oldIndex: null,
+				isStop: false
 			}
 		},
-		onPageScroll(e){
-			
+		onPageScroll(e) {
+
 		},
 		//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
 		onPullDownRefresh() {
-		    setTimeout(function () {
-		        uni.stopPullDownRefresh();
-		    }, 1000);
+			setTimeout(function() {
+				uni.stopPullDownRefresh();
+			}, 1000);
 		},
 		onLoad() {
 			//兼容H5下排序栏位置
 			// #ifdef H5
-				//定时器方式循环获取高度为止，这么写的原因是onLoad中head未必已经渲染出来。
-				let Timer = setInterval(()=>{
-					let uniHead = document.getElementsByTagName('uni-page-head');
-					if(uniHead.length>0){
-						this.headerTop = uniHead[0].offsetHeight+'px';
-						clearInterval(Timer);//清除定时器
-					}
-				},1);
+			//定时器方式循环获取高度为止，这么写的原因是onLoad中head未必已经渲染出来。
+			let Timer = setInterval(() => {
+				let uniHead = document.getElementsByTagName('uni-page-head');
+				if (uniHead.length > 0) {
+					this.headerTop = uniHead[0].offsetHeight + 'px';
+					clearInterval(Timer); //清除定时器
+				}
+			}, 1);
 			// #endif
 			this.getlike();
 		},
-		onShow(){
+		onShow() {
 			this.getlike();
 		},
 		methods: {
-			getlike(){
-				var token="";
+			toGoods(id){
+				console.log(id);
+				uni.reLaunch({
+				    url: '../../goods/goods?pid='+id
+				});
+			},
+			changemylike() {
+				var mylike;
 				uni.getStorage({
-					key:"token",
-					success:res=>{
-						token=res.data;
+					key: "mylike",
+					success: res => {
+						mylike = res.data;
+						this.goodsList=mylike;
+					},
+					fail: res => {
+						mylike = [{
+							sp_images: "https://img14.360buyimg.com/n7/s600x600_jfs/t1/59141/5/9072/153303/5d6690d9Ea8a24391/b2d424722149a8ff.jpg!cc_230x230.jpg",
+							sp_name: "HUAWEI WATCH GT运动版 黑色 华为手表 (两周续航+户外运动手表+实时心率+高清彩屏+",
+							sp_pid: 2828,
+							number: 1,
+							selected: false
+						}];
+						this.goodsList=mylike;
 					}
 				})
-				if(token)
-				{
-					var data={
+			},
+			getlike() {
+				var token = "";
+				uni.getStorage({
+					key: "token",
+					success: res => {
+						token = res.data;
+					}
+				})
+				if (token) {
+					var data = {
 						token,
 						type: "production",
 						action: "get"
 					}
 					uni.request({
-					    url: 'http://120.79.19.253:10086/Subscribe', //仅为示例，并非真实接口地址。
-					    data,
-					    success: (res) => {
-					        console.log(res.data,"hhhhhhhhhh");
-					        // this.text = 'request success';
-					    }
+						url: 'http://120.79.19.253:10086/Subscribe',
+						data,
+						success: (res) => {
+							console.log(res.data, "hhhhhhhhhh");
+							if (res.data.status == 1) {
+								var data=res.data.sp_data;
+								var images=[]
+								for(var item of data)
+								{
+									item["number"]=1;
+									item["selected"]=false;
+									images.push(item.sp_images);
+								};
+								for(var i=0;i<images.length;i++)
+								{
+									var reg=/;/;
+									if(reg.test(images[i]))
+									{
+										images[i]=images[i].split(";")[0];
+									}
+								};
+								for(var item in data)
+								{
+									data[item].sp_images=images[item];
+								}
+								console.log(data);
+								uni.setStorage({
+									key:"mylike",
+									data,
+									success: (res) => {
+										uni.showToast({
+											title:"成功"
+										});
+										this.changemylike()
+									}
+								})
+							} else {
+
+							}
+							// this.text = 'request success';
+						}
 					});
-				}else{
+				} else {
 					uni.showToast({
-						title:"请登陆之后再使用此功能"
+						title: "请登陆之后再使用此功能"
 					})
 				}
 			},
-			switchType(type){
-				if(this.typeClass==type){
-					return ;
+			switchType(type) {
+				if (this.typeClass == type) {
+					return;
 				}
 				uni.pageScrollTo({
-					scrollTop:0,
-					duration:0
+					scrollTop: 0,
+					duration: 0
 				})
 				this.typeClass = type;
-				this.subState = this.typeClass==''?'':'show'+type;
-				setTimeout(()=>{
+				this.subState = this.typeClass == '' ? '' : 'show' + type;
+				setTimeout(() => {
 					this.oldIndex = null;
 					this.theIndex = null;
-					this.subState = this.typeClass=='goods'?'':this.subState;
-				},200)
+					this.subState = this.typeClass == 'goods' ? '' : this.subState;
+				}, 200)
 			},
 			//控制左滑删除效果-begin
-			touchStart(index,event){
+			touchStart(index, event) {
 				//多点触控不触发
-				if(event.touches.length>1){
+				if (event.touches.length > 1) {
 					this.isStop = true;
-					return ;
+					return;
 				}
 				this.oldIndex = this.theIndex;
 				this.theIndex = null;
 				//初始坐标
-				this.initXY = [event.touches[0].pageX,event.touches[0].pageY];
+				this.initXY = [event.touches[0].pageX, event.touches[0].pageY];
 			},
-			touchMove(index,event){
+			touchMove(index, event) {
 				//多点触控不触发
-				if(event.touches.length>1){
+				if (event.touches.length > 1) {
 					this.isStop = true;
-					return ;
+					return;
 				}
 				let moveX = event.touches[0].pageX - this.initXY[0];
 				let moveY = event.touches[0].pageY - this.initXY[1];
-				
-				if(this.isStop||Math.abs(moveX)<5){
-					return ;
+
+				if (this.isStop || Math.abs(moveX) < 5) {
+					return;
 				}
-				if (Math.abs(moveY) > Math.abs(moveX)){
+				if (Math.abs(moveY) > Math.abs(moveX)) {
 					// 竖向滑动-不触发左滑效果
 					this.isStop = true;
 					return;
 				}
-				
-				if(moveX<0){
+
+				if (moveX < 0) {
 					this.theIndex = index;
 					this.isStop = true;
-				}else if(moveX>0){
-					if(this.theIndex!=null&&this.oldIndex==this.theIndex){
+				} else if (moveX > 0) {
+					if (this.theIndex != null && this.oldIndex == this.theIndex) {
 						this.oldIndex = index;
 						this.theIndex = null;
 						this.isStop = true;
-						setTimeout(()=>{
+						setTimeout(() => {
 							this.oldIndex = null;
-						},150)
+						}, 150)
 					}
 				}
 			},
-			
-			touchEnd(index,$event){
+
+			touchEnd(index, $event) {
 				//解除禁止触发状态
 				this.isStop = false;
 			},
-			
+
 			//删除商品
-			deleteCoupon(id,List){
+			deleteCoupon(id, List) {
 				let len = List.length;
-				for(let i=0;i<len;i++){
-					if(id==List[i].id){
+				for (let i = 0; i < len; i++) {
+					if (id == List[i].sp_pid) {
 						List.splice(i, 1);
 						break;
 					}
-				}
+				};
+				uni.setStorage({
+					key:"mylike",
+					data:List,
+					success: res => {
+						console.log("成功");
+						this.changemylike()
+					}
+				})
 				this.oldIndex = null;
 				this.theIndex = null;
 			},
-			
+
 			discard() {
 				//丢弃
 			}
-			
-			
+
+
 		}
 	}
 </script>
 <style lang="scss">
-	view{
+	view {
 		display: flex;
 		flex-wrap: wrap;
-		
-	}
-	page{position: relative;background-color: #f5f5f5;}
 
-	.hidden{
+	}
+
+	page {
+		position: relative;
+		background-color: #f5f5f5;
+	}
+
+	.hidden {
 		display: none !important;
 	}
-	.place{
+
+	.place {
 		width: 100%;
 		height: 95upx;
 	}
-	.tabr{
+
+	.tabr {
 		background-color: #fff;
 		width: 94%;
 		height: 95upx;
@@ -252,7 +347,8 @@
 		position: fixed;
 		top: 0;
 		z-index: 10;
-		view{
+
+		view {
 			width: 50%;
 			height: 90upx;
 			justify-content: center;
@@ -260,87 +356,117 @@
 			font-size: 32upx;
 			color: #999;
 		}
-		.on{
+
+		.on {
 			color: #f06c7a;
 		}
-		.border{
+
+		.border {
 			height: 4upx;
 			background-color: #f06c7a;
 			transition: all .3s ease-out;
-			&.shop{
-				transform: translate3d(100%,0,0);
+
+			&.shop {
+				transform: translate3d(100%, 0, 0);
 			}
 		}
-		
+
 	}
-	.list{
+
+	.list {
 		width: 100%;
 		display: block;
 		position: relative;
 	}
+
 	@keyframes showGoods {
-		0% {transform: translateX(-100%);}100% {transform: translateX(0);}
+		0% {
+			transform: translateX(-100%);
+		}
+
+		100% {
+			transform: translateX(0);
+		}
 	}
+
 	@keyframes showShop {
-		0% {transform: translateX(0);}100% {transform: translateX(-100%);}
+		0% {
+			transform: translateX(0);
+		}
+
+		100% {
+			transform: translateX(-100%);
+		}
 	}
-	.sub-list{
-		&.shop{
+
+	.sub-list {
+		&.shop {
 			position: absolute;
 			top: 0;
-			left:100%;
+			left: 100%;
 			display: none;
 		}
-		&.showgoods{
+
+		&.showgoods {
 			display: flex;
 			animation: showGoods 0.20s linear both;
 		}
-		&.showshop{
+
+		&.showshop {
 			display: flex;
 			animation: showShop 0.20s linear both;
 		}
+
 		width: 100%;
 		padding: 20upx 0 120upx 0;
-		.tis{
+
+		.tis {
 			width: 100%;
 			height: 60upx;
 			justify-content: center;
 			align-items: center;
 			font-size: 32upx;
 		}
-		&.shop{
-			.row{
+
+		&.shop {
+			.row {
 				height: 20vw;
-				.left{
+
+				.left {
 					width: 20vw;
 					height: 20vw;
 					padding-left: 20upx;
 					align-items: center;
-					image{
+
+					image {
 						width: 18vw;
 						height: 18vw;
 						border-radius: 100%;
 					}
 				}
-				.right{
+
+				.right {
 					height: 20vw;
 					align-items: center;
 					font-size: 32upx;
 				}
 			}
 		}
-		.row{
+
+		.row {
 			width: 100%;
-			height: 30vw; 
+			height: 30vw;
 			align-items: center;
 			position: relative;
 			overflow: hidden;
 			border-bottom: solid 1upx #dedede;
-			.menu{
-				.icon{
+
+			.menu {
+				.icon {
 					color: #fff;
-					font-size:50upx;
+					font-size: 50upx;
 				}
+
 				position: absolute;
 				width: 28%;
 				height: 100%;
@@ -351,20 +477,36 @@
 				color: #fff;
 				z-index: 2;
 			}
-			
-			.carrier{
+
+			.carrier {
 				@keyframes showMenu {
-					0% {transform: translateX(0);}100% {transform: translateX(-28%);}
+					0% {
+						transform: translateX(0);
+					}
+
+					100% {
+						transform: translateX(-28%);
+					}
 				}
+
 				@keyframes closeMenu {
-					0% {transform: translateX(-28%);}100% {transform: translateX(0);}
+					0% {
+						transform: translateX(-28%);
+					}
+
+					100% {
+						transform: translateX(0);
+					}
 				}
-				&.open{
+
+				&.open {
 					animation: showMenu 0.25s linear both;
 				}
-				&.close{
+
+				&.close {
 					animation: closeMenu 0.15s linear both;
 				}
+
 				background-color: #fff;
 
 				position: absolute;
@@ -373,30 +515,35 @@
 				height: 100%;
 				z-index: 3;
 				flex-wrap: nowrap;
-				.goods-info{
+
+				.goods-info {
 					width: calc(100% - 40upx);
 					padding: 20upx;
 					flex-wrap: nowrap;
-					.img{
+
+					.img {
 						width: calc(30vw - 40upx);
 						height: calc(30vw - 40upx);
 						border-radius: 10upx;
 						overflow: hidden;
 						flex-shrink: 0;
 						margin-right: 20upx;
-						image{
+
+						image {
 							width: calc(30vw - 40upx);
 							height: calc(30vw - 40upx);
 						}
 					}
-					.info{
+
+					.info {
 						width: 100%;
 						height: calc(30vw - 40upx);
 						overflow: hidden;
 						flex-wrap: wrap;
 						align-content: space-between;
 						position: relative;
-						.title{
+
+						.title {
 							width: 100%;
 							font-size: 28upx;
 							display: -webkit-box;
@@ -404,17 +551,18 @@
 							-webkit-line-clamp: 2;
 							overflow: hidden;
 						}
-						
-						.price-number{
+
+						.price-number {
 							width: 100%;
 							justify-content: space-between;
 							align-items: baseline;
-							
-							.keep-num{
+
+							.keep-num {
 								font-size: 26upx;
 								color: #999;
 							}
-							.price{
+
+							.price {
 								font-size: 30upx;
 								color: #f06c7a;
 							}
@@ -425,5 +573,4 @@
 
 		}
 	}
-	
 </style>

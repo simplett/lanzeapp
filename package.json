@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/simplett/lanzeapp#readme",
   "dependencies": {
-    "@dcloudio/uni-ui": "^1.0.4"
+    "@dcloudio/uni-ui": "^1.0.4",
+    "qrcodejs2": "0.0.2"
   }
 }

@@ -148,9 +148,12 @@
 								data: token,
 								success: function() {
 									uni.showToast({
-										title: '登陆成功',
+										title: '注册成功',
 										position: "center",
 										image: "../../static/img/mysuccess.png"
+									});
+									uni.switchTab({
+									    url: '/pages/tabBar/home/home'
 									});
 								},
 								fail: function() {

@@ -2,7 +2,7 @@
 	<div class="content" :style="{height:statusBarHeight+44+'wx'}">
 		<div class="status-bar" :style="{height:statusBarHeight+'wx'}"></div>
 		<div class="nav">
-			<text class="title-text">发布</text>
+			<text class="title-text">发布我的商品</text>
 		</div>
 	</div>
 </template>

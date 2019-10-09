@@ -9,7 +9,7 @@
 				<text @click="toSearch()" class="icon search">{{ iconSearch }}</text>
 			</div>
 			<text @click="toMsg" class="icon tongzhi">{{ iconTongzhi }}</text>
-			<text @click="saoma()" class="icon tongzhi">{{ iconTongzhi }}</text>
+			<text @click="saoma()" class="icon tongzhi">&#x2295;</text>
 		</div>
 	</div>
 </template>
@@ -39,6 +39,7 @@
 		},
 		methods: {
 			toChat(myuid) {
+				console.log(myuid,"myuid");
 				var status = true;
 				var uid = myuid;
 				var summsg = {};
@@ -74,7 +75,6 @@
 						})
 					}
 				})
-
 				if (status) {
 					if (summsg[uid] == undefined) {
 						summsg[uid] = [
@@ -127,7 +127,7 @@
 									success: (res) => {
 										console.log(res, "商品详情发起对话");
 										uni.navigateTo({
-											url: '../msg/msg'
+											url: '../../msg/msg'
 										})
 									}
 
@@ -135,8 +135,6 @@
 								console.log("消息发送成功过");
 								console.log("发消息函数被触发")
 							}
-
-
 							// uni.navigateTo({
 							// 	url: "../msg/chat/chat?name=客服008"
 							// })
@@ -153,15 +151,22 @@
 			},
 			saoma() {
 				uni.scanCode({
-					success: function(res) {
+					success: res=> {
 						console.log('条码类型：' + res.scanType);
 						console.log('条码内容：' + res.result);
 						var saomadata = JSON.parse(res.result);
-						if (saomadata.type == "user") {
-							this.toChat(saomadata.uid);
-						}else if(saomadata.type=="product")
+						console.log(saomadata,"扫码的消息");
+						console.log(saomadata.type);
+						console.log(typeof(saomadata));
+						var user="user";
+						var product="product";
+						if (saomadata["type"] == user) {
+							var uid=saomadata["uid"]
+							this.toChat(uid);
+						}else if(saomadata["type"] == product)
 						{
-							this.toGoods(saomadata.pid);
+							var pid=saomadata["pid"]
+							this.toGoods(pid);
 						}else{
 							uni.showToast({
 								title:"很抱歉，只能扫描蓝沢官方的二维码",
@@ -178,7 +183,7 @@
 				// 	icon: "none"
 				// });
 				uni.navigateTo({
-					url: '../goods?pid=' + pid
+					url: '../../goods/goods?pid=' + pid
 				});
 			},
 			toSearch() {

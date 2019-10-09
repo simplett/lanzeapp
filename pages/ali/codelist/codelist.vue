@@ -1,23 +1,26 @@
 <template>
 	<view>
-	<view class="lanzepadding">
-		<!-- <view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
+		<view class="lanzepadding">
+			<!-- <view v-if="showHeader" class="status" :style="{position:headerPosition,top:statusTop}"></view>
 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title">发布我的商品</view>
 		</view>
 		<view v-if="showHeader" class="place"></view> -->
-		<!-- <view class="header">
+			<!-- <view class="header">
 			<button class="mybuttom" type="warn" size="mini">发布</button>
 		</view> -->
-		<!-- 占位 -->
-		<!-- <view v-if="showHeader" class="place"></view> -->
-		<view class="">
-			<textarea class="textarea" maxlength="300" v-model="p_description" placeholder="添加一些宝贝的描述吧,300个字符之间" />
-			<text class="mytext">{{fontcount}}/300</text>
+			<!-- 占位 -->
+			<!-- <view v-if="showHeader" class="place"></view> -->
+			<view class="description">
+				<textarea class="textarea" maxlength="300" v-model="p_description" placeholder="添加一些宝贝的描述吧,300个字符之间" />
+				<text class="mytext">{{fontcount}}/300</text>
 		</view>
 		</view>
 		<sunui-upoos :upImgConfig="upImgOos" @onUpImg="upOosData" @onImgDel="delImgInfo" ref="uImage"></sunui-upoos>
 		<hr style="height: 100%;">
+		<view class="lanzepadding">
+			<button @tap="uploadimg()" type="primary">上传图片或视频</button>
+		</view>
 		<view class="lanzepadding">
 		<view class="price">
 			<view class="lanzeimage"><image style="height: 100%;width: 100%;" src="../../../static/img/qian.png" mode=""></image></view>
@@ -43,6 +46,7 @@
 	export default {
 		data() {
 			return {
+				upload:false,
 				images:'',
 				selectid:"",
 				price:"",
@@ -346,9 +350,14 @@
 				this.fontcount=len;
 			}
 		},
-		methods: {		
+		methods: {
+			uploadimg(){
+				this.uImageTap();
+				this.upload=true;
+			},
 			//商品发布页
 			getlocaldata(){
+				if(this.upload){
 				uni.showLoading({
 				    title: '加载中',
 					icon:"loa",
@@ -359,95 +368,118 @@
 				uni.getStorage({
 					key:"pname",
 					success:res=>{
-						name=res.data
+						name=res.data;
+						var token;
+						uni.getStorage({
+							key:"token",
+							success:res=>{
+								token=res.data;
+								this.getUpImgInfoOos();
+								var cid;
+								uni.getStorage({
+									key:"codelist",
+									success:res=>{
+										cid=res.data;
+										var price=this.price;
+										var images=this.images;
+										var description=this.p_description;
+										var address="云南昆明";
+										var type=1;	
+										if(price){
+											if(images){
+												if(description){
+													var data={
+														name,price,cid,address,images,description,type,token
+													};
+													uni.request({
+													    url: 'http://120.79.19.253:10086/Release', //仅为示例，并非真实接口地址。
+													    data,
+													    success: (res) => {
+													        console.log(res.data);
+															if(res.data.status==1)
+															{
+																  uni.hideLoading();
+																  uni.removeStorage({
+																      key: 'pname',
+																      success: function (res) {
+																          console.log('success');
+																      }
+																  });
+																  uni.removeStorage({
+																      key: 'codelist',
+																      success: function (res) {
+																          console.log('success');
+																      }
+																  });
+																  uni.showToast({
+																  	title:"发布成功,2秒之后发生跳转",
+																	icon:"none"
+																  })
+																  setTimeout(()=>{
+																	  uni.switchTab({
+																	      url: '/pages/tabBar/home/home'
+																	  });
+																  },2000);
+															}else{
+																uni.vibrate({
+																    success: function () {
+																        console.log('success');
+																    }
+																});
+																uni.hideLoading();
+																uni.showToast({
+																	title:"发布异常",
+																	icon:"none"
+																})
+															}
+													    }
+													});
+												}else{
+													uni.showToast({
+														title:"请输入商品的描述",
+														icon:"none"
+													});
+													uni.hideLoading();
+												}
+											}else{
+												uni.showToast({
+													title:"请重新上传图片",
+													icon:"none"
+												});
+												uni.hideLoading();
+											}
+										}else{
+											uni.showToast({
+												title:"请输入价格",
+												icon:"none"
+											});
+											uni.hideLoading();
+										}
+									},
+									fail: (res) => {
+										uni.navigateTo({
+											url:"../select/select"						,
+											});
+									}
+								})
+							},
+							fail:res=>{
+								uni.showToast({
+									title:"请您先登陆"
+								})
+							}
+						})
 					},
 					fail: () => {
 						uni.navigateTo({
-							url:"../../select/select"
+							url:"../select/select"
 						})
 					}
 				})
-				var token;
-				uni.getStorage({
-					key:"token",
-					success:res=>{
-						token=res.data;
-					},
-					fail:res=>{
-						uni.showToast({
-							title:"请您先登陆"
-						})
-					}
-				})
-				var price=this.price;
-				this.getUpImgInfoOos();
-				var images=this.images;
-				var description=this.p_description;
-				var address="云南昆明";
-				var cid;
-				uni.getStorage({
-					key:"codelist",
-					success:res=>{
-						cid=res.data;
-					},
-					fail: (res) => {
-						uni.navigateTo({
-							url:"../../select/select"						,
-							});
-					}
-				})
-				var type=1;	
-				
-				if(name&&price&&cid&&address&&images&&description&&type&&token)
-				{
-					var data={
-						name,price,cid,address,images,description,type,token
-					};
-					uni.request({
-					    url: 'http://120.79.19.253:10086/Publish', //仅为示例，并非真实接口地址。
-					    data,
-					    success: (res) => {
-					        console.log(res.data);
-							if(res.data.status==1)
-							{
-								  uni.hideLoading();
-								  uni.removeStorage({
-								      key: 'pname',
-								      success: function (res) {
-								          console.log('success');
-								      }
-								  });
-								  uni.removeStorage({
-								      key: 'codelist',
-								      success: function (res) {
-								          console.log('success');
-								      }
-								  });
-								  uni.showToast({
-								  	title:"发布成功.2秒之后发生跳转",
-									icon:"none"
-								  })
-								  setTimeout(()=>{
-									  uni.navigateTo({
-									  	url:"../../../App"
-									  })
-								  },2000);
-							}else{
-								uni.vibrate({
-								    success: function () {
-								        console.log('success');
-								    }
-								});
-								uni.hideLoading();
-								uni.showToast({
-									title:"发布异常",
-									icon:"none"
-								})
-							}
-					    }
-					});
 				}else{
-					  uni.hideLoading();
+					uni.showToast({
+						title:"请您先上传图片再进行发布"
+					})
 				}
 			},
 			toselect(){
@@ -490,6 +522,7 @@
 						title: `上传成功`,
 						icon: 'none'
 					});
+					this.upload=true;
 				}
 			},
 			// 获取上传图片阿里云
@@ -504,6 +537,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.description{
+		margin-top: 30upx;
+		}
+		
 	.status {
 		width: 100%;
 		height: 0;
@@ -557,7 +594,7 @@
 		border: 2upx solid gray;
 		box-sizing: border-box;
 		height: 300upx;
-		box-shadow: -6upx -6upx 10upx 2upx gray inset;
+		// box-shadow: -6upx -6upx 10upx 2upx gray inset;
 	}
 	.mytext{
 		float: right;

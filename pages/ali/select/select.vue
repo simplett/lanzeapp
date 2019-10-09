@@ -5,7 +5,7 @@
 		<view v-if="showHeader" class="header" :style="{position:headerPosition,top:headerTop}">
 			<view class="title"></view>
 		</view>
-		<view v-if="showHeader" class="place"></view>
+		<!-- <view v-if="showHeader" class="place"></view> -->
 		<!-- <view class="header">
 			<button class="mybuttom" type="warn" size="mini">发布</button>
 		</view> -->
@@ -14,7 +14,7 @@
 		<view class="lanzepadding">
 			<view class="">
 				<text>添加标题</text>
-				<textarea class="mypname" v-model="mypname" maxlength="20" placeholder="输入宝贝的标题" />
+				<textarea class="mypname" v-model="mypname" maxlength="20" placeholder="输入宝贝的标题,不超过20个字" />
 				</view>
 				<hr>
 			<view class="uni-title uni-common-pl">选择你的商品分类</view>

@@ -166,8 +166,8 @@
 											position: "center",
 											image: "../../static/img/mysuccess.png"
 										});
-										uni.navigateTo({
-											url:'../tabBar/user/user'
+										uni.switchTab({
+										    url: '/pages/tabBar/home/home'
 										});
 									},
 									fail: function() {

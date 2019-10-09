@@ -118,9 +118,7 @@
 						this.goodsList=res.data;
 						},
 						fail:res=>{
-							this.goodsList=[
-					{id:1,img:'/static/img/goods/p1.jpg',name:'蓝沢官方的模板数据',spec:'规格:S码',price:127.5,number:1,selected:false}
-				]
+							this.goodsList=[]
 						}
 				})
 			},

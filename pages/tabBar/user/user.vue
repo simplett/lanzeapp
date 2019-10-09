@@ -128,7 +128,7 @@
 				mytoolbarList:[
 					{url:'../../user/keep/keep',text:'我的收藏',img:'/static/img/user/point.png'},
 					{url:'../../user/coupon/coupon',text:'我的关注',img:'/static/img/user/quan.png'}, 
-					{url:'',text:'评论',img:'/static/img/user/renw.png'},
+					// {url:'',text:'评论',img:'/static/img/user/renw.png'},
 					// {url:'',text:'领红包',img:'/static/img/user/momey.png'},
 					
 					{url:'../../user/address/address',text:'收货地址',img:'/static/img/user/addr.png'},

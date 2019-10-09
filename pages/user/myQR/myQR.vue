@@ -13,13 +13,16 @@
 			{{tis}}
 		</view>
 		<view class="logo">
-			<image mode="widthFix" src="../../../static/img/qrlogo.png"></image>
+			<!-- <image mode="widthFix" src="../../../static/img/qrlogo.png"></image> -->
+			<div class="qrcode" id="qrCode" ref="qrCodeDiv"></div>
 		</view>
 	</view>
 </template>
 
 <script>
+	// import QRCode from 'qrcodejs2'
 	export default {
+			// components:{QRCode},
 		data() {
 			return {
 				tis:"保存到相册",
@@ -32,6 +35,27 @@
 			// #endif
 		},
 		methods:{
+			//生成二维码
+			// qrcode() {
+			// 	var data = this.uid;
+			// 	var c = {
+			// 		"type":"user",
+			// 		"uid": "55"
+			// 	};
+			// 	c = JSON.stringify(c);
+			// 	console.log(c)
+			// 	document.getElementById("qrCode").innerHTML = "";
+			// 	setTimeout(() => {
+			// 	new QRCode(this.$refs.qrCodeDiv, {
+			// 	text: c,
+			// 	width: 150,
+			// 	height: 150,
+			// 	colorDark: "#ff0000", //二维码颜色
+			// 	colorLight: "#ffffff", //二维码背景色
+			// 	correctLevel: QRCode.CorrectLevel.H//容错率，L/M/H
+			// 	})
+			// 	}, 100)
+			// },
 			// 截图，调用webview、Bitmap方法
 			printscreen(){
 				this.tis = "正在保存"

@@ -7,8 +7,8 @@
 				<view class="icon location"></view>{{city}}
 			</view>
 			<view class="input-box">
-				<input placeholder="默认关键字" placeholder-style="color:#c0c0c0;" @tap="toSearch()" />
-				<view class="icon search"></view>
+				<input placeholder="默认关键字" v-model="kword" placeholder-style="color:#c0c0c0;" />
+				<view @tap="toSearch()" class="icon search"></view>
 			</view>
 			<view class="icon-btn">
 				<view class="icon tongzhi" @tap="toMsg"></view>
@@ -51,6 +51,7 @@
 	export default {
 		data() {
 			return {
+				kword:"",
 				showCategoryIndex: 0,
 				headerPosition: "fixed",
 				city: "北京",
@@ -349,6 +350,7 @@
 			});
 		},
 		methods: {
+			
 			//消息列表
 			toMsg() {
 				uni.navigateTo({
@@ -367,10 +369,12 @@
 			},
 			//搜索跳转
 			toSearch() {
-				uni.showToast({
-					title: "建议跳转到新页面做搜索功能"
+				//uni.showToast({title: e.name,icon:"none"});
+				// uni.setStorageSync('catName', e.name);
+				uni.navigateTo({
+					url: '../../goods/goods-list/goods-list?kword=' + this.kword
 				});
-			}
+			},
 		}
 	}
 </script>

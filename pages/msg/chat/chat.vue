@@ -206,9 +206,18 @@
 					key:"face",
 					success:res=>{
 						// console.log(res.data[0]);
-						this.myface=res.data[0].substring(4);
+						this.face=res.data[0];
 						// return res.data[0];
-						// console.log(this.face.substring(2),"头像")
+						console.log(this.face.substring(2))
+					}
+				}),
+				uni.getStorage({
+					key:"face",
+					success:res=>{
+						// console.log(res.data[0]);
+						this.myface=res.data[0];
+						// return res.data[0];
+						console.log(this.face.substring(2))
 					},
 					fail:res=>{
 						this.myface="https://simplett-img.oss-cn-beijing.aliyuncs.com/user_image/userimage.jpg";

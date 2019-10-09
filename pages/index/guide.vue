@@ -17,17 +17,17 @@
 				</view>
 				<view class="jump-over" @tap="launchFlag()">{{jumpover}}</view>
 			</swiper-item>
-			<swiper-item>
+			<!-- <swiper-item>
 				<view class="swiper-item">
 					<view class="swiper-item-img"><image src="../../static/guide/title_03.png" mode="aspectFit"></image></view>
 					<view class="swiper-item-img"><image src="../../static/guide/icon_03.png" mode="aspectFit"></image></view>
 				</view>
 				<view class="jump-over" @tap="launchFlag()">{{jumpover}}</view>
-			</swiper-item>
+			</swiper-item> -->
 			<swiper-item>
 				<view class="swiper-item">
-					<view class="swiper-item-img"><image src="../../static/guide/title_04.png" mode="aspectFit"></image></view>
-					<view class="swiper-item-img"><image src="../../static/guide/icon_04.png" mode="aspectFit"></image></view>
+					<view class="swiper-item-img"><image src="../../static/guide/title_03.png" mode="aspectFit"></image></view>
+					<view class="swiper-item-img"><image src="../../static/guide/icon_03.png" mode="aspectFit"></image></view>
 				</view>
 				<view class="experience" @tap="launchFlag()">{{experience}}</view>
 			</swiper-item>
