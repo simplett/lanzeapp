@@ -154,39 +154,43 @@
 					},
 					{
 						id: 2,
-						name: '家电',
-						img: '/static/img/category/2.png'
-					},
-					{
-						id: 3,
-						name: '饰品',
-						img: '/static/img/category/3.png'
-					},
-					{
-						id: 4,
-						name: '日用',
-						img: '/static/img/category/4.png'
-					},
-					{
-						id: 5,
-						name: '健康',
-						img: '/static/img/category/5.png'
-					},
-					{
-						id: 6,
 						name: '运动',
 						img: '/static/img/category/6.png'
 					},
 					{
+						id: 3,
+						name: '服装',
+						img: '/static/img/category/8.png'
+						
+					},
+					{
+						id: 4,
+						name: '饰品',
+						img: '/static/img/category/3.png'
+						
+					},
+					{
+						id: 5,
+						name: '家电',
+						img: '/static/img/category/2.png'
+						
+					},
+					{
+						id: 6,
+						name: '宠物',
+						img: '/static/img/category/11.png'
+					},
+					{
 						id: 7,
-						name: '书籍',
-						img: '/static/img/category/7.png'
+						img: '/static/img/category/2.png',
+						name: '日用'
 					},
 					{
 						id: 8,
-						name: '服装',
-						img: '/static/img/category/8.png'
+						name: '书籍',
+						img: '/static/img/category/7.png'
 					},
+					
 					{
 						id: 9,
 						name: '美容',
@@ -194,8 +198,9 @@
 					},
 					{
 						id: 10,
-						name: '宠物',
-						img: '/static/img/category/11.png'
+						name: '健康',
+						img: '/static/img/category/5.png'
+						
 					}
 				],
 				Promotion: [],
