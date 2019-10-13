@@ -7,7 +7,7 @@
 				<view class="icon location"></view>{{city}}
 			</view>
 			<view class="input-box">
-				<input placeholder="默认关键字" v-model="kword" placeholder-style="color:#c0c0c0;" />
+				<input placeholder="请输入您想搜索的宝贝" v-model="kword" placeholder-style="color:#c0c0c0;" />
 				<view @tap="toSearch()" class="icon search"></view>
 			</view>
 			<view class="icon-btn">

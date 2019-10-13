@@ -107,7 +107,7 @@
 			<view class="mask"></view>
 			<view class="layer" @tap.stop="discard">
 				<view class="content">
-					<view class="title">选择规格：</view>
+					<view class="title">交易模式：</view>
 					<view class="sp">
 						<view v-for="(item,index) in goodsData.spec" :class="[index==selectSpec?'on':'']" @tap="setSelectSpec(index)"
 						 :key="index">{{item}}</view>
@@ -162,7 +162,7 @@
 			<view class="row" @tap="showSpec(false)">
 				<view class="text">选择</view>
 				<view class="content">
-					<view>规格参数</view>
+					<view>交易模式</view>
 					<view class="sp">
 						<view v-for="(item,index) in goodsData.spec" :key="index" :class="[index==selectSpec?'on':'']">{{item}}</view>
 					</view>
@@ -242,7 +242,7 @@
 					spec: ["当面交易", "蓝沢担保", "线上发货"],
 					comment: {}
 				},
-				selectSpec: null, //选中规格
+				selectSpec: null, //选中交易模式
 				isKeep: false, //收藏
 				//商品描述html
 				descriptionStr: ""
@@ -379,7 +379,7 @@
 							data.message = "hello!";
 							if (data.ruid && data.token) {
 								uni.request({
-									url: 'http://120.79.19.253:10086/Chat', //仅为示例，并非真实接口地址。
+									url: 'http://120.79.19.253:10086/Chat',
 									data,
 									success: (res) => {
 										console.log(res, "商品详情发起对话");
@@ -411,14 +411,13 @@
 			todetails() {
 				console.log("请求商品的详细数据");
 				uni.request({
-					//仅为示例，并非真实接口地址。
 					url: "http://120.79.19.253:10086/Search",
 					data: {
 						type: "goods",
 						pid: this.pid
 					},
 					success: (res) => {
-						console.log(res.data);
+						// console.log(res.data);
 						if (res.data.status == 1) {
 							var data = res.data;
 							this.text = 'request success';
@@ -592,7 +591,7 @@
 				uni.getStorage({
 					key: "shoucanlist",
 					success: res => {
-						console.log(res.data);
+						// console.log(res.data);
 						status = res.data;
 					},
 					fail: res => {
@@ -656,7 +655,7 @@
 
 				} else {
 					uni.showToast({
-						title: "请选择规格之后再加入购物车",
+						title: "请选择交易模式之后再加入购物车",
 						icon: "none"
 					});
 				}
@@ -747,7 +746,7 @@
 					id: this.goodsData.id,
 					img: this.swiperList[0].img,
 					name: this.goodsData.name,
-					spec: '规格:' + this.goodsData.spec[this.selectSpec],
+					spec: '交易模式:' + this.goodsData.spec[this.selectSpec],
 					price: this.goodsData.price,
 					number: this.goodsData.number
 				};
@@ -766,7 +765,7 @@
 			showComments(goodsid) {
 
 			},
-			//选择规格
+			//选择交易模式
 			setSelectSpec(index) {
 				this.selectSpec = index;
 			},

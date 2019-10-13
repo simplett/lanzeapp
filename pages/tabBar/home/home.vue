@@ -11,7 +11,7 @@
 			</view>
 			<!-- 搜索框 -->
 			<view class="input-box">
-				<input placeholder="默认关键字" v-model="kword" placeholder-style="color:#c0c0c0;"   />
+				<input placeholder="请输入您想搜索的宝贝" v-model="kword" placeholder-style="color:#c0c0c0;"   />
 				<view @tap="toSearch()" class="icon search"></view>
 			</view>
 			<!-- 右侧图标按钮 -->
@@ -114,17 +114,17 @@
 				// 轮播图片
 				swiperList: [{
 						id: 1,
-						src: 'url1',
+						title: '业务完善中...',
 						img: '/static/img/1.jpg'
 					},
 					{
 						id: 2,
-						src: 'url2',
+						title: '业务完善中...',
 						img: '/static/img/2.jpg'
 					},
 					{
 						id: 3,
-						src: 'url3',
+						title: '业务完善中...',
 						img: '/static/img/3.jpg'
 					}
 				],
@@ -430,7 +430,7 @@
 			//轮播图跳转
 			toSwiper(e) {
 				uni.showToast({
-					title: e.src,
+					title: e.title,
 					icon: 'none'
 				});
 			},

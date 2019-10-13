@@ -262,10 +262,10 @@
 						this.orderbyList[i].selected = false;
 					}
 				}
-				uni.showToast({
-					title: tmpTis,
-					icon: "none"
-				});
+				// uni.showToast({
+					// title: tmpTis,
+				// 	icon: "none"
+				// });
 			}
 		}
 
