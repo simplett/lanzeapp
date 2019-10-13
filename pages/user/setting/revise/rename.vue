@@ -20,6 +20,18 @@
 	        }
 	    },
 	    methods: {
+			getdata(){
+				uni.getStorage({
+					key: 'rename',
+					// data: res.tempFilePaths,
+					success:res=>{
+						this.rename=res.data;
+					},
+					fail: res => {
+						this.rename="蓝泽邀请你修改名字"
+					}
+				});	
+			},
 	        // onKeyInput: function(event) {
 	        //     this.inputValue = event.target.value
 	        // },
@@ -50,16 +62,17 @@
 					}
 					
 				})
-			},
-			onReady(){
-				uni.setStorage({
-					key: 'rename',
-					// data: res.tempFilePaths,
-					success: function () {
-						console.log('success');
-					}
-				});	
 			}
+			
+		},
+		onReady(){
+			this.getdata()
+		},
+		onShow(){
+			this.getdata()
+		},
+		onLoad(){
+			this.getdata()
 		}
 	}
 </script>

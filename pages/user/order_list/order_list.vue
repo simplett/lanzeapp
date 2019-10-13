@@ -96,7 +96,7 @@
 			let tbIndex = parseInt(option.tbIndex)+1;
 			this.list = this.orderList[tbIndex];
 			this.tabbarIndex = tbIndex;
-			this.getcartdata();
+			// this.getcartdata();
 			//兼容H5下排序栏位置
 			// #ifdef H5
 				let Timer = setInterval(()=>{
@@ -108,7 +108,10 @@
 				},1);
 			// #endif
 		},
-		// onShow() {
+		onShow() {
+			this.getcartdata();
+		},
+		// onReady(){
 		// 	this.getcartdata();
 		// },
 		onPageScroll(e){

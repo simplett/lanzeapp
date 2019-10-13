@@ -13,6 +13,17 @@
 			};
 		},
 		methods:{
+			getdata(){
+				uni.getStorage({
+					key: 'signature',
+					// data: res.tempFilePaths,
+					success:res=> {
+						this.signature=res.data;
+					},fail: () => {
+						this.signature="一路相伴，感谢有你"
+					}
+				});	
+			},
 			submit(){
 					var data=this.signature;
 					console.log(data,"6666666s")
@@ -40,17 +51,18 @@
 						}
 						
 					})
-			},
-			onReady(){
-				uni.setStorage({
-					key: 'rename',
-					// data: res.tempFilePaths,
-					success: function () {
-						console.log('success');
-					}
-				});	
 			}
+			
 		},
+		onReady(){
+			this.getdata()
+		},
+		onShow(){
+				this.getdata()
+		},
+		onLoad() {
+			this.getdata()
+		}
 	}
 </script>
 

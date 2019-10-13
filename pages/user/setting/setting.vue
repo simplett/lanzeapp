@@ -140,7 +140,7 @@
 					},
 					fail:res=> {
 						uni.showToast({
-							title:"退出登录失败",
+							title:"您还未登录",
 							icon:"none"
 						})
 					}
@@ -164,6 +164,8 @@
 					success: res => {
 						this.nickname=res.data;		
 						console.log("成功获取rename"+this.nickname);
+					},fail: res => {
+						this.nickname="蓝泽官方邀请你修改昵称"
 					}
 				}),
 				uni.getStorage({
@@ -171,6 +173,8 @@
 					success: res => {
 						this.signature=res.data;		
 						console.log("成功获取signature"+this.signature);
+					},fail: res => {
+						this.signature="一路相伴，感谢有你"
 					}
 				});
 			}

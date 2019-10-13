@@ -91,7 +91,7 @@
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "蓝沢",
+  "appname": "蓝沢易购",
   "compilerVersion": "2.3.3",
   "usingComponents": {
     "sunui-upoos": "/components/sunui-upimg/sunui-upimg-alioos"

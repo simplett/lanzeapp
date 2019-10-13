@@ -97,17 +97,17 @@
 		data() {
 			return {
 				couponValidList:[
-					{id:1,title:"日常用品立减10元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"10",criteria:"满50使用"},
-					{id:2,title:"家用电器立减100元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"100",criteria:"满500使用"},
-					{id:3,title:"全场立减10元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"10",criteria:"无门槛"},
-					{id:4,title:"全场立减50元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"50",criteria:"满1000使用"}
+					{id:1,title:"新用户立减10元",termStart:"2019-09-23",termEnd:"2019-10-23",ticket:"10",criteria:"无门槛使用"},
+					{id:2,title:"蓝沢全场5元",termStart:"2019-09-23",termEnd:"2019-10-23",ticket:"100",criteria:"完成发布之后使用"},
+					{id:3,title:"全场立减10元",termStart:"2019-09-23",termEnd:"2019-10-23",ticket:"10",criteria:"无门槛"},
+					{id:4,title:"蓝沢VIP立减50元",termStart:"2019-09-23",termEnd:"2019-10-23",ticket:"50",criteria:"VIP满1000使用"}
 					
 				],
 				couponinvalidList:[
-					{id:1,title:"日常用品立减10元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"10",criteria:"满50使用"},
-					{id:2,title:"家用电器立减100元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"100",criteria:"满500使用"},
-					{id:3,title:"全场立减10元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"10",criteria:"无门槛"},
-					{id:4,title:"全场立减50元",termStart:"2019-04-01",termEnd:"2019-05-30",ticket:"50",criteria:"满1000使用"}
+					{id:1,title:"蓝沢10元优惠券",termStart:"2019-08-23",termEnd:"2019-09-23",ticket:"10",criteria:"满50使用"},
+					{id:2,title:"蓝沢家电100元",termStart:"2019-08-23",termEnd:"2019-09-23",ticket:"100",criteria:"满500使用"},
+					{id:3,title:"全场立减10元",termStart:"2019-08-23",termEnd:"2019-09-23",ticket:"10",criteria:"无门槛"},
+					{id:4,title:"全场立减50元",termStart:"2019-08-23",termEnd:"2019-09-23",ticket:"50",criteria:"VIP满1000使用"}
 				],
 				headerTop:0,
 				//控制滑动效果

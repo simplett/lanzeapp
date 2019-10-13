@@ -27,7 +27,7 @@
 		data() {
 			return {
 				ifShow: true,
-				val: "", // 要生成的二维码值
+				val: "111", // 要生成的二维码值
 				size: 200, // 二维码大小
 				unit: 'px', // 单位
 				background: '#ffffff', // 背景色
@@ -59,7 +59,7 @@
 						        type: "user"
 						    },
 						    success: (res) => {
-						        console.log(res.data);
+						        console.log(res);
 						        if(res.data.status==1)
 								{
 									var uid=res.data.uid;
@@ -111,9 +111,12 @@
 		components: {
 			tkiQrcode
 		},
-		onLoad: function () {
+		onLoad() {
 			this.creatQrcode();
 		},
+		onReady(){
+				this.creatQrcode();
+		}
 	}
 </script>
 

@@ -1,9 +1,9 @@
 <template>
 	<view>
-		<video id="myVideo" class="myVideo" :src="videoSrc" v-show="isPlayVideo" :show-fullscreen-btn="showFullscreenBtn"
+		<!-- <video id="myVideo" class="myVideo" :src="videoSrc" v-show="isPlayVideo" :show-fullscreen-btn="showFullscreenBtn"
 		 :direction="videoDirection" :show-play-btn="showPlayBtn" @pause="videoPause" @fullscreenchange="viderFullscreen">
 			<cover-image class="stopPlayVideoBtn" @click="stopPlayVideo" src="/static/img/close.png"></cover-image>
-		</video>
+		</video> -->
 		<view class="content">
 
 			<view class="label">
@@ -34,7 +34,7 @@
 							<view class="rat">
 								{{row.first.content}}
 							</view>
-							<view class="img-video">
+							<!-- <view class="img-video">
 								<view class="box" v-for="item in row.first.video" @tap="playVideo(item.path)" :key="item.path">
 									<image mode="aspectFill" :src="item.img"></image>
 									<view class="playbtn">
@@ -44,9 +44,9 @@
 								<view class="box" v-for="item in row.first.img" @tap="showBigImg(item,row.first.img)" :key="item">
 									<image mode="aspectFill" :src="item"></image>
 								</view>
-							</view>
+							</view> -->
 						</view>
-						<view class="append" v-if="row.append">
+						<!-- <view class="append" v-if="row.append">
 							<view class="date">
 								{{row.append.date}}天后追加
 							</view>
@@ -64,7 +64,7 @@
 									<image mode="aspectFill" :src="item"></image>
 								</view>
 							</view>
-						</view>
+						</view> -->
 					</view>
 				</view>
 			</view>
@@ -79,24 +79,25 @@
 				pid: "",
 				labelList: [{
 						name: '全部',
-						number: 25,
+						number: 1,
 						type: 'all'
-					},
-					{
-						name: '好评',
-						number: 23,
-						type: 'good'
-					},
-					{
-						name: '中评',
-						number: 1,
-						type: 'secondary'
-					},
-					{
-						name: '差评',
-						number: 1,
-						type: 'poor'
 					}
+					// ,
+					// {
+					// 	name: '好评',
+					// 	number: 23,
+					// 	type: 'good'
+					// },
+					// {
+					// 	name: '中评',
+					// 	number: 1,
+					// 	type: 'secondary'
+					// },
+					// {
+					// 	name: '差评',
+					// 	number: 1,
+					// 	type: 'poor'
+					// }
 				],
 				labelIndex: 0,
 				ratingsList: [],
@@ -184,30 +185,30 @@
 				......
 				*/
 			},
-			playVideo(path) {
-				this.videoSrc = path;
-				// this.isPlayVideo = true;
-				this.$nextTick(function() {
-					this.videoContext.requestFullScreen({
-						direction: 0
-					});
-				});
+			// playVideo(path) {
+			// 	this.videoSrc = path;
+			// 	// this.isPlayVideo = true;
+			// 	this.$nextTick(function() {
+			// 		this.videoContext.requestFullScreen({
+			// 			direction: 0
+			// 		});
+			// 	});
 
-			},
-			stopPlayVideo() {
-				this.videoContext.pause();
-			},
-			videoPause() {
-				// this.isPlayVideo = false;
-				this.videoSrc = '';
-			},
-			viderFullscreen(e) {
-				if (e.detail.fullScreen) {
-					this.videoContext.play();
-				} else {
-					this.stopPlayVideo();
-				}
-			},
+			// },
+			// stopPlayVideo() {
+			// 	this.videoContext.pause();
+			// },
+			// videoPause() {
+			// 	// this.isPlayVideo = false;
+			// 	this.videoSrc = '';
+			// },
+			// viderFullscreen(e) {
+			// 	if (e.detail.fullScreen) {
+			// 		this.videoContext.play();
+			// 	} else {
+			// 		this.stopPlayVideo();
+			// 	}
+			// },
 			showBigImg(src, srclist) {
 				uni.previewImage({
 					current: src,

@@ -155,6 +155,7 @@
 			this.statusTop = e.scrollTop>=0?null:-this.statusHeight+'px';
 		},
 		onLoad() {
+			this.myseleif();
 			this.statusHeight = 0;
 			// #ifdef APP-PLUS
 			this.showHeader = false;
@@ -190,54 +191,42 @@
 				fail:(e)=>{
 					//this.toLogin(); 
 				}
-			}),
-			uni.getStorage({
-				key:"face",
-				success:res=>{
-					// console.log(res.data[0]);
-					this.face=res.data[0];
-					// return res.data[0];
-					console.log(this.face.substring(2))
-				}
-			}),
-			// 获取昵称
-			uni.getStorage({
-				key:'rename',
-				success:res=>{
-					this.nickname=res.data;		
-					console.log("成功获取rename"+this.nickname);
-				}
-			});
-			// 获取个性签名
-			uni.getStorage({
-				key:'signature',
-				success:res=>{
-					this.signature=res.data;		
-					console.log("成功获取signature"+this.signature);
-				}
-			});
+			})
 		},
 		methods: {
 			myseleif(){
-				
+				//获取用户的头像
 				uni.getStorage({
-					key:"signature",
+					key:"face",
 					success:res=>{
-						this.signature=res.data;
-					},
-					fail: res => {
-						this.signature="这个用户很懒，什么都没有留下"
+						// console.log(res.data[0]);
+						this.face=res.data[0];
+						// return res.data[0];
+						console.log(this.face.substring(2))
+					},fail: res => {
+						this.face="../../../static/img/face.jpg"
+					}
+				}),
+				// 获取昵称
+				uni.getStorage({
+					key:'rename',
+					success:res=>{
+						this.nickname=res.data;		
+						console.log("成功获取rename"+this.nickname);
+					},fail: res => {
+						this.nickname="蓝泽邀请你修改昵称"
 					}
 				});
+				// 获取个性签名
 				uni.getStorage({
-					key:"rename",
+					key:'signature',
 					success:res=>{
-						this.nickname=res.data;
-					},
-					fail: () => {
-						this.nickname="请输入你的昵称..."
+						this.signature=res.data;		
+						console.log("成功获取signature"+this.signature);
+					},fail: res => {
+						this.signature="一路同行，感谢有你"
 					}
-				})
+				});
 			},
 			//消息列表
 			toMsg(){

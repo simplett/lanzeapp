@@ -223,7 +223,8 @@
 						this.myface="https://simplett-img.oss-cn-beijing.aliyuncs.com/user_image/userimage.jpg";
 						console.log("采用了默认的头像")
 					}
-				})
+				});
+				this.getMsgList();
 			},
 			//scr-view是区域滚动，不是页面滚动，不能使用
 			
@@ -235,8 +236,8 @@
 			},
 			getMsgList(){
 				// 滚动到底部
-				this.$nextTick(function() {
-					this.scrollTop = 9999;
+				this.$nextTick(()=> {
+					this.scrollTop = this.jli;
 					this.scrollAnimation = true;
 				});
 			},
@@ -309,7 +310,7 @@
 									type: "add",
 									message: this.textMsg
 							    },
-							    success: (res) => {
+							    success: res => {
 							        console.log(res.data);
 									if(res.data.status==1)
 									{
@@ -329,7 +330,8 @@
 											success:res=>{
 												this.textMsg="";
 												this.init();
-												this.jli=this.jli+50;	
+												this.jli=this.jli+500;
+													console.log(this.jli,"9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999")
 												this.getbuttom()
 											},
 											fail:res=>{

@@ -1,8 +1,8 @@
 {
-    "name" : "蓝沢",
+    "name" : "蓝沢易购",
     "appid" : "__UNI__010C860",
-    "description" : "",
-    "versionName" : "1.2.0",
+    "description" : "这是一个二手交易平台，我们有自己的交易保障体系，解决了消费者之间的互信问题",
+    "versionName" : "2.1.0",
     "versionCode" : "100",
     "transformPx" : false,
     "app-plus" : {

@@ -109,6 +109,40 @@
 								console.log("失败")
 							}
 						})
+						var gouwuche;
+						uni.getStorage({
+							key:"shoucanlist",
+							success:res => {
+								gouwuche=res.data;
+								var myid=[];
+								if(buylists.length!==0)
+								{
+									for(var item of buylists)
+									{
+										myid.push(item.goods_id);
+									};
+									var gouwuchelist=[];
+									for(var i=0;i<myid.length;i++)
+									{
+										for(var j=0;j<gouwuche.length;j++)
+										{
+											if(gouwuche[j]["goods_id"]==myid[i])
+											{
+												gouwuchelist.push(gouwuche[j])
+											}
+										}
+									};
+									uni.setStorage({
+										key:"shoucanlist",
+										data:gouwuchelist,
+										success: res => {
+											console.log("成功");
+										}
+									})
+								}
+								
+							}
+						})
 					}
 				})
 				setTimeout(()=>{

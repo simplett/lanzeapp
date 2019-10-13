@@ -358,6 +358,7 @@
 			},
 			//商品发布页
 			getlocaldata(){
+				console.log(this.upload,this.mystatus,"这是发布的状态");
 				if(this.upload&&this.mystatus){
 				uni.showLoading({
 				    title: '加载中',
@@ -422,14 +423,14 @@
 																	  });
 																  },2000);
 															}else{
-																uni.vibrate({
-																    success: function () {
-																        console.log('success');
-																    }
-																});
+																// uni.vibrate({
+																//     success: function () {
+																//         console.log('success');
+																//     }
+																// });
 																uni.hideLoading();
 																uni.showToast({
-																	title:"发布异常",
+																	title:"你的账号已过期，请登陆",
 																	icon:"none"
 																})
 															}
@@ -528,7 +529,7 @@
 					});
 					this.upload=true;
 				}
-				if(e.length==0)
+				if(e.length!==0)
 				{
 					this.mystatus=true;
 				}
