@@ -47,9 +47,9 @@
 			</view>
 		</view>
 		<!-- 广告图 -->
-		<view class="banner" @tap="tobanner()">
+		<!-- <view class="banner" @tap="tobanner()">
 			<image src="/static/img/banner.jpg"></image>
-		</view>
+		</view> -->
 		<!-- 活动区 -->
 		<!-- <view class="promotion">
 			<view class="text">优惠专区</view>

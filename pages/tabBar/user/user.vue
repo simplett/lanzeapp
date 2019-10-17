@@ -35,8 +35,8 @@
 			<view class="img">
 				<image src="/static/img/VIP.png"></image>
 			</view>
-			<view class="title" @tap="undo()">开通VIP会员</view>
-			<view class="tis" @tap="undo()">会员特权</view>
+			<view class="title">蓝沢易购</view>
+			<view class="tis">买到好货</view>
 		</view>
 		<!-- 订单-余额 -->
 		<view class="order">
@@ -77,9 +77,9 @@
 			</view> -->
 		</view>
 		<!-- 图片广告 -->
-		<view class="ad_img" @tap="undo()">
+		<!-- <view class="ad_img" @tap="undo()">
 			<image src="../../../static/img/banner.jpg" mode=""></image>
-		</view>
+		</view> -->
 		<!-- 工具栏 -->
 		<view class="toolbar">
 			<view class="title">我的工具栏</view>

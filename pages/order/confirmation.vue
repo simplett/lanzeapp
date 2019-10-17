@@ -77,14 +77,14 @@
 					￥+{{freight|toFixed}}
 				</view>
 			</view>
-			<view class="row">
+			<!-- <view class="row">
 				<view class="nominal">
 					积分抵扣
 				</view>
 				<view class="content">
 					￥-{{deduction|toFixed}}
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<view class="blck">
 
