@@ -35,8 +35,8 @@
 			<view class="img">
 				<image src="/static/img/VIP.png"></image>
 			</view>
-			<view class="title">开通VIP会员</view>
-			<view class="tis">会员特权</view>
+			<view class="title" @tap="undo()">开通VIP会员</view>
+			<view class="tis" @tap="undo()">会员特权</view>
 		</view>
 		<!-- 订单-余额 -->
 		<view class="order">
@@ -77,7 +77,7 @@
 			</view> -->
 		</view>
 		<!-- 图片广告 -->
-		<view class="ad_img">
+		<view class="ad_img" @tap="undo()">
 			<image src="../../../static/img/banner.jpg" mode=""></image>
 		</view>
 		<!-- 工具栏 -->
@@ -275,6 +275,12 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			undo(){
+				uni.showToast({
+					title:"业务功能完善中，敬请期待",
+					icon:"none"
+				})
 			}
 		}
 	} 
@@ -372,7 +378,7 @@
 			}
 			.signature{
 				margin-top: 5px;
-				height: 14px;
+				height: 16px;
 				color: #eee;
 				line-height:28upx;
 				font-size: 28upx;

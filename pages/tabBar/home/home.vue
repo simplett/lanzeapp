@@ -17,7 +17,9 @@
 			<!-- 右侧图标按钮 -->
 			<view class="icon-btn">
 				<!-- 消息列表 -->
-				<view class="icon tongzhi" @tap="toMsg"></view>
+				<!-- <view class="icon tongzhi" @tap="toMsg"></view> -->
+				<image src="../../../static/image/chat.png" class="icon" @tap="toMsg"></image>
+				<image class="icon" @click="saoma()" src="../../../static/image/scan.png" mode=""></image>
 			</view>
 		</view>
 		<!-- 占位 -->
@@ -45,7 +47,7 @@
 			</view>
 		</view>
 		<!-- 广告图 -->
-		<view class="banner">
+		<view class="banner" @tap="tobanner()">
 			<image src="/static/img/banner.jpg"></image>
 		</view>
 		<!-- 活动区 -->
@@ -77,7 +79,7 @@
 		<view class="goods-list">
 			<view class="title">
 				<image src="/static/img/hua.png"></image>
-				猜你喜欢
+				热门精选
 				<image src="/static/img/hua.png"></image>
 			</view>
 			<view class="product-list">
@@ -279,6 +281,12 @@
 			this.loadPromotion();
 		},
 		methods: {
+			tobanner(){
+				uni.showToast({
+					title:"业务功能完善中，敬请期待",
+					icon:"none"
+				})
+			},
 			load() {
 				uni.request({
 					url: 'http://120.79.19.253:10086/Index', //仅为示例，并非真实接口地址。
@@ -568,14 +576,14 @@
 			height: 60upx;
 			flex-shrink: 0;
 			display: flex;
-
 			.icon {
-				width: 60upx;
-				height: 60upx;
+				width: 42upx;
+				height: 42upx;
 				display: flex;
 				justify-content: flex-end;
 				align-items: center;
 				font-size: 42upx;
+				padding: 10upx;
 			}
 		}
 	}
