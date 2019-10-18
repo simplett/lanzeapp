@@ -142,7 +142,7 @@ page {
 }
 .user .right .signature {
       margin-top: 5px;
-      height: 14px;
+      height: 16px;
       color: #eee;
       line-height: 28rpx;
       font-size: 28rpx;

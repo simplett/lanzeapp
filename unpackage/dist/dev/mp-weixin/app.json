@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/index/guide",
     "pages/tabBar/home/home",
     "pages/tabBar/category/category",
     "pages/ali/ali",
@@ -28,7 +30,9 @@
     "pages/goods/ratings/ratings",
     "pages/ali/select/select",
     "pages/tabBar/ali/ali",
-    "pages/ali/codelist/codelist"
+    "pages/ali/codelist/codelist",
+    "pages/user/setting/revise/signature/signature",
+    "pages/user/setting/revise/pay/pay"
   ],
   "subPackages": [],
   "window": {
@@ -47,32 +51,32 @@
     "list": [
       {
         "pagePath": "pages/tabBar/home/home",
-        "iconPath": "static/img/tabBar/home.png",
-        "selectedIconPath": "static/img/tabBar/home-on.png",
+        "iconPath": "static/img/tabBar/1-1.png",
+        "selectedIconPath": "static/img/tabBar/1.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/tabBar/category/category",
-        "iconPath": "static/img/tabBar/category.png",
-        "selectedIconPath": "static/img/tabBar/category-on.png",
+        "iconPath": "static/img/tabBar/2-2.png",
+        "selectedIconPath": "static/img/tabBar/2.png",
         "text": "分类"
       },
       {
         "pagePath": "pages/tabBar/ali/ali",
-        "iconPath": "static/img/tabBar/category.png",
-        "selectedIconPath": "static/img/tabBar/category-on.png",
+        "iconPath": "static/img/tabBar/3-3.png",
+        "selectedIconPath": "static/img/tabBar/3.png",
         "text": "发布"
       },
       {
         "pagePath": "pages/tabBar/cart/cart",
-        "iconPath": "static/img/tabBar/cart.png",
-        "selectedIconPath": "static/img/tabBar/cart-on.png",
+        "iconPath": "static/img/tabBar/4-4.png",
+        "selectedIconPath": "static/img/tabBar/4.png",
         "text": "购物车"
       },
       {
         "pagePath": "pages/tabBar/user/user",
-        "iconPath": "static/img/tabBar/user.png",
-        "selectedIconPath": "static/img/tabBar/user-on.png",
+        "iconPath": "static/img/tabBar/5-5.png",
+        "selectedIconPath": "static/img/tabBar/5.png",
         "text": "我的"
       }
     ]

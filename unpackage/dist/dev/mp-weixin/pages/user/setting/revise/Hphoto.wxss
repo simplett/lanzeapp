@@ -48,4 +48,12 @@
     margin: 0 auto;
     margin-top: 50rpx;
 }
+.content .showface {
+    width: 500px;
+    height: 500px;
+}
+.content .showface image {
+      width: 100%;
+      height: 100%;
+}
 

@@ -5,12 +5,12 @@
     "iPad"
   ],
   "id": "__UNI__010C860",
-  "name": "蓝沢",
+  "name": "蓝沢易购",
   "version": {
-    "name": "1.2.0",
+    "name": "2.1.0",
     "code": "100"
   },
-  "description": "",
+  "description": "这是一个二手交易平台，我们有自己的交易保障体系，解决了消费者之间的互信问题",
   "launch_path": "__uniapptabbar.html",
   "developer": {
     "name": "",

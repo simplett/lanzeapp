@@ -125,13 +125,14 @@
 }
 .goods-list .product-list .product .name.data-v-a3a60d78 {
       width: 92%;
-      padding: 10rpx 4%;
+      padding: 0rpx 4%;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       text-align: justify;
       overflow: hidden;
-      height: 35px;
+      height: 60rpx;
+      line-height: 30rpx;
       font-size: 30rpx;
 }
 .goods-list .product-list .product .info.data-v-a3a60d78 {

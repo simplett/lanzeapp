@@ -128,10 +128,27 @@ page {
 .user .right .username {
       font-size: 36rpx;
       color: #fff;
+      line-height: 36rpx;
+      font-size: 36rpx;
+      padding: 0rpx 4%;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      text-align: justify;
+      overflow: hidden;
 }
 .user .right .signature {
+      margin-top: 5px;
+      height: 16px;
       color: #eee;
+      line-height: 28rpx;
       font-size: 28rpx;
+      padding: 0rpx 4%;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      text-align: justify;
+      overflow: hidden;
 }
 .user .erweima {
     -webkit-flex-shrink: 0;

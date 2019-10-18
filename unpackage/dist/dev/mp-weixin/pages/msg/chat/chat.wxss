@@ -399,6 +399,13 @@ page {
 .record .tis.change {
       color: #f09b37;
 }
+.iabuttom {
+  height: 10rpx;
+  width: 100%;
+  border: 2px solid red;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 .content {
   width: 100%;
 }

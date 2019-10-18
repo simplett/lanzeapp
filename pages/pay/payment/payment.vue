@@ -14,7 +14,7 @@
 		</view>
 		<view class="block">
 			<view class="title">
-				选择支付方式
+				选择模拟支付方式
 			</view>
 			<view class="content">
 				<view class="pay-list">

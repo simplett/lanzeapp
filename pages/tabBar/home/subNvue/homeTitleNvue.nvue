@@ -8,10 +8,10 @@
 				<input style="placeholder-color: #c0c0c0;" class="input-box-input" v-model="kword" placeholder="默认关键字" @focus="inputfocus" />
 				<text @click="toSearch()" class="icon search">{{ iconSearch }}</text>
 			</div>
-			<!-- <text @click="toMsg" class="icon tongzhi">{{ iconTongzhi }}</text> -->
-			<image src="../../../static/image/chat.png" class="icon" @tap="toMsg"></image>
-			<image @click="saoma()" src="../../../static/image/scan.png" mode=""></image>
-			<!-- <text class="icon tongzhi">&#8782;</text> -->
+			<text @click="toMsg" class="icon tongzhi">{{ iconTongzhi }}</text>
+			<!-- <image src="../../../static/image/chat.png" class="icon" @tap="toMsg"></image>
+			<image @click="saoma()" src="../../../static/image/scan.png" mode=""></image> -->
+			<text class="icon tongzhi" @click="saoma()">&#8782;</text>
 		</div>
 	</div>
 </template>

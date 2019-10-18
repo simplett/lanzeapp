@@ -42,14 +42,14 @@
 		</view>
 		<!-- 提示-备注 -->
 		<view class="order">
-			<view class="row">
+			<!-- <view class="row">
 				<view class="left">
 					积分 :
 				</view>
 				<view class="right">
 					已扣除{{int}}积分抵扣{{deduction|toFixed}}元
 				</view>
-			</view>
+			</view> -->
 			<view class="row">
 				<view class="left">
 					备注 :
