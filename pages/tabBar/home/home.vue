@@ -16,10 +16,10 @@
 		<view style="width:100%;height:60px;"></view>
 		<view v-for="(item,i) in datas" :key="i">
 			<uni-card
-			    :title="item.name"
+			    :title="item.company_name"
 			    mode="style"
 			    :is-shadow="true"
-			    thumbnail="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575365832113&di=db3dda1b800df11e150f1139740de2a6&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F4610b912c8fcc3cef70d70409845d688d53f20f7.jpg"
+			    :thumbnail="item.img"
 			    :extra="item.order_time"
 			    :note="item.address"
 				@click="toCompany"
@@ -110,7 +110,7 @@ export default {
 	},
 	//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
 	onPullDownRefresh() {
-		this.load();
+		// this.load();
 		setTimeout(function() {
 			uni.stopPullDownRefresh();
 		}, 1000);
@@ -122,10 +122,10 @@ export default {
 			this.loadingText = '到底了';
 			return false;
 		}
-		this.load();
+		// this.load();
 	},
 	onLoad(options) {
-		this.load()
+		// this.load()
 		console.log(options);
 		if (options.type == 'mylike') {
 			uni.navigateTo({
@@ -156,20 +156,21 @@ export default {
 			}
 		});
 		//开启定时器
-		this.load(); //请求商品的数据
+		// this.load(); //请求商品的数据
 	},
 	created() {
 		this.getCompany()
 	},
 	methods: {
-		// 获取当前有多少个公司
+		// 获取广告位的动态
 		getCompany () {
 			let opts = {
-				url:'/index/company',
+				url:'/index/dynamic',
 				method: 'get'
 			}
 			this.$http.httpRequest(opts).then(res => {
-				console.log(res.data.infos)
+				console.log(res.data.infos, '这是广告的动态')
+				this.datas = res.data.infos
 			})
 		},
 		// 跳转到改公司页面
