@@ -15,6 +15,7 @@
 			</view>
 		</view>
 		<!-- 占位 -->
+		<!-- <category :categoryList=''></category> -->
 		<view class="place"></view>
 		<view class="category-list">
 			<!-- 左侧分类导航 -->
@@ -46,6 +47,7 @@
 	</view>
 </template>
 <script>
+	import category from "@/components/qiyue-category/qiyue-category.vue"
 	//高德SDK
 	import amap from '@/common/SDK/amap-wx.js';
 	export default {
@@ -328,6 +330,9 @@
 					}
 				]
 			}
+		},
+		components:{
+			category
 		},
 		onPageScroll(e) {
 			//兼容iOS端下拉时顶部漂移

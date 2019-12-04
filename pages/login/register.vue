@@ -6,12 +6,18 @@
 			</view>
 		</view>
 		<view class="form re">
+			<view class="password">
+				<input placeholder="请输入用户名" v-model="username"  placeholder-style="color: rgba(255,255,255,0.8);" />
+			</view>
+			<view class="password">
+				<input placeholder="请输入电话号码" v-model="phone"  placeholder-style="color: rgba(255,255,255,0.8);" />
+			</view>
 			<view class="username">
 				<view class="get-code" :style="{'color':getCodeBtnColor}" @click.stop="getCode()">{{getCodeText}}</view>
 				<input placeholder="请输入邮箱" v-model="email" placeholder-style="color: rgba(255,255,255,0.8);" />
 			</view>
 			<view class="code">
-				<input placeholder="请输入验证码" v-model="code" placeholder-style="color: rgba(255,255,255,0.8);" />
+				<input placeholder="请输入验证码" v-model="check" placeholder-style="color: rgba(255,255,255,0.8);" />
 			</view>
 			<view class="password">
 				<input placeholder="请输入密码" v-model="passwd" password=true placeholder-style="color: rgba(255,255,255,0.8);" />
@@ -26,164 +32,195 @@
 </template>
 
 <script>
-	import md5 from "@/common/SDK/md5.min.js";
+	// 引入了MD5加密算法，对发送的数据进行加密
+	import md5 from "@/common/SDK/md5.min.js"
 	export default {
 		data() {
 			return {
-				email: "",
-				code: '',
-				passwd: "",
-				Status:"",
-				getCodeText: '获取验证码',
-				getCodeBtnColor: "#ffffff",
-				getCodeisWaiting: false
+				// 对初始化数据，如果是字符串类型的，对于页面内不展示的数据直接使用null，不要对其赋值，即使 ”“ 和 ’‘ 这样也不好，会占用内存 字符串类型，使用 ’字符串‘ 来进行定义
+				email: '',
+				check: '',
+				passwd: '',
+				phone: '',
+				username: '',
+				Status: '',
+				getCodeText: '获取验证码', //验证码发送按钮的文字
+				getCodeBtnColor: '#ffffff', // 验证码发送按钮的颜色
+				getCodeisWaiting: false // 控制验证码发送按钮是否可用
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-			Timer() {},
-			//这是请求验证码的方法
+			// 这是向服务器请求验证码的方法，会对邮箱验证码进行验证，正则验证邮箱的格式是否存在
 			getCode() {
-				uni.hideKeyboard()
+				uni.hideKeyboard() // 隐藏已经显示的软键盘，如果软键盘没有显示则不做任何操作
+				// 如果邮箱验证码获取的按钮属于禁止使用的状态，那么直接结束方法
 				if (this.getCodeisWaiting) {
-					return;
+					return
 				}
+				// 对邮箱进行正则验证
 				if (!(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email))) {
 					uni.showToast({
 						title: '请填写正确邮箱',
 						icon: "none"
-					});
-					return false;
+					})
+					return false
 				} else {
-					uni.request({
-						url: 'http://120.79.19.253:10087/M',
-						data: {
-							email: this.email
-						},
-						success: (res) => {
-							console.log(res.data);
-							this.text = 'request success';
-							if (res.data.status == 1) {
-								this.getCodeText = "发送中..."
-								this.getCodeisWaiting = true;
-								this.getCodeBtnColor = "rgba(255,255,255,0.5)"
-								setTimeout(() => {
-									uni.showToast({
-										title: '验证码已发送',
-										icon: "none"
-									});
-									//示例默认1234，生产中请删除这一句。
-									this.setTimer();
-								}, 1000)
-							}
-
+					// 改变字体的颜色并且提示用户验证码正在发送
+					this.getCodeBtnColor = "rgba(255,255,255,0.5)"
+					this.getCodeText = "发送中..."
+					// 只有在邮箱验证通过的情况下才开始对数据进行处理，增加性能
+					// 请求的options参数
+					let opts = {
+						url: '/login/check',
+						methods: 'get'
+					}
+					// 请求体里面的参数
+					let param = {
+						email: this.email
+					}
+					// 使用封装好的方法发起网络请求，这里不带token
+					this.$http.httpRequest(opts, param).then(res => {
+						console.log(res)
+						// 根据返回的状态值进行相应的处理
+						if (res.data.status == 1) {
+							this.getCodeisWaiting = true;
+							setTimeout(() => {
+								uni.showToast({
+									title: '验证码已发送',
+									icon: "none"
+								});
+								this.setTimer();
+							}, 1000)
 						}
+					}).catch(err => {
+						uni.showToast({
+							title: '验证码发送失败',
+							icon: "none"
+						});
+						console.log(err)
 					})
 				}
 
 			},
+			// 下次验证码发送的按钮的倒计时
 			setTimer() {
-				let holdTime = 60;
-				this.getCodeText = "重新获取(60)"
+				let holdTime = 60
+				this.getCodeText = '重新获取(60)'
 				this.Timer = setInterval(() => {
 					if (holdTime <= 0) {
-						this.getCodeisWaiting = false;
-						this.getCodeBtnColor = "#ffffff";
-						this.getCodeText = "获取验证码"
-						clearInterval(this.Timer);
-						return;
+						this.getCodeisWaiting = false
+						this.getCodeBtnColor = '#ffffff'
+						this.getCodeText = '获取验证码'
+						// 清除定时器
+						clearInterval(this.Timer)
+						return
 					}
-					this.getCodeText = "重新获取(" + holdTime + ")"
-					holdTime--;
+					this.getCodeText = `重新获取${holdTime}`
+					holdTime --
 
 				}, 1000)
 			},
+			// 注册新的用户
 			doReg() {
+				// 隐藏已经显示的软键盘，如果软键盘没有显示则不做任何操作
 				uni.hideKeyboard()
-				//模板示例部分验证规则
+				// 对用户名进行格式的校验
+				if (!(/^(\w){6,12}$/.test(this.username))) {
+					uni.showToast({
+						title: '用户名不正确',
+						icon: "none"
+					})
+					return false
+				}
+				// 对电话号码进行格式的校验
+				if (!(/^1[3456789]\d{9}$/.test(this.phone))) {
+					uni.showToast({
+						title: '电话号码格式不正确',
+						icon: "none"
+					})
+					return false
+				}
+				// 在对邮箱进行正则验证
 				if (!(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email))) {
 					uni.showToast({
-						title: '请填写正确邮箱',
+						title: '邮箱格式不正确',
 						icon: "none"
-					});
-					return false;
+					})
+					return false
 				}
-				//示例验证码，实际使用中应为请求服务器比对验证码是否正确。
-				if (!(/^\w{6}$/.test(this.code))) {
+				// 对验证码格式进行验证
+				if (!(/^\w{6}$/.test(this.check))) {
 					uni.showToast({
-						title: '验证码不正确',
+						title: '验证码格式不正确',
 						icon: "none"
-					});
-					return false;
+					})
+					return false
 				}
-				if (!(/^(\w){6,10}$/.test(this.passwd))) {
+				// 对密码是进行格式的校验
+				if (!(/^(\w){10,20}$/.test(this.passwd))) {
 					uni.showToast({
-						title: '密码不正确',
+						title: '密码格式不正确',
 						icon: "none"
-					});
-					return false;
+					})
+					return false
 				}
 				uni.showLoading({
 					title: '提交中...'
 				})
-				var data = {
-					name:"新用户",
-					pwd: md5(this.passwd),
-					email:this.email,
-					yzm:this.code
-				};
-				uni.request({
-				    url: 'http://120.79.19.253:10086/Regist', //仅为示例，并非真实接口地址。
-				    data,
-				    success: (result) => {
-				        this.text = 'request success';
-						this.Status= result.data.status;
-						if(this.Status==1)
-						{
-							var token=result.data.token;
-							uni.setStorage({
-								key: 'token',
-								data: token,
-								success: function() {
-									uni.showToast({
-										title: '注册成功',
-										position: "center",
-										image: "../../static/img/mysuccess.png"
-									});
-									uni.switchTab({
-									    url: '/pages/tabBar/home/home'
-									});
-								},
-								fail: function() {
-									uni.showToast({
-										title: '用户数据写入失败，建议重启本应用',
-										position: "center",
-										image: "../../static/img/myfail.png"
-									})
-								}
-							})
-						}else if(this.Status==2)
-						{
-							uni.showToast({
-								title: '邮箱的验证码出错',
-								position: "center",
-								image: "../../static/img/myfail.png"
-							})
-						}else if(this.Status==3)
-						{
-							uni.showToast({
-								title: '邮箱被占用',
-								position: "center",
-								image: "../../static/img/myfail.png"
-							})
-						}
-				    }
-				});
+				let opts = {
+					url: '/login/reg'
+				}
+				let param = {
+					username: this.username,
+					password: md5(this.passwd),
+					email: this.email,
+					phone: this.phone,
+					check: this.check
+				}
+				// 发起网络请求
+				this.$http.httpRequest(opts, param).then(res => {
+					let status = res.data.status
+					if(status ===1) {
+						let token=res.data.token;
+						uni.setStorage({
+							key: 'token',
+							data: token,
+							success: function() {
+								uni.showToast({
+									title: '注册成功',
+									position: 'center',
+									image: '../../static/img/mysuccess.png'
+								})
+							},
+							fail: function() {
+								uni.showToast({
+									title: '用户数据写入失败，建议重启本应用',
+									position: "center",
+						    		image: "../../static/img/myfail.png"
+								})
+							}
+						})
+					} else if (status === 3) {
+						uni.showToast({
+							title: '验证码过期',
+							position: 'center',
+							image: '../../static/img/myfail.png'
+						})
+					} else {
+						uni.showToast({
+							title: '用户信息不完整',
+							position: 'center',
+							image: '../../static/img/myfail.png'
+						})
+					}
+				})
 			},
 
 			toLogin() {
+				// 隐藏键盘,如果没有打开键盘,那就什么都不做
 				uni.hideKeyboard()
 				uni.redirectTo({
 					url: 'login'

@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import App from './App'
-import sunUiOos from './components/sunui-upimg/sunui-upimg-alioos.vue'
-Vue.component('sunui-upoos',sunUiOos)
+import http from '@/components/utils/http.js'
 Vue.config.productionTip = false
-
+Vue.prototype.$http = http
 App.mpType = 'app'
 
 const app = new Vue({

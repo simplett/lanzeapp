@@ -1,7 +1,7 @@
 {
-    "name" : "蓝沢易购",
+    "name" : "易选广告位",
     "appid" : "__UNI__010C860",
-    "description" : "这是一个二手交易平台，我们有自己的交易保障体系，解决了消费者之间的互信问题",
+    "description" : "这是一个广告位选择的软件，旨在简化用户的操作，简化服务商的操作，提高效率",
     "versionName" : "2.1.0",
     "versionCode" : "100",
     "transformPx" : false,

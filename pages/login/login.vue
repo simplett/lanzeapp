@@ -39,7 +39,7 @@
 			return {
 				email: '',
 				passwd: '',
-				Status: "",
+				Status: '',
 				isShowOauth: true,
 				showProvider: {
 					weixin: true,
@@ -122,7 +122,7 @@
 				uni.hideKeyboard()
 				uni.navigateTo({
 					url: page
-				});
+				})
 			},
 			doLogin() {
 				uni.hideKeyboard();
@@ -135,7 +135,7 @@
 					return false;
 				}
 				// 验证密码
-				if (!(/^(\w){6,10}$/.test(this.passwd))) {
+				if (!(/^(\w){10,20}$/.test(this.passwd))) {
 					uni.showToast({
 						title: '密码错误',
 						icon: "none"
@@ -145,48 +145,45 @@
 				uni.showLoading({
 					title: '提交中...'
 				})
-				var data = {
-					email: this.email,
-					pwd: md5(this.passwd)
+				let opts = {
+					url : '/login/login',
+					method : 'get'
 				}
-				uni.request({
-						url: 'http://120.79.19.253:10086/Login',
-						data,
-						success: (result) => {
-							console.log("###################################这是登陆之后的数据", result.data);
-							this.Status = result.data.status;
-							if (this.Status === 1) {
-								var token = result.data.token;
-								uni.setStorage({
-									key: 'token',
-									data: token,
-									success: function() {
-										uni.showToast({
-											title: '登陆成功',
-											position: "center",
-											image: "../../static/img/mysuccess.png"
-										});
-										uni.switchTab({
-										    url: '/pages/tabBar/home/home'
-										});
-									},
-									fail: function() {
-										uni.showToast({
-											title: '用户数据写入失败，建议重启本应用',
-											position: "center",
-											image: "../../static/img/myfail.png"
-										})
-									}
-								})
-							} else {
+				let param = {
+					email: this.email,
+					password: md5(this.passwd)
+				}
+				this.$http.httpRequest(opts, param).then(res => {
+					console.log(res)
+					if (res.data.status === 1) {
+						let token = res.data.token
+						uni.setStorage({
+							key: 'token',
+							data: token,
+							success: function() {
 								uni.showToast({
-									title: '用户名或密码有误',
+									title: '登陆成功',
 									position: "center",
-									image: "../../static/img/myfail.png"
-								});
+									image: '../../static/img/mysuccess.png'
+								})
+							},
+							fail: function() {
+								uni.showToast({
+									title: '用户数据写入失败，建议重启本应用',
+									position: 'center',
+									image: '../../static/img/myfail.png'
+								})
 							}
-							this.text = 'request success';
-						}
+						})
+					} else {
+						uni.showToast({
+							title: '用户名或密码有误',
+							position: 'center',
+							image: '../../static/img/myfail.png'
+						})
+					}
+				}).catch(err => {
+					console.log(err)
 				})
 			}
 		}
