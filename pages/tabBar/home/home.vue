@@ -22,44 +22,37 @@
 			    :thumbnail="item.img"
 			    :extra="item.order_time"
 			    :note="item.address"
-				@click="toCompany"
+				@click="toCompany(item.boss_id)"
 			>
+			<view class="description">
+				{{item.description}}
+			</view>
+			<view class="time">
+				<timeago :datetime="item.create_time" locale="zh-CN"></timeago>
+			</view>
+				<view class="ad_count">
+					<uni-icons type="phone" size="21"></uni-icons>广告位数量{{item.ad_count}}
+				</view>
+				<view class="phone" @tap="call(item.phone)">
+					<uni-icons type="phone" size="21"></uni-icons>{{item.phone}}
+				</view>
+			
 			</uni-card>
 		</view>
-		<!-- <uni-list>
-		    <uni-list-item v-for="(item,i) of datas" :key='i' :note="item.address" :title="item.name" :thumb="item.image_list"></uni-list-item>
-		</uni-list> -->
-		<swiper style="min-height: 100vh;" :current="currentTab" @change="swiperTab">
-			<swiper-item v-for="(listItem,listIndex) in list" :key="listIndex">
-				<scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation :scroll-into-view="toView">
-				</scroll-view>
-			</swiper-item>
-		</swiper>
 	</view>
 </template>
 
 <script>
 var ttt = 0;
 //高德SDK
-// import uniSegmentedControl from '@/components/uni/uni-segmented-control/uni-segmented-control.vue'
-import haversterSlidingMenu from '@/components/haverster-slidingMenu/haversterSlidingMenu.vue'
-import uniIndexedList from "@/components/uni/uni-indexed-list/uni-indexed-list.vue"
-import uniList from "@/components/uni/uni-list/uni-list.vue"
-import uniListItem from "@/components/uni/uni-list-item/uni-list-item.vue"
 import amap from '@/common/SDK/amap-wx.js'
 import uniCard from "@/components/uni/uni-card/uni-card.vue"
 export default {
 	data() {
 		return {
 			searchContext: '', // 用户搜索的内容
-			selectdata: [{"data": []}],
-			list: [[1, 2, 3, 4, 5, 6],['a', 'b', 'c', 'd', 'e', 'f'],[],['2233','4234','13144','324244'],[1, 2, 3, 4, 5, 6],['a', 'b', 'c', 'd', 'e', 'f'],[],['2233','4234','13144','324244'],[1, 2, 3, 4, 5, 6],['a', 'b', 'c', 'd', 'e', 'f'],[],['2233','4234','13144','324244']], //数据格式,
-			currentTab: 0, //sweiper所在页
-			tabTitle:['公司一','公司二','公司三','公司四','公司五','公司六','公司七','公司八','公司九','公司十','公司十一','公司十二'], //导航栏格式 --导航栏组件
 			datas:[],
 			current: 0,
-			toView:'',
-			kword: '',
 			showHeader: true,
 			afterHeaderOpacity: 1, //不透明度
 			headerPosition: 'fixed',
@@ -67,39 +60,12 @@ export default {
 			statusTop: null,
 			nVueTitle: null,
 			city: '北京',
-			currentSwiper: 0,
-			// 轮播图片
-			swiperList: [
-				{
-					id: 1,
-					title: '业务完善中...',
-					img: '/static/img/1.jpg'
-				},
-				{
-					id: 2,
-					title: '业务完善中...',
-					img: '/static/img/2.jpg'
-				},
-				{
-					id: 3,
-					title: '业务完善中...',
-					img: '/static/img/3.jpg'
-				}
-			],
-			// 分类菜单
 			categoryList: [],
 			Promotion: [],
-			//猜你喜欢列表
-			productList: [],
 			loadingText: '正在加载...'
 		};
 	},
 	components: {
-		// uniSegmentedControl,
-		haversterSlidingMenu,
-		uniIndexedList,
-		uniList,
-		uniListItem,
 		uniCard
 	},
 	onPageScroll(e) {
@@ -162,6 +128,28 @@ export default {
 		this.getCompany()
 	},
 	methods: {
+		// 打电话给当前消息的老板
+		call (phone) {
+			if (/^1[3456789]\d{9}$/.test(phone)) {
+				uni.makePhoneCall({
+				    phoneNumber: phone,
+					success: (res) => {
+						console.log(res)
+						uni.showToast({
+							icon:'none',
+							title:'成功拔打电话'
+						})
+					},
+					fail: (err) => {
+						console.log(err)
+						uni.showToast({
+							icon:"none",
+							title:'拨打电话时失败'
+						})
+					}
+				});
+			}
+		},
 		// 获取广告位的动态
 		getCompany () {
 			let opts = {
@@ -174,55 +162,9 @@ export default {
 			})
 		},
 		// 跳转到改公司页面
-		toCompany () {
+		toCompany (id) {
 			uni.navigateTo({
-				url: '../../home/index'
-			});
-		},
-		// swiper 滑动
-		swiperTab: function(e) {
-			var index = e.detail.current //获取索引
-			this.$refs.navTab.longClick(index);
-		},
-		toTop(){
-			this.toView = ''
-			setTimeout(()=>{
-				this.toView = 'top' + this.currentTab
-			},10)
-		},
-		changeTab(index){
-			this.currentTab = index;
-		},
-		onClickItem(index) {
-			if (this.current !== index.currentIndex) {
-				console.log(index);
-				this.current = index.currentIndex;
-			}
-		},
-		tobanner() {
-			uni.showToast({
-				title: '业务功能完善中，敬请期待',
-				icon: 'none'
-			});
-		},
-		load() {
-			let opts = {
-				url:'/index/show',
-				method: 'get'
-			}
-			this.$http.httpRequest(opts).then(res => {
-				// console.log(res.data,'data')
-				this.datas = res.data.data
-				this.datas.forEach(item => {
-					this.selectdata[0].data.push(item.address)
-				})
-				// console.log(this.selectdata)
-			})
-		},
-		//消息列表
-		toMsg() {
-			uni.navigateTo({
-				url: '../../msg/msg'
+				url: `../../home/index?boss_id=${id}`
 			});
 		},
 		//搜索跳转
@@ -241,42 +183,30 @@ export default {
 				url: '../../goods/goods-list/goods-list?kword=' + this.kword
 			});
 		},
-		//轮播图跳转
-		toSwiper(e) {
-			uni.showToast({
-				title: e.title,
-				icon: 'none'
-			});
-		},
-		//分类跳转
-		toCategory(e) {
-			//uni.showToast({title: e.name,icon:"none"});
-			uni.setStorageSync('catName', e.name);
-			uni.navigateTo({
-				url: '../../goods/goods-list/goods-list?codeid=' + e.id + '&name=' + e.name
-			});
-		},
-		//推荐商品跳转
-		toPromotion(e) {
-			uni.showToast({
-				title: e.title,
-				icon: 'none'
-			});
-		},
-		//商品跳转
-		toGoods(e) {
-			uni.navigateTo({
-				url: '../../goods/goods?pid=' + e.goods_id
-			});
-		},
-		//轮播图指示器
-		swiperChange(event) {
-			this.currentSwiper = event.detail.current;
-		}
 	}
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+	.ad_count, .phone {
+		// border: 1px solid red;
+		// background-color: #808080;
+		font-size: 20upx;
+	}
+	.flex {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.time{
+		color: #302514;
+		font-size: 20upx;
+		text-align: right;
+	}
+	.description{	
+		color: #888;
+		font-size: 28upx;
+		padding: 0px 4upx;
+	}
 	.searchInput999 {
 		width: 90%;
 		margin: 0 auto;

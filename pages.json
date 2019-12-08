@@ -91,6 +91,22 @@
 		    "style" : {
 				"navigationBarBackgroundColor": "#50B7EA"
 			}
+		},
+		{
+		    "path" : "pages/phones/phones",
+		    "style" : {
+		        "navigationBarTitleText" : "通讯录",
+		        "app-plus":{
+		            "bounce":"none",
+		            "scrollIndicator":"none"
+		        }
+		    }
+		},
+		{
+		    "path" : "pages/phones/phone-search",
+		    "style" : {
+		        "navigationBarTitleText" : "搜索联系人"
+		    }
 		}
     ],
 	"globalStyle": {

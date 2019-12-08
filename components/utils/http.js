@@ -1,4 +1,4 @@
-const baseUrl = 'http://192.168.101.82:8081/v1';  
+const baseUrl = 'http://127.0.0.1:8081/v1';  
 const httpRequest = (opts, data) => {
     let httpDefaultOpts = {
         url: baseUrl+opts.url,
