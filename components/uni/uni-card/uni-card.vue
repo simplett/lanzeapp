@@ -3,7 +3,7 @@
 	 class="uni-card" @click="onClick">
 		<view v-if="mode === 'style'" class="uni-card__thumbnailimage">
 			<view class="uni-card__thumbnailimage-box">
-				<image class="uni-card__thumbnailimage-image" :src="thumbnail" mode="aspectFill" />
+				<image class="uni-card__thumbnailimage-image" :src="thumbnail" mode="aspectFit" />
 			</view>
 			<view v-if="title" class="uni-card__thumbnailimage-title"><text class="uni-card__thumbnailimage-title-text">{{ title }}</text></view>
 		</view>
@@ -105,8 +105,9 @@
 		position: relative;
 		flex-direction: column;
 		justify-content: center;
-		height: 150px;
+		height:300upx;
 		overflow: hidden;
+		object-fit: fil;
 	}
 
 	.uni-card__thumbnailimage-box {
@@ -115,7 +116,7 @@
 		/* #endif */
 		flex: 1;
 		flex-direction: row;
-		overflow: hidden;
+		// overflow: hidden;
 	}
 
 	.uni-card__thumbnailimage-image {

@@ -22,21 +22,20 @@
 			    :thumbnail="item.img"
 			    :extra="item.order_time"
 			    :note="item.address"
-				@click="toCompany(item.boss_id)"
+				@click="toCompany(item.boss_id, item.company_name)"
 			>
 			<view class="description">
 				{{item.description}}
 			</view>
+			<view class="ad_count">
+				广告位数量: {{item.ad_count}}
+			</view>
+			<view class="phone" @tap="call(item.phone)">
+				<uni-icons type="phone"></uni-icons>{{item.phone}}
+			</view>
 			<view class="time">
 				<timeago :datetime="item.create_time" locale="zh-CN"></timeago>
 			</view>
-				<view class="ad_count">
-					<uni-icons type="phone" size="21"></uni-icons>广告位数量{{item.ad_count}}
-				</view>
-				<view class="phone" @tap="call(item.phone)">
-					<uni-icons type="phone" size="21"></uni-icons>{{item.phone}}
-				</view>
-			
 			</uni-card>
 		</view>
 	</view>
@@ -47,6 +46,7 @@ var ttt = 0;
 //高德SDK
 import amap from '@/common/SDK/amap-wx.js'
 import uniCard from "@/components/uni/uni-card/uni-card.vue"
+import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 export default {
 	data() {
 		return {
@@ -66,7 +66,7 @@ export default {
 		};
 	},
 	components: {
-		uniCard
+		uniCard, uniIcons
 	},
 	onPageScroll(e) {
 		//兼容iOS端下拉时顶部漂移
@@ -84,7 +84,7 @@ export default {
 	//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 	onReachBottom() {
 		let len = this.productList.length;
-		if (len >= 1000) {
+		if (len >= 10) {
 			this.loadingText = '到底了';
 			return false;
 		}
@@ -162,9 +162,9 @@ export default {
 			})
 		},
 		// 跳转到改公司页面
-		toCompany (id) {
+		toCompany (id, name) {
 			uni.navigateTo({
-				url: `../../home/index?boss_id=${id}`
+				url: `../../home/index?boss_id=${id}&company_name=${name}`
 			});
 		},
 		//搜索跳转
@@ -201,6 +201,8 @@ export default {
 		color: #302514;
 		font-size: 20upx;
 		text-align: right;
+		margin-top: -17px;
+		padding-right:10px;
 	}
 	.description{	
 		color: #888;

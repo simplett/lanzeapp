@@ -82,12 +82,19 @@
 			// 首页 -> 公司详情页
             "path" : "pages/home/index",
             "style" : {
+				"onReachBottomDistance": 10,
 				"navigationBarBackgroundColor": "#50B7EA"
 			}
         }
 		,{
 			// 首页 -> 搜索
-		    "path" : "pages/home/search",
+		    "path" : "pages/home/list",
+		    "style" : {
+				"navigationBarBackgroundColor": "#50B7EA"
+			}
+		},{
+			// 首页 -> 广告位详细信息
+		    "path" : "pages/home/detail",
 		    "style" : {
 				"navigationBarBackgroundColor": "#50B7EA"
 			}
@@ -108,6 +115,10 @@
 		        "navigationBarTitleText" : "搜索联系人"
 		    }
 		}
+        ,{
+            "path" : "pages/home/search/index",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
