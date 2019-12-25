@@ -3,7 +3,7 @@
 	 class="uni-card" @click="onClick">
 		<view v-if="mode === 'style'" class="uni-card__thumbnailimage">
 			<view class="uni-card__thumbnailimage-box">
-				<image class="uni-card__thumbnailimage-image" :src="thumbnail" mode="aspectFit" />
+				<image class="uni-card__thumbnailimage-image" :src="thumbnail" mode="aspectFill" />
 			</view>
 			<view v-if="title" class="uni-card__thumbnailimage-title"><text class="uni-card__thumbnailimage-title-text">{{ title }}</text></view>
 		</view>
@@ -89,7 +89,8 @@
 		flex: 1;
 		box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 		/* #endif */
-		margin: 12px;
+		margin: 7px;
+		margin-top:10px;
 		background-color: $uni-bg-color;
 		position: relative;
 		flex-direction: column;
@@ -98,31 +99,30 @@
 		border-width: 1px;
 		border-radius: 3px;
 		overflow: hidden;
-
 	}
-
+	// 卡片 使图片填满当前区域
+	uni-image.uni-card__thumbnailimage-image{
+		height:100%;
+	}
 	.uni-card__thumbnailimage {
 		position: relative;
 		flex-direction: column;
 		justify-content: center;
-		height:300upx;
+		height: 96px;
 		overflow: hidden;
-		object-fit: fil;
 	}
-
 	.uni-card__thumbnailimage-box {
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
 		flex: 1;
+		height:100%;
 		flex-direction: row;
-		// overflow: hidden;
+		overflow: hidden;
 	}
-
 	.uni-card__thumbnailimage-image {
 		flex: 1;
 	}
-
 	.uni-card__thumbnailimage-title {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -135,13 +135,11 @@
 		padding: $uni-spacing-col-base $uni-spacing-col-lg;
 		background-color: $uni-bg-color-mask;
 	}
-
 	.uni-card__thumbnailimage-title-text {
 		flex: 1;
 		font-size: $uni-font-size-base;
 		color: #fff;
 	}
-
 	.uni-card__title {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -152,19 +150,16 @@
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
 	}
-
 	.uni-card__title-header {
 		width: 40px;
 		height: 40px;
 		overflow: hidden;
 		border-radius: 5px;
 	}
-
 	.uni-card__title-header-image {
 		width: 40px;
 		height: 40px;
 	}
-
 	.uni-card__title-content {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -174,35 +169,29 @@
 		padding-left: 10px;
 		height: 40px;
 		overflow: hidden;
-
-
 	}
-
 	.uni-card__title-content-title {
 		font-size: $uni-font-size-base;
 		line-height: 22px;
 		lines: 1;
 	}
-
 	.uni-card__title-content-extra {
 		font-size: 26rpx;
 		line-height: 35rpx;
 		color: #999;
 	}
-
 	.uni-card__header {
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
 		position: relative;
 		flex-direction: row;
-		padding: $uni-spacing-col-lg;
+		padding: 8upx;
 		align-items: center;
 		border-bottom-color: $uni-border-color;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
 	}
-
 	.uni-card__header-title {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -212,12 +201,11 @@
 		justify-content: flex-start;
 		align-items: center;
 	}
-
 	.uni-card__header-title-text {
 		font-size: $uni-font-size-lg;
 		flex: 1;
 		/* #ifndef APP-NVUE */
-		white-space: nowrap;
+		// white-space: nowrap;
 		/* #endif */
 		/* #ifdef APP-NVUE */
 		lines: 1;
@@ -230,7 +218,6 @@
 		width: $uni-img-size-sm;
 		margin-right: $uni-spacing-col-base;
 	}
-
 	.uni-card__header-extra-text {
 		flex: 1;
 		margin-left: $uni-spacing-col-base;
@@ -238,34 +225,28 @@
 		text-align: right;
 		color: $uni-text-color-grey;
 	}
-
 	.uni-card__content {
 		color: $uni-text-color;
 	}
-
-	.uni-card__content--pd {
-		padding: $uni-spacing-col-lg;
-	}
-
+	// .uni-card__content--pd {
+	// 	padding: $uni-spacing-col-lg;
+	// }
 	.uni-card__content-extra {
 		font-size: $uni-font-size-base;
 		padding-bottom: 10px;
 		color: #999;
 	}
-
 	.uni-card__footer {
 		justify-content: space-between;
-		padding: 10px;
+		// padding: 10px;
 		border-top-color: $uni-border-color;
 		border-top-style: solid;
 		border-top-width: 1px;
 	}
-
 	.uni-card__footer-text {
 		color: $uni-text-color-grey;
 		font-size: $uni-font-size-base;
 	}
-
 	.uni-card--shadow {
 		border-color: $uni-border-color;
 		border-style: solid;
@@ -274,7 +255,6 @@
 		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 		/* #endif */
 	}
-
 	.uni-card--full {
 		margin: 0;
 		border-radius: 0;

@@ -1,20 +1,19 @@
 <template>
 	<view>
-		<view class="nav">
-			<!-- #ifdef H5 -->
-				<view style="height: 24px;width: 100%;"></view>
-			<!-- #endif -->
-			<!-- 搜索 -->
-			<view class='searchInput999'>
-				<input v-model="searchContext" class='input999' placeholder="输入你想搜索的广告位"></input>
-				<view class='searchBox999'>
-					<image src='/static/icon-search.png' @click="onSearch" class='search999'></image>
-				</view>
+		<view class="header" :style="{position:headerPosition}">
+			<!-- <view class="addr">
+				<view class="icon location"></view>{{city}}
+			</view> -->
+			<view class="input-box">
+				<input placeholder="请输入您想搜索的宝贝" v-model="searchContext" placeholder-style="color:#c0c0c0;" />
+				<view @tap="toSearch(searchContext)" class="icon search"></view>
 			</view>
-			<view style="height: 14px;width: 100%;"></view>
+			<!-- <view class="icon-btn">
+				<view class="icon tongzhi" @tap="toMsg"></view>
+			</view> -->
 		</view>
-		<view style="width:100%;height:60px;"></view>
-		<view v-for="(item,i) in datas" :key="i">
+		<view style="width:100%;height:40px;"></view>
+		<view class="show" v-for="(item,i) in datas" :key="i">
 			<uni-card
 			    :title="item.company_name"
 			    mode="style"
@@ -30,9 +29,11 @@
 			<view class="ad_count">
 				广告位数量: {{item.ad_count}}
 			</view>
-			<view class="phone" @tap="call(item.phone)">
-				<uni-icons type="phone"></uni-icons>{{item.phone}}
+			<view class="ad_count">
+				<uni-icons class="ad_count" @tap="call(item.phone)" type="phone"></uni-icons>{{item.phone}}
 			</view>
+			<!-- <view class="phone">
+			</view> -->
 			<view class="time">
 				<timeago :datetime="item.create_time" locale="zh-CN"></timeago>
 			</view>
@@ -98,7 +99,6 @@ export default {
 				url: '../../../goods/goods?pid=' + options.pid
 			});
 		}
-
 		// #ifdef APP-PLUS
 		this.nVueTitle = uni.getSubNVueById('homeTitleNvue');
 		this.nVueTitle.onMessage(res => {});
@@ -128,6 +128,27 @@ export default {
 		this.getCompany()
 	},
 	methods: {
+		// 测试
+		// getFile () {
+		// 	uni.chooseImage({
+		// 	    success: (chooseImageRes) => {
+		// 	        const tempFilePaths = chooseImageRes.tempFilePaths;
+		// 	        uni.uploadFile({
+		// 	            url: 'http://192.168.101.82:8081/v1/admin/getfiles', //仅为示例，非真实的接口地址
+		// 				header: {token:'1111111'},
+		// 	            filePath: tempFilePaths[0],
+		// 	            name: '',
+		// 				fileType: 'video',
+		// 	            formData: {
+		// 	                'user': 'test'
+		// 	            },
+		// 	            success: (uploadFileRes) => {
+		// 	                console.log(uploadFileRes.data);
+		// 	            }
+		// 	        });
+		// 	    }
+		// 	});
+		// },
 		// 打电话给当前消息的老板
 		call (phone) {
 			if (/^1[3456789]\d{9}$/.test(phone)) {
@@ -168,26 +189,94 @@ export default {
 			});
 		},
 		//搜索跳转
-		toSearch() {
+		toSearch(s) {
 			// 当用户没有输入任何内容但进行了点击的动作
-			if (!this.searchContext) {
+			if (!s) {
 				uni.showToast({
 					title: '请输入您要搜索的内容'
 				})
 			} else {
-				
+				//uni.showToast({title: e.name,icon:"none"});
+				// uni.setStorageSync('catName', e.name);
+				uni.navigateTo({
+					url: '../../home/search/index?search=' + s
+				});
 			}
-			//uni.showToast({title: e.name,icon:"none"});
-			// uni.setStorageSync('catName', e.name);
-			uni.navigateTo({
-				url: '../../goods/goods-list/goods-list?kword=' + this.kword
-			});
 		},
 	}
 };
 </script>
 <style lang="scss" scoped>
-	.ad_count, .phone {
+	
+	.header {
+		width: 92%;
+		padding: 0 4%;
+		height: 100upx;
+		display: flex;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		z-index: 10;
+		background-color: #fff;
+		/*  #ifdef  APP-PLUS  */
+		top: var(--status-bar-height);
+		/*  #endif  */
+		.input-box {
+			width: 100%;
+			height: 60upx;
+			background-color: #f5f5f5;
+			border-radius: 30upx;
+			position: relative;
+			display: flex;
+			align-items: center;
+	
+			.icon {
+				display: flex;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 60upx;
+				height: 60upx;
+				font-size: 34upx;
+				color: #c0c0c0;
+			}
+	
+			input {
+				padding-left: 28upx;
+				height: 28upx;
+				font-size: 28upx;
+			}
+		}
+	
+		.icon-btn {
+			width: 60upx;
+			height: 60upx;
+			flex-shrink: 0;
+			display: flex;
+	
+			.icon {
+				width: 60upx;
+				height: 60upx;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				font-size: 42upx;
+			}
+		}
+	}
+	
+	.show{
+		width:50%;
+		float: left;
+	}
+	.uni-card__thumbnailimage-box[data-v-c2faec42] {
+		height:100%;
+	}
+	// uni-image{
+	// 	height: 100%;
+	// }
+	.ad_count{
 		// border: 1px solid red;
 		// background-color: #808080;
 		font-size: 20upx;
@@ -201,13 +290,17 @@ export default {
 		color: #302514;
 		font-size: 20upx;
 		text-align: right;
-		margin-top: -17px;
-		padding-right:10px;
+		margin-top: -19px;
 	}
 	.description{	
 		color: #888;
 		font-size: 28upx;
 		padding: 0px 4upx;
+		display: -webkit-box;
+		// 文字超出两行后隐藏
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
 	}
 	.searchInput999 {
 		width: 90%;

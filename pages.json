@@ -82,7 +82,7 @@
 			// 首页 -> 公司详情页
             "path" : "pages/home/index",
             "style" : {
-				"onReachBottomDistance": 10,
+				"onReachBottomDistance": 50,
 				"navigationBarBackgroundColor": "#50B7EA"
 			}
         }
@@ -115,10 +115,42 @@
 		        "navigationBarTitleText" : "搜索联系人"
 		    }
 		}
+		// 搜索后跳转的页面
         ,{
             "path" : "pages/home/search/index",
             "style" : {}
         }
+        ,{
+            "path" : "pages/home/hot",
+            "style" : {}
+        },
+		// 我的页面
+		{
+			"path":"pages/HM-PersonalCenter/HM-PersonalCenter",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+		// 公司列表
+		{
+			"path":"pages/tabBar/company/index",
+			"style":{
+				"app-plus":{
+					"titleNView": false
+				}
+			}
+		},
+		// 购物车
+		{
+			"path":"pages/tabBar/cart/cart",
+			"style":{
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -137,6 +169,24 @@
 				"iconPath": "static/img/tabBar/1-1.png",
 				"selectedIconPath": "static/img/tabBar/1.png",
 				"text": "首页"
+			},
+			{
+				"pagePath":"pages/tabBar/company/index",
+				"iconPath": "static/img/tabBar/2-2.png",
+				"selectedIconPath": "static/img/tabBar/2.png",
+				"text":"公司"
+			},
+			{
+				"pagePath":"pages/tabBar/cart/cart",
+				"iconPath": "static/img/tabBar/4-4.png",
+				"selectedIconPath": "static/img/tabBar/4.png",
+				"text":"购物车"
+			},
+			{
+				"pagePath": "pages/HM-PersonalCenter/HM-PersonalCenter",
+				"iconPath": "static/img/tabBar/5-5.png",
+				"selectedIconPath": "static/img/tabBar/5.png",
+				"text": "我的"
 			}
 		]
 	},

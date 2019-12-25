@@ -21,10 +21,16 @@
 			<!-- title: ， extra: 发布时间， name:  -->
 			<uni-card
 			    :title="item.address"
-			    :extra="item.order_time"
 				@click="toDetail(item.ad_id)"
 			>
-			   {{item.name}}
+			   <view style="font-size: 14px;">
+				   <view style="float: left;">
+						{{item.name}}
+				   </view>
+				   <view style="float: left;padding-left: 10px;color: #999999;">
+				   	{{item.order_time}}
+				   </view>
+			   </view>
 			</uni-card>
 		</view>
 	</view>
@@ -38,7 +44,6 @@ import haversterSlidingMenu from '@/components/haverster-slidingMenu/haversterSl
 import uniIndexedList from "@/components/uni/uni-indexed-list/uni-indexed-list.vue"
 import uniList from "@/components/uni/uni-list/uni-list.vue"
 import uniListItem from "@/components/uni/uni-list-item/uni-list-item.vue"
-import amap from '@/common/SDK/amap-wx.js'
 import uniCard from "@/components/uni/uni-card/uni-card.vue"
 export default {
 	data() {

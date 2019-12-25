@@ -21,15 +21,19 @@
 			<uni-card
 			    :title="item.address"
 			    :extra="item.order_time"
-				:note="item.address"
 				@click="toList(item.id, item.name)"
 			>
-			   <view style="font-size;16px;">
+			<view class="">
+				<view class="name" style="font-size;14px;float: left;">
 					{{item.name}}
-			   </view>
-			   <view style="font-size:14px;color:#999999;">
-			   	广告位数量: {{item.count}}
-			   </view>
+				</view>
+				<view style="font-size:14px;color:#999999;float: left;width:50%;">
+					广告位数量: {{item.count}}
+				</view>
+				<view style="font-size: 14px;">
+					{{item.address}}
+				</view>
+			</view>
 			</uni-card>
 		</view>
 	</view>
@@ -43,8 +47,8 @@ import haversterSlidingMenu from '@/components/haverster-slidingMenu/haversterSl
 import uniIndexedList from "@/components/uni/uni-indexed-list/uni-indexed-list.vue"
 import uniList from "@/components/uni/uni-list/uni-list.vue"
 import uniListItem from "@/components/uni/uni-list-item/uni-list-item.vue"
-import amap from '@/common/SDK/amap-wx.js'
 import uniCard from "@/components/uni/uni-card/uni-card.vue"
+import amap from "../../common/SDK/amap-wx.js"
 export default {
 	data() {
 		return {
@@ -257,6 +261,10 @@ export default {
 };
 </script>
 <style lang="scss">
+	.name{
+		font-size: 14px;
+		width:50%;
+	}
 	.searchInput999 {
 		width: 90%;
 		margin: 0 auto;

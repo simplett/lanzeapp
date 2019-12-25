@@ -42,7 +42,7 @@ const httpTokenRequest = (opts, data) => {
         data: data,
         method: opts.method,
         header: opts.method == 'get' ? {
-		'Token': token,
+		'token': token,
         'X-Requested-With': 'XMLHttpRequest',
         "Accept": "application/json",
         "Content-Type": "application/json; charset=UTF-8"

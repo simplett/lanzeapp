@@ -10,9 +10,9 @@
 				<input placeholder="请输入您想搜索的宝贝" v-model="kword" placeholder-style="color:#c0c0c0;" />
 				<view @tap="toSearch()" class="icon search"></view>
 			</view>
-			<view class="icon-btn">
+			<!-- <view class="icon-btn">
 				<view class="icon tongzhi" @tap="toMsg"></view>
-			</view>
+			</view> -->
 		</view>
 		<!-- 占位 -->
 		<!-- <category :categoryList=''></category> -->
@@ -27,7 +27,6 @@
 						{{category.listname}}
 					</view>
 				</view>
-
 			</scroll-view>
 			<!-- 右侧子导航 -->
 			<scroll-view scroll-y="true" class="right">
@@ -354,8 +353,20 @@
 				}
 			});
 		},
+		created() {
+			this.getCompany()
+		},
 		methods: {
-			
+			// 获取公司的列表
+			getCompany () {
+				let opt = {
+					url: '/index/company',
+					methof: 'get'
+				}
+				this.$http.httpRequest(opt).then(res => {
+					console.log(res.data.infos, '1111111111111111111111')
+				})
+			},
 			//消息列表
 			toMsg() {
 				uni.navigateTo({

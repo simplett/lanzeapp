@@ -26,7 +26,7 @@
 		<view class="grid">
 		</view>
 		<!-- 底部商品导航 -->
-		<uni-goods-nav :fill="true"  :options="options" :button-group="buttonGroup"  @click="onClick" @buttonClick="buttonClick" class="goodsNav"></uni-goods-nav>
+		<uni-goods-nav :fill="true"  :options="options" :button-group="buttonGroup"  @click="onClick" @buttonClick="buttonClick(data.ad_id)" class="goodsNav"></uni-goods-nav>
     </view>
 </template>
 
@@ -48,26 +48,16 @@ export default {
 			duration: 500,
 			options: [{
 			  icon: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/uni-ui/goodsnav/kefu.png',
-			  text: '客服'
-			}, {
-			  icon: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/uni-ui/goodsnav/dianpu.png',
-			  text: '店铺'
+			  text: '电话联系'
 			}, {
 			  icon: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/uni-ui/goodsnav/carts.png',
-			  text: '购物车',
-			  info: 2
+			  text: '购物车'
 			}],
 			buttonGroup: [{
 			  text: '加入购物车',
 			  backgroundColor: '#ff0000',
 			  color: '#fff'
-			},
-			{
-			  text: '立即购买',
-			  backgroundColor: '#ffa200',
-			  color: '#fff'
-			}
-			]
+			}]
 		};
 	},
 	onLoad(options) {
@@ -78,6 +68,25 @@ export default {
 		this.getDetail()
 	},
 	methods: {
+		onClick (e) {
+			uni.showToast({
+			  title: `点击${e.content.text}`,
+			  icon: 'none'
+			})
+	    },
+	    buttonClick (id) {
+			let opt ={
+				url: `/order/order`,
+				method: 'post'
+			}
+			let params ={
+				ad_list:JSON.stringify([id,id,id,id]),
+				duration: 122242342135
+			}
+			this.$http.httpTokenRequest(opt, params).then((res) => {
+				console.log(res)
+			})
+	    },
 		// 获取详细信息
 		getDetail () {
 			let opt = {
